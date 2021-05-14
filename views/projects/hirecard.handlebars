@@ -1,0 +1,88 @@
+<div id="hire-confirmation">
+    <small>On {{date bid.date_submitted}} {{bid.user.name}} said:</small>
+    <blockquote>“{{bid.comments}}”</blockquote>
+    <hr/>
+    You will be accepting an estimate of:<br />
+     <h4>{{currency bid.estimate}}</h4>
+
+
+        You have  {{currency user.balance}} in your balance , Please confirm a charge of {{currency remaining_amount}} and select the card you want to use
+    
+    <hr/>
+    <form id="form-hire-confirmation" class="form-inline" method="post" action="/api/project/{{ p._id }}/hirefromcard">
+        <input type="hidden" name="bid" value="{{bid._id}}" />
+        <input type="hidden" name="amount" value="{{remaining_amount}}" />
+        <input type="hidden" name="description" value="escrow remaining funds for project {{p.number}}" />
+         <table>
+        <thead>
+          <tr>
+            <th>Default</th>
+            <th>Credit Card</th>
+            <th>Expiration</th>
+          </tr>
+        </thead>
+        <tbody>
+          {{#if user.stripe.cards }}
+          {{#each user.stripe.cards.data }}
+          <tr>
+            <td><input type="radio" name="optionsRadios" {{#compare ../user.stripe.default_card to=id}} CHECKED {{/compare}} class="default_selector" value="{{id}}"></td>
+            <td>{{brand}} ******{{last4}}</td>
+            <td>{{exp_month}}/{{exp_year}}</td>
+          </tr>
+          {{/each}}
+          {{/if}}
+
+        </tbody>
+      </table>
+        <div class="btn-group">
+            <input type="submit" value="Accept Estimate" class="btn btn-success" />
+            <button class="btn" id="button-hire-cancel">Cancel</button>
+        </div>
+        <div class="alert error" style="display: none;">
+            There was a problem completing this request.
+        </div>
+    </form> 
+</div>
+
+<script type="text/javascript">
+jQuery(function($) {
+    $('#button-hire-cancel').click(function() {
+        // NOTE: would be lovely to target just this popover
+        $('*[rel=popover][data-load]').popover('hide');
+        return false;
+    });
+    $('#form-hire-confirmation').validate({
+        submitHandler: function(form) {
+            form = $(form);
+            form.ajaxSubmit({
+                success: function (data) {
+                      $('*[rel=popover][data-load]').popover('hide');
+                    var button = $( document.createElement('button') );
+                    button.attr('id', 'button-scheule-meteup')
+                        .attr('class', 'btn btn-success')
+                        .attr('data-toggle','modal')
+                        .attr('data-target','#modal-schedule-meetup')
+                        .attr('href','/projects/{{p._id}}/meetup')
+                        .text('Schedule Meeting')
+                        .appendTo('#mainbt');
+                    button.trigger('click');
+
+            
+                },
+                error: function (xhr, err) {
+                    form.find('.alert-error').show(); 
+                },
+                complete: function() {
+                    form.find(':input:not(:submit)').removeAttr('disabled');
+                    form.find(':submit').button('reset');
+                }
+            });
+            form.find('.alert').hide();
+            form.find(':input:not(:submit)').attr('disabled', 'disabled');
+            form.find(':submit').button('loading');
+            return false;
+        }
+    });
+
+});
+</script>

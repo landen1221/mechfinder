@@ -1,0 +1,50 @@
+<script type="text/javascript">
+    var CONTENTS = {{#if contents}}{{{json contents}}}{{else}}null{{/if}};
+    console.log(CONTENTS);
+</script>
+
+<script src='//cdn.tinymce.com/4/tinymce.min.js'></script>
+<script src="/static/js/admin/cms.js"></script>
+
+<div class="cms" id="cmsWrapper">
+    <h1>Content Management</h1>
+    
+    <div class="cms-tabs">
+        {{#each contents}}
+            <div class="tab">
+                <a href="javascript:void(0);" id="cmsTab{{this._id}}" data-id="{{this._id}}">{{this.title}}</a>
+            </div>
+        {{/each}}
+        <div class="tab">
+            <a href="javascript:void(0);" id="cmsTabNew" data-id="New">New</a>
+        </div>
+    </div>
+
+    <div class="cms-contents">
+        {{#each contents}}
+            <div class="standard-div" id="contentWrapper{{this._id}}" data-id="{{this._id}}" style="display: none;">
+                <h3>{{this.title}}</h3>
+                <div class="standard-div" id="textareaWrapper{{this._id}}">
+                    <textarea id="contentTextarea{{this._id}}" data-id="{{this._id}}">{{{this.markup}}}</textarea>
+                </div>
+                <p style="text-align: right;">
+                    <a id="contentScrub{{this._id}}" data-id="{{this._id}}" href="javascript:void(0);"><i class="fa fa-bomb fa-fw"></i> Scrub Formatting</a>
+                    <a id="contentReset{{this._id}}" data-id="{{this._id}}" href="javascript:void(0);"><i class="fa fa-undo fa-fw"></i> Reset {{this.title}}</a>
+                    <a id="contentSave{{this._id}}" data-id="{{this._id}}" href="javascript:void(0);"><i id="saveIcon{{this._id}}" class="fa fa-floppy-o fa-fw"></i> Save {{this.title}}</a>
+                </p>
+            </div>
+        {{/each}}
+        <div class="standard-div" id="contentWrapperNew" data-id="New" style="display: none;">
+            <input type="text" id="newTitleInput" placeholder="New Title"></input>
+            <div class="standard-div" id="textareaWrapperNew">
+                <textarea id="contentTextareaNew" data-id="New"></textarea>
+            </div>
+            <p style="text-align: right;">
+                <a id="contentResetNew" data-id="New" href="javascript:void(0);"><i class="fa fa-undo fa-fw"></i> Reset New</a>
+                <a id="contentSaveNew" data-id="New" href="javascript:void(0);"><i id="saveIconNew" class="fa fa-floppy-o fa-fw"></i> Save New</a>
+            </p>
+        </div>
+    </div>
+</div>
+
+

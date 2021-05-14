@@ -1,0 +1,43 @@
+<div class="internal-top-wrapper">
+    <div class="nav">
+        <div class="frame">
+            <div class="logo"><a href="/"></a></div>
+            {{#if user}}
+                <div class="links">
+                    <div class="link"><a class="openNotifications" href="javascript:void(0);" title="Notifications"><i class="fa fa-bell-o"></i><sup id="notificationsSup" style="display: none;">0</sup></a></div>
+                    <div class="link"><a class="openChat" href="javascript:void(0);" title="Messages"><i class="fa fa-envelope-o"></i><sup id="chatSup" style="display: none;"></sup></a></div>
+                    <div class="link">
+                        <div class="usertab">
+                            <div class="pic"><div id="navbarPicture" class="circle{{#compare user.role to="seller"}} mechanic-pic{{/compare}}" {{#if user.picture}}style="background-image: url('/api/public/image/{{user.picture}}');"{{/if}}></div></div>
+                            <div class="name">
+                                <div class="row">{{user.first}} {{user.last}}</div>
+                                <div class="row">{{user.username}}</div>
+                            </div>
+                            <div class="user-dropdown not-visible">
+                                <div class="tab"><a href="/profile/{{user._id}}/personal">Personal Profile</a></div>
+                                {{#compare user.role to="buyer"}}<div class="tab"><a href="/profile/{{user._id}}/vehicles">Vehicle Profile</a></div>{{/compare}}
+                                <div class="tab"><a href="/profile/{{user._id}}/accounting">Accounting</a></div>
+                                {{#compare user.role to="seller"}}<div class="tab"><a href="/profile/{{user._id}}/mechanic">Mechanic Profile</a></div>{{/compare}}
+                                <div class="tab"><a id="nav-logout" href="javascript:void(0);">Logout</a></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            {{else}}
+                <div class="links">
+                    <div class="link"><a id="internalNavLogin" class="actual-text" href="javascript:void(0);">Login</a></div>
+                    <div class="link"><a id="internalNavSignup" class="actual-text" href="javascript:void(0);">Signup</a></div>
+                </div>
+            {{/if}}
+        </div>
+    </div>
+    <div class="notification-banner" id="notificationBanner" style="display: none;" data-not="">
+        <div class="frame">
+            <div class="message" id="notificationBannerMessage">This is a notification that happened.</div>
+            <div class="exit"><a class="standard-button red" id="notificationBannerDismiss" href="javascript:void(0);">X</a></div>
+        </div>
+    </div>
+</div>
+<div id="internalTopSpacer" class="internal-top-spacer">
+    
+</div>

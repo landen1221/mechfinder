@@ -1,0 +1,145 @@
+
+<div id="hire-confirmation">
+    <b>Guarantee Your Repair Using <br> Our Secure Escrow System </b>
+    <hr/>
+
+
+
+
+    <form id="form-hire-confirmation" class="form-inline" method="post" action="/api/project/{{ p._id }}/hireandcharge">
+         <span class="payment-errors"></span>
+          <div class="form-row">
+            <label>
+              <input type="text" size="20" data-stripe="name"  placeholder="Name On Card"/>
+            </label>
+          </div>
+
+          <div class="form-row">
+            <label>
+              <input type="text" size="20" data-stripe="number"  placeholder="Card Number"/>
+            </label>
+          </div>
+          <div class="form-row">
+            <label>
+              <input type="text" size="20" data-stripe="cvc"  placeholder="Back 3 digits"/>
+            </label>
+          </div>
+            <div class="form-row">
+            <label>
+              <input type="text" size="20" data-stripe="address_zip"  placeholder="Zip Code"/>
+            </label>
+          </div>
+          <div class="form-row">
+            <label>
+              <input type="text" size="2" data-stripe="exp-month"   placeholder="MM"  class="input-small" />
+            </label>
+            <input type="text" size="4" data-stripe="exp-year"    placeholder="YYYY"  class="input-small"/>
+          </div>
+          <center>
+            <b>Estimate ${{bid.estimate}}</b>
+            <b>Balance ${{user.balance}}</b>
+            <b>Amount to Pay ${{remaining_amount}}</b>
+          </center>
+
+          <div style='display:none' id='tokendiv'>
+
+          </div>
+
+        <input type="hidden" name="bid" value="{{bid._id}}" />
+        <input type="hidden" name="amount" value="{{remaining_amount}}" />
+        <input type="hidden" name="description" value="escrow amount for project {{p.number}} " />
+
+        <div class="btn-group">
+            <input type="submit" value="Hire" class="btn btn-success" />
+            <button class="btn" id="button-hire-cancel">Cancel</button>
+        </div>
+        <div class="alert error" style="display: none;">
+            There was a problem completing this request.
+        </div>
+    </form>
+    <form action="https://www.paypal.com/cgi-bin/webscr"  method="post"><input type="hidden" name="cmd" value="_xclick" />
+      <input type="hidden" name="business" value="info@mechfinder.com" />
+      <input type="hidden" name="item_name" value="Escrow amount for project {{p.number}}" />
+      <input type="hidden" name="item_number" value="{{p.number}}" />
+      <input type="hidden" name="currency_code" value="USD" />
+      <input type="hidden" name="amount" value="{{remaining_amount}}" />
+      <input type="hidden" name="rm" value="0" />
+      <input type="hidden" name="return" value="http://www.mechfinder.com/api/projects/{{p.id}}/hire/{{bid._id}}" />
+      <input type="hidden" name="notify_url" value="http://www.mechfinder.com/api/paypal/ipn" />
+      <input type="hidden" name="cancel_return" value="http://www.mechfinder.com/projects/{{p.number}}" />
+      <input type="hidden" name="bn" value="mechfinder.com" /> <br />
+      <input type="image" src="{{settings.static_path}}/img/paypaln.png" border="0" name="submit" alt="Make payments with PayPal  its fast, free and secure!" />
+      <img alt="" border="0" src="https://www.paypal.com/en_US/i/scr/pixel.gif" width="1" height="1" />
+  </form>
+</div>
+
+<script type="text/javascript">
+
+jQuery(function($) {
+    $('#button-hire-cancel').click(function() {
+        // NOTE: would be lovely to target just this popover
+        $('*[rel=popover][data-load]').popover('hide');
+        return false;
+    });
+  $('#form-hire-confirmation').submit(function(event) {
+    var $form = $(this);
+    $form.find('.alert').hide();
+    $form.find(':submit').button('loading');
+
+
+    // Disable the submit button to prevent repeated clicks
+    //$form.find('button').prop('disabled', true);
+
+    Stripe.card.createToken($form, stripeResponseHandler);
+
+    // Prevent the form from submitting with the default action
+    return false;
+  });
+
+function stripeResponseHandler(status, response) {
+  var $form = $('#form-hire-confirmation');
+
+  if (response.error) {
+    // Show the errors on the form
+    $form.find('.alert-error').text(response.error.message);
+    $form.find('button').prop('disabled', false);
+    $form.find(':submit').button('reset');
+
+  } else {
+    // response contains id and card, which contains additional card details
+    var token = response.id;
+    // Insert the token into the form so it gets submitted to the server
+    $('#tokendiv').html($('<input type="hidden" name="stripeToken" />').val(token));
+    // and submit
+    $form.ajaxSubmit({
+        success: function (data) {
+          $('*[rel=popover][data-load]').popover('hide');
+          var button = $( document.createElement('button') );
+          button.attr('id', 'button-scheule-meteup')
+              .attr('class', 'btn btn-success')
+              .attr('data-toggle','modal')
+              .attr('data-target','#modal-schedule-meetup')
+              .attr('href','/projects/{{p._id}}/meetup')
+              .text('Schedule Meeting')
+              .appendTo('#mainbt');
+          button.trigger('click');
+        },
+        error: function (xhr, err) {
+            $form.find('.error').show();
+            $form.find(':input:not(:submit)').removeAttr('disabled');
+        },
+        complete: function() {
+            $form.find(':input:not(:submit)').removeAttr('disabled');
+            $form.find(':submit').button('reset');
+        }
+    });
+
+  }
+};
+
+
+});
+
+
+
+</script>

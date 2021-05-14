@@ -1,0 +1,79 @@
+
+<h4>
+    <div class="pull-left">Local Estimates</div>
+    <div class="pull-right btn-group">
+        {{#if can_bid}}
+        <button id="button-bid"
+                class="btn btn-primary"
+                rel="popover"
+                data-title="Bid on Project"
+                data-placement="bottom"
+                data-load="/projects/{{p._id}}/bid"
+                data-container="body"
+        ><a href="/projects/{{p._id}}/bid">Give Estimate</a></button>
+        {{/if}}
+    </div>
+</h4>
+<hr />
+<table class="table table-hover" id="bids">
+    <thead>
+        <tr>
+            <th class="span4">User</th>
+            <th class="span2">Date</th>
+            <th class="span3">Message</th>
+            <th class="span1">Estimate</th>
+            <th class="span2"></th>
+        </tr>
+    </thead>
+    <tbody>
+        {{#each p.bids}}
+        <tr
+            {{#compare state to="accepted"}}class="success"{{/compare}}
+            {{#compare state to="retracted"}}class="warning"{{/compare}}
+        >
+            <td>{{#with user}}{{>helpers/nanoperson}}{{/with}}</td>
+            <td>{{since date_submitted}}</td>
+            <td>{{comments}}</td>
+            <td>
+                {{currency estimate}}
+                {{#if parts}}
+                <span class="label label-default">Labor and Parts</span>
+                {{else}}
+                <span class="label label-default">Labor Only</span>
+                {{/if}}
+                {{#compare state to="retracted"}}
+                (retracted)
+                {{/compare}}
+            </td>
+            <td>
+                <div class="pull-right btn-group">
+                {{#if ../can_hire}}
+                {{#if estimate}}
+                {{#compare state to="submitted"}}
+                <button id="button-hire"
+                        class="btn btn-primary"
+                        rel="popover"
+                        data-title="Credit Card Info"
+                        data-placement="bottom"
+                        data-load="/projects/{{../../../../p._id}}/hire?bid={{_id}}"
+                data-container="body"
+                ><a href="/projects/{{../../../../p._id}}/hire?bid={{_id}}">Hire</a></button>
+                {{/compare}}
+                {{/if}}
+                {{/if}}
+                {{#if ../can_comment}}
+                <button id="button-reply"
+                        class="btn"
+                        rel="popover"
+                        data-title="Reply with Comment"
+                        data-placement="bottom"
+                        data-load="/projects/{{../../p._id}}/comment?reply={{_id}}"
+                        data-container="body"
+                ><a href="/projects/{{../../p._id}}/comment?reply={{_id}}">Reply</a></button>
+                {{/if}}
+                </div>
+            </td>
+        </tr>
+        {{/each}}
+    </tbody>
+</table>

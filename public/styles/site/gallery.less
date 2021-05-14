@@ -1,0 +1,137 @@
+.gallery {
+    .standard-div;
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    width: 100%;
+    height: 100%;
+    height: 100vh;
+    background-color: rgba(1, 1, 1, .75);
+    z-index: 750;
+    text-align: center;
+
+    .gallery-container {
+        .standard-div;
+
+        .gallery-content {
+            .standard-div;
+            max-height: 80vh;
+            box-sizing: border-box;
+            padding-top: 15px;
+            padding-left: 2%;
+            padding-right: 2%;
+            position: relative;
+            text-align: center;
+
+            .image {
+                .standard-div;
+                .transitions;
+                height: 800px;
+                max-height: 60vh;
+                position: relative;
+
+                background-size: contain;
+                background-position: center;
+                background-repeat: no-repeat;
+
+                border: 1px solid rgba(255, 255, 255, 1);
+                box-shadow: 2px 2px 4px 0px rgba(1, 1, 1, .5);
+                background-color: black;
+
+                .exit-row {
+                    .standard-div;
+                    text-align: right;
+                    position: absolute;
+                    top: 0px;
+                    left: 0px;
+                    z-index: 803;
+
+                    a {
+                        .standard-font;
+                        .transitions;
+                        display: inline-block;
+                        float: right;
+                        text-align: center;
+                        padding: 5px;
+                        padding-left: 20px;
+                        padding-right: 20px;
+                        text-decoration: none;
+
+                        &:link,
+                        &:visited {
+                            color: @colorWhite;
+                            background-color: rgba(169, 1, 1, 1);
+                        }
+
+                        &:hover,
+                        &:active,
+                        &:focus {
+                            color: @colorWhite;
+                            background-color: rgba(199, 1, 1, 1);
+                        }
+                    }
+                }
+
+                .arrow {
+                    .standard-font;
+                    .standard-div;
+                    position: absolute;
+                    top: 45%;
+                    width: auto;
+                    font-size: 50px;
+                    text-shadow: 0px 0px 4px rgba(1, 1, 1, .5);
+
+                    &.left {
+                        left: 10px;
+                    }
+
+                    &.right {
+                        right: 10px;
+                    }
+
+                    a {
+                        .transitions;
+
+                        &:link,
+                        &:visited {
+                            color: rgba(255, 255, 255, .65);
+                        }
+
+                        &:hover,
+                        &:active,
+                        &:focus {
+                            color: rgba(255, 255, 255, 1);
+                        }
+                    }
+                }
+
+                .dots {
+                    .standard-div;
+                    position: absolute;
+                    bottom: 0px;
+                    text-align: center;
+
+                    a {
+                        .transitions;
+                        .standard-font;
+                        color: @colorWhite;
+                        margin-left: 2px;
+                        margin-right: 2px;
+
+                        &:link,
+                        &:visited {
+                            opacity: .5;
+                        }
+
+                        &:hover,
+                        &:active,
+                        &:focus,
+                        &.active {
+                            opacity: 1;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

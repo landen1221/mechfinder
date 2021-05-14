@@ -1,0 +1,104 @@
+@import "site/dashboard.less";
+
+.favoritesPage,
+.myProjectsPage {
+    .fa-trash-o {
+        &:hover {
+            color: @colorRedLight;
+        }
+    }
+    .fa-envelope-o {
+        &:hover {
+            color: @colorBlueLight;
+        }
+    }
+    .profile-avatar {
+        width: 10%;
+        float: left;
+        
+    }
+    .project-photo {
+        img {
+            object-fit: cover;
+        }
+        object-fit: cover;
+        width: 50px !important;
+        height: 50px !important;
+    }
+    .profile-photo {
+        img {
+            object-fit: cover;
+        }
+        border-radius: 50%;
+    }
+    ul.tabs {
+        display: flex;
+        flex-wrap: wrap;
+        margin: 0 -10px;
+        li {
+            display: flex;
+            padding: 10px;
+            background: #E4E4E4;
+            flex: 1 0 100px;
+            margin: 10px;
+            cursor: pointer;
+            text-align: center;
+            word-wrap: break-word;
+            justify-content: center;
+            border-radius: 2px;
+            box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+            &.current {
+                color: white;
+                background-color: @colorBlue;
+                font-weight: bold;
+                &.green {
+                    background-color: @colorGreen;
+                    &:hover,
+                    &:active,
+                    &:focus {
+                        background-color: @colorGreenLight;
+                    }
+                }
+                &:hover,
+                &:active,
+                &:focus {
+                    background-color: @colorBlueLight;
+                }
+            }
+            &.green {
+                &:hover,
+                &:active,
+                &:focus {
+                    background-color: @colorGreenLight;
+                    color: white;
+                }
+            }
+            &:hover,
+            &:active,
+            &:focus {
+                background-color: @colorBlueLight;
+                color: white;
+            }
+            @media @phonescreens {
+                display: block;
+                margin: 10px 0;
+            }
+            @media @regularphonescreens {
+                flex-basis: 30%;
+            }
+        }
+        @media @phonescreens {
+            display: block;
+            margin: 0;
+        }
+        @media @regularphonescreens {
+            flex-basis: 50%;
+        }
+    }
+    .tab-content {
+        display: none;
+        &.current {
+            display: block;
+        }
+    }
+}

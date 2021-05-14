@@ -1,0 +1,44 @@
+<script type="text/javascript">
+    var USER = {{{json user}}};
+</script>
+<script src="/static/js/chat.js"></script>
+
+<div id="chat" class="chat-popup" style="display: none;">
+    <div id="chatContainer" class="chat-container">
+        <div class="exit-row"><div class="exit-button"><a id="chatExit" href="javascript:void(0);">X</a></div></div>
+        <div class="back-row">
+            <div class="back-button">
+                <a id="chatBack" href="javascript:void(0);" title="Back to Messages" style="display: none;">
+                    <i class="fa fa-arrow-circle-left" aria-hidden="true"></i> <span class="text">Back to Inbox</span>
+                </a>
+            </div>
+            <div class="back-button">
+                <a id="chatSound" href="javascript:void(0);" data-enabled="{{#if user.preferences.chat.sound}}1{{else}}0{{/if}}" title="{{#if user.preferences.chat.sound}}Mute Chat Sound{{else}}Enable Chat Sound{{/if}}">
+                    <i class="fa fa-volume-{{#if user.preferences.chat.sound}}up{{else}}off{{/if}} fa-fw" aria-hidden="true"></i> <span class="text"></span>
+                </a>
+            </div>
+        </div>
+
+        <div id="chatInboxWrapper" class="inbox-wrapper">
+            <div id="chatInbox" class="inbox"></div>
+        </div>
+
+        <div id="chatConversation" class="conversation" style="display: none;">
+            <div id="chatToast" class="toast" style="display: none;">
+                <div id="chatToastMessage" class="toast-message">Loading more messages...</div>
+            </div>
+            <div id="chatFlow" class="chat-flow">
+
+                <div id="chatReplyBlocker" class="reply-blocker"></div>
+            </div>
+
+            <div class="reply-row">
+                <div class="reply-typing" id="chatTyping">&nbsp;</div>
+                <div class="reply-flex">
+                    <div class="reply-flexbox reply-textarea"><textarea id="chatReply" placeholder="Start typing your message here..."></textarea></div>
+                    <div class="reply-flexbox reply-send"><a id="chatSend" href="javascript:void(0);"><i class="fa fa-paper-plane"></i></a></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

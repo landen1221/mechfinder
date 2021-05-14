@@ -1,0 +1,710 @@
+<!doctype html>
+<html>
+
+<head>
+    <!-- Meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <!-- Responsive -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <meta name="description" content="">
+    <meta name="author" content="MechFinder.com">
+    <meta name="keywords" content="">
+    <title>MechFinder</title>
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+    <!--CSS -->
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="css/bootstrap-datetimepicker.min.css">
+    <link rel="stylesheet" type="text/css" href="css/bootstrap-datepicker.css">
+    <link href="css/bootstrap-switch.css" rel="stylesheet">
+    <!-- Add custom CSS here -->
+    <link rel="stylesheet" type="text/css" href="css/custom.css">
+    <!-- Gallery -->
+    <link rel="stylesheet" type="text/css" href="plugins/gallery-slider/touchTouch.css">
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
+</head>
+
+<body>
+    <div class="top">
+        <div class="container">
+            <div class="header">
+                <div class="row">
+                    <div class="col-xs-12 col-sm-4">
+                        <a href="/"><img class="logo" src="images/logo.png" alt="logo_img"></a>
+                    </div>
+                    <div class="col-xs-12 col-sm-5">
+                    </div>
+                    <div class="col-xs-12 col-sm-3 customer">
+                        <div class="row">
+                            <div class="col-xs-12">
+                                <div class="image-panel">
+                                    <a href="#"><img class="img-circle" src="http://lorempixel.com/50/50" alt="" /></a>
+                                </div>
+                                <div class="stars stars-customer">
+                                    <form action="test">
+                                        <input class="star star-5" id="star-5" type="radio" name="star">
+                                        <label class="star star-5" for="star-5"></label>
+                                        <input class="star star-4" id="star-4" type="radio" name="star">
+                                        <label class="star star-4" for="star-4"></label>
+                                        <input class="star star-3" id="star-3" type="radio" name="star">
+                                        <label class="star star-3" for="star-3"></label>
+                                        <input class="star star-2" id="star-2" type="radio" name="star">
+                                        <label class="star star-2" for="star-2"></label>
+                                        <input class="star star-1" id="star-1" type="radio" name="star">
+                                        <label class="star star-1" for="star-1"></label>
+                                    </form>
+                                </div>
+                                <div class="customer-name-panel">
+                                    <p class="name-customer">Alex Siminitzki</p>
+                                    <div class="btn-group">
+                                        <button type="button" class="customer-menu dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><span class="caret"></span></button>
+                                        <ul class="dropdown-menu dropdown-menu-right" role="menu">
+                                            <li><a href="#"><span class="glyphicon glyphicon-cog"
+																		  aria-hidden="true"></span>My Account</a></li>
+                                            <li class="divider"></li>
+                                            <li><a href="#"><span class="glyphicon glyphicon-usd"
+																		  aria-hidden="true"></span>Accounting</a></li>
+                                            <li class="divider"></li>
+                                            <li><a href="#"><span class="glyphicon glyphicon-user"
+																		  aria-hidden="true"></span>Favorites</a></li>
+                                            <li class="divider"></li>
+                                            <li><a href="#"><span class="glyphicon glyphicon-log-out"
+																		  aria-hidden="true"></span>Log Out</a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <nav class="navbar navbar-default">
+        <div class="container">
+            <ul class="message-menu-max-left">
+                <li>
+                    <a href="#"><span class="glyphicon glyphicon-newmessages" aria-hidden="true"></span>New Messages</a>
+                    <button type="button" class="btn btn-default nav-circle-status">4</button>
+                </li>
+            </ul>
+            <div class="col-xs-12 col-super-0 col-sm-3"></div>
+            <div class="col-xs-12 col-super-9 col-sm-6">
+                <ul class="nav navbar-nav">
+                    <li class="displaydesktop">
+                        <a href="#"><span class="glyphicon glyphicon-newmessages" aria-hidden="true"></span>New Messages</a>
+                        <div class="btn btn-default nav-circle-status">4</div>
+                    </li>
+                    <li class="active"><a href="#">Find projects</a></li>
+                    <li><a href="#">Find Mechanic</a></li>
+                    <li><a href="#">Post project</a></li>
+                    <li>
+                        <a href="#">My projects
+								<div class="btn btn-default nav-circle-status">4</div>
+							</a>
+                    </li>
+                </ul>
+            </div>
+            <div class="col-xs-12 col-sm-3">
+                <form class="navbar-form navbar-left search" role="search">
+                    <div class="form-group">
+                        <button type="submit" class="glyphicon glyphicon-search"></button>
+                        <input type="text" class="form-control" placeholder="Project search...">
+                    </div>
+                </form>
+            </div>
+        </div>
+    </nav>
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12 col-sm-8 col-md-9">
+                <div class="row">
+                    <div class="col-xs-12">
+                        <div class="info-page-content">
+                            <h1>My Account - <span id="title-basic">Personal Info</span><span id="title-photo">Photo Album</span><span id="title-mechanic">Mechanic Info</span></h1></div>
+                    </div>
+                    <div class="col-xs-12">
+                        <ul class="nav projects-tabs mB24" role="tablist">
+                            <li role="presentation" id="myTab-basic" class="overview active"><a href="#basic-info" aria-controls="basic-info" role="tab" data-toggle="tab">Basic Info</a></li>
+                            <li role="presentation" id="myTab-photo" class="overview"><a href="#photo-album" aria-controls="photo-album" role="tab" data-toggle="tab">Photo Album</a></li>
+                            <li role="presentation" id="myTab-mechanic" class="overview"><a href="#mechanic-Info" aria-controls="mechanic-Info" role="tab" data-toggle="tab">Mechanic Info</a></li>
+                        </ul>
+                        <div class="tab-content">
+                            <div role="tabpanel" class="tab-pane active" id="basic-info">
+                                <div class="post-a-project-new">
+                                    <div class="row mB24">
+                                        <div class="col-xs-12">
+                                            <div class="profile-image-basic">
+                                                <img src="http://lorempixel.com/200/200/" alt="" />
+                                                <a href="" class="img-profile-hover">
+                                                    <i class="fa fa-camera"></i>
+                                                    <span>Edit Photo</span>
+                                                </a>
+                                                <h3>Abel Zhukovskiy</h3>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-xs-12 col-md-5">
+                                            <label>Username</label>
+                                        </div>
+                                        <div class="col-xs-12 col-md-5 col-lg-4">
+                                            <input type="text" name="#" placeholder="Username" value="" />
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-xs-12 col-md-5">
+                                            <label>First Name</label>
+                                        </div>
+                                        <div class="col-xs-12 col-md-5 col-lg-4">
+                                            <input type="text" name="#" placeholder="First Name" value="Abel" />
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-xs-12 col-md-5">
+                                            <label>Last Name</label>
+                                        </div>
+                                        <div class="col-xs-12 col-md-5 col-lg-4">
+                                            <input type="text" name="#" placeholder="Last Name" value="Zhukovskiy" />
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-xs-12 col-md-5">
+                                            <label>Email <a href="#" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="Lorem ipsum dolor sit amet, consectetur adipiscing elit. In sed orci fringilla, consectetur eros ut, pharetra urna. Mauris non pharetra eros. Aenean malesuada ultricies massa, ac pulvinar nulla tempor iaculis. Fusce et quam orci. In malesuada posuere nulla eu ornare. Phasellus ac porttitor magna. Nullam efficitur ligula eget arcu sagittis, sit amet congue nisi aliquam." class="blue-tooltip"><strong class="form-tooltip absoluteinmobile">?</strong></a> </label>
+                                        </div>
+                                        <div class="col-xs-12 col-md-5 col-lg-4">
+                                            <input type="text" name="#" value="abel_6532@yahoo.com" />
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-xs-12 col-md-5">
+                                            <label>New Password</label>
+                                        </div>
+                                        <div class="col-xs-12 col-md-5 col-lg-4">
+                                            <input type="text" name="#" value="**********" />
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-xs-12 col-md-5">
+                                            <label>Verify Password</label>
+                                        </div>
+                                        <div class="col-xs-12 col-md-5 col-lg-4">
+                                            <input type="text" name="#" value="**********" />
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-xs-12 col-md-5">
+                                            <label>Phone Number <a href="#" data-placement="bottom" title="" data-original-title="Lorem ipsum dolor sit amet, consectetur adipiscing elit. In sed orci fringilla, consectetur eros ut, pharetra urna. Mauris non pharetra eros. Aenean malesuada ultricies massa, ac pulvinar nulla tempor iaculis. Fusce et quam orci. In malesuada posuere nulla eu ornare. Phasellus ac porttitor magna. Nullam efficitur ligula eget arcu sagittis, sit amet congue nisi aliquam." class="blue-tooltip"><strong class="form-tooltip">?</strong></a></label>
+                                        </div>
+                                        <div class="col-xs-12 col-md-3 col-lg-2">
+                                            <select id="select-number" name="#">
+                                                <option>Choose</option>
+                                                <option id="mobile-option">Mobile</option>
+                                                <option>Shop</option>
+                                                <option>FAX</option>
+                                                <option>Other</option>
+                                            </select>
+                                        </div>
+                                        <div class="col-xs-12 col-md-3 col-lg-2">
+                                            <input type="text" name="#" value="" placeholder="Number" />
+                                        </div>
+                                    </div>
+                                    <div id="verifiy-number">
+                                        <div class="row">
+                                            <div class="col-xs-12 col-md-6">
+                                                <label>Mobile Provider</label>
+                                            </div>
+                                            <div class="col-xs-12 col-md-3">
+                                                <select name="#">
+                                                    <option value="">Please Choose</option>
+                                                    <option value="@txt.att.net">AT&amp;T</option>
+                                                    <option value="@mymetropcs.com">Metro PCS</option>
+                                                    <option value="@vtext.com">Verizon</option>
+                                                    <option value="@tmomail.net">T Mobile</option>
+                                                    <option value="@messaging.sprintpcs.com">Sprint</option>
+                                                    <option value="@vmobl.com">Virgin</option>
+                                                    <option value="@myboostmobile.com">Boost Mobile</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="row mB24">
+                                            <div class="col-xs-12 col-md-6">
+                                                <label>SMS Notification</label>
+                                            </div>
+                                            <div class="col-xs-12 col-md-3">
+                                                <div class="make-switch switch-on">
+                                                    <input type="checkbox">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row mB24">
+                                            <div class="col-xs-12 col-md-6 col-md-push-6">
+                                                <input class="question-carrier" type="checkbox" value="1" /> I agree carrier charges may apply
+                                            </div>
+                                        </div>
+                                        <div class="carrier-accept">
+                                            <div class="row">
+                                                <div class="col-xs-12 col-md-7 col-md-push-5">
+                                                    <label class="label-left">We need to verify your number <a href="#" data-placement="bottom" title="" data-original-title="Lorem ipsum dolor sit amet, consectetur adipiscing elit. In sed orci fringilla, consectetur eros ut, pharetra urna. Mauris non pharetra eros. Aenean malesuada ultricies massa, ac pulvinar nulla tempor iaculis. Fusce et quam orci. In malesuada posuere nulla eu ornare. Phasellus ac porttitor magna. Nullam efficitur ligula eget arcu sagittis, sit amet congue nisi aliquam." class="blue-tooltip"><strong class="form-tooltip">?</strong></a></label>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-xs-12 col-md-5">
+                                                    <label>Verify By:</label>
+                                                </div>
+                                                <div class="col-xs-12 col-md-3">
+                                                    <select name="#">
+                                                        <option value="">Please Choose</option>
+                                                        <option value="">SMS</option>
+                                                        <option value="">CALL</option>
+                                                    </select>
+                                                </div>
+                                                <div class="col-xs-12 col-md-4 mB24">
+                                                    <input id="send-veryfication" type="submit" value="Send Verification Code" class="btn btn-success" />
+                                                </div>
+                                            </div>
+                                            <div id="pin-show-div" style="display: none;">
+                                                <div class="row">
+                                                    <div class="col-xs-12 col-md-7 col-md-push-5">
+                                                        <label class="label-left">Please check your phone. The verification code is on its way!</label>
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col-xs-12 col-md-5">
+                                                        <label>Pin#:</label>
+                                                    </div>
+                                                    <div class="col-xs-12 col-md-2">
+                                                        <input type="text" name="#" value="" placeholder="4324213421" />
+                                                    </div>
+                                                    <div class="col-xs-12 col-md-4 mB24">
+                                                        <input id="complete-veryfication" type="submit" value="Verify" class="btn btn-success" />
+                                                    </div>
+                                                </div>
+                                                <div id="gratulations" style="display: none;">
+                                                    <div class="row">
+                                                        <div class="col-xs-12 col-md-7 col-md-push-5">
+                                                            <label class="label-left"><strong>Congratulations!</strong> Yout phone number is verified</label>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <h2 class="mB24">&nbsp;</h2>
+                                    <div class="row">
+                                        <div class="col-xs-6 mB24">
+                                            <input type="submit" value="Post Project" class="btn basic-save right-form-button" />
+                                        </div>
+                                        <div class="col-xs-6 mB24">
+                                            <input type="submit" value="Save & Edit" class="btn btn-success" />
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div role="tabpanel" class="tab-pane" id="photo-album">
+                                <p>You haven't uploaded any pictures yet. Try uploading pictures of your cars, projects, shop, employees, etc.</p>
+                                <a href="#" class="btn btn-primary picker">Upload Pictures</a>
+                                <hr/>
+                                <input type="submit" class="clear-fix btn btn-success" value="Save Profile" />
+                            </div>
+                            <div role="tabpanel" class="tab-pane" id="mechanic-Info">
+                                <div class="post-a-project-new">
+                                    <div class="row">
+                                        <div class="col-xs-12 col-md-4 col-lg-3">
+                                            <label>Mechanic / Business Name</label>
+                                        </div>
+                                        <div class="col-xs-12 col-md-3 col-lg-5">
+                                            <input type="text" placeholder="" name="#" value="" />
+                                        </div>
+                                        <div class="col-xs-12 col-md-3 col-lg-2">
+                                            <label>Years in Business</label>
+                                        </div>
+                                        <div class="col-xs-12 col-md-2 col-lg-2">
+                                            <input type="text" placeholder="" name="#" value="" />
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-xs-12">
+                                            <div class="my-form">
+                                                <form role="form" method="post">
+                                                    <div class="row">
+                                                        <div class="col-xs-12 col-sm-3">
+                                                            <label>Hours Of Operation <a href="#" data-placement="bottom" title="" data-original-title="Lorem ipsum dolor sit amet, consectetur adipiscing elit. In sed orci fringilla, consectetur eros ut, pharetra urna. Mauris non pharetra eros. Aenean malesuada ultricies massa, ac pulvinar nulla tempor iaculis. Fusce et quam orci. In malesuada posuere nulla eu ornare. Phasellus ac porttitor magna. Nullam efficitur ligula eget arcu sagittis, sit amet congue nisi aliquam." class="blue-tooltip-d"><strong class="form-tooltip">?</strong></a></label>
+                                                        </div>
+                                                        <div class="select-hours">
+                                                            <div class="col-xs-12 col-sm-6">
+                                                                <select name="weekday">
+                                                                    <option value="Monday">Mon.</option>
+                                                                    <option value="Tuesday">Tues.</option>
+                                                                    <option value="Wednesday">Wed</option>
+                                                                    <option value="Thursday">Thurs.</option>
+                                                                    <option value="Friday">Fri.</option>
+                                                                    <option value="Saturday">Sat.</option>
+                                                                    <option value="Sunday">Sun.</option>
+                                                                </select>
+                                                                <select name="#">
+                                                                    <option value="">(closed)</option>
+                                                                    <option value="0">12:00 AM</option>
+                                                                    <option value="1">01:00 AM</option>
+                                                                    <option value="2">02:00 AM</option>
+                                                                    <option value="3">03:00 AM</option>
+                                                                    <option value="4">04:00 AM</option>
+                                                                    <option value="5">05:00 AM</option>
+                                                                    <option value="6">06:00 AM</option>
+                                                                    <option value="7">07:00 AM</option>
+                                                                    <option value="8">08:00 AM</option>
+                                                                    <option value="9">09:00 AM</option>
+                                                                    <option value="10">10:00 AM</option>
+                                                                    <option value="11">11:00 AM</option>
+                                                                    <option value="12">12:00 PM</option>
+                                                                    <option value="13">01:00 PM</option>
+                                                                    <option value="14">02:00 PM</option>
+                                                                    <option value="15">03:00 PM</option>
+                                                                    <option value="16">04:00 PM</option>
+                                                                    <option value="17">05:00 PM</option>
+                                                                    <option value="18">06:00 PM</option>
+                                                                    <option value="19">07:00 PM</option>
+                                                                    <option value="20">08:00 PM</option>
+                                                                    <option value="21">09:00 PM</option>
+                                                                    <option value="22">10:00 PM</option>
+                                                                    <option value="23">11:00 PM</option>
+                                                                    <option value="24">12:00 PM</option>
+                                                                </select>
+                                                                <select name="#">
+                                                                    <option value="">(closed)</option>
+                                                                    <option value="0">12:00 AM</option>
+                                                                    <option value="1">01:00 AM</option>
+                                                                    <option value="2">02:00 AM</option>
+                                                                    <option value="3">03:00 AM</option>
+                                                                    <option value="4">04:00 AM</option>
+                                                                    <option value="5">05:00 AM</option>
+                                                                    <option value="6">06:00 AM</option>
+                                                                    <option value="7">07:00 AM</option>
+                                                                    <option value="8">08:00 AM</option>
+                                                                    <option value="9">09:00 AM</option>
+                                                                    <option value="10">10:00 AM</option>
+                                                                    <option value="11">11:00 AM</option>
+                                                                    <option value="12">12:00 PM</option>
+                                                                    <option value="13">01:00 PM</option>
+                                                                    <option value="14">02:00 PM</option>
+                                                                    <option value="15">03:00 PM</option>
+                                                                    <option value="16">04:00 PM</option>
+                                                                    <option value="17">05:00 PM</option>
+                                                                    <option value="18">06:00 PM</option>
+                                                                    <option value="19">07:00 PM</option>
+                                                                    <option value="20">08:00 PM</option>
+                                                                    <option value="21">09:00 PM</option>
+                                                                    <option value="22">10:00 PM</option>
+                                                                    <option value="23">11:00 PM</option>
+                                                                    <option value="24">12:00 PM</option>
+                                                                </select>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-xs-12 col-sm-3 mB24">
+                                                            <a class="add-box clear-fix btn btn-success" href="#">Add</a>
+                                                        </div>
+                                                    </div>
+                                                    <div class="row">
+                                                        <div class="col-xs-12">
+                                                            <p class="text-box"> </p>
+                                                        </div>
+                                                    </div>
+                                                </form>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <h2 class="mB24">Address <a href="#" data-placement="bottom" title="" data-original-title="Lorem ipsum dolor sit amet, consectetur adipiscing elit. In sed orci fringilla, consectetur eros ut, pharetra urna. Mauris non pharetra eros. Aenean malesuada ultricies massa, ac pulvinar nulla tempor iaculis. Fusce et quam orci. In malesuada posuere nulla eu ornare. Phasellus ac porttitor magna. Nullam efficitur ligula eget arcu sagittis, sit amet congue nisi aliquam." class="blue-tooltip"><strong class="form-tooltip">?</strong></a></h2>
+                                    <div class="row">
+                                        <div class="col-xs-12 col-md-2 col-lg-2">
+                                            <label>Street</label>
+                                        </div>
+                                        <div class="col-xs-12 col-md-5 col-lg-4">
+                                            <input type="text" placeholder="" name="#" value="" />
+                                        </div>
+                                        <div class="col-xs-12 col-md-5 col-lg-4">
+                                            <input type="text" placeholder="" name="#" value="" />
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-xs-12 col-md-2 col-lg-2">
+                                            <label>City/Region</label>
+                                        </div>
+                                        <div class="col-xs-12 col-md-3 col-lg-3">
+                                            <input type="text" name="#" placeholder="City" value="" />
+                                        </div>
+                                        <div class="col-xs-12 col-md-1 col-lg-1 nopadding-search-mechanic">
+                                            <label>State</label>
+                                        </div>
+                                        <div class="col-xs-12 col-md-3 col-lg-3">
+                                            <input type="text" name="#" placeholder="State" value="" />
+                                        </div>
+                                        <div class="col-xs-12 col-md-1 col-lg-1 nopadding-search-mechanic">
+                                            <label>Zip Code</label>
+                                        </div>
+                                        <div class="col-xs-12 col-md-2 col-lg-2">
+                                            <input type="text" name="#" placeholder="Zip Code" value="" />
+                                        </div>
+                                    </div>
+                                    <h2 class="mB24">Experience In</h2>
+                                    <div class="row">
+                                        <div class="col-xs-12 col-sm-6">
+                                            <ul class="checked-mechanic mB24">
+                                                <li>
+                                                    <input type="checkbox" id="chk-auto-repair" /> Auto Repair</li>
+                                                <li>
+                                                    <input type="checkbox" id="chk-diagnostic" /> Diagnostic</li>
+                                                <li>
+                                                    <input type="checkbox" id="chk-body-work" /> Body Work</li>
+                                                <li>
+                                                    <input type="checkbox" id="chk-electrical" /> Electrical</li>
+                                                <li>
+                                                    <input type="checkbox" id="chk-maintenance" /> Maintenance</li>
+                                                <li>
+                                                    <input type="checkbox" id="chk-restoration" /> Restoration</li>
+                                                <li>
+                                                    <input type="checkbox" id="chk-windows" /> Windows</li>
+                                            </ul>
+                                            <div class="row mB24">
+                                                <div class="col-xs-12 mB24">
+                                                    <button class="clear-fix btn btn-success right-form-button2">Add</button>
+                                                </div>
+                                                <div class="col-xs-12 col-sm-8 right-form-button2">
+                                                    Note: You may add more specialities in "Company Info" box below
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-xs-12 col-sm-6">
+                                            <div class="dispute-profile">
+                                                <h2>Customer Sees</h2></div>
+                                            <ul class="form-mechanic-skills">.
+                                                <li id="auto-repair" style="display: none">
+                                                    <label class="auto-repair"></label><strong>Auto repair</strong></li>
+                                                <li id="diagnostic" style="display: none">
+                                                    <label class="diagnostic"></label><strong>Diagnostic</strong></li>
+                                                <li id="body-work" style="display: none">
+                                                    <label class="auto-body"></label><strong>Body Work</strong></li>
+                                                <li id="electrical" style="display: none">
+                                                    <label class="electrical"></label><strong>Electrical</strong></li>
+                                                <li id="maintenance" style="display: none">
+                                                    <label class="maintenance"></label><strong>Maintenance</strong></li>
+                                                <li id="restoration" style="display: none">
+                                                    <label class="restoration"></label><strong>Restoration Jobs</strong></li>
+                                                <li id="windows" style="display: none">
+                                                    <label class="windows"></label><strong>Windows</strong></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                    <h2 class="mB24">Any Specials or Company Info <a href="#" data-placement="bottom" title="" data-original-title="Lorem ipsum dolor sit amet, consectetur adipiscing elit. In sed orci fringilla, consectetur eros ut, pharetra urna. Mauris non pharetra eros. Aenean malesuada ultricies massa, ac pulvinar nulla tempor iaculis. Fusce et quam orci. In malesuada posuere nulla eu ornare. Phasellus ac porttitor magna. Nullam efficitur ligula eget arcu sagittis, sit amet congue nisi aliquam." class="blue-tooltip"><strong class="form-tooltip">?</strong></a></h2>
+                                    <div class="row mB24">
+                                        <div class="col-xs-12 col-sm-10 col-sm-push-1">
+                                            <textarea name="#" placeholder="Specials, company info, etc." class="textarea-mechanic-info"></textarea>
+                                        </div>
+                                    </div>
+                                    <h2 class="mB24">Qualifications</h2>
+                                    <div class="row">
+                                        <div class="col-xs-12 col-md-6">
+                                            <div class="row">
+                                                <div class="col-xs-12 col-md-5">
+                                                    <label>Education</label>
+                                                </div>
+                                                <div class="col-xs-12 col-md-7">
+                                                    <input type="text" name="#" value="" placeholder="Certification / Degree" />
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-xs-12 col-md-5">
+                                                    <label>Institute</label>
+                                                </div>
+                                                <div class="col-xs-12 col-md-7">
+                                                    <input type="text" name="#" value="" placeholder="Anoka Ramsey" />
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-xs-12 col-md-5">
+                                                    <label>Graduation Year</label>
+                                                </div>
+                                                <div class="col-xs-12 col-md-3">
+                                                    <input type="text" name="#" placeholder="2002" value="" />
+                                                </div>
+                                                <div class="col-xs-12 col-md-4 mB24">
+                                                    <span><input type="checkbox" name="" value=""> Still Enrolled</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-xs-12 col-sm-6">
+                                            <div class="dispute-profile">
+                                                <h2>Customer Sees</h2></div>
+                                            <strong>Certification:</strong> ACE Master Technician
+                                            <br />
+                                            <strong>Graduated:</strong> 2008
+                                            <br />
+                                            <strong>From:</strong> Penn Foster
+                                        </div>
+                                    </div>
+                                    <h2 class="mB24">&nbsp;</h2>
+                                    <div class="row">
+                                        <div class="col-xs-6 mB24">
+                                            <input type="submit" value="Save as Draft" class="btn basic-save right-form-button" />
+                                        </div>
+                                        <div class="col-xs-6 mB24">
+                                            <input type="submit" value="Save" class="btn btn-success" />
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xs-12 col-sm-4 col-md-3">
+                <div style="background: #ccc; color: red; line-height: 500px; height: 500px; font-size: 20px; text-align: center;">
+                    Placeholder for Ads
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--Project-Counter -->
+    <div class="counter">
+        <div class="container">
+            <div class="row">
+                <div class="col-xs-12 col-sm-4 total-users">
+                    <h1>Total Users</h1>
+                    <span>127,453</span>
+                </div>
+                <div class="col-xs-12 col-sm-4  total-projects">
+                    <h1>Total Projects</h1>
+                    <span>70,123</span>
+                </div>
+                <div class="col-xs-12 col-sm-4 total-mechanics">
+                    <h1>Total Mechanics</h1>
+                    <span>143,009</span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--Project-Counter-End-->
+    <div class="footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-xs-12 col-sm-3 navigation">
+                    <h1>Navigation</h1>
+                    <ul>
+                        <li><a href="#">Home</a></li>
+                        <li><a href="#">Find a Mechanic</a></li>
+                        <li><a href="#">Forum</a></li>
+                        <li><a href="#">Advertising</a></li>
+                        <li><a href="#">Careers</a></li>
+                        <li><a href="#">Articles</a></li>
+                        <li><a href="#">Contact MechFinder</a></li>
+                    </ul>
+                </div>
+                <div class="col-xs-12 col-sm-4 col-sm-offset-2">
+                    <h1>For Users</h1>
+                    <ul>
+                        <li><a href="#">Get Estimate</a></li>
+                        <li><a href="#">Testimonials</a></li>
+                        <li><a href="#">Sign In</a></li>
+                        <li><a href="#">Sign Up</a></li>
+                    </ul>
+                    <h1>Legal</h1>
+                    <ul>
+                        <li><a href="#">Terms and Conditions</a></li>
+                        <li><a href="#">Privacy Policy</a></li>
+                        <li><a href="#">Our Garantee</a></li>
+                        <li><a href="#">Repair Warranty</a></li>
+                    </ul>
+                </div>
+                <div class="col-xs-12 col-sm-3">
+                    <h1>Projects Near You</h1>
+                    <div class="row client-row">
+                        <div class="col-xs-2 col-sm-3 col-lg-2">
+                            <a href="#"><img class="img-circle" src="http://lorempixel.com/50/50" alt="" /></a>
+                            <label class="status-circle"></label>
+                        </div>
+                        <div class="col-xs-9 col-sm-8 col-lg-9 help">
+                            <a href="#"><span><strong>Chris - I Need Help</strong></span></a>
+                            <br> <span>Auto Repair, Apple Valley, MN</span>
+                        </div>
+                    </div>
+                    <div class="row client-row">
+                        <div class="col-xs-2 col-sm-3 col-lg-2">
+                            <a href="#"><img class="img-circle" src="http://lorempixel.com/50/50" alt="" /></a>
+                            <label class="status-circle status-circle-orange"></label>
+                        </div>
+                        <div class="col-xs-9 col-sm-8 col-lg-9 help">
+                            <a href="#"><span><strong>Chris - I Need Help</strong></span></a>
+                            <br> <span>Auto Repair, Apple Valley, MN</span>
+                        </div>
+                    </div>
+                    <div class="row client-row">
+                        <div class="col-xs-2 col-sm-3 col-lg-2">
+                            <a href="#"><img class="img-circle" src="http://lorempixel.com/50/50" alt="" /></a>
+                            <label class="status-circle status-circle-green "></label>
+                        </div>
+                        <div class="col-xs-9 col-sm-8 col-lg-9 help">
+                            <a href="#"><span><strong>Chris - I Need Help</strong></span></a>
+                            <br> <span>Auto Repair, Apple Valley, MN</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="footer-bottom">
+        <div class="container">
+            <div class="row">
+                <div class="col-xs-12 col-sm-6">
+                    <div class="copy">
+                        <span>&copy; 2015 <a href="#">Mechalance.com</a> All Rights Reserved.</span>
+                    </div>
+                </div>
+                <div class="col-xs-12 col-sm-6">
+                    <div class="social">
+                        <ul>
+                            <li>
+                                <a href="#" class="facebook"><img src="images/facebook.png" alt="" /></a>
+                            </li>
+                            <li>
+                                <a href="#" class="facebook"><img src="images/twitter.png" alt="" /></a>
+                            </li>
+                            <li>
+                                <a href="#" class="facebook"><img src="images/tumblr.png" alt="" /></a>
+                            </li>
+                            <li>
+                                <a href="#" class="facebook"><img src="images/gplus.png" alt="" /></a>
+                            </li>
+                        </ul>
+                    </div>
+                    <span class="follow hidden-xs">Follow Us:</span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+
+    <script src="js/shiv.v3.7.2.js"></script>
+    <script src="js/respond.v1.4.2.min.js"></script>
+    <![endif]-->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+    <script>
+    $.widget.bridge('uibutton', $.ui.button);
+    $.widget.bridge('uitooltip', $.ui.tooltip);
+    </script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/moment.js"></script>
+    <script src="js/customscript.js"></script>
+    <script src="js/Chart.js"></script>
+    <script src="js/bootstrap-datetimepicker.min.js"></script>
+    <script src="js/bootstrap-datepicker.js"></script>
+    <script src="plugins/gallery-slider/touchTouch.jquery.js"></script>
+    <script src="js/jquery.countdown.js"></script>
+    <script src="js/bootstrap-switch.js"></script>
+    <script src="js/custom.js"></script>
+</body>
+
+</html>

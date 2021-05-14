@@ -1,0 +1,2031 @@
+/* dashboard.css */
+
+/* hide all table cells by default */
+table tr td {
+	display: none;
+}
+
+/* display table cells with priority 1 by default (for mobile devices) */
+table tr td.mobile-priority-1 {
+	display: table-cell;
+}
+
+.subnav {
+	width: 100%;
+	display: block;
+	float: left;
+	height: 45px;
+    box-sizing: border-box;
+    padding-left: 45px;
+}
+
+.subnav .mobile {
+	display: block;
+	float: left;
+	width: 98%;
+	margin-left: 1%;
+	margin-right: 1%;
+	height: 45px;
+	margin-top: 5px;
+}
+
+.subnav .mobile .hamburger {
+	display: inline-block;
+	float: left;
+	width: 25px;
+	height: 25px;
+	margin: 10px;
+	background-image: url('../img/hamburger-icon-darkblue.png');
+	background-size: contain;
+	background-position: center;
+	background-repeat: no-repeat;
+
+	-moz-transition: all 300ms ease;
+	-ms-transition: all 300ms ease;
+	-o-transition: all 300ms ease;
+	transition: all 300ms ease;
+}
+
+.subnav .mobile .hamburger:hover,
+.subnav .mobile .hamburger:focus,
+.subnav .mobile .hamburger:active {
+	cursor: pointer;
+	background-image: url('../img/hamburger-icon-lightblue.png');
+}
+
+.subnav .mobile .sel {
+	display: inline-block;
+	float: left;
+	height: 45px;
+}
+
+.subnav .mobile .sel select {
+	color: rgba(44, 62, 80, 1);
+	font-family: "Myriad Pro", Arial, Helvetica, sans-serif;
+	font-size: 16px;
+	line-height: 16px;
+	font-weight: normal;
+	text-align: center;
+	padding-top: 8px;
+	padding-bottom: 7px;
+	margin-top: 3px;
+
+	background-color: rgba(255, 255, 255, 1);
+}
+
+.subnav .desktop {
+	display: block;
+	float: left;
+	width: 98%;
+	margin-left: 1%;
+	margin-right: 1%;
+	height: 45px;
+	margin-top: 5px;
+}
+
+.subnav .desktop {
+	display: none;
+}
+
+.subnav .desktop .tab {
+	display: inline-block;
+	float: left;
+	text-align: left;
+	height: 45px;
+	margin-right: 13px;
+}
+
+.subnav .desktop .tab:last-child {
+	margin-right: 0px;
+}
+
+.subnav .desktop .tab .txt {
+	display: inline-block;
+	float: left;
+	width: auto;
+
+	color: rgba(44, 62, 80, 1);
+	font-family: "Myriad Pro", Arial, Helvetica, sans-serif;
+	font-size: 16px;
+	line-height: 16px;
+	font-weight: normal;
+	text-align: center;
+	padding-top: 14px;
+	padding-bottom: 5px;
+	text-transform: uppercase;
+	border-bottom: 5px solid transparent;
+
+	-moz-transition: all 300ms ease;
+	-ms-transition: all 300ms ease;
+	-o-transition: all 300ms ease;
+	transition: all 300ms ease;
+}
+
+.subnav .desktop .tab:hover .txt,
+.subnav .desktop .tab:active .txt,
+.subnav .desktop .tab:focus .txt {
+	border-bottom: 5px solid rgba(39, 174, 96, 1);
+	cursor: pointer;
+}
+
+.subnav .desktop .tab.selected .txt {
+	border-bottom: 5px solid rgba(39, 174, 96, 1);
+}
+
+.subnav .desktop .tab .hamburger {
+	width: 25px;
+	height: 25px;
+	margin: 10px;
+	background-image: url('../img/hamburger-icon-darkblue.png');
+	background-size: contain;
+	background-position: center;
+	background-repeat: no-repeat;
+
+	-moz-transition: all 300ms ease;
+	-ms-transition: all 300ms ease;
+	-o-transition: all 300ms ease;
+	transition: all 300ms ease;
+}
+
+.subnav .desktop .tab .hamburger:hover,
+.subnav .desktop .tab .hamburger:focus,
+.subnav .desktop .tab .hamburger:active {
+	cursor: pointer;
+	background-image: url('../img/hamburger-icon-lightblue.png');
+}
+
+.within {
+	width: 96%;
+	margin-left: 2%;
+	margin-right: 2%;
+	margin-top: 10px;
+	margin-bottom: 10px;
+	display: block;
+	float: left;
+}
+
+.within .group {
+	width: 100%;
+	display: block;
+	float: left;
+	padding-bottom: 10px;
+	padding-top: 10px;
+}
+
+.within .group .dashboard {
+	width: 100%;
+	display: block;
+	float: left;
+}
+
+.within .group .dashboard .headline {
+	width: 100%;
+	display: block;
+	float: left;
+}
+
+.within .group .dashboard .spacer {
+	width: 100%;
+	display: block;
+	float: left;
+	height: 25px;
+}
+
+.within .group .dashboard .spacer.large {
+	height: 40px;
+}
+
+.within .group .dashboard .headline h1 {
+	font-size: 35px;
+	font-family: "Myriad Pro", Arial, Helvetica, sans-serif;
+	color: rgba(42, 53, 51, 1);
+	text-align: left;
+	font-weight: normal;
+}
+
+.within .group .dashboard .mechanic {
+  width: 100%;
+  display: block;
+  float: left;
+}
+
+.within .group .dashboard .mechanic .welcomeback {
+  width: 100%;
+  display: block;
+  float: left;
+}
+
+.within .group .dashboard .mechanic .welcomeback .userbox {
+  width: 100%;
+  margin-right: 0px;
+  margin-bottom: 20px;
+  display: inline-block;
+  float: left;
+}
+
+.within .group .dashboard .mechanic .welcomeback .userbox .pic {
+  width: auto;
+  display: inline-block;
+  float: left;
+}
+
+.within .group .dashboard .mechanic .welcomeback .userbox .pic {
+
+}
+
+.within .group .dashboard .mechanic .welcomeback .userbox .wbmessage {
+  display: inline-block;
+  float: left;
+}
+
+.within .group .dashboard .mechanic .welcomeback .userbox .wbmessage .un {
+  display: block;
+  float: left;
+  width: 100%;
+
+  color: rgba(41, 41, 41, 1);
+  font-family: "Myriad Pro", Arial, Helvetica, sans-serif;
+  font-size: 15px;
+  line-height: 15px;
+  font-weight: bold;
+  text-align: left;
+}
+
+.within .group .dashboard .mechanic .welcomeback .userbox .wbmessage .mg {
+  display: block;
+  float: left;
+  width: 100%;
+  margin-top: 10px;
+
+  color: rgba(41, 41, 41, 1);
+  font-family: "Myriad Pro", Arial, Helvetica, sans-serif;
+  font-size: 13px;
+  line-height: 13px;
+  font-weight: normal;
+  text-align: left;
+}
+
+.within .group .dashboard .mechanic .welcomeback .userbox .wbmessage .mg a:link,
+.within .group .dashboard .mechanic .welcomeback .userbox .wbmessage .mg a:visited {
+  color: rgba(92, 94, 171, 1);
+  font-family: "Myriad Pro", Arial, Helvetica, sans-serif;
+  font-size: 13px;
+  line-height: 13px;
+  font-weight: normal;
+
+  text-decoration: none;
+  outline: none;
+
+	-moz-transition: all 300ms ease;
+	-ms-transition: all 300ms ease;
+	-o-transition: all 300ms ease;
+	transition: all 300ms ease;
+}
+
+.within .group .dashboard .mechanic .welcomeback .userbox .wbmessage .mg a:hover,
+.within .group .dashboard .mechanic .welcomeback .userbox .wbmessage .mg a:active,
+.within .group .dashboard .mechanic .welcomeback .userbox .wbmessage .mg a:focus {
+  color: rgba(122, 124, 201, 1);
+  text-decoration: underline;
+}
+
+.within .group .dashboard .mechanic .welcomeback .userbox .wbmessage .sp {
+  display: block;
+  float: left;
+  width: 100%;
+  margin-top: 10px;
+
+  color: rgba(41, 41, 41, 1);
+  font-family: "Myriad Pro", Arial, Helvetica, sans-serif;
+  font-size: 13px;
+  line-height: 13px;
+  font-weight: normal;
+  text-align: right;
+}
+
+.within .group .dashboard .mechanic .welcomeback .userbox .wbmessage .sp a:link,
+.within .group .dashboard .mechanic .welcomeback .userbox .wbmessage .sp a:visited {
+  color: rgba(92, 94, 171, 1);
+  font-family: "Myriad Pro", Arial, Helvetica, sans-serif;
+  font-size: 13px;
+  line-height: 13px;
+  font-weight: normal;
+
+  text-decoration: none;
+  outline: none;
+
+	-moz-transition: all 300ms ease;
+	-ms-transition: all 300ms ease;
+	-o-transition: all 300ms ease;
+	transition: all 300ms ease;
+}
+
+.within .group .dashboard .mechanic .welcomeback .userbox .wbmessage .sp a:hover,
+.within .group .dashboard .mechanic .welcomeback .userbox .wbmessage .sp a:active,
+.within .group .dashboard .mechanic .welcomeback .userbox .wbmessage .sp a:focus {
+  color: rgba(122, 124, 201, 1);
+  text-decoration: underline;
+}
+
+
+
+.within .group .dashboard .mechanic .welcomeback .moneyboxes {
+  display: inline-block;
+  float: left;
+  width: 100%;
+}
+
+.within .group .dashboard .mechanic .welcomeback .moneyboxes .mbox {
+  display: inline-block;
+  float: left;
+  width: 50%;
+  padding: 15px;
+  min-height: 200px;
+
+  box-sizing: border-box;
+  text-align: center;
+
+  background-color: rgba(222, 222, 222, 1);
+}
+
+.within .group .dashboard .mechanic .welcomeback .moneyboxes .mbox:first-child {
+  background-color: rgba(234, 234, 234, 1);
+}
+
+.within .group .dashboard .mechanic .welcomeback .moneyboxes .mbox h2 {
+  color: rgba(41, 41, 41, 1);
+  font-family: "Myriad Pro", Arial, Helvetica, sans-serif;
+  font-size: 25px;
+  line-height: 25px;
+  font-weight: normal;
+
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+.within .group .dashboard .mechanic .welcomeback .moneyboxes .mbox h2 a:link,
+.within .group .dashboard .mechanic .welcomeback .moneyboxes .mbox h2 a:visited {
+  color: rgba(92, 94, 171, 1);
+  font-family: "Myriad Pro", Arial, Helvetica, sans-serif;
+  font-size: 25px;
+  line-height: 25px;
+  font-weight: normal;
+
+  text-decoration: none;
+  outline: none;
+
+	-moz-transition: all 300ms ease;
+	-ms-transition: all 300ms ease;
+	-o-transition: all 300ms ease;
+	transition: all 300ms ease;
+}
+
+.within .group .dashboard .mechanic .welcomeback .moneyboxes .mbox h2 a:hover,
+.within .group .dashboard .mechanic .welcomeback .moneyboxes .mbox h2 a:active,
+.within .group .dashboard .mechanic .welcomeback .moneyboxes .mbox h2 a:focus {
+  color: rgba(122, 124, 201, 1);
+  text-decoration: underline;
+}
+
+.within .group .dashboard .mechanic .welcomeback .moneyboxes .mbox h4 {
+  color: rgba(41, 41, 41, 1);
+  font-family: "Myriad Pro", Arial, Helvetica, sans-serif;
+  font-size: 18px;
+  line-height: 18px;
+  font-weight: normal;
+
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+.within .group .dashboard .mechanic .welcomeback .moneyboxes .mbox p {
+  color: rgba(99, 99, 99, 1);
+  font-family: "Myriad Pro", Arial, Helvetica, sans-serif;
+  font-size: 15px;
+  line-height: 15px;
+  font-weight: normal;
+
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+.within .group .dashboard .mechanic .welcomeback .moneyboxes .mbox p a:link,
+.within .group .dashboard .mechanic .welcomeback .moneyboxes .mbox p a:visited {
+  color: rgba(92, 94, 171, 1);
+  font-family: "Myriad Pro", Arial, Helvetica, sans-serif;
+  font-size: 15px;
+  line-height: 15px;
+  font-weight: normal;
+
+  text-decoration: none;
+  outline: none;
+
+	-moz-transition: all 300ms ease;
+	-ms-transition: all 300ms ease;
+	-o-transition: all 300ms ease;
+	transition: all 300ms ease;
+}
+
+.within .group .dashboard .mechanic .welcomeback .moneyboxes .mbox p a:hover,
+.within .group .dashboard .mechanic .welcomeback .moneyboxes .mbox p a:active,
+.within .group .dashboard .mechanic .welcomeback .moneyboxes .mbox p a:focus {
+  color: rgba(122, 124, 201, 1);
+  text-decoration: underline;
+}
+
+.within .group .dashboard .mechanic .notifications {
+	width: 100%;
+	display: block;
+	float: left;
+}
+
+.within .group .dashboard .mechanic .notifications .notification {
+	width: 100%;
+	display: block;
+	float: left;
+	box-sizing: border-box;
+	margin-top: 15px;
+
+	border-radius: 3px;
+}
+
+.within .group .dashboard .mechanic .notifications .notification.red {
+	background: rgba(255, 179, 191, 1);
+	border: 1px solid rgba(225, 148, 161, 1);
+}
+
+.within .group .dashboard .mechanic .notifications .notification .message {
+	display: block;
+	float: left;
+	max-width: 96%;
+	margin-left: 2%;
+	margin-right: 2%;
+	margin-top: 10px;
+	margin-bottom: 10px;
+
+	color: rgba(41, 41, 41, 1);
+	font-family: "Myriad Pro", Arial, Helvetica, sans-serif;
+	font-size: 16px;
+	line-height: 18px;
+	font-weight: normal;
+	text-align: left;
+}
+
+.within .group .dashboard .mechanic .notifications .notification.yellow {
+	background: rgba(255, 255, 148, 1);
+	border: 1px solid rgba(255, 211, 98, 1);
+}
+
+.within .group .dashboard .mechanic .notifications .notification.green {
+	background: rgba(193, 241, 213, 1);
+	border: 1px solid rgba(181, 200, 98, 1);
+	border-radius: 3px;
+}
+
+.within .group .dashboard .mechanic .projectstats {
+	width: 100%;
+	display: block;
+	float: left;
+	text-align: left;
+}
+
+.within .group .dashboard .mechanic .projectstats table {
+	max-width: 100%;
+	float: left;
+	border: 0px;
+	cursor: default;
+	background-color: rgba(255, 255, 255, 1);
+}
+
+.within .group .dashboard .mechanic .projectstats table tr td {
+	font-family: "Myriad Pro", Arial, Helvetica, sans-serif;
+	font-size: 13px;
+	color: rgba(42, 53, 51, 1);
+	text-align: center;
+
+	border: 0px;
+	border-top: 1px solid rgba(222, 222, 222, 1);
+
+	padding-left: 5px;
+	padding-right: 5px;
+	padding-top: 10px;
+	padding-bottom: 10px;
+}
+
+.within .group .dashboard .mechanic .projectstats table tr:first-child td {
+	border-top: 0px;
+}
+
+.within .group .dashboard .mechanic .projectstats table tr:last-child td {
+	border-bottom: 1px solid rgba(222, 222, 222, 1);
+}
+
+.within .group .dashboard .mechanic .projectstats table tr td.mobile-priority-1 {
+	display: table-cell;
+}
+
+.within .group .dashboard .mechanic .projectstats table tr.colnames td {
+	/*background-color: rgba(236, 236, 236, 1);*/
+	padding: 15px;
+	font-weight: bold;
+}
+
+.within .group .dashboard .mechanic .projectstats table tr td.green {
+	color: rgba(38, 182, 90, 1);
+}
+
+.within .group .dashboard .mechanic .projectstats table tr td.red {
+	color: rgba(236, 22, 39, 1);
+}
+
+.within .group .dashboard .mechanic .projectstats table tr td.blue {
+	color: rgba(54, 72, 214, 1);
+}
+
+.within .group .dashboard .mechanic .projectstats table tr:nth-child(even) td {
+	background-color: rgba(251, 251, 251, 1);
+}
+
+.within .group .dashboard .mechanic .projectstats table tr td a.btn:link,
+.within .group .dashboard .mechanic .projectstats table tr td a.btn:visited {
+	display: inline-block;
+	padding: 5px;
+	border-radius: 3px;
+
+	font-family: "Myriad Pro", Arial, Helvetica, sans-serif;
+	font-size: 13px;
+	color: rgba(234, 234, 234, 1);
+	text-align: center;
+
+	background-color: rgba(7, 166, 244, 1);
+
+	text-decoration: none;
+	outline: none;
+
+	-moz-transition: all 300ms ease;
+	-ms-transition: all 300ms ease;
+	-o-transition: all 300ms ease;
+	transition: all 300ms ease;
+}
+
+.within .group .dashboard .mechanic .projectstats table tr td a.btn:hover,
+.within .group .dashboard .mechanic .projectstats table tr td a.btn:active,
+.within .group .dashboard .mechanic .projectstats table tr td a.btn:focus {
+	background-color: rgba(27, 186, 255, 1);
+	color: rgba(255, 255, 255, 1);
+}
+
+
+
+
+
+.within .group .vehicle {
+	width: 100%;
+	display: block;
+	float: left;
+}
+
+.within .group .vehicle .headline {
+	width: 100%;
+	display: block;
+	float: left;
+}
+
+.within .group .vehicle .headline h1 {
+	font-size: 35px;
+	font-family: "Myriad Pro", Arial, Helvetica, sans-serif;
+	color: rgba(42, 53, 51, 1);
+	text-align: left;
+	font-weight: normal;
+}
+
+.within .group .vehicle .left {
+	display: inline-block;
+	width: 100%;
+	box-sizing: border-box;
+	max-width: 400px;
+
+	border-radius: 5px;
+	border: 1px solid rgba(222, 222, 222, 1);
+	text-align: center;
+}
+
+.within .group .vehicle .left .image {
+	width: 100%;
+	display: block;
+	float: left;
+	height: 200px;
+	margin-bottom: 25px;
+
+	background-image: url('../img/vehicle-default-bgpic.png');
+	background-size: cover;
+	background-position: center;
+	background-repeat: no-repeat;
+
+	border-top-left-radius: 5px;
+	border-top-right-radius: 5px;
+}
+
+.within .group .vehicle .left .bottom {
+	width: 96%;
+	margin-left: 2%;
+	margin-right: 2%;
+	display: block;
+	float: left;
+	margin-bottom: 25px;
+}
+
+.within .group .vehicle .left .bottom .square {
+	display: inline-block;
+	float: left;
+	width: 80px;
+	height: 80px;
+	border: 1px solid rgba(214, 209, 204, 1);
+}
+
+.within .group .vehicle .left .bottom .square .inner {
+	width: 70px;
+	height: 70px;
+	margin: 5px;
+
+	background-image: url('../img/placeholder-square.png');
+	background-size: cover;
+	background-position: center;
+	background-repeat:  no-repeat;
+}
+
+.within .group .vehicle .left .bottom .desc {
+	display: inline-block;
+	float: left;
+	margin-left: 10px;
+	margin-top: 10px;
+	width: auto;
+
+	width: -webkit-calc(100% - 100px);
+	width: -moz-calc(100%-100px);
+	width: calc(100% - 100px);
+
+	text-align: left;
+}
+
+.within .group .vehicle .left .bottom .desc h3 {
+	color: rgba(92, 81, 70, 1);
+	font-family: "Myriad Pro", Arial, Helvetica, sans-serif;
+	font-size: 19px;
+	font-weight:  normal;
+	line-height: 19px;
+	text-align: left;
+}
+
+.within .group .vehicle .left .bottom .desc p {
+	display: inline-block;
+	max-width: 100%;
+	margin-top: 7px;
+
+	color: rgba(92, 81, 70, 1);
+	font-family: "Myriad Pro", Arial, Helvetica, sans-serif;
+	font-size: 13px;
+	font-weight:  normal;
+	line-height: 13px;
+	text-align: left;
+}
+
+.within .group .vehicle .right {
+	display: block;
+	float: left;
+	width: 100%;
+	margin-top: 25px;
+}
+
+.within .group .vehicle .right .customsel {
+	width: 100%;
+	display: block;
+	float: left;
+	text-align: center;
+}
+
+.within .group .vehicle .right .customsel .centerizer {
+	display: inline-block;
+}
+
+.within .group .vehicle .right .customsel .lbl {
+	display: inline-block;
+	float: left;
+	max-width: 100%;
+	margin-right: 10px;
+
+	color: rgba(41, 41, 41, 1);
+	font-family: "Myriad Pro", Arial, Helvetica, sans-serif;
+	font-size: 16px;
+	font-weight:  normal;
+	line-height: 16px;
+	text-align: left;
+
+	margin-top: 20px;
+	margin-bottom: 16px;
+}
+
+.within .group .vehicle .right .message {
+	width: 100%;
+	display: block;
+	float: left;
+	margin-top: 50px;
+	margin-bottom: 50px;
+
+	text-align: center;
+
+	font-family: "Myriad Pro", Arial, Helvetica, sans-serif;
+	font-size: 19px;
+	font-weight: normal;
+	color: rgba(41, 41, 41, 1);
+}
+
+.within .group .vehicle .right .schedules {
+	width: 80%;
+	padding-left: 40px;
+	margin-left: 10%;
+	margin-right: 10%;
+	display: block;
+	float: left;
+	text-align: center;
+	box-sizing: border-box;
+
+	font-family: "Myriad Pro", Arial, Helvetica, sans-serif;
+	font-size: 12px;
+	line-height: 12px;
+	font-weight: normal;
+	color: rgba(41, 41, 41, 1);
+
+	background-image: url('../img/notes-gear-icon.png');
+	background-size: auto;
+	background-position: left center;
+	background-repeat: no-repeat;
+}
+
+.within .group .vehicle .right .schedules strong {
+	font-size: 15px;
+	line-height: 15px;
+}
+
+.within .group .vehicle .right .comingsoon {
+	width: 100%;
+	display: block;
+	float: left;
+	margin-top: 50px;
+}
+
+.within .group .vehicle .right .comingsoon h3 {
+	font-family: "Myriad Pro", Arial, Helvetica, sans-serif;
+	font-size: 17px;
+	line-height: 17px;
+	font-weight: normal;
+	color: rgba(41, 41, 41, 1);
+	text-align: center;
+	margin-bottom: 15px;
+}
+
+.within .group .vehicle .right .comingsoon p {
+	font-family: "Myriad Pro", Arial, Helvetica, sans-serif;
+	font-size: 14px;
+	line-height: 14px;
+	font-weight: normal;
+	color: rgba(41, 41, 41, 1);
+	color: red;
+	text-align: center;
+}
+
+
+.select-custom {
+	display: inline-block;
+	float: left;
+	max-width: 100%;
+	min-width: 150px;
+	position: relative;
+
+	box-shadow: 0px 0px 7px 0px rgba(196, 200, 200, 1);
+
+	cursor: pointer;
+
+	background-color: rgba(255, 255, 255, 1);
+}
+
+.select-custom .btn {
+	width: 42px;
+	height: 52px;
+	display: inline-block;
+	float: left;
+
+	background-image: url('../img/csel-button-down.png');
+}
+
+.select-custom .selected {
+	display: inline-block;
+	float: left;
+	padding-left: 10px;
+	padding-right: 10px;
+	padding-top: 21px;
+	padding-bottom: 17px;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+	overflow: hidden;
+
+	color: rgba(141, 141, 141, 1);
+	font-family: "Myriad Pro", Arial, Helvetica, sans-serif;
+	font-size: 14px;
+	font-weight:  normal;
+	line-height: 14px;
+	text-align: left;
+}
+
+.select-custom .drop {
+	display: inline-block;
+	float: left;
+	min-width: 100%;
+	position: absolute;
+	top: 52px;
+	left: 0px;
+	background-color: white;
+	z-index: 700;
+
+	box-shadow: 0px 0px 7px 0px rgba(196, 200, 200, 1);
+}
+
+.select-custom .drop .opt {
+	width: 100%;
+	display: block;
+	float: left;
+	box-sizing:  border-box;
+	padding-left: 10px;
+	padding-right: 10px;
+	padding-top: 21px;
+	padding-bottom: 17px;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+	overflow: hidden;
+
+	border-bottom: 1px solid rgba(234, 234, 234, 1);
+	border-left: 5px solid transparent;
+
+	color: rgba(141, 141, 141, 1);
+	font-family: "Myriad Pro", Arial, Helvetica, sans-serif;
+	font-size: 14px;
+	font-weight:  normal;
+	line-height: 14px;
+	text-align: left;
+
+	-moz-transition: all 300ms ease;
+	-ms-transition: all 300ms ease;
+	-o-transition: all 300ms ease;
+	transition: all 300ms ease;
+}
+
+.select-custom .drop .opt:hover {
+	border-left: 5px solid rgba(243, 161, 161, 1);
+}
+
+.select-custom select {
+	display: none;
+}
+
+.within .group .personal {
+	width: 100%;
+	display: block;
+	float: left;
+}
+
+.within .group .personal .pic {
+	width: 100%;
+	display: block;
+	float: left;
+}
+
+.within .group .personal .pic .row {
+	width: 100%;
+	display: block;
+	float: left;
+	text-align: center;
+}
+
+.within .group .personal .pic .circle {
+	width: 100px;
+	height: 100px;
+	display: inline-block;
+	border-radius: 100%;
+
+	background-image: url('../img/placeholder-square.png');
+	background-size: cover;
+	background-repeat: no-repeat;
+	background-position: center;
+}
+
+.within .group .personal .pic .firstlast {
+	width: 100%;
+	display: block;
+	float: left;
+	padding-top: 15px;
+
+	color: rgba(41, 41, 41, 1);
+	font-family: "Myriad Pro", Arial, Helvetica, sans-serif;
+	font-size: 20px;
+	font-weight: normal;
+	text-align: center;
+}
+
+.within .group .personal .info {
+	width: 100%;
+	display: block;
+	float: left;
+	margin-top: 25px;
+}
+
+.within .group .personal .info .row {
+	width: 100%;
+	display: block;
+	float: left;
+	text-align: center;
+	margin-top: 15px;
+}
+
+.within .group .personal .info .row .left {
+	width: 40%;
+	display: inline-block;
+	float: left;
+	padding-left: 5px;
+	padding-right: 5px;
+	box-sizing: border-box;
+	margin-top: 5px;
+
+	text-align: right;
+}
+
+.within .group .personal .info .row .left label {
+	display: block;
+	float: right;
+	max-width: 100%;
+	margin-top: 9px;
+
+	color: rgba(41, 41, 41, 1);
+	font-family: "Myriad Pro", Arial, Helvetica, sans-serif;
+	font-size: 13px;
+	font-weight: normal;
+	text-align: right;
+}
+
+.within .group .personal .info .row .right {
+	width: 60%;
+	display: inline-block;
+	float: left;
+	padding-left: 5px;
+	padding-right: 5px;
+	box-sizing: border-box;
+	margin-top: 5px;
+
+	text-align: left;
+}
+
+.within .group .personal .info .row .right .nochange {
+	display: block;
+	float: left;
+	max-width: 100%;
+	margin-top: 9px;
+
+	color: rgba(41, 41, 41, 1);
+	font-family: "Myriad Pro", Arial, Helvetica, sans-serif;
+	font-size: 13px;
+	font-weight: normal;
+	text-align: right;
+}
+
+.within .group .personal .info .row .right input[type="text"],
+.within .group .personal .info .row .right input[type="password"] {
+	width: 100%;
+  max-width: 200px;
+  box-sizing: border-box;
+  padding: 7px;
+  padding-top: 9px;
+  padding-bottom: 5px;
+
+  color: rgba(123, 123, 123, 1);
+  font-family: "Myriad Pro", Arial, Helvetica, sans-serif;
+  font-size: 13px;
+  line-height: 13px;
+  font-weight: normal;
+  text-align: left;
+
+  background-color: rgba(255, 255, 255, 1);
+  box-shadow: 0px 2px 3px 0px rgba(221, 221, 221, 1) inset;
+	border: 1px solid rgba(221, 221, 221, 1);
+  border-radius: 3px;
+
+  -moz-transition: all 300ms ease;
+  -ms-transition: all 300ms ease;
+  -o-transition: all 300ms ease;
+  transition: all 300ms ease;
+
+	text-decoration: none;
+	outline: none;
+
+  -moz-transition: all 300ms ease;
+  -ms-transition: all 300ms ease;
+  -o-transition: all 300ms ease;
+  transition: all 300ms ease;
+}
+
+.within .group .personal .info .row .right input[type="text"].hasError,
+.within .group .personal .info .row .right input[type="password"].hasError {
+	border-color: rgba(169, 1, 1, 1);
+}
+
+.within .group .personal .info .row .right select {
+  color: rgba(123, 123, 123, 1);
+  font-family: "Myriad Pro", Arial, Helvetica, sans-serif;
+  font-size: 13px;
+  line-height: 13px;
+  font-weight: normal;
+  text-align: left;
+	box-sizing: border-box;
+	padding: 7px;
+	padding-top: 9px;
+	padding-bottom: 5px;
+
+	text-decoration: none;
+	outline: none;
+}
+
+.within .group .personal .info .row .smsandcarrier {
+	width: 100%;
+	display: block;
+	float: left;
+}
+
+.within .group .personal .info .row .smsnotifications {
+	width: 100%;
+	display: block;
+	float: left;
+	text-align: center;
+}
+
+.within .group .personal .info .row .smsnotifications .lbl {
+	display: block;
+	float: left;
+	padding-top: 18px;
+	padding-right: 5px;
+
+	color: rgba(41, 41, 41, 1);
+	font-family: "Myriad Pro", Arial, Helvetica, sans-serif;
+	font-size: 13px;
+	font-weight: normal;
+	text-align: right;
+}
+
+.within .group .personal .info .row .smsnotifications .inline-box {
+	display: inline-block;
+}
+
+.within .group .personal .info .row .smsnotifications .block-box {
+	width: 100%;
+	display: block;
+	float: left;
+}
+
+.within .group .personal .info .row .smsnotifications .toggle {
+	display: block;
+	float: left;
+}
+
+.within .group .personal .info .row .smsnotifications .toggle input[type="checkbox"] {
+	max-height: 0;
+  max-width: 0;
+  opacity: 0;
+}
+
+.within .group .personal .info .row .smsnotifications .toggle input[type="checkbox"] + label {
+	display: block;
+  position: relative;
+  box-shadow: inset 0 0 0px 1px #d5d5d5;
+  text-indent: -5000px;
+  height: 15px;
+  width: 35px;
+  border-radius: 15px;
+}
+
+.within .group .personal .info .row .smsnotifications .toggle input[type="checkbox"] + label:before {
+	content: "";
+  position: absolute;
+  display: block;
+  height: 15px;
+  width: 15px;
+  top: 0;
+  left: 0;
+  border-radius: 15px;
+  background: rgba(19, 191, 17, 0);
+  -moz-transition: .25s ease-in-out;
+  -webkit-transition: .25s ease-in-out;
+  transition: .25s ease-in-out;
+}
+
+.within .group .personal .info .row .smsnotifications .toggle input[type="checkbox"] + label:after {
+	content: "";
+  position: absolute;
+  display: block;
+  height: 15px;
+  width: 15px;
+  top: 0;
+  left: 0px;
+  border-radius: 15px;
+  background: white;
+  box-shadow: inset 0px 0px 0px 1px rgba(0, 0, 0, .2), 0px 2px 4px rgba(0, 0, 0, .2);
+  -moz-transition: .25s ease-in-out;
+  -webkit-transition: .25s ease-in-out;
+  transition: .25s ease-in-out;
+}
+
+.within .group .personal .info .row .smsnotifications .toggle input[type="checkbox"]:checked + label:before {
+  width: 35px;
+  background: rgba(19, 191, 17, 1);
+}
+
+.within .group .personal .info .row .smsnotifications .toggle input[type="checkbox"]:checked + label:after {
+  left: 20px;
+  box-shadow: inset 0 0 0 1px rgba(19, 191, 17, 1), 0 2px 4px rgba(0, 0, 0, .2);
+}
+
+.within .group .personal .info .row .carrieragree {
+	width: 100%;
+	display: block;
+	float: left;
+	text-align: center;
+	margin-top: 10px;
+	padding-top: 5px;
+	padding-bottom: 5px;
+
+  -moz-transition: all 300ms ease;
+  -ms-transition: all 300ms ease;
+  -o-transition: all 300ms ease;
+  transition: all 300ms ease;
+}
+
+.within .group .personal .info .row .carrieragree.hasError {
+	background-color: rgba(169, 1, 1, .2);
+}
+
+.within .group .personal .info .row .carrieragree label {
+	color: rgba(41, 41, 41, 1);
+	font-family: "Myriad Pro", Arial, Helvetica, sans-serif;
+	font-size: 13px;
+	font-weight: normal;
+	text-align: right;
+}
+
+.within .group .personal .verify {
+	width: 100%;
+	display: block;
+	float: left;
+	margin-top: 25px;
+	padding-top: 25px;
+	padding-bottom: 25px;
+	text-align: center;
+}
+
+.within .group .personal .verify .topmsg {
+	width: 100%;
+	display: block;
+
+	color: rgba(41, 41, 41, 1);
+	font-family: "Myriad Pro", Arial, Helvetica, sans-serif;
+	font-size: 15px;
+	font-weight: normal;
+	text-align: center;
+
+	margin-bottom: 10px;
+}
+
+.within .group .personal .verify .boxline {
+	display: inline-block;
+	box-sizing: border-box;
+	max-width: 100%;
+	padding: 15px;
+	border: 1px solid rgba(195, 195, 195, 1);
+	border-radius: 2px;
+}
+
+.within .group .personal .verify .boxline .box {
+	width: 100%;
+	display: block;
+	float: left;
+}
+
+.within .group .personal .verify .boxline .row {
+	width: 100%;
+	display: block;
+	float: left;
+	text-align: center;
+}
+
+.within .group .personal .verify .boxline .row .inline-box {
+	display: inline-block;
+}
+
+.within .group .personal .verify .boxline .row .message {
+	display: inline-block;
+	color: rgba(41, 41, 41, 1);
+	font-family: "Myriad Pro", Arial, Helvetica, sans-serif;
+	font-size: 14px;
+	font-weight: normal;
+	text-align: center;
+}
+
+.within .group .personal .verify .boxline .row label {
+	display: inline-block;
+	float: left;
+	margin-right: 5px;
+	margin-top: 16px;
+	margin-bottom: 7px;
+
+	color: rgba(41, 41, 41, 1);
+	font-family: "Myriad Pro", Arial, Helvetica, sans-serif;
+	font-size: 13px;
+	font-weight: normal;
+	text-align: center;
+}
+
+.within .group .personal .verify .boxline .row select {
+	float: left;
+
+  color: rgba(123, 123, 123, 1);
+  font-family: "Myriad Pro", Arial, Helvetica, sans-serif;
+  font-size: 13px;
+  line-height: 13px;
+  font-weight: normal;
+  text-align: left;
+	box-sizing: border-box;
+	padding: 7px;
+	padding-top: 9px;
+	padding-bottom: 5px;
+	margin-top: 7px;
+	margin-bottom: 7px;
+
+	text-decoration: none;
+	outline: none;
+}
+
+
+
+.errorBorder {
+	border: 1px solid rgba(169, 1, 1, 1);
+}
+
+.errorBackground {
+	background-color: rgba()
+}
+
+
+
+.within .group .personal .verify .boxline .row input[type="text"] {
+	float: left;
+
+	width: 50px;
+  box-sizing: border-box;
+  padding: 7px;
+  padding-top: 9px;
+  padding-bottom: 5px;
+	margin-top: 8px;
+
+  color: rgba(123, 123, 123, 1);
+  font-family: "Myriad Pro", Arial, Helvetica, sans-serif;
+  font-size: 13px;
+  line-height: 13px;
+  font-weight: normal;
+  text-align: left;
+
+  background-color: rgba(255, 255, 255, 1);
+  box-shadow: 0px 2px 3px 0px rgba(221, 221, 221, 1) inset;
+	border: 1px solid rgba(221, 221, 221, 1);
+  border-radius: 3px;
+
+  -moz-transition: all 300ms ease;
+  -ms-transition: all 300ms ease;
+  -o-transition: all 300ms ease;
+  transition: all 300ms ease;
+
+	text-decoration: none;
+	outline: none;
+}
+
+.within .group .personal .verify .boxline .row input[type="text"].hasError {
+	border-color: rgba(169, 1, 1, 1);
+}
+
+.within .group .personal .verify .boxline .row .button {
+	display: inline-block;
+	float: left;
+	max-width: 100%;
+}
+
+.within .group .personal .verify .boxline .row .button a:link,
+.within .group .personal .verify .boxline .row .button a:visited {
+	display: block;
+	float: left;
+	padding-top: 11px;
+	padding-bottom: 10px;
+	padding-left: 10px;
+	padding-right: 10px;
+	margin-left: 5px;
+	margin-top: 7px;
+	margin-bottom: 7px;
+
+	color: rgba(255, 255, 255, 1);
+	font-family: "Myriad Pro", Arial, Helvetica, sans-serif;
+	font-size: 13px;
+	line-height: 13px;
+	font-weight: normal;
+	text-align: left;
+
+	background-color: rgba(92, 184, 92, 1);
+	border-radius: 3px;
+
+  -moz-transition: all 300ms ease;
+  -ms-transition: all 300ms ease;
+  -o-transition: all 300ms ease;
+  transition: all 300ms ease;
+
+	text-decoration: none;
+	outline: none;
+}
+
+.within .group .personal .verify .boxline .row .button a:hover,
+.within .group .personal .verify .boxline .row .button a:active,
+.within .group .personal .verify .boxline .row .button a:focus {
+	color: rgba(255, 255, 255, 1);
+	background-color: rgba(122, 214, 122, 1);
+}
+
+.within .group .personal .languages {
+	width: 100%;
+	display: block;
+	float: left;
+	text-align: center;
+
+	margin-top: 25px;
+	margin-bottom: 25px;
+	height: 50px;
+}
+
+.within .group .personal .languages.hasError {
+	background-color: rgba(169, 1, 1, .2);
+}
+
+.vc {
+	position: absolute;
+	display: block;
+	float: left;
+	width: 50%;
+	height: 100px;
+	background: black;
+	color: rgba(255, 255, 255, 1);
+	font-size: 10px;
+	text-align: left;
+	z-index: 999;
+	overflow-y: auto;
+}
+
+.within .group .personal .languages {
+	display: inline-block;
+	width: auto;
+	float: none;
+}
+
+.within .group .personal .languages .column {
+	display: inline-block;
+	float: left;
+}
+
+.within .group .personal .languages .column label {
+	display: inline-block;
+	float: left;
+
+	display: inline-block;
+	float: left;
+	margin-right: 12px;
+	margin-top: 16px;
+	margin-bottom: 7px;
+
+	color: rgba(41, 41, 41, 1);
+	font-family: "Myriad Pro", Arial, Helvetica, sans-serif;
+	font-size: 13px;
+	font-weight: normal;
+	text-align: center;
+}
+
+.within .group .personal .languages .column input[type="checkbox"] {
+	float: left;
+	margin-top: 16px;
+	margin-bottom: 7px;
+	margin-right: 5px;
+}
+
+.within .group .personal .line {
+	display: block;
+	float: left;
+	width: 80%;
+	margin-left: 10%;
+	margin-right: 10%;
+	margin-top: 15px;
+	margin-bottom: 15px;
+	height: 1px;
+	background-color: rgba(178, 198, 211, 1);
+}
+
+.within .group .personal .save {
+	width: 76%;
+	display: block;
+	float: left;
+	margin-left: 12%;
+	margin-right: 12%;
+	text-align: right;
+}
+
+.within .group .personal .save .errormessage {
+	display: inline-block;
+	float: right;
+	padding-top: 11px;
+	padding-bottom: 10px;
+	padding-left: 10px;
+	padding-right: 10px;
+	margin-left: 5px;
+	margin-top: 7px;
+	margin-bottom: 7px;
+
+	color: rgba(169, 1, 1, 1);
+	font-family: "Myriad Pro", Arial, Helvetica, sans-serif;
+	font-size: 13px;
+	line-height: 13px;
+	font-weight: normal;
+	text-align: left;
+}
+
+.within .group .personal .save a:link,
+.within .group .personal .save a:visited {
+	display: inline-block;
+	float: right;
+	padding-top: 11px;
+	padding-bottom: 10px;
+	padding-left: 10px;
+	padding-right: 10px;
+	margin-left: 5px;
+	margin-top: 7px;
+	margin-bottom: 7px;
+
+	color: rgba(255, 255, 255, 1);
+	font-family: "Myriad Pro", Arial, Helvetica, sans-serif;
+	font-size: 13px;
+	line-height: 13px;
+	font-weight: normal;
+	text-align: left;
+
+	background-color: rgba(92, 184, 92, 1);
+	border-radius: 3px;
+
+  -moz-transition: all 300ms ease;
+  -ms-transition: all 300ms ease;
+  -o-transition: all 300ms ease;
+  transition: all 300ms ease;
+
+	text-decoration: none;
+	outline: none;
+}
+
+.within .group .personal .save a:hover,
+.within .group .personal .save a:active,
+.within .group .personal .save a:focus {
+	color: rgba(255, 255, 255, 1);
+	background-color: rgba(122, 214, 122, 1);
+}
+
+
+.within .group .accounting {
+	width: 100%;
+	display: block;
+	float: left;
+}
+
+.within .group .accounting .headline {
+	width: 100%;
+	display: block;
+	float: left;
+}
+
+.within .group .accounting .headline h1 {
+	font-size: 35px;
+	font-family: "Myriad Pro", Arial, Helvetica, sans-serif;
+	color: rgba(42, 53, 51, 1);
+	text-align: left;
+	font-weight: normal;
+}
+
+.within .group .accounting .transactions {
+	width: 100%;
+	display: block;
+	float: left;
+}
+
+.within .group .accounting .transactions table {
+	max-width: 100%;
+	float: left;
+	border: 0px;
+	cursor: default;
+	background-color: rgba(255, 255, 255, 1);
+}
+
+.within .group .accounting .transactions table tr td {
+	font-family: "Myriad Pro", Arial, Helvetica, sans-serif;
+	font-size: 13px;
+	color: rgba(42, 53, 51, 1);
+	text-align: center;
+
+	border: 0px;
+	border-top: 1px solid rgba(222, 222, 222, 1);
+
+	padding-left: 5px;
+	padding-right: 5px;
+	padding-top: 10px;
+	padding-bottom: 10px;
+
+	display: none;
+}
+
+.within .group .accounting .transactions table tr td.mobile-priority-1 {
+	display: table-cell;
+}
+
+.within .group .accounting .transactions table tr:first-child td {
+	border-top: 0px;
+}
+
+.within .group .accounting .transactions table tr:last-child td {
+	border-bottom: 1px solid rgba(222, 222, 222, 1);
+}
+
+.within .group .accounting .transactions table tr td.mobile-priority-1 {
+	display: table-cell;
+}
+
+.within .group .accounting .transactions table tr.colnames td {
+	/*background-color: rgba(236, 236, 236, 1);*/
+	padding: 15px;
+	font-weight: bold;
+}
+
+.within .group .accounting .transactions table tr td.green {
+	color: rgba(38, 182, 90, 1);
+}
+
+.within .group .accounting .transactions table tr td.red {
+	color: rgba(236, 22, 39, 1);
+}
+
+.within .group .accounting .transactions table tr td.blue {
+	color: rgba(54, 72, 214, 1);
+}
+
+.within .group .accounting .transactions table tr:nth-child(even) td {
+	background-color: rgba(251, 251, 251, 1);
+}
+
+.within .group .accounting .transactions table tr td a.btn:link,
+.within .group .accounting .transactions table tr td a.btn:visited {
+	display: inline-block;
+	padding: 5px;
+	border-radius: 3px;
+
+	font-family: "Myriad Pro", Arial, Helvetica, sans-serif;
+	font-size: 13px;
+	color: rgba(234, 234, 234, 1);
+	text-align: center;
+
+	background-color: rgba(7, 166, 244, 1);
+
+	text-decoration: none;
+	outline: none;
+
+	-moz-transition: all 300ms ease;
+	-ms-transition: all 300ms ease;
+	-o-transition: all 300ms ease;
+	transition: all 300ms ease;
+}
+
+.within .group .accounting .transactions table tr td a.btn:hover,
+.within .group .accounting .transactions table tr td a.btn:active,
+.within .group .accounting .transactions table tr td a.btn:focus {
+	background-color: rgba(27, 186, 255, 1);
+	color: rgba(255, 255, 255, 1);
+}
+
+
+
+
+/* this corresponds with the code on the dashboard handlebars file. It will be used on another page, so I am going to comment it out for now, but please do not delete */
+/* ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+.within .group .myprojects {
+	width: 100%;
+	display: block;
+	float: left;
+	display: none;
+}
+
+.within .group .myprojects .headline {
+	width: 100%;
+	display: block;
+	float: left;
+	height: 50px;
+}
+
+.within .group .myprojects .headline h1 {
+	font-size: 35px;
+	font-family: "Myriad Pro", Arial, Helvetica, sans-serif;
+	color: rgba(42, 53, 51, 1);
+	text-align: left;
+	font-weight: normal;
+}
+
+.within .group .myprojects .space {
+	width: 100%;
+	display: block;
+	float: left;
+	height: 25px;
+}
+
+.within .group .myprojects .projects {
+	width: 100%;
+	display: block;
+	float: left;
+	background-color: rgba(255, 255, 255, 1);
+}
+
+.within .group .myprojects .projects table {
+	width: 100%;
+	float: left;
+	border: 0px;
+	cursor: default;
+}
+
+.within .group .myprojects .projects table tr td {
+	font-family: "Myriad Pro", Arial, Helvetica, sans-serif;
+	font-size: 13px;
+	color: rgba(42, 53, 51, 1);
+	text-align: center;
+
+	border: 0px;
+	border-top: 1px solid rgba(222, 222, 222, 1);
+
+	padding-left: 5px;
+	padding-right: 5px;
+	padding-top: 10px;
+	padding-bottom: 10px;
+
+	display: none;
+}
+
+.within .group .myprojects .projects table tr:first-child td {
+	border-top: 0px;
+}
+
+.within .group .myprojects .projects table tr:last-child td {
+	border-bottom: 1px solid rgba(222, 222, 222, 1);
+}
+
+.within .group .myprojects .projects table tr td.mobile-priority-1 {
+	display: table-cell;
+}
+
+.within .group .myprojects .projects table tr.colnames td {
+	/*background-color: rgba(236, 236, 236, 1);*/
+	padding: 15px;
+	font-weight: bold;
+}
+
+.within .group .myprojects .projects table tr td.green {
+	color: rgba(38, 182, 90, 1);
+}
+
+.within .group .myprojects .projects table tr td.red {
+	color: rgba(236, 22, 39, 1);
+}
+
+.within .group .myprojects .projects table tr td.blue {
+	color: rgba(54, 72, 214, 1);
+}
+
+.within .group .myprojects .projects table tr:nth-child(even) td {
+	background-color: rgba(251, 251, 251, 1);
+}
+
+.within .group .myprojects .projects table tr td a.btn:link,
+.within .group .myprojects .projects table tr td a.btn:visited {
+	display: inline-block;
+	padding: 5px;
+	border-radius: 3px;
+
+	font-family: "Myriad Pro", Arial, Helvetica, sans-serif;
+	font-size: 13px;
+	color: rgba(234, 234, 234, 1);
+	text-align: center;
+
+	background-color: rgba(7, 166, 244, 1);
+
+	text-decoration: none;
+	outline: none;
+
+	-moz-transition: all 300ms ease;
+	-ms-transition: all 300ms ease;
+	-o-transition: all 300ms ease;
+	transition: all 300ms ease;
+}
+
+.within .group .myprojects .projects table tr td a.btn:hover,
+.within .group .myprojects .projects table tr td a.btn:active,
+.within .group .myprojects .projects table tr td a.btn:focus {
+	background-color: rgba(27, 186, 255, 1);
+	color: rgba(255, 255, 255, 1);
+}
+
+.within .group .myprojects .friends {
+	width: 100%;
+	display: block;
+	float: left;
+	background-color: rgba(255, 255, 255, 1);
+}
+
+.within .group .myprojects .friends .row {
+	width: 96%;
+	display: block;
+	float: left;
+	margin-left: 2%;
+	margin-right: 2%;
+	padding-bottom: 14px;
+
+	border: 0px;
+	border-top: 1px solid rgba(235, 235, 235, 1);
+
+	-moz-transition: all 300ms ease;
+	-ms-transition: all 300ms ease;
+	-o-transition: all 300ms ease;
+	transition: all 300ms ease;
+}
+
+.within .group .myprojects .friends .row:first-child {
+	border-top: 0px;
+}
+
+.within .group .myprojects .friends .row:hover {
+	background-color: rgba(247, 248, 252, 1);
+}
+
+.within .group .myprojects .friends .row .picname {
+	display: inline-block;
+	float: left;
+	margin-right: 7px;
+}
+
+.within .group .myprojects .friends .row .picname .pic {
+	display: inline-block;
+	float: left;
+	width: 32px;
+	height: 32px;
+	margin-top: 14px;
+	margin-left: 14px;
+	margin-right: 14px;
+
+	border-radius: 32px;
+
+	background-image: url('../img/sample-friend.png');
+	background-position: center;
+	background-repeat: no-repeat;
+	background-size: cover;
+}
+
+.within .group .myprojects .friends .row .picname .name {
+	display: inline-block;
+	float: left;
+	margin-top: 23px;
+
+	white-space:  nowrap;
+
+	color: rgba(41, 41, 41, 1);
+	font-family: "Myriad Pro", Arial, Helvetica, sans-serif;
+	font-size: 14px;
+	line-height: 14px;
+	text-transform: uppercase;
+}
+
+.within .group .myprojects .friends .row .picname .name a:link,
+.within .group .myprojects .friends .row .picname .name a:visited {
+	color: rgba(111, 145, 153, 1);
+	font-family: "Myriad Pro", Arial, Helvetica, sans-serif;
+	font-size: 14px;
+	line-height: 14px;
+	text-transform: uppercase;
+
+	outline: none;
+	text-decoration: none;
+
+	-moz-transition: all 300ms ease;
+	-ms-transition: all 300ms ease;
+	-o-transition: all 300ms ease;
+	transition: all 300ms ease;
+}
+
+.within .group .myprojects .friends .row .picname .name a:hover,
+.within .group .myprojects .friends .row .picname .name a:active,
+.within .group .myprojects .friends .row .picname .name a:focus {
+	color: rgba(154, 193, 200, 1);
+}
+
+.within .group .myprojects .friends .row .action {
+	display: inline-block;
+	float: left;
+	margin-left: 7px;
+}
+
+.within .group .myprojects .friends .row .action .txt {
+	display: block;
+	float: left;
+	margin-top: 23px;
+
+	color: rgba(41, 41, 41, 1);
+	font-family: "Myriad Pro", Arial, Helvetica, sans-serif;
+	font-size: 14px;
+	line-height: 14px;
+	text-align: left;
+}
+
+.within .group .myprojects .friends .row .action .txt span.gray {
+	color: rgba(158, 158, 158, 1);
+}
+
+.within .group .myprojects .friends .row .time {
+	display: inline-block;
+	float: right;
+}
+
+.within .group .myprojects .friends .row .time .txt {
+	display: block;
+	float: left;
+	margin-top: 24px;
+	margin-right: 14px;
+	margin-left: 14px;
+
+	color: rgba(188, 188, 188, 1);
+	font-family: "Myriad Pro", Arial, Helvetica, sans-serif;
+	font-size: 12px;
+	line-height: 12px;
+	text-align: left;
+}
+
+.within .group .myprojects .friends .row .showmore {
+	width: 96%;
+	padding-left: 2%;
+	padding-right: 2%;
+	display: block;
+	float: left;
+	margin-top: 14px;
+
+	color: rgba(41, 41, 41, 1);
+	font-family: "Myriad Pro", Arial, Helvetica, sans-serif;
+	font-size: 14px;
+	line-height: 14px;
+	text-align:  right;
+	text-transform: none;
+}
+
+.within .group .myprojects .friends .row .showmore a:link,
+.within .group .myprojects .friends .row .showmore a:visited {
+
+	color: rgba(111, 145, 153, 1);
+	font-family: "Myriad Pro", Arial, Helvetica, sans-serif;
+	font-size: 14px;
+	line-height: 14px;
+	text-align:  right;
+	text-transform: none;
+
+	outline: none;
+	text-decoration: none;
+
+	-moz-transition: all 300ms ease;
+	-ms-transition: all 300ms ease;
+	-o-transition: all 300ms ease;
+	transition: all 300ms ease;
+}
+
+.within .group .myprojects .friends .row .showmore a:hover,
+.within .group .myprojects .friends .row .showmore a:active,
+.within .group .myprojects .friends .row .showmore a:focus {
+	color: rgba(154, 193, 200, 1);
+}
+
+
+/* Custom, iPhone Retina */
+@media only screen and (min-width : 320px) {
+	table tr td.mobile-priority-2 {
+		display: table-cell;
+	}
+
+	#mq-320 {
+		display: block;
+	}
+}
+
+
+
+/* Extra Small Devices, Phones */
+@media only screen and (min-width : 480px) {
+	table tr td.mobile-priority-3 {
+		display: table-cell;
+	}
+}
+
+/* Small Devices, Tablets */
+@media only screen and (min-width : 768px) {
+	table tr td {
+		display: table-cell;
+	}
+
+	.subnav .desktop {
+		display: block;
+	}
+
+	.subnav .mobile {
+		display: none;
+	}
+
+  .within .group .dashboard .mechanic .welcomeback .userbox {
+    width: 40%;
+    margin-right: 10%;
+  }
+
+  .within .group .vehicle .left {
+      display: inline-block;
+      float: left;
+      width: 33%;
+  }
+
+
+
+  .within .group .vehicle .right {
+      display: inline-block;
+      float: left;
+      width: 63%;
+      margin-left: 3%;
+      margin-top: 0px;
+  }
+
+
+
+  .within .group .accounting .transactions table tr td.mobile-priority-4,
+  .within .group .myprojects .projects table tr td.mobile-priority-4 {
+      display: table-cell;
+  }
+
+
+
+  .within .group .dashboard .mechanic .welcomeback .moneyboxes {
+    width: 50%;
+  }
+
+	.within .group .vehicle .right {
+		display: inline-block;
+		float: left;
+		width: 63%;
+		margin-left: 3%;
+		margin-top: 0px;
+	}
+
+	.within .group .vehicle .left {
+		display: inline-block;
+		float: left;
+		width: 33%;
+	}
+
+	.within .group .accounting .transactions table tr td.mobile-priority-4,
+	.within .group .myprojects .projects table tr td.mobile-priority-4 {
+		display: table-cell;
+	}
+}
+
+/* Medium Devices, Desktops */
+@media only screen and (min-width : 992px) {
+	.within .group .accounting .transactions table tr td,
+	.within .group .myprojects .projects table tr td {
+		display: table-cell;
+	}
+
+	.subnav .mobile .hamburger,
+	.subnav .desktop .hamburger {
+		display: none;
+	}
+
+    .subnav {
+        padding-left: 0px;
+    }
+}

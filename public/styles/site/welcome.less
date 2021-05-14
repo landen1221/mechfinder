@@ -1,0 +1,1026 @@
+/* default formatting, applies to all screen sizes unless overridden */
+/* all media queries follow the Twitter Bootstrap guidelines (mobile-first) */
+
+/* reset all browser-default padding and margins */
+* {
+    margin: 0px auto;
+    padding: 0px;
+}
+
+.main-home-page {
+    width: 100%;
+    display: block;
+    float: left;
+
+    @screenXS: 320px;
+    @screenSM: 480px;
+    @screenMD: 768px;
+    @screenLG: 992px;
+    @screenXL: 1200px;
+
+    @blackColor: rgba(41, 41, 41, 1);
+    @grayColor: rgba(131, 131, 131, 1);
+    @darkGrayColor: rgba(81, 81, 81, 1);
+    @redColor: rgba(169, 1, 1, 1);
+    @lightRedColor: rgba(199, 1, 1, 1);
+    @defaultFontSize: 15px;
+    @defaultLineHeight: 20px;
+
+    @h1Color: @grayColor;
+    @h1FontSize: 35px;
+
+    @h2Color: @darkGrayColor;
+    @h2FontSize: 25px;
+
+    .standard-div {
+        display: block;
+        float: left;
+        width: 100%;
+        text-align: left;
+    }
+
+    .getstarted {
+        padding-left: 50px;
+        padding-right: 50px;
+        font-size: 25px;
+        border: 1px solid white;
+    }
+
+    .inline-div {
+        display: inline-block;
+    }
+
+    .transitions {
+    	-moz-transition: all 300ms ease;
+    	-ms-transition: all 300ms ease;
+    	-o-transition: all 300ms ease;
+    	transition: all 300ms ease;
+    }
+
+    .background-defaults {
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: contain;
+    }
+
+    .remove-defaults {
+        outline: none;
+        text-decoration: none;
+        -webkit-tap-highlight-color: transparent;
+    }
+
+    .standard-font {
+        color: @blackColor;
+        font-family: @baseFonts;
+        font-size: @defaultFontSize;
+        line-height: @defaultLineHeight;
+        font-weight: normal;
+    }
+
+    .link-font {
+        .standard-font;
+        .remove-defaults;
+        .transitions;
+        color: @redColor;
+
+        &:link,
+        &:visited {
+            color: @redColor;
+            border-bottom: 1px solid transparent;
+        }
+
+        &:hover,
+        &:active,
+        &:focus {
+            border-bottom-color: @lightRedColor;
+        }
+    }
+
+    .link-button {
+        .inline-div;
+        .standard-font;
+        .remove-defaults;
+        .transitions;
+        padding: 10px;
+        padding-top: 11px;
+        padding-bottom: 9px;
+        border-radius: 2px;
+        color: rgba(245, 245, 245, 1);
+        text-align: center;
+        max-width: 100%;
+        box-sizing: border-box;
+
+        &:link,
+        &:visited {
+            color: rgba(245, 245, 245, 1);
+            background-color: @redColor;
+        }
+
+        &:hover,
+        &:active,
+        &:focus {
+            color: rgba(255, 255, 255, 1);
+            background-color: @lightRedColor;
+        }
+    }
+
+    .home-container {
+    	.standard-div;
+
+        .slide-overlay {
+            font-size: 2.5vw;
+            color: white;
+            text-align: center;
+            line-height: 2vw;          
+            .standard-button {
+                // line-height: 30px;
+            }  
+            h1 {
+                text-shadow: 3px 3px 0px rgba(0,0,0,0.5);
+                line-height: 6vw;
+            }
+            .box {
+                background: rgba(255,255,255,0.9);
+                display: inline-block;
+                padding-left: 10px;
+                padding-right: 10px;
+                padding-top: 10px;
+                padding-bottom: 10px;
+                color:black;
+                line-height: 2.5vw;
+                &.mechanic {
+                    width: 100%;
+                    padding-left: 0px;
+                    padding-right: 0px;
+                    padding-bottom: 20px;
+                    .underline {
+                        font-weight: normal;
+                        border-bottom: 2px solid black;
+                        margin: 20px;
+                        padding-bottom: 20px;
+                    }
+                    .red {
+                        margin: 20px;
+                    }
+                    @media only screen and (max-width: 768px) {
+                        font-size: 5vw;
+                        line-height: 5.5vw;
+                    }
+                }
+                .red {
+                    color: @colorRed;
+                }
+            }
+            a {
+                padding-left: 50px;
+                padding-right: 50px;
+                font-size: 25px;
+                border: 1px solid white;
+                @media only screen and (max-width: 400px) {
+                    font-size: 5vw;
+                    line-height: 5.5vw;
+                    padding: 3vw;
+                }
+
+            }
+            left: 0;
+            right: 0;
+            margin-left: 20px;
+            margin-right: 20px;
+            position: absolute;
+            top: 25vw;
+            &.mechanic {
+                margin: 0px;
+                top: 16vw;
+                right: 3vw;
+                left: 65vw;
+                @media only screen and (max-width: 768px) {
+                    top: 10vw;
+                }
+                @media only screen and (max-width: 768px) {
+                    position: relative;
+                    left: 0;
+                    right: 0;
+                    top: 0;
+                }
+            }
+            // transform: translateY(-80%);
+            
+        }
+
+        .mf-slider {
+            .standard-div;
+            .background-defaults;
+            position: relative;
+            padding-bottom: 43%;
+            background-size: cover;
+
+            background-image: url('../img/slider-mainimg.png');
+            -webkit-filter: brightness(80%);
+            filter: brightness(80%);
+            
+
+            &.mechanic-image {
+                background-image: url('../img/mechanic-home-image.png');
+            }          
+
+            .mf-slide-info {
+                .standard-div;
+                position: absolute;
+                z-index: 500;
+                min-height: 50px;
+                width: 96%;
+                left: 2%;
+                bottom: 40px;
+                text-align: center;
+
+                .slide-info-centered {
+                    .inline-div;
+                    width: auto;
+                    max-width: 100%;
+                }
+
+                .black-strip {
+                    .standard-div;
+                    .standard-font;
+                    width: auto;
+                    clear: both;
+                    box-sizing: border-box;
+                    padding: 7px;
+                    background: @blackColor;
+                    color: rgba(245, 245, 245, 1);
+                }
+
+                .white-strip {
+                    .standard-div;
+                    width: auto;
+                    clear: both;
+                    max-width: 100%;
+                    box-sizing: border-box;
+                    padding: 10px;
+                    background: rgba(245, 245, 245, 1);
+
+                    .white-left {
+                        .inline-div;
+                        .standard-font;
+                        float: left;
+                        border-right: 2px solid @grayColor;
+                        padding-right: 10px;
+                        text-align: center;
+
+                        span.red-text {
+                            color: @redColor;
+                        }
+                    }
+
+                    .white-right {
+                        .inline-div;
+                        float: left;
+                        padding-left: 10px;
+
+                        a {
+                            .link-button;
+                            font-size: 20px;
+                        }
+                    }
+                }
+            }
+
+            .mf-slide-info {
+                display: none;
+
+                @media only screen and (min-width: @screenMD) {
+                    display: block;
+                }
+            }
+        }
+
+        .group {
+            .standard-div;
+        	text-align: center;
+        	padding-left: 3%;
+        	padding-right: 3%;
+            box-sizing: border-box;
+        	background-color: rgba(255, 255, 255, 1);
+        	border-bottom: 0px;
+            border-top: 1px solid rgba(225, 225, 225, 1);
+
+            &.gray {
+            	background-color: rgba(242, 242, 242, 1);
+            }
+
+            &.graybottomborder {
+            	border-bottom: 1px solid rgba(225, 225, 225, 1);
+            }
+
+            &:last-child {
+                border-bottom: 1px solid rgba(225, 225, 225, 1);
+            }
+
+            .centered {
+                .inline-div;
+            	width: 100%;
+            	max-width: 1280px;
+
+                .inside {
+                	.standard-div;
+                    position: relative;
+
+                    .spacer {
+                    	.standard-div;
+                    	height: 55px;
+                    }
+
+                    .seperator-title {
+                    	.standard-div;
+                    	text-align: center;
+
+                        h1 {
+                            .standard-font;
+                            font-size: @h1FontSize;
+                            color: @h1Color;
+
+                            span.line {
+                            	display: inline-block;
+                            	position: relative;
+
+                                // the spans generate the lines before and after the h1 text
+                                &:before,
+                                &:after {
+                                	content: "";
+                                	position: absolute;
+                                	height: 3px;
+                                	background-color: rgba(145, 145, 145, 1);
+                                	top: 0;
+                                	margin-top: 15px;
+                                	width: 90%;
+                                }
+
+                                &:before {
+                                	right: 100%;
+                                	margin-right: 50px;
+
+                                	background: rgba(145, 145, 145, 1);
+                                	background: -webkit-linear-gradient(left, rgba(255, 255, 255, 1), rgba(145, 145, 145, 1));
+                                	background: -o-linear-gradient(right, rgba(255, 255, 255, 1), rgba(145, 145, 145, 1));
+                                	background: -moz-linear-gradient(right, rgba(255, 255, 255, 1), rgba(145, 145, 145, 1));
+                                	background: linear-gradient(to right, rgba(255, 255, 255, 1), rgba(145, 145, 145, 1));
+                                }
+
+                                &:after {
+                                	left: 100%;
+                                	margin-left: 50px;
+
+                                	background: rgba(145, 145, 145, 1);
+                                	background: -webkit-linear-gradient(left, rgba(145, 145, 145, 1), rgba(255, 255, 255, 1));
+                                	background: -o-linear-gradient(right, rgba(145, 145, 145, 1), rgba(255, 255, 255, 1));
+                                	background: -moz-linear-gradient(right, rgba(145, 145, 145, 1), rgba(255, 255, 255, 1));
+                                	background: linear-gradient(to right, rgba(145, 145, 145, 1) , rgba(255, 255, 255, 1));
+                                }
+
+                                /* get rid of the lines for mobile to prevent width issues */
+                                &:before,
+                                &.line:after {
+                                	display: none;
+                                }
+                            }
+                        }
+                    }
+
+                    .more-details {
+                        .standard-div;
+                        text-align: center;
+                        margin-top: 21px;
+
+                        a {
+                            .link-font;
+                            font-size: 19px;
+                            line-height: 24px;
+
+                            &:link,
+                            &:visited {
+                                color: rgba(7, 166, 244, 1);
+                            }
+
+                            &:hover,
+                            &:active,
+                            &:focus {
+                                color: rgba(37, 196, 255, 1);
+                                border-bottom-color: rgba(37, 196, 255, 1);
+                            }
+                        }
+                    }
+
+
+                    .benefits {
+                    	.standard-div;
+                    	text-align: center;
+
+                        .benefit {
+                            .inline-div;
+                        	width: 100%;
+                        	padding-left: 0px;
+                        	padding-right: 0px;
+                        	vertical-align: top;
+
+                            @media only screen and (min-width: @screenSM) {
+                        		width: 47%;
+                        		padding-left: 1%;
+                        		padding-right: 1%;
+                            }
+
+                            @media only screen and (min-width: @screenMD) {
+                                width: 22%;
+                            }
+
+                            @media only screen and (min-width: @screenMD) {
+                                &.thirds {
+                                    width: 31%;
+                                }
+                            }
+
+                            .icon {
+                                .standard-div;
+                                text-align: center;
+                            }
+
+                            .icon img {
+                            	max-width: 100%;
+                            }
+
+                            .title {
+                            	.standard-div;
+                            	max-width: 100%;
+                                .standard-font;
+                            	color: @h2Color;
+                                font-size: @h2FontSize;
+                            	text-align: center;
+                            	padding-top: 21px;
+                            	padding-bottom: 21px;
+                            }
+
+                            .text {
+                            	.standard-div;
+                                max-width: 100%;
+                                .standard-font;
+                            	color: @darkGrayColor;
+                            	text-align: center;
+                            	padding-bottom: 21px;
+
+                                a {
+                                    .link-font;
+                                }
+                            }
+                        }
+                    }
+
+                    .testimonial {
+                    	.standard-div;
+
+                        .testimonial-picture {
+                        	.standard-div;
+                        	text-align: center;
+
+                            @media only screen and (min-width: @screenMD) {
+                        		width: 25%;
+                        		display: inline-block;
+                        	}
+
+                            img {
+                            	max-width: 100%;
+                            }
+                        }
+
+                        .testimonial-quote {
+                        	.standard-div;
+                        	text-align: center;
+                        	margin-left: 0px;
+
+                            @media only screen and (min-width: @screenMD) {
+                        		width: 72%;
+                        		display: inline-block;
+                        		margin-left: 3%;
+                        	}
+
+                            .testimonial-text {
+                            	.standard-div;
+                            	color: rgba(72, 72, 72, 1);
+                            	font-family: @baseFonts;
+                            	font-size: 22px;
+                            	line-height: 42px;
+                            	font-style: italic;
+
+                                span.quotation {
+                                    .inline-div;
+                                    margin-left: 10px;
+                                    margin-right: 10px;
+                                    vertical-align: text-top;
+                                	color: rgba(172, 172, 172, 1);
+                                	font-family: @baseFonts;
+                                	font-size: 42px;
+                                	font-style: italic;
+                                	line-height: 42px;
+                                }
+                            }
+
+                            .testimonial-person {
+                            	.standard-div;
+                            	text-align: right;
+
+                                .testimonial-name {
+                                	.standard-div;
+                                    .standard-font;
+                                	margin-top: 20px;
+                                    font-size: 25px;
+                                    line-height: 42px;
+                                    color: @redColor;
+                                	text-align: right;
+                                }
+
+                                .testimonial-location {
+                                	.standard-div;
+                                    .standard-font;
+                                	margin-top: 15px;
+                                    color: @darkGrayColor;
+                                	text-align: right;
+                                    font-size: 22px;
+                                    line-height: 42px;
+                                }
+                            }
+                        }
+                    }
+
+                    .how-it-works {
+                        .standard-div;
+                    	width: 94%;
+                    	margin-left: 3%;
+                    	margin-right: 3%;
+
+                        .steps {
+                            .step-row {
+                                .standard-div;
+
+                                &:last-child {
+                                    .step-col {
+                                        @media only screen and(min-width: @screenMD) {
+                                            border-bottom-width: 0px;
+                                        }
+
+                                        &:last-child {
+                                            border-bottom-width: 0px;
+                                        }
+                                    }
+                                }
+
+                                .step-col {
+                                	.standard-div;
+                                	box-sizing: border-box;
+                                	padding-left: 2%;
+                                	padding-right: 2%;
+                                	padding-top: 15px;
+                                	padding-bottom: 15px;
+                                    border-width: 0px;
+                                    border-style: solid;
+                                    border-color: rgba(226, 226, 226, 1);
+                                    border-bottom-width: 1px;
+
+                                    @media only screen and (min-width: @screenMD) {
+                                        width: 50%;
+                                        display: inline-block;
+                                        border-right-width: 1px;
+
+                                        &:last-child {
+                                            border-right-width: 0px;
+                                        }
+                                    }
+
+                                    .step-icon {
+                                        .background-defaults;
+                                    	width: 38%;
+                                    	display: inline-block;
+                                    	float: left;
+                                    	height: 250px;
+                                    	margin-left: 1%;
+                                    	margin-right: 1%;
+
+                                        &.post {
+                                        	background-image: url('../img/post-a-project.png');
+                                        }
+
+                                        &.select {
+                                        	background-image: url('../img/select-mechanic.png');
+                                        }
+
+                                        &.repair {
+                                        	background-image: url('../img/repair-vehicle.png');
+                                        }
+
+                                        &.rate {
+                                        	background-image: url('../img/rate-mechanic.png');
+                                        }
+
+                                        &.create-profile {
+                                            background-image: url('../img/create-mechanic-profile.png');
+                                        }
+
+                                        &.search-projects {
+                                            background-image: url('../img/search-for-projects.png');
+                                        }
+
+                                        &.stress-free-payouts {
+                                            background-image: url('../img/stress-free-payouts.png');
+                                        }
+                                    }
+
+                                    .step-info {
+                                    	width: 58%;
+                                    	display: inline-block;
+                                    	float: left;
+                                    	margin-left: 1%;
+                                    	margin-right: 1%;
+
+                                        .step-heading {
+                                        	.standard-div;
+                                            .standard-font;
+                                        	margin-top: 82px;
+                                            color: @grayColor;
+                                        	text-align: center;
+                                        	font-size: 18px;
+                                        	line-height: 23px;
+                                        	font-weight: bold;
+                                        }
+
+                                        .step-text {
+                                        	.standard-div;
+                                            .standard-font;
+                                        	margin-top: 10px;
+                                        	text-align: center;
+                                            color: @grayColor;
+
+                                            a {
+                                                .link-font;
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+
+                    .mechanics-near-you {
+                    	width: 90%;
+                    	margin-left: 5%;
+                    	margin-right: 5%;
+                    	display: block;
+                    	float: left;
+
+                        .near-row {
+                        	.standard-div;
+
+                            .near-col {
+                                .standard-div;
+
+                            	padding-top: 10px;
+                            	padding-bottom: 10px;
+                                border-width: 0px;
+                                border-color: rgba(225, 225, 225, 1);
+                                border-style: solid;
+                            	border-bottom-width: 1px;
+
+                                @media only screen and (min-width: @screenLG) {
+                                    .inline-div;
+                                    width: 48%;
+                                    margin-left: 1%;
+                                    margin-right: 1%;
+                                }
+
+                                .near-pic {
+                                	display: inline-block;
+                                	float: left;
+                                	width: 75px;
+                                	height: 75px;
+
+                                	background-image: url('../img/mechanic-near-you-default.png');
+                                	background-size: contain;
+                                	background-position: center;
+                                	background-repeat: no-repeat;
+                                }
+
+                                .near-info {
+                                	display: inline-block;
+                                	float: left;
+                                	width: 70%;
+                                	width: ~"calc(100% - 75px)";
+                                	padding-left: 2%;
+                                	padding-right: 2%;
+                                	box-sizing: border-box;
+
+                                    .line {
+                                    	width: 100%;
+                                    	display: inline-block;
+                                    	float: left;
+                                    }
+
+                                    .username {
+                                    	display: inline-block;
+                                    	float: left;
+                                    	max-width: 99%;
+                                    	margin-right: 1%;
+
+                                    	color: rgba(41, 41, 41, 1);
+                                    	font-family: @baseFonts;
+                                    	font-size: 13px;
+                                    	text-align: left;
+                                    	font-weight: bold;
+
+                                    	margin-top: 1px;
+                                    	margin-bottom: 1px;
+                                    }
+
+                                    .ratings {
+                                    	display: inline-block;
+                                    	float: left;
+                                    	max-width: 99%;
+                                    	margin-right: 1%;
+
+                                    	margin-top: 1px;
+                                    	margin-bottom: 1px;
+
+                                        .wrench {
+                                        	display: inline-block;
+                                        	float: left;
+                                        	width: 14px;
+                                        	height: 14px;
+
+                                        	background-image: url('../img/wrench.png');
+                                        	background-size: contain;
+                                        	background-position: center;
+                                        	background-repeat: no-repeat;
+                                        }
+                                    }
+
+                                    .type {
+                                    	display: block;
+                                    	float: left;
+                                    	width: 100%;
+                                    	margin-top: 1px;
+                                    	margin-bottom: 1px;
+
+                                    	color: rgba(41, 41, 41, 1);
+                                    	font-family: @baseFonts;
+                                    	font-size: 13px;
+                                    	text-align: left;
+
+                                        @media only screen and (min-width: @screenSM) {
+                                    		display: inline-block;
+                                    		max-width: 99%;
+                                    		width: auto;
+                                    		margin-right: 1%;
+                                        }
+
+                                        &.green {
+                                        	color: rgba(80, 152, 102, 1);
+                                        }
+
+                                        &.red {
+                                        	color: rgba(154, 66, 70, 1);
+                                        }
+
+                                        &.blue {
+                                        	color: rgba(69, 81, 133, 1);
+                                        }
+                                    }
+
+                                    .lbl {
+                                    	display: inline-block;
+                                    	float: left;
+                                    	max-width: 99%;
+                                    	margin-right: 1%;
+                                    	margin-top: 1px;
+                                    	margin-bottom: 1px;
+
+                                    	color: rgba(41, 41, 41, 1);
+                                    	font-family: @baseFonts;
+                                    	font-size: 13px;
+                                    	text-align: left;
+                                    	font-weight: bold;
+                                    }
+
+                                    .txt {
+                                    	display: inline-block;
+                                    	float: left;
+                                    	max-width: 99%;
+                                    	margin-right: 1%;
+                                    	margin-top: 1px;
+                                    	margin-bottom: 1px;
+
+                                    	color: rgba(41, 41, 41, 1);
+                                    	font-family: @baseFonts;
+                                    	font-size: 13px;
+                                    	text-align: left;
+                                    }
+                                }
+                            }
+
+                            &:last-child {
+                                .near-col:last-child {
+                                    border-bottom-width: 0px;
+                                }
+                            }
+
+                            @media only screen and (min-width: @screenLG) {
+                                border-top: 1px solid rgba(225, 225, 225, 1);
+
+                                &:first-child {
+                                    border-top: 0px;
+                                }
+
+                                .near-col {
+                                    border-width: 0px;
+                                }
+                            }
+                        }
+                    }
+
+                    .protected {
+                    	.standard-div;
+
+                        .col {
+                        	.standard-div;
+                        	margin-bottom: 55px;
+
+                            @media only screen and (min-width: @screenLG) {
+                                width: 48%;
+                                display: inline-block;
+                                margin-left: 1%;
+                                margin-right: 1%;
+                                float: left;
+                                margin-bottom: 55px;
+                            }
+
+                            .circle {
+                                .inline-div;
+                            	float: left;
+                            	width: 20%;
+                            }
+
+                            .info {
+                                .inline-div;
+                                float: left;
+                            	width: 75%;
+                            	margin-left: 5%;
+
+                                .title {
+                                	width: 100%;
+                                	display: block;
+                                	float: left;
+
+                                    h3 {
+                                    	color: rgba(31, 31, 31, 1);
+                                    	font-family: @baseFonts;
+                                    	font-size: 19px;
+                                    	font-weight: normal;
+                                    	text-align: left;
+                                    	padding-bottom: 12px;
+                                    }
+                                }
+
+                                .text {
+                                	width: 100%;
+                                	display: block;
+                                	float: left;
+
+                                    p {
+                                    	color: rgba(81, 81, 81, 1);
+                                    	font-family: @baseFonts;
+                                    	font-size: 15px;
+                                    	line-height: 18px;
+                                    	font-weight: normal;
+                                    	text-align: left;
+
+                                        a:link,
+                                        a:visited {
+                                            color: rgba(7, 166, 244, 1);
+                                        	font-family: @baseFonts;
+                                        	font-size: 15px;
+                                        	line-height: 18px;
+                                        	font-weight: bold;
+                                        	text-align: left;
+                                        	text-decoration: none;
+                                        	outline: none;
+
+                                        	border-bottom: 1px solid transparent;
+                                        	-moz-transition: all 300ms ease;
+                                        	-ms-transition: all 300ms ease;
+                                        	-o-transition: all 300ms ease;
+                                        	transition: all 300ms ease;
+                                        }
+
+                                        a:hover,
+                                        a:active,
+                                        a:focus {
+                                            color: rgba(37, 196, 255, 1);
+                                        	border-bottom: 1px solid rgba(37, 196, 255, 1);
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+
+                    .mechanic-requirements {
+                        // .standard-div;
+                        max-width: 70%;
+                        margin-left: auto;
+                        margin-right: auto;
+                        display: block;
+
+                        .info {
+                            // .standard-div;
+                            // margin-top: 15px;
+                            padding: 9px;
+
+                            .req-heading {
+                                .inline-div;
+                                .standard-font;
+                                margin: 9px;
+                                font-weight: bold;
+                                vertical-align: text-top;
+                                width: 120px;
+                                .fa {
+                                    color: @colorRed;
+                                    font-size: 18px;
+                                }
+                            }
+
+                            .req-details {
+                                .inline-div;
+                                .standard-font;
+                                margin: 9px;
+                                vertical-align: text-top;
+                            }
+                        }
+
+                        .get-started {
+                            .standard-div;
+                            margin-top: 25px;
+                            text-align: right;
+
+                            a {
+                                .link-button;
+                                background-color: @colorGreen !important;
+                            }
+                        }
+                    }
+                }
+
+                &.gray {
+                    .centered {
+                        .seperator-title {
+                            h1 {
+                                span.line {
+                                    &:before {
+                                        right: 100%;
+                                        margin-right: 50px;
+
+                                        background: rgba(145, 145, 145, 1);
+                                        background: -webkit-linear-gradient(left, rgba(242, 242, 242, 1), rgba(145, 145, 145, 1));
+                                        background: -o-linear-gradient(right, rgba(242, 242, 242, 1), rgba(145, 145, 145, 1));
+                                        background: -moz-linear-gradient(right, rgba(242, 242, 242, 1), rgba(145, 145, 145, 1));
+                                        background: linear-gradient(to right, rgba(242, 242, 242, 1), rgba(145, 145, 145, 1));
+
+                                        @media only screen and (min-width: @screenLG) {
+                                            display: inline-block;
+                                        }
+                                    }
+
+                                    &:after {
+                                        left: 100%;
+                                    	margin-left: 50px;
+
+                                    	background: rgba(145, 145, 145, 1);
+                                    	background: -webkit-linear-gradient(left, rgba(145, 145, 145, 1), rgba(242, 242, 242, 1));
+                                    	background: -o-linear-gradient(right, rgba(145, 145, 145, 1), rgba(242, 242, 242, 1));
+                                    	background: -moz-linear-gradient(right, rgba(145, 145, 145, 1), rgba(242, 242, 242, 1));
+                                    	background: linear-gradient(to right, rgba(145, 145, 145, 1) , rgba(242, 242, 242, 1));
+
+                                        @media only screen and (min-width: @screenLG) {
+                                            display: inline-block;
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+span.brkr {
+    display: block;
+    float: left;
+    width: 100%;
+    height: 100px;
+}

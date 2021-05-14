@@ -1,0 +1,214 @@
+<div class="heading-row"><h1>My Jobs</h1></div>
+<div class="myProjectsPage mf-ui">
+    <div class="card-container">
+        <div class="mf-card full-width">
+            <div class="favorites-container container">
+                <div class="card-header small">
+                <ul class="tabs">
+                    <li class="tab-link current blue" data-tab="tab-1" id="openJobs">Open Jobs</li>
+                    <li class="tab-link blue" data-tab="tab-2" id="inProgress">In Progress</li>
+                    <li class="tab-link blue" data-tab="tab-3" id="jobsCompleted">Completed Jobs</li>
+                    {{#if data.mechanic}}
+                    <li class="tab-link blue" data-tab="tab-4" id="jobsLost">Jobs Lost</li>
+                    {{/if}}
+                    <li class="tab-link blue" data-tab="tab-5" id="drafts">Drafts</li>
+                </ul>
+                </div>
+                <div class="tab-contents">
+                    <div id="tab-1" class="tab-content current">
+                        <div class="results-table">
+                            <div class="container">
+                                {{#compare data.buyer_bidding.length lt="1"}}
+                                You don't have any open jobs. You can submit some <a href="/projects/post">here</a>.
+                                {{else}}
+                                <table border="0" class="favorite-customers-table mf-mobile-table mf-mobile-table-styled">
+                                    <tr class="table-labels">
+                                        <th class="mf-table-xs">Post Date</th>
+                                        <th class="mf-table-xs">Vehicle</th>
+                                        <th class="mf-table-sm">Estimates</th>
+                                        <th class="mf-table-xs">Views</th>
+                                    </tr>
+                                    {{#each data.buyer_bidding}}
+                                    <tr class="project-row" data-href="/projects/{{_id}}">
+                                        <td class="mf-table-xs">{{date date_created}}</td>
+                                        <td class="mf-table-xs">
+                                            <strong>{{vehicle.year}} {{vehicle.make}} {{vehicle.model}}</strong><br/>
+                                            {{truncate title "50"}}
+                                        </td>
+                                        <td class="mf-table-sm">{{bids.length}}</td>
+                                        <td class="mf-table-xs">
+                                            {{viewers.length}}
+                                        </td>
+                                    </tr>
+                                    {{/each}}
+                                </table>
+                                {{/compare}}
+                            </div>
+                        </div>
+                    </div>
+                    <div id="tab-2" class="tab-content container">
+                        <div class="results-table">
+                            <div class="col-xs-12">
+                                {{#compare data.buyer_assigned.length lt="1"}}
+                                You don't have any jobs in progress. If you have any open jobs, they'll appear here after hiring a mechanic.
+                                {{else}}
+                                <table border="0" class="favorite-customers-table mf-mobile-table mf-mobile-table-styled">
+                                    <tr class="table-labels">
+                                        <th class="mf-table-sm"></th>
+                                        <th class="mf-table-xs">Post Date</th>
+                                        <th class="mf-table-xs">Vehicle</th>
+                                        <th class="mf-table-lg">Status</th>
+                                        <th class="mf-table-sm">Assigned Mechanic</th>
+                                        <th></th>
+                                    </tr>
+                                    {{#each data.buyer_assigned}}
+                                    <tr class="project-row" data-href="/projects/{{_id}}">
+                                        <td class="photo project-photo mf-table-sm">
+                                            {{#if assigned.picture}}
+                                            <div class="photo project-photo"><img width="50" height="50" class="profile-photo" src="/api/public/image/{{assigned.picture}}" /></div>
+                                            {{else}}
+                                            <div class="photo project-photo"><img width="50" height="50" class="profile-photo" src="/static/img/mechanic-profile-pic.png" /></div>
+                                            {{/if}}
+                                        </td>
+                                        <td class="result-date mf-table-xs">{{date date_created}}</td>
+                                        <td class="result-location mf-table-lg">
+                                            <strong>{{vehicle.year}} {{vehicle.make}} {{vehicle.model}}</strong><br/>
+                                            {{truncate title "50"}}
+                                        </td>
+                                        <td class="result-vehicle mf-table-md">In Progress</td>
+                                        <td class="result-assigned-mechanic mf-table-sm">{{assigned.username}}</td>
+                                        <td class="result-actions">
+                                            <div class="contact-action" data-ids="{{assigned._id}}">
+                                                <span class="fa fa-envelope-o" aria-hidden="true"></span>
+                                                <span class="favorite-label">Message</span>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    {{/each}}
+                                </table>
+                                {{/compare}}
+                            </div>
+                        </div>
+
+                    </div>
+                    <div id="tab-3" class="tab-content">
+                        <div class="row  results-table">
+                            <div class="container">
+                                {{#compare data.buyer_finished.length lt="1"}}
+                                You don't have any completed jobs.
+                                {{else}}
+                                <table border="0" class="favorite-customers-table mf-mobile-table mf-mobile-table-styled">
+                                    <tr class="table-labels">
+                                        <th class="mf-table-sm"></th>
+                                        <th class="mf-table-xs">Post Date</th>
+                                        <th class="mf-table-xs">Vehicle</th>
+                                        <th class="mf-table-lg">Rate Mechanic</th>
+                                        <th class="mf-table-sm">Assigned Mechanic</th>
+                                        <th></th>
+                                    </tr>
+                                    {{#each data.buyer_finished}}
+                                    <tr class="project-row" data-href="/projects/{{_id}}">
+                                        <td class="photo project-photo mf-table-sm">
+                                            {{#if assigned.picture}}
+                                            <div class="photo project-photo"><img width="50" height="50" class="profile-photo" src="/api/public/image/{{assigned.picture}}" /></div>
+                                            {{else}}
+                                            <div class="photo project-photo"><img width="50" height="50" class="profile-photo" src="/static/img/mechanic-profile-pic.png" /></div>
+                                            {{/if}}
+                                        </td>
+                                        <td class="result-date mf-table-xs">{{date date_created}}</td>
+                                        <td class="result-location mf-table-lg">
+                                            <strong>{{vehicle.year}} {{vehicle.make}} {{vehicle.model}}</strong><br/>
+                                            {{truncate title "50"}}
+                                        </td>
+                                        <td class="result-vehicle mf-table-md">
+                                            {{#if sellerRated}}<span class="green">Rated</span>{{else}}<strong class="red">Needs Rating</strong>{{/if}}
+                                        </td>
+                                        <td class="result-assigned-mechanic mf-table-sm">{{assigned.username}}</td>
+                                        <td class="result-actions">
+                                            <div class="contact-action" data-ids="{{assigned._id}}">
+                                                <span class="fa fa-envelope-o" aria-hidden="true"></span>
+                                                <span class="favorite-label">Message</span>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    {{/each}}
+                                </table>
+                                {{/compare}}
+                            </div>
+                        </div>
+                    </div>
+                    {{#if data.mechanic}}
+                    <div id="tab-4" class="tab-content">
+                        <div class="row  results-table">
+                            <div class="container">
+                                <table border="0" class="mf-mobile-table mf-mobile-table-styled">
+                                    <tr class="table-labels">
+                                        <th class="mf-table-sm"></th>
+                                        <th class="mf-table-xs">Post Date</th>
+                                        <th class="mf-table-lg">Job</th>
+                                        <th class="mf-table-md">Status</th>
+                                        <th class="mf-table-md">Assigned Mechanic</th>
+                                    </tr>
+                                    <tr data-href="/projects/{{_id}}">
+                                        <td class="photo project-photo mf-table-sm">
+                                            {{#if assigned.picture}}
+                                            <div class="photo project-photo"><img width="50" height="50" class="profile-photo" src="/api/public/image/{{assigned.picture}}" /></div>
+                                            {{else}}
+                                            <div class="photo project-photo"><img width="50" height="50" class="profile-photo" src="/static/img/mechanic-profile-pic.png" /></div>
+                                            {{/if}}
+                                        </td>
+                                        <td class="result-date mf-table-xs">07/10/2015</td>
+                                        <td class="result-location mf-table-lg">
+                                            2002 Ford Focus Transmission
+                                        </td>
+
+                                        <td class="result-vehicle mf-table-md">Lost</td>
+                                        <td class="result-assigned-mechanic mf-table-sm">Joshua Benjamin Buttonpants</td>
+
+                                        <td class="result-actions">
+                                            <div class="contact-action" data-ids="{{assigned._id}}">
+                                                <span class="fa fa-envelope-o" aria-hidden="true"></span>
+                                                <span class="favorite-label">Message</span>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                    {{/if}}
+
+                    <div id="tab-5" class="tab-content">
+                        <div class="row  results-table">
+                            <div class="container">
+                                {{#compare data.buyer_draft.length lt="1"}}
+                                You don't have any job drafts.
+                                {{else}}
+                                <table border="0" class="favorite-customers-table mf-mobile-table mf-mobile-table-styled">
+                                    <tr class="table-labels">
+                                        <th class="mf-table-xs">Post Date</th>
+                                        <th class="mf-table-xs">Vehicle</th>
+                                        <th class="mf-table-lg">Status</th>
+                                    </tr>
+                                    {{#each data.buyer_draft}}
+                                    <tr class="project-row" data-href="/projects/{{_id}}">
+                                        <td class="result-date mf-table-xs">{{date date_created}}</td>
+                                        <td class="result-location mf-table-lg">
+                                            <strong>{{vehicle.year}} {{vehicle.make}} {{vehicle.model}}</strong><br/>
+                                            {{truncate title "50"}}
+                                        </td>
+                                        <td class="result-vehicle mf-table-md">Draft</td>
+                                    </tr>
+                                    {{/each}}
+                                </table>
+                                {{/compare}}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="{{ settings.static_path }}/js/modal-handler.js"></script>
+<script src="{{ settings.static_path }}/js/favorites-page.js"></script>

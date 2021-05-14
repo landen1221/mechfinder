@@ -1,0 +1,167 @@
+<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.5/handlebars.min.js" ></script> -->
+
+<div class="heading-row"><h1>Favorites</h1></div>
+<div class="dashboard-page favoritesPage searchPage mf-ui">
+    <div class="card-container">
+        <div class="favorites-container container mf-card full-width">
+            <div class="card-header small">
+                <ul class="tabs">
+                    <li class="tab-link current" data-tab="tab-2" id="jobs">Jobs</li>
+                    <li class="tab-link" data-tab="tab-1" id="mechanics">Mechanics</li>
+                </ul>
+            </div>
+            <div class="tab-contents">
+                <div id="tab-1" class="tab-content">
+                    <div class="row results-table">
+                        <div class="col-xs-12">
+                            {{#compare favoriteMechanics.length lt="1"}}
+                                You haven't favorited any mechanics yet. You can find mechanics <a href="/mechanics">here</a>.
+                            {{else}}
+                            <table border="0" data-table-type="favorite-mechanics-table" class="mf-mobile-table mf-mobile-table-styled">
+                                <tr class="table-labels">
+                                    <th class="mf-table-sm" data-modal-label="photo"></th>
+                                    <th class="mf-table-xs" data-modal-label="mechanic">Mechanic</th>
+                                    <th class="mf-table-sm" data-modal-label="mechanic_zip">Distance</th>
+                                    <th class="mf-table-sm" data-modal-label="mechanic_type">Type</th>
+                                    <th class="mf-table-md" data-modal-label="mechanic_highlights">Highlights</th>
+                                    <th class="mf-table-lg" data-modal-label="mechanic_specialties">Specialties</th>
+                                    <th data-modal-label="actions"></th>
+                                </tr>
+                                {{#each favoriteMechanics}}
+                                <tr class="project-row" data-href="/profile/{{_id}}">
+                                    <td class="photo project-photo mf-table-sm">
+                                        <!--<img src="{{ ../settings.static_path }}/img/mechanicicon.png" style="width:50px" alt="" />-->
+                                        <i class="fa fa-user fa-3x"></i>
+                                    </td>
+                                    <td class="result-profile mf-table-xs">
+                                        <strong>{{username}}</strong></br>
+                                        {{#if city}}
+                                        {{#if state}}
+                                        {{city}}, {{state}}
+                                        {{/if}}
+                                        {{/if}}
+                                        <div class="xs-only">{{distance}}</div>
+                                    </td>
+                                    <td class="result-location mf-table-sm">
+                                        {{distance}}
+                                    </td>
+                                    <td class="result-type mf-table-sm">
+                                        {{#compare mechanicType to="shop"}}
+                                        Shop
+                                        {{/compare}}
+                                        {{#compare mechanicType to="mobile"}}
+                                        Mobile
+                                        {{/compare}}
+                                    </td>
+                                    <td class="result-highlights mf-table-md">
+                                        <ul>
+                                        {{#compare yearsOfExperience gt="0"}}
+                                            <li>{{yearsOfExperience}} years experience</li>
+                                        {{/compare}}
+                                        {{#compare certifications.length gt="0"}}
+                                            <li>{{certifications.length}} certifications</li>
+                                        {{/compare}}
+                                        {{#compare warranty.amount gt="0"}}
+                                            <li>{{warranty.amount}}-{{warranty.units}} warranty</li>
+                                        {{/compare}}
+                                        {{#if insurance}}
+                                            <li>Carries insurance</li>
+                                        {{/if}}
+                                        </ul>
+                                    </td>
+                                    <td class="result-specialties mf-table-lg">
+                                        {{#compare specialties.length gte="5"}}
+                                            {{#listItems 0 3 specialties}}
+                                                {{this}} </br>
+                                            {{/listItems}}
+                                            ...
+                                        {{else}}
+                                            {{#listItems 0 4 specialties}}
+                                                {{this}} </br>
+                                            {{/listItems}}
+                                        {{/compare}}
+                                    </td>
+                                    <td class="result-actions fav-mechanic">
+                                        <div class="contact-action contact-action-styles" data-ids="{{_id}}">
+                                            <span class="fa fa-envelope-o" aria-hidden="true"></span>
+                                            <span class="favorite-label">Message</span>
+                                        </div>
+                                        <div class="favorite-action favorite-action-styles" data-ids="{{_id}}" data-role="mechanics">
+                                            <span class="favorite-icon fa fa-trash-o" aria-hidden="true"></span>
+                                            <span class="favorite-label">Remove</span>
+                                        </div>
+                                    </td>
+                                </tr>
+                                {{/each}}
+                            </table>
+                            {{/compare}}
+                        </div>
+                    </div>
+                </div>
+                <div id="tab-2" class="tab-content current">
+                    <div class="row results-table">
+                        <div class="container">
+                            {{#compare favoriteProjects.length lt="1"}}
+                                You haven't favorited any jobs yet. You can find jobs <a href="/projects">here</a>.
+                            {{else}}
+                            <table border="0" class="mf-mobile-table mf-mobile-table-styled">
+                                <tr class="table-labels">
+                                    <th class="mf-table-md" data-model-label="photo"></th>
+                                    <th class="mf-table-md" data-modal-label="post_date">Post Date</th>
+                                    <th class="mf-table-sm" data-modal-label="project_zip">Distance</th>
+                                    <th class="mf-table-lg" data-modal-label="project_bids">Estimates</th>
+                                    <th class="mf-table-xs" data-modal-label="project_vehicle">Vehicle</th>
+                                    <th data-modal-label="actions"></th>
+                                </tr>
+                                {{#each favoriteProjects}}
+                                <tr class="project-row" data-href="/projects/{{_id}}">
+                                    <td class="photo project-photo mf-table-md">
+                                        {{#compare photos.length gt="0"}}
+                                            <div class="photo project-photo"><img width="50" height="50" class="project-photo" src="/api/public/image/{{photos.[0]}}" /></div>
+                                        {{else}}
+                                            <i class="fa fa-car fa-3x"></i>
+                                        {{/compare}}
+                                    </td>
+                                    <td class="result-profile mf-table-md">
+                                        {{date date_created}}
+                                    </td>
+                                    <td class="result-location mf-table-sm">
+                                        {{distance}}</br>
+                                        {{#if city}}
+                                            {{#if state}}
+                                                {{city}}, {{state}}
+                                            {{/if}}
+                                        {{/if}}
+                                    </td>
+                                    <td class="result-bids mf-table-lg">{{bids.length}}</td>
+                                    <td class="result-vehicle mf-table-xs">
+                                        <div class="xs-only"><strong>{{distance}}</strong></div>
+                                        {{vehicle.year}} {{vehicle.make}} {{vehicle.model}}
+                                        <div class="xs-only">
+                                            {{#if diagnosis}}
+                                                Needs Diagnostic
+                                            {{else}}
+                                                Needs {{repair}}
+                                            {{/if}}
+                                        </div>
+                                    </td>
+                                    <td class="result-actions fav-project">
+                                        <div class="favorite-action favorite-action-styles" data-ids="{{_id}}" data-role="projects">
+                                            <span class="favorite-icon fa fa-trash-o" aria-hidden="true"></span>
+                                            <span class="favorite-label">Remove</span>
+                                        </div>
+                                    </td>
+                                </tr>
+                                {{/each}}
+                            </table>
+                            {{/compare}}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--<script src="{{ settings.static_path }}/js/modal-handler.js"></script>-->
+<script src="{{ settings.static_path }}/js/favorites-page.js"></script>

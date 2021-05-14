@@ -1,0 +1,281 @@
+<script type="text/javascript">
+    var USER = {{#if user}}{{{json user}}}{{else}}null{{/if}};
+    var PREFS = {{#if user.preferences}}{{{json user.preferences}}}{{else}}null{{/if}};
+</script>
+<script type="text/javascript" src="{{settings.static_path}}/js/personal-profile.js"></script>
+
+<div class="dashboard-page mf-ui">
+    <div class="card-container">
+        <div class="mf-card full-width">
+            <div class="card-header">Profile Information</div>
+            <div class="card-content">
+                <div class="profile-picture">
+                    <div id="personal-profile-picture" class="profile-picture-circle{{#compare user.role to="seller"}} mechanic-pic{{/compare}}" {{#if user.picture}}style="background-image: url('/api/public/image/{{user.picture}}');"{{/if}}><div class="circle-overlay"></div></div>
+                    <input type="file" id="personal-profile-file" style="display: none;">
+                </div>
+            </div>
+            <div class="card-content">
+                <table class="two-col">
+                    <tr>
+                        <td><label for="personal-profile-username">Display Name</label></td>
+                        <td><input id="personal-profile-username" type="text" placeholder="{{user.username}}" disabled="disabled" /></td>
+                    </tr>
+                    <tr>
+                        <td><label for="personal-profile-firstname">First Name</label></td>
+                        <td><input id="personal-profile-firstname" type="text" placeholder="{{user.first}}" autocomplete="given-name" /></td>
+                    </tr>
+                    <tr>
+                        <td><label for="personal-profile-lastname">Last Name</label></td>
+                        <td><input id="personal-profile-lastname" type="text" placeholder="{{user.last}}" autocomplete="family-name" /></td>
+                    </tr>
+                    <tr>
+                        <td><label for="personal-profile-email">Email</label></td>
+                        <td><input id="personal-profile-email" type="text" placeholder="{{user.email}}" autocomplete="email" /></td>
+                    </tr>
+                    <tr>
+                        <td colspan="2" class="centered empty-break"></td>
+                    </tr>
+                    <tr>
+                        <td><label>Languages</label></td>
+                        <td id="personal-profile-languages">
+                            <table><tr>
+                            <td><div class="inline-div">
+                                <input type="checkbox" id="personal-profile-english" {{#if user.languages.english}}checked="checked"{{/if}} />
+                                <label for="personal-profile-english" class="no-float">English </label>
+                            </div></td>
+                            <td><div class="inline-div">
+                                <input type="checkbox" id="personal-profile-spanish" {{#if user.languages.spanish}}checked="checked"{{/if}} />
+                                <label for="personal-profile-spanish" class="no-float">Spanish</label>
+                            </div></td>
+                            </tr></table>
+                        </td>
+                    </tr>
+                </table>
+                <table class="two-col right">
+                    <tr>
+                        <td><label for="personal-profile-phonetype">Phone Type</label></td>
+                        <td>
+                            <select id="personal-profile-phonetype">
+                                <option value="Mobile" {{#compare user.phone.kind to="Mobile"}}selected="selected"{{/compare}}>Mobile</option>
+                                <option value="Landline"{{#compare user.phone.kind to="Landline"}}selected="selected"{{/compare}}>Landline</option>
+                            </select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><label for="personal-profile-phone">Phone Number</label></td>
+                        <td><input id="personal-profile-phone" type="text" placeholder="{{#if user.phone.number}}{{phoneNumber user.phone.number}}{{else}}XXX-XXX-XXXX{{/if}}" autocomplete="tel" /></td>
+                    </tr>
+                    <tr id="smsandcarrier" {{#compare user.phone.kind to="Landline"}}style="display: none;"{{/compare}}>
+                        <td><label for="personal-profile-sms">SMS Notifications</label></td>
+                        <td>
+                            <select id="personal-profile-sms">
+                                <option value="1" {{#if user.phone.sms}}selected="selected"{{/if}}>On</option>
+                                <option value="0" {{#unless user.phone.sms}}selected="selected"{{/unless}}>Off</option>
+                            </select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="2" class="centered empty-break"></td>
+                    </tr>
+                    <tr id="carrieragreebox" {{#unless user.phone.sms}}style="display: none;"{{/unless}}>
+                        <td id="personal-profile-smscharges-td" colspan="2">
+                            <div class="inline-div">
+                            <input type="checkbox" name="personal-profile-sms" id="personal-profile-smscharges" {{#if user.phone.smsCharges}}checked="checked"{{/if}} />
+                            <label for="personal-profile-smscharges" style="float:none;">I understand that carrier charges may apply</label>
+                            </div>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+            <div class="card-content card-buttons right-align">
+                <a class="mf-button red" href="/profile/{{user._id}}/personal"><i class="fa fa-ban"></i> Cancel</a>
+                <a class="mf-button green savePersonalProfile" href="javascript:void(0);"><i class="fa fa-floppy-o fa-fw" aria-hidden="true"></i> Save</a>
+            </div>
+        </div>
+        
+        <div id="verify-phonenumber" class="mf-card full-width" style="display: {{#unless user.phone.number}}none{{else}}{{#if user.phone.verified}}none{{/if}}{{/unless}};">
+            <div class="card-header">Phone Verification</div>
+            <div class="card-content">
+                <p>We need to verify your phone number before it will be available to {{#compare user.role to="seller"}}customers{{else}}mechanics{{/compare}}</p>
+            </div>
+            <div class="card-content">
+                <div class="card-buttons">
+                    {{!-- tried to get these center-aligned but I couldn't ~Marcus --}}
+                    <a id="verifyPhoneCallMe" class="mf-button green verifyPhoneSend" data-method="call" href="javascript:void(0);"><i class="fa fa-phone fa-fw" aria-hidden="true"></i> Call Me</a>
+                    <a id="verifyPhoneTextMe" class="mf-button blue verifyPhoneSend" data-method="sms" href="javascript:void(0);"><i class="fa fa-mobile fa-fw" aria-hidden="true"></i> Send Me a Text</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="mf-card full-width">
+            <div class="card-header">Notification Preferences</div>
+            <div class="card-content">
+                <p>You can update your preferences here to adjust how frequently we contact you</p>
+                <div class="preferences-list">
+                    <ul class="no-bullets">
+                        {{#compare user.role to="seller"}}
+                            <li>
+                                <div class="preference">
+                                    <input id="notsSupport" type="checkbox" {{#if user.preferences.notifications.email.support}}checked="checked"{{/if}} />
+                                    <label for="notsSupport">Support Updates</label>
+                                </div>
+                                <div class="description">
+                                    <p>Help creating profile, getting more jobs, etc.</p>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="preference">
+                                    <input id="notsNewProjects" type="checkbox" {{#if user.preferences.notifications.email.newProjects}}checked="checked"{{/if}} />
+                                    <label for="notsNewProjects">New Projects Near You</label>
+                                </div>
+                                <div class="description">
+                                    <p>Be notified instantly when a new job is posted in your area</p>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="preference">
+                                    <input id="notsBuyerUpdates" type="checkbox" {{#if user.preferences.notifications.email.buyerUpdates}}checked="checked"{{/if}} />
+                                    <label for="notsBuyerUpdates">Customer Updates</label>
+                                </div>
+                                <div class="description">
+                                    <p>Be notified when previous clients post new jobs</p>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="preference">
+                                    <input id="notsChat" type="checkbox" {{#if user.preferences.notifications.email.chat}}checked="checked"{{/if}} />
+                                    <label for="notsChat">Chat Conversations</label>
+                                </div>
+                                <div class="description">
+                                    <p>Whenever you get an instant message through the site, we'll notify you with an email</p>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="preference">
+                                    <input id="notsMarketing" type="checkbox" {{#if user.preferences.notifications.email.marketing}}checked="checked"{{/if}} />
+                                    <label for="notsMarketing">Marketing &amp; Promotions</label>
+                                </div>
+                                <div class="description">
+                                    <p>Whenever we've got some offers for you to reivew</p>
+                                </div>
+                            </li>
+                            <!--<li>
+                                <div class="preference">
+                                    <input id="notsReviewed" type="checkbox" {{#if user.preferences.notifications.email.reviewed}}checked="checked"{{/if}} />
+                                    <label for="notsReviewed">Customer Left a Review</label>
+                                </div>
+                                <div class="description">
+                                    <p>See what customers are saying as soon as they leave a review on your public profile</p>
+                                </div>
+                            </li>-->
+                        {{else}}
+                            <li>
+                                <div class="preference">
+                                    <input id="notsSupport" type="checkbox" {{#if user.preferences.notifications.email.support}}checked="checked"{{/if}} />
+                                    <label for="notsSupport">Support Updates</label>
+                                </div>
+                                <div class="description">
+                                    <p>Help creating profile, posting jobs, etc.</p>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="preference">
+                                    <input id="notsProjectBasic" type="checkbox" {{#if user.preferences.notifications.email.projectBasic}}checked="checked"{{/if}} />
+                                    <label for="notsProjectBasic">Basic Project Updates</label>
+                                </div>
+                                <div class="description">
+                                    <p>New estimates, updated estimates, etc</p>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="preference">
+                                    <input id="notsProjectImportant" type="checkbox" {{#if user.preferences.notifications.email.projectImportant}}checked="checked"{{/if}} />
+                                    <label for="notsProjectImportant">Important Project Updates</label>
+                                </div>
+                                <div class="description">
+                                    <p>Mechanic completed your job, important reminders, etc</p>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="preference">
+                                    <input id="notsChat" type="checkbox" {{#if user.preferences.notifications.email.chat}}checked="checked"{{/if}} />
+                                    <label for="notsChat">Chat Conversations</label>
+                                </div>
+                                <div class="description">
+                                    <p>Whenever you get an instant message through the site, we'll notify you with an email</p>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="preference">
+                                    <input id="notsMarketing" type="checkbox" {{#if user.preferences.notifications.email.marketing}}checked="checked"{{/if}} />
+                                    <label for="notsMarketing">Marketing &amp; Promotions</label>
+                                </div>
+                                <div class="description">
+                                    <p>Whenever we've got some offers for you to reivew</p>
+                                </div>
+                            </li>
+                            <!--
+                            <li>
+                                <div class="preference">
+                                    <input id="notsGeneral" type="checkbox" {{#if user.preferences.notifications.email.general}}checked="checked"{{/if}} />
+                                    <label for="notsGeneral">General Notifications</label>
+                                </div>
+                                <div class="description">
+                                    <p>Mechanic favorited your job, oil change reminders, etc.</p>
+                                </div>
+                            </li>
+                            -->
+                        {{/compare}}
+                    </ul>
+                </div>
+            </div>
+            <div class="card-content card-buttons right-align">
+                <a class="mf-button red" href="/profile/{{user._id}}/personal"><i class="fa fa-ban fa-fw" aria-hidden="true"></i> Cancel</a>
+                <a class="mf-button green savePersonalProfile" href="javascript:void(0);"><i class="fa fa-floppy-o fa-fw" aria-hidden="true"></i> Save</a>
+            </div>
+        </div>
+
+        <div class="mf-card full-width">
+            <div class="card-header">Personal Preferences</div>
+            <div class="card-content">
+                <div class="preferences-list">
+                    <ul class="no-bullets">
+                        <li>
+                            <div class="preference">
+                                <input id="prefsChatSound" type="checkbox" {{#if user.preferences.chat.sound}}checked="checked"{{/if}} />
+                                <label for="prefsChatSound">Chat Sound</label>
+                            </div>
+                            <div class="description">
+                                <p>Play the chat sound whenever I receive a message from another user</p>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="mf-card full-width">
+            <div class="card-header">Password</div>
+            <div class="card-content">
+                <table>
+                    <tr>
+                        <td><label for="personal-profile-cpassword">Current Password</label></td>
+                        <td><input id="personal-profile-cpassword" type="password" placeholder="Current Password" /></td>
+                    </tr>
+                    <tr>
+                        <td><label for="personal-profile-password">New Password</label></td>
+                        <td><input id="personal-profile-password" type="password" placeholder="New Password" /></td>
+                    </tr>
+                    <tr>
+                        <td><label for="personal-profile-rpassword">Repeat Password</label></td>
+                        <td><input id="personal-profile-rpassword" type="password" placeholder="Verify Password" /></td>
+                    </tr>
+                </table>
+            </div>
+            <div class="card-content card-buttons right-align">
+                <a class="mf-button red" href="/profile/{{user._id}}/personal"><i class="fa fa-ban fa-fw" aria-hidden="true"></i> Cancel</a>
+                <a class="mf-button green savePersonalProfile" href="javascript:void(0);"><i class="fa fa-floppy-o fa-fw" aria-hidden="true"></i> Save</a>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,234 @@
+<script type="text/javascript">
+    var USER = {{{json user}}};
+    var VEHICLES = {{{json vehicles}}};
+    var PROJECT = {{#if project}}{{{json project}}}{{else}}null{{/if}};
+</script>
+
+<script type="text/javascript" src="{{settings.static_path}}/js/filedrop.js"></script>
+<script type="text/javascript" src="{{settings.static_path}}/js/vehicle-filter.js"></script>
+<script type="text/javascript" src="{{settings.static_path}}/js/edit-project.js"></script>
+<script type="text/javascript" src="{{settings.static_path}}/js/tooltips.js"></script>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCmKExouanVwkFVhIgIxdUgigCjuglQu0g&callback=editProject.location.googleInit" async="async" defer="defer"></script>
+
+<div class="heading-row"><h1>{{#if project}}Edit{{else}}Post{{/if}} a Job</h1></div>
+<div class="post-project mf-ui">
+    <div class="standard-div" id="newProjectWrapper">
+
+        {{#sameID user._id targetUser._id}}
+            <div class="vehicle-information card-container">
+                <div class="mf-card full-width">
+                    <div class="card-header">Vehicle Information</div>
+                    <table class="two-col">
+                        <tr><td><select id="vehicle-information-saved-vehicle" {{#if project}}value="{{project.vehicle}}"{{else}}{{#if vehicles.length}}value="{{vehicles.0._id}}"{{/if}}{{/if}}>
+                            {{#each vehicles}}
+                                <option data-id="{{this._id}}" {{#if ../project}}{{#sameID ../../project.vehicle this._id}}selected="selected"{{/sameID}}{{/if}} value="{{this._id}}">{{this.year}} {{this.make}} {{this.model}}</option>
+                            {{/each}}
+                            <option value="" disabled="disabled">(New Vehicle)</option>
+                        </select></td>
+                        <td>or <a class="standard-button blue" href="javascript:void(0);">Add New Vehicle</a></td></tr>
+                    </table>
+
+                    <div class="new-vehicle vehicleSelector card-container" id="new-vehicle" {{#if vehicles}}{{#if vehicles.length}}style="display: none;"{{/if}}{{/if}}>
+                        <div class="mf-card">
+                            <div class="card-header">New Vehicle</div>
+                            <table class="two-col">
+                                <tr>
+                                    <td><label for="newVehicleMake">Vehicle Make</label></td>
+                                    <td><select name="vehicleMake" id="newVehicleMake" class="project-input">
+                                        <option value="" disabled="disabled">Select Make</option>
+                                    </select></td>
+                                </tr>
+                                <tr>
+                                    <td><label for="newVehicleModel">Vehicle Model</label></td>
+                                    <td><select name="vehicleModel" id="newVehicleModel" disabled="disabled" class="project-input">
+                                        <option value="" disabled="disabled">Select Model</option>
+                                    </select></td>
+                                </tr>
+                                <tr>
+                                    <td><label for="newVehicleYear">Vehicle Year</label></td>
+                                    <td><select name="vehicleYear" id="newVehicleYear" disabled="disabled" class="project-input">
+                                        <option value="" disabled="disabled">Select Year</option>
+                                    </select></td>
+                                </tr>
+                                <tr>
+                                    <td><label for="newVehicleEngine">Engine Cylinders</label></td>
+                                    <td><input type="text" id="newVehicleEngine" placeholder="Cylinders" class="project-input" /></td>
+                                </tr>
+                                <tr>
+                                    <td><label for="newVehicleMileage">Current Mileage</label></td>
+                                    <td><input id="newVehicleMileage" type="text" placeholder="Mileage" class="project-input" /></td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        {{/sameID}}
+
+        <div class="card-container">
+            <div class="mf-card full-width">
+                <div class="card-header">{{#sameID user._id targetUser._id}}How Can a Mechanic Help?{{else}}Job Information{{/sameID}}</div>
+                <div class="card-content">
+                <table class="two-col">
+                    <tr>
+                        <td><label for="help-project-name">Job Title</label></td>
+                        <td><input id="project-title" class="project-input {{#diffID user._id targetUser._id}}disabled{{/diffID}}" type="text" placeholder="Job Title" value="{{#if project.title}}{{{project.title}}}{{/if}}" {{#diffID user._id targetUser._id}}disabled="disabled"{{/diffID}} /></td>
+                    </tr>
+                    <tr>
+                        <td><label>Select Best Option: </label></td>
+                        <td><select id="project-diagnosis" class="project-input">
+                            <option value="1" {{#unless project}}selected="selected"{{else}}{{#if project.diagnosis}}selected="selected"{{/if}}{{/unless}}>I need a diagnosis</option>
+                            <option value="0" {{#if project}}{{#unless project.diagnosis}}selected="selected"{{/unless}}{{/if}}>I know what needs done</option>
+                        </select></td>
+                    </tr>
+                </table>
+                <table class="two-col" style="width:100%;">
+                    {{#sameID user._id targetUser._id}}
+                        
+                        <tr class="needs-diagnosis" style="display: {{#if project}}{{#if project.diagnosis}}table-row{{else}}none{{/if}}{{else}}table-row{{/if}};">
+                            <td colspan="2" class="centered"><label for="needs-diagnosis-problem-description">Describe the Problem: {{{tooltip tooltips "575db8ded00b43b8ff89c26d"}}}</label></td>
+                        </tr>
+                        <tr class="needs-diagnosis" style="display: {{#if project}}{{#if project.diagnosis}}table-row{{else}}none{{/if}}{{else}}table-row{{/if}};">
+                            <td colspan="2" class="centered"><textarea id="needs-description" class="project-input" placeholder="E.g. My car keeps overheating after it runs for about 20 minutes">{{#if project}}{{project.description}}{{/if}}</textarea></td>
+                        </tr>
+                    {{/sameID}}
+                    <tr class="knows-diagnosis" style="display: {{#if project}}{{#if project.diagnosis}}none{{else}}table-row{{/if}}{{else}}none{{/if}};">
+                        <td colspan="2" class="centered"><label for="knows-diagnosis-problem-description">
+                            {{#if viewerOwned}}
+                            Describe the Service Needed:
+                            {{else}}
+                            Describe the Diagnosis in Detail:
+                            {{/if}}
+                        </label></td>
+                    </tr>                
+                    <tr class="knows-diagnosis" style="display: {{#if project}}{{#if project.diagnosis}}none{{else}}table-row{{/if}}{{else}}none{{/if}};">
+                        <td colspan="2"><textarea id="knows-description" class="project-input" placeholder="E.g. My car keeps overheating after it runs for about 20 minutes">{{#if project}}{{project.description}}{{/if}}</textarea></td>
+                    </tr>
+                </table>
+                <table class="two-col">
+                    <tr class="knows-diagnosis" style="display: {{#if project}}{{#if project.diagnosis}}none{{else}}table-row{{/if}}{{else}}none{{/if}};">
+                        <td colspan="2" class="centered"><label>{{{tooltip tooltips "575db8ded00b43b8ff89c26e"}}}Acceptable Parts:</label></td>
+                    </tr>
+                    <tr class="knows-diagnosis" style="display: {{#if project}}{{#if project.diagnosis}}none{{else}}table-row{{/if}}{{else}}none{{/if}};">
+                        <td><label for="knows-diagnosis-have-parts">Do You Have Parts?</label></td>
+                        <td><select id="project-parts" class="project-input">
+                            <option value="1" {{#if project.parts}}selected="selected"{{/if}}>Yes</option>
+                            <option value="0" {{#unless project.parts}}selected="selected"{{/unless}}>No</option>
+                            {{#unless project}}
+                                <option value="" selected="selected" disabled="disabled">Select One</option>
+                            {{/unless}}
+                        </select><td>
+                    </tr>
+                    <tr class="knows-diagnosis" style="display: {{#if project}}{{#if project.diagnosis}}none{{else}}table-row{{/if}}{{else}}none{{/if}};">
+                        <td colspan="2" class="centered">
+                            <table class="data-table" style="text-align:left;">
+                                <tr>
+                                    <td><div class="inline-div">
+                                        <input name="acceptablePart" id="knows-diagnosis-parts-oemnew" type="checkbox" value="OEM/New" {{#if project}}{{#contains project.acceptableParts needle="OEM/New"}}checked="checked"{{/contains}}{{/if}} />
+                                        <label for="knows-diagnosis-parts-oemnew">OEM/New</label>
+                                    </div></td>
+                                    <td><div class="inline-div">
+                                        <input name="acceptablePart" id="knows-diagnosis-parts-aftermarket" type="checkbox" value="Aftermarket" {{#if project}}{{#contains project.acceptableParts needle="Aftermarket"}}checked="checked"{{/contains}}{{/if}} />
+                                        <label for="knows-diagnosis-parts-aftermarket">Aftermarket</label>
+                                    </div></td>
+                                </tr>
+                                <tr>
+                                    <td><div class="inline-div">
+                                        <input name="acceptablePart" id="knows-diagnosis-parts-used" type="checkbox" value="Used" {{#if project}}{{#contains project.acceptableParts needle="Used"}}checked="checked"{{/contains}}{{/if}} />
+                                        <label for="knows-diagnosis-parts-used">Used</label>
+                                    </div></td>
+                                    <td><div class="inline-div">
+                                        <input name="acceptablePart" id="knows-diagnosis-parts-remanufactured" type="checkbox" value="Remanufactured" {{#if project}}{{#contains project.acceptableParts needle="Remanufactured"}}checked="checked"{{/contains}}{{/if}} />
+                                        <label for="knows-diagnosis-parts-remanufactured">Remanufactured</label>
+                                    </div></td>
+                                </tr>
+                                <tr>
+                                    <td><div class="inline-div">
+                                        <input name="acceptablePart" id="knows-diagnosis-parts-notsure" type="checkbox" value="Not Sure" {{#if project}}{{#contains project.acceptableParts needle="Not Sure"}}checked="checked"{{/contains}}{{/if}} />
+                                        <label for="knows-diagnosis-parts-notsure">Not Sure</label>
+                                    </div></td>
+                                    <td><div class="inline-div">
+                                        <input name="acceptablePart" id="knows-diagnosis-parts-na" type="checkbox" value="N/A" {{#if project}}{{#contains project.acceptableParts needle="N/A"}}checked="checked"{{/contains}}{{/if}} />
+                                        <label for="knows-diagnosis-parts-na">N/A</label>
+                                    </div></td>
+                                </tr>
+                            </table>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="2" class="centered break"></td>
+                    </tr>
+                </table>
+                
+            </div>            
+        </div>
+
+        <div class="card-container">
+            <div class="mf-card full-width">
+                <div class="card-header">Project Location</div>
+
+                <div class="mf-card invisible mapping-card">
+                    <div class="standard-div">
+                        <input type="text" id="editGeocodeAddress" style="width: 68%; text-align: center;" placeholder="{{#if user.geo.city}}{{user.geo.city}}, {{/if}}{{#if user.geo.state}}{{user.geo.state}}{{/if}} {{#if user.geo.postal}}{{user.geo.postal}}{{/if}}" />
+                        <a id="editUpdateGeocoding" class="mf-button" style="width: 28%;" href="javascript:void(0);"><i class="fa fa-map-marker"></i> Find Me</a>
+                    </div>
+                    <div class="map-wrapper">
+                        <div id="projectMap" class="project-map"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="card-container">
+            <div class="mf-card full-width">
+                <div class="card-header">Photos</div>
+                <div class="card-content">
+                    <div class="addpic">{{{tooltip tooltips "575dba10d00b43b8ff89c270"}}}Photos: (if possible, we recommend: the car, repair, or previous estimates) <a id="add-photos-link" href="javascript:void(0);">Add Photos</a></div><!-- .addpic -->
+                    <input type="file" id="add-photos-fileinput" style="display: none;" multiple="multiple" accept="image/*" />
+                    <div id="addError" class="add-error" style="display: none;">&nbsp;</div>
+                    <div id="piclist" class="piclist" style="width:100%;">
+                        <div id="picboxes" class="picboxes">
+                            {{#if project}}
+                                {{#if project.photos.length}}
+                                    {{#each project.photos}}
+                                        <div id="picbox-savedPhoto{{this}}" class="picbox">
+                                            <img id="upload-savedPhoto{{this}}" src="/api/public/image/{{this}}" />
+                                            <div id="remove-savedPhoto{{this}}" class="remove" data-id="savedPhoto{{this}}">X</div>
+                                        </div>
+                                    {{/each}}
+                                {{/if}}
+                            {{/if}}
+                        <div id="dragndrop" class="dragndrop" {{#if project}}{{#if project.photos.length}}style="display: none;"{{/if}}{{/if}}>Drop photos here to <a id="addPhotosDroplink" href="javascript:void(0);">add them to the project</a></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="card-container">
+            <div class="mf-card full-width">
+                <div class="card-header">All Done?</div>
+                <div class="card-content"><span style="text-align:center;">{{#if project}}If you're happy with your changes, go ahead and save.{{else}}If you're done adding information to your job, go ahead and submit.{{/if}}</span></div>
+                <div class="card-content right-align">
+                    <div class="inline-div">
+                        {{#if project}}
+                            <div class="inline-div"><a class="standard-button red" href="/projects/{{project._id}}">Cancel Changes</a></div>
+                            <div class="inline-div"><a id="editThisProject" class="standard-button green" href="javascript:void(0);">Save Changes</a></div>
+                        {{else}}
+                            <div class="inline-div"><a id="postThisProject" class="standard-button green" href="javascript:void(0);">Post this Job</a></div>
+                        {{/if}}
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <span class="content-spacer"></span>
+        <span class="content-spacer top-line"></span>
+
+        {{#if project}}
+            {{#compare project.state to="bidding"}}<div class="standard-div"><a id="removeThisProject" class="remove-project" href="javascript:void(0);">Remove Job</a></div>{{/compare}}
+        {{/if}}
+        <div class="standard-div" style="text-align: right;">
+            <div class="inline-div" style="padding-bottom: 10px;"><label id="postStatus">&nbsp;</label></div>
+        </div>
+    </div>
+</div><!-- .post-project -->

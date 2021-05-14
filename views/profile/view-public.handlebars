@@ -1,0 +1,215 @@
+<script type="text/javascript">
+    var USER = {{#if user}}{{{json user}}}{{else}}null{{/if}};
+    var TARGET_USER = {{#if targetUser}}{{{json targetUser}}}{{else}}null{{/if}};
+    var USER_PROJECTS = {{#if userProjects}}{{{json userProjects}}}{{else}}[]{{/if}};
+</script>
+<script src="{{ settings.static_path }}/js/public-profile.js"></script>
+
+<div class="mf-ui">
+    <div class="card-container">
+        <div class="mf-card full-width">
+            <div class="card-content">
+                <div class="mf-card half-width invisible">
+                    <div class="card-content small-screen-flex">
+                        <div class="info-picture">
+                            <img {{#if targetUser.picture}}src="/api/public/image/{{targetUser.picture}}"{{else}} src="/static/img/customer-profile-pic.png">{{/if}}</img>
+                            {{#if user}}{{#diffID targetUser._id user._id}}
+                                <a class="favorite-action fav-button" data-ids="{{targetUser._id}}" data-role="users" href="javascript:void(0);" title="Add to Favorites"><i class="fa fa-star{{#within targetUser._id user.favorites.users}}{{else}}-o{{/within}} fa-fw"></i></a>
+                                <a class="contact-action msg-button" data-ids="{{targetUser._id}}" href="javascript:void(0);" title="Send a Message"><i class="fa fa-envelope-o fa-fw"></i></a>
+                            {{/diffID}}{{/if}}
+                        </div>
+                        <div class="info-text">
+                            <div>
+                                {{#compare targetUser.role to="seller"}}
+                                    <img width="32px" height="16px" src="/static/img/wrench-icon.png"></img> <strong><span style="text-transform: capitalize;">{{targetUser.mechanicType}}</span> Mechanic</strong>
+                                    {{else}}
+                                    <img width="20px" height="20px" src="/static/img/steering-wheel-icon.png"></img> <strong>Customer</strong>
+                                {{/compare}}
+                            </div>
+                            <div><a href="/profile/{{targetUser._id}}/public">{{targetUser.username}}</a></div>
+                            <div>
+                                <div>
+                                    {{#if targetUser.geo.city}}{{targetUser.geo.city}}, {{/if}}{{targetUser.geo.state}}, {{targetUser.geo.postal}}
+                                </div>
+                            </div>
+                            <div class="profile-rating" title="Average Rating: {{targetUser.average_rating}} Stars">
+                                {{ratingIcons targetUser.average_rating targetUser.role}}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="mf-card half-width invisible">
+                    <div class="card-content small-screen-flex">
+                        <div class="info-text">
+                            <table style="float:top;">
+                                {{#compare targetUser.role to="buyer"}}
+                                    <tr>
+                                        <td><strong>Prefers:</strong> </td>{{#compare targetUser.mechanicType to="mobile"}}<td>Mobile Mechanics{{else}}Mechanic Shops</td>{{/compare}}
+                                    </tr>
+                                {{else}}
+                                    <tr>
+                                        <td><strong>Experience:</strong> </td><td>{{targetUser.yearsOfExperience}} years</td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>Certification:</strong> </td><td>
+                                            {{#compare targetUser.certifications.length gt="0"}}
+                                                {{targetUser.certifications.[0]}}
+                                                {{#compare targetUser.certifications.length gt="1"}} <div class="cert-info"><span><em>(view all {{targetUser.certifications.length}})</em></span><div class="cert-list"><ul>{{#each targetUser.certifications}}<li>{{this}}</li>{{/each}}</ul></div></div>{{/compare}}
+                                            {{else}}
+                                                No Certifications
+                                            {{/compare}}</td>
+                                    </tr>
+                                        <td><strong>Insured:</strong></td><td> {{#if targetUser.insurance}}Yes{{else}}No{{/if}}</td>
+                                {{/compare}}
+                                <tr>
+                                    <td><strong>Languages: </strong></td><td>{{#if targetUser.languages.english}}English{{#if targetUser.languages.spanish}} & Spanish{{/if}}{{else}}Spanish{{/if}}</td>
+                                </tr>
+                                {{#compare targetUser.role to="seller"}}
+                                    <tr>
+                                        <td><strong>Towing: </strong></td><td>{{#if targetUser.tows}}Yes{{#if targetUser.flatbed}}, Flatbed{{/if}}{{else}}No{{/if}}</td>
+                                    </tr>
+                                {{/compare}}
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        {{#compare targetUser.role to="seller"}}
+            <div class="mf-card full-width">
+                <div class="card-header">Mechanic Info</div>
+                <div class="card-content">
+                    <p>{{#if targetUser.about}}{{{targetUser.about}}}{{else}}<em>{{targetUser.username}} hasn't filled out this part of their profile.</em>{{/if}}</p>
+                </div>
+            </div>
+            <div class="mf-card full-width">
+                <div class="card-content no-pad">
+                    <div class="mf-card half-width">
+                        <div class="card-header">Specialties</div>
+                        <div class="card-content">
+                            <table class="list-table">
+                                {{#compare targetUser.specialties.length gt="0"}}
+                                    {{profileLists targetUser.specialties}}
+                                {{else}}
+                                    <em>{{targetUser.username}} hasn't specified any specialties.</em>
+                                {{/compare}}
+                            </table>
+                        </div>
+                    </div>
+                    <div class="mf-card half-width">
+                        <div class="card-header">Experience</div>
+                        <div class="card-content">
+                            <table class="list-table">
+                                {{#compare targetUser.experience.length gt="0"}}
+                                    {{profileLists targetUser.experience}}
+                                {{else}}
+                                    <em>{{targetUser.username}} hasn't specified any vehicle experience.</em>
+                                {{/compare}}
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            {{#compare user.role to="buyer"}}{{#compare targetUser.role to="seller"}}
+                <div class="card-container">
+                    <div class="mf-card full-width">
+                        <div class="card-header">Hire this Mechanic</div>
+                        Would you like a mechanic to work on one of your jobs?
+
+                        <div class="card-buttons">
+                            <a class="requestEstimate mf-button green">Request an Estimate</a>
+                        </div>
+                    </div>
+                </div>
+            {{/compare}}{{/compare}}
+
+            <div class="mf-card full-width">
+                <div class="card-header">Mechanic Photos</div>
+                <div class="card-content mf-gallery public-profile" style="text-align:left; justify-content:left;">
+                    {{#compare targetUser.photos.length gt="0"}}
+                        {{#each targetUser.photos}}
+                            <img class="mechanic-photo" src="/api/public/image/{{this}}" />
+                        {{/each}}
+                    {{else}}
+                        <em>{{targetUser.username}} hasn't uploaded any photos yet.</em>
+                    {{/compare}}
+                </div>
+            </div>
+        {{/compare}}
+
+        {{#compare targetUser.role to="buyer"}}
+            <div class="mf-card full-width">
+                <div class="card-header">Open Jobs</div>
+                <div class="card-content">
+                    <table class="profile-hours-table mf-mobile-table mf-mobile-table-styled full-width">
+                        <tr class="profile-hours-table-heading">
+                            <th class="vehicle">Vehicle</th>
+                            <th>Post Date</th>
+                            <th>Estimates</th>
+                            <th>Need</th>
+                            <th></th>
+                        </tr>
+                        {{#each projects.bidding}}
+                            <tr>
+                                <td class="vehicle">{{vehicle.year}} {{vehicle.make}} {{vehicle.model}}</td>
+                                <td class="post-date">{{date date_created}}</td>
+                                <td class="estimates">{{bids.length}}</td>
+                                <td class="repair">
+                                    {{#if diagnosis}}
+                                        Needs Diagnostic
+                                    {{else}}
+                                        Needs {{repair}}
+                                    {{/if}}
+                                </td>
+                                <td class="view"><a href="/projects/{{_id}}" class="mf-button">View</a></td>
+                            </tr>
+                        {{/each}}
+                    </table>
+                </div>
+            </div>
+        {{/compare}}
+
+        <div class="mf-card full-width">
+            <div class="card-header">Completed Jobs</div>
+            <div class="card-content public-profile">
+                <div class="mf-card half-width no-pad invisible" style="margin-top:0px;">
+                    <a href="javascript:void(0);" class="toggle-reviews standard-button blue">Reviews of Mechanic</a>
+                </div>
+                <div class="mf-card half-width no-pad invisible" style="margin-top:0px;">
+                    <a href="javascript:void(0);" class="toggle-reviews standard-button gray">Reviews of Customer</a>
+                </div>
+
+                <table class="profile-hours-table mf-mobile-table mf-mobile-table-styled">
+                    <tr class="profile-hours-table-heading">
+                        <th class="vehicle">Vehicle</th>
+                        <th class="visible">Rating of Mechanic</th>
+                        <th class="hidden">Rating of Customer</th>
+                        {{#compare targetUser.role to="buyer"}}
+                            <th class="hidden">Mechanic's Review of {{targetUser.username}}</th>
+                            <th class="visible">{{targetUser.username}}'s Review</th>
+                        {{else}}
+                            <th class="hidden">{{targetUser.username}}'s Review</th>
+                            <th class="visible">Customer's Review of {{targetUser.username}}</th>
+                        {{/compare}}
+                        <th></th>
+                    </tr>
+                    {{#each projects.finished}}
+                        <tr>
+                            <td class="vehicle">{{vehicle.year}} {{vehicle.make}} {{vehicle.model}}</td>
+                            {{profileRating assigned.ratings owner.ratings _id}}
+                            <td class="view"><a href="/projects/{{_id}}" class="mf-button">View</a></td>
+                        </tr>
+                    {{/each}}
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="public-profile mf-ui">
+    <div class="container">
+
+
+    
+</div>

@@ -1,0 +1,32 @@
+<div class="customer-profile-new">
+    <div class="row">
+        <div class="col-xs-5">
+            <a href="/profile/{{_id}}" class="link-profile">
+                {{#if profile.picture}}
+                    <img src="/i/{{profile.picture}}/161/149/o" alt=""/>
+                {{else}}
+                    <img class="img-circle" src="{{settings.static_path}}/img/personicon.png" width="50" alt=""/>
+                {{/if}}
+                <span>View Profile</span>
+            </a>
+        </div>
+        <div class="col-xs-7">
+            {{helper 'stars' stars=average_rating total=ratings.length user=_id}}
+
+            <h3 class="my-favorites-title">{{name}}</h3>
+
+            <p class="customer-location-favorite">{{address.0.city}}, {{address.0.state}}</p>
+
+            <div class="contact-profile favorite-profile">
+                <button class="chat">CHAT</button>
+                <a class="msg mail-compose" href="#" data-user-id="{{_id}}"><img src="images/message.png" alt=""/></a>
+                <a class="user1 friend" href="#" data-user-id="{{_id}}"><img src="images/friends.png" alt=""/></a>
+            </div>
+        </div>
+        <div class="col-xs-12">
+            <div class="find-mechanic-contact"><strong>Contact Info:</strong>
+                <button class="reveal">Reveal For $9.95</button>
+            </div>
+        </div>
+    </div>
+</div>

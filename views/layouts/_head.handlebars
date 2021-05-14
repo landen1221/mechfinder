@@ -1,0 +1,109 @@
+<title>{{#if head.meta.title}}{{head.meta.title}}{{else}}Find a Mechanic Locally{{/if}} - MechFinder</title>
+
+<meta charset="utf-8" />
+<meta http-equiv="Content-Language" content="en-us" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+<!-- NEED MORE INFO -->
+<!--<meta name="verify-v1" content="[MetaTag from Google]"/>-->  <!--You can search Google verify v1 tag and you'll see where to get this code from Google to paste in here-->
+<meta name="description" content="{{#if head.meta.description}}{{head.meta.description}}{{else}}We're finding better ways for car owners to service, repair, and maintain their vehicles. Visit our site and find a highly rated mechanic near you,in minutes. Or become a mechanic and earn money on your schedule.{{/if}}" />
+<meta name="keywords" content="{{#if head.meta.keywords}}{{head.meta.keywords}}{{else}}automotive mobile mechanics, roadside assistance, premium customer experience{{/if}}" />
+<meta name="author" content="Mechfinder" />
+
+<meta property="og:title" content="{{#if head.og.title}}{{head.og.title}}{{else}}{{#if head.meta.title}}{{head.meta.title}}{{else}}MechFinder{{/if}}{{/if}}" />
+<meta property="og:description" content="{{#if head.og.description}}{{head.og.description}}{{else}}{{#if head.meta.description}}{{head.meta.description}}{{else}}Certified, local mobile mechanics take the frustration out of auto-repairs: Save up to 50% on car repairs and have a local reputable mechanic come to you. Work directly with local qualified mechanics who compete for you business.{{/if}}{{/if}}" />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://mechfinder.com/{{#if head.og.url}}{{head.og.url}}{{/if}}" />
+<meta property="og:locale" content="en_US" />
+<meta property="og:image" content="https://mechfinder.com/{{#if head.og.image}}{{head.og.image}}{{else}}static/img/logo-og.png{{/if}}" />
+
+<link rel="shortcut icon" href="/static/img/favicon.ico?v=2" />
+<link rel="canonical" href="https://mechfinder.com" />
+
+<link href="/static/styles/site.css" rel="stylesheet" />
+
+<script src="/static/js/master.js"></script>
+<script type="text/javascript" src="/static/js/tooltips.js"></script>
+
+<script type="application/ld+json">
+    {  
+        "@context" : "http://schema.org",
+        "@type" : "Organization",
+        "name" : "MechFinder",
+        "url" : "https://mechfinder.com",
+        "sameAs" : [
+            "https://drive.google.com/folderview?id=[Google Stack]",
+            // "https://www.google.com/maps/d/u/0/viewer?mid=[TBD]", // Custom Google Map about the service area
+            "https://www.youtube.com/channel/", //MechFinder YouTube Channel
+            // "https://www.youtube.com/watch?v=[TBD]", //MechFinder Video
+            "https://www.facebook.com/mechfinder",
+            // "https://www.google.com/maps/d/embed?mid=[TBD]", //Custom Google Map once address is defined
+            // "https://www.linkedin.com/company/[TBD]",
+            // "https://www.crunchbase.com/organization/[TBD]",
+            "https://twitter.com/mechfinder",
+            "https://instagram.com/mechfinder/",
+            // "http://mechfinder.livejournal.com/", //TBD
+            // "https://plus.google.com/+Mechfinder/about", //Needs attention
+            // "https://plus.google.com/communities/[TBD]",
+            // "https://mechfinder.wordpress.com/", //Free site you can quickly throw together some information on and about mechfinder properties, check out https://grandforklift.wordpress.com/ as an example
+            // "http://localmechanicsphoenix.weebly.com/", //Another free site to throw some info on and even a video or two
+            // "https://findamechanicnearyou.joomla.com/", //Another free site
+            // "https://about.me/mechfinder",  //Another free site you can create and build a network through. Embed maps, articles, instagram pictures, etc.
+            // "http://phoenixautoservice.zohosites.com/" //http://forkliftforsale.zohosites.com/
+        ]
+    }
+</script>
+<script type="application/ld+json">
+    { 
+        "@context" : "http://schema.org",
+        "@type" : "LocalBusiness",
+        "url" : "https://mechfinder.com",
+        "logo": "https://mechfinder.com/static/img/logo-og.png",
+        "address": {
+            "@type": "PostalAddress",
+            "streetAddress": "7627 N 22nd St" //Should be a commercial address verified by Google through Google My Business that matches your Google profiles
+            "addressLocality": "Phoenix",
+            "addressRegion": "AZ",
+            "postalCode":"85020",
+            "addressCountry": "United States"
+        },
+        "description": "{{#if head.schema.local.description}}{{head.schema.local.description}}{{else}}{{#if head.meta.description}}{{head.meta.description}}{{else}}We're finding better ways for car owners to service, repair, and maintain their vehicles. Visit our site and find a highly rated mechanic near you,in minutes. Or become a mechanic and earn money on your schedule.{{/if}}{{/if}}",
+        "name": "MechFinder",
+        "naics": "8111",
+        "location": {
+            "@type": "Place",
+            "hasMap": "{{#if head.schma.local.location.hasMap}}{{head.schema.local.location.hasMap}}{{else}}https://goo.gl/maps/bqcJUQm8yWs{{/if}}", //will need to be a commercial address to truly get a benefit from this. That address will also then need to match Google My Business
+            "geo": {
+                "@type": "GeoCircle",
+                "geoRadius": "80000" // in meters for 50 miles - walk before you run. 160934 meters = 100 miles
+                "geoMidpoint": {
+                    "@type": "GeoCoordinates",
+                    "latitude": "{{#if head.schema.local.location.geo.latitude}}{{head.schema.local.location.geo.latitude}}{{else}}33.548061{{/if}}",
+                    "longitude": "{{#if head.schema.local.location.geo.longitude}}{{head.schema.local.location.geo.longitude}}{{else}}-112.0359827{{/if}}"
+                },
+            }
+        },
+        "sameAs" : [ 
+            "https://mechfinder.com/",
+            "http://www.findthebest.com/profile/808239/mechfinder-mobile-mechanics", // The rest of these are all types of local directory sites you can build profiles on for your business to build authority locally.
+            "http://www.2findlocal.com/b/11507532/mechfinder-phoenix-arizona",
+            "https://www.getfave.com/24498054-mechfinder",
+            "http://www.freebase.com/m/mechfinder",
+            "https://www.wikidata.org/wiki/mechfinder-mobile-mechanics",
+            "http://ezlocal.com/az/phoenix/local-mechanics-phoenix/1170187",
+            "http://www.showmelocal.com/profile.aspx?bid=18716589",
+            "https://foursquare.com/v/mechfinder/55b5f4a3498e5946b6c846ba",
+            "http://www.merchantcircle.com/business/auto.service.602-555-4578",
+            "http://www.macraesbluebook.com/search/company.cfm?company=1564281",
+            "http://www.salespider.com/b-380974543/mechfinder",
+            "http://www.kudzu.com/m/phoenix-auto-repair-60233103",
+            "https://www.elocal.com/profile/mechfinder-mobile-mechanics-18346437/#!/tab=about",
+            "http://www.spoke.com/companies/mechfinder-phoenix-55ca89a920f37d39c3007634",
+            "http://ebusinesspages.com/MechFinder_dkt9l.co?PostReturn=0"
+        ]
+    }
+</script>
+
+<!--[if lt IE 9]>
+<script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+<![endif]-->

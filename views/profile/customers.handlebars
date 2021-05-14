@@ -1,0 +1,22 @@
+<h2>Find Local Customers</h2>
+
+<table class="table table-condensed table-hover">
+    <thead>
+        <tr>
+            <th>Date Joined</th>
+            <th>Name</th>
+            <th>State</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        {{#each users}}
+        <tr href="/profile/{{_id}}">
+            <td>{{date created}}</td>
+            <td>{{name}}</td>
+            <td>{{address.state}}</td>
+            <td></td>
+        </tr>
+        {{/each}}
+    </tbody>
+</table>

@@ -1,0 +1,87 @@
+<form class="project-search-form">
+    <div class="row">
+        <div class="col-xs-12 col-sm-4 col-md-6">
+            <input class="form-control" type="text" placeholder="Projects Search"/>
+        </div>
+        <div class="col-xs-12 col-sm-5 col-md-3 col-lg-4">
+            <select name="#">
+                <option value="">Please Choose</option>
+                <option value="0">Open Projects</option>
+                <option value="1">Assigned Projects</option>
+                <option value="2">Completed Projects</option>
+                <option value="3">In Dispute</option>
+            </select>
+        </div>
+        <div class="col-xs-12 col-sm-3 col-lg-2">
+            <button type="submit" class="btn btn-success"><i class="fa fa-search"></i> Search</button>
+        </div>
+    </div>
+</form>
+<div class="table-responsive">
+    <table class="table project-search-table2">
+        <thead>
+            <tr>
+                <th></th>
+                <th>Post Date</th>
+                <th>Vehicle</th>
+                <th>Project Name</th>
+                <th>Status</th>
+                <th>Assigned Mechanic</th>
+                <th>Contact</th>
+            </tr>
+        </thead>
+        <tbody>
+            {{#each buyer_projects}}
+                <tr data-project-id="{{_id}}">
+                    <td><a href="/projects/{{this.number}}" class="escrow">View</a></td>
+                    <td>{{date date_created}}</td>
+                    <td>{{vehicle.display}}
+                        <br/>{{tags repair}}
+                    </td>
+                    <td>{{title}}</td>
+                    {{#compare state to="bidding"}}
+                        <td><strong>Open</strong></td>
+                        <td>
+                            {{#if lowest_bid}}
+                                {{currency lowest_bid.estimate}}
+                                <div class="h4-in-table">{{lowest_bid.user.name}}</div>
+                            {{else}}
+                                No bids yet.
+                            {{/if}}
+                        </td>
+                    {{/compare}}
+                    {{#compare state to="assigned"}}
+                        <td><span style="color: green;"><strong>Assigned</strong></span></td>
+                        <td>
+                            <div class="h4-in-table">{{assigned.name}}</div>
+                            {{assigned.phone.0.number}}
+                        </td>
+                    {{/compare}}
+                    {{#compare state to="finished"}}
+                        <td><span style="color: blue;"><strong>Completed</strong></span></td>
+                        <td>
+                            <div class="h4-in-table">{{assigned.name}}</div>
+                            {{assigned.phone.0.number}}
+                        </td>
+                    {{/compare}}
+                    {{#compare state to="canceled"}}
+                        <td><span style="color: red;"><strong>Cancelled</strong></span></td>
+                        <td>
+                            {{#if assigned}}
+                                <div class="h4-in-table">{{assigned.name}}</div>
+                                {{assigned.phone.0.number}}
+                            {{/if}}
+                        </td>
+                    {{/compare}}
+                    <td class="add-fav-projekt">
+                        <a class="msg" href="#"><img src="{{settings.static_path}}/img/message.png" alt=""/></a>
+                    </td>
+                </tr>
+            {{else}}
+                <tr>
+                    <td colspan="7">You have no projects right now. Why not <a href="/projects/post">post a new project</a>?</td>
+                </tr>
+            {{/each}}
+        </tbody>
+    </table>
+</div>

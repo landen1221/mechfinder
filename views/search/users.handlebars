@@ -1,0 +1,90 @@
+<div class="row">
+
+    <div class="col-xs-12 col-sm-8 col-md-9">
+
+        <div class="row">
+            <div class="col-xs-12">
+
+                <div class="info-page-content"><h1>Find {{rolename}}</h1></div>
+
+                <form class="project-search-form find-mechanic-inputs" action="{{action}}" method="post">
+                    <div class="row">
+                        <div class="col-xs-12 col-lg-4">
+                            <input name="query" class="form-control" type="text" placeholder="Location, Specialization, Name"/>
+                        </div>
+                        <div class="col-xs-12 col-lg-05-super nopadding-search displaynone1200">
+                            Within
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-lg-2">
+                            <select name="distance">
+                                <option>Distance</option>
+                                <option>2 Miles</option>
+                                <option>3 Miles</option>
+                                <option>4 Miles</option>
+                                <option>100 Miles</option>
+                            </select>
+                        </div>
+                        <div class="col-xs-12 col-lg-025-super nopadding-search displaynone1200">
+                            of
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-lg-2">
+                            <input class="form-control" type="text" placeholder="Zip"/>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-lg-2">
+                            <button type="submit" class="btn btn-success"><i class="fa fa-search"></i> Search</button>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-lg-125-super nopadding-search">
+                            <div id="advanced-click">Advanced<br/> Search</div>
+                        </div>
+                    </div>
+
+                    <div id="advanced-search" class="row">
+                        <div class="col-xs-12 col-sm-6 col-lg-3">
+                            <input class="form-control" type="text" placeholder="Mechanic Rating"/>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-lg-3">
+                            <input class="form-control" type="text" placeholder="Number of jobs"/>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-lg-3">
+                            <input class="form-control" type="text" placeholder="Location"/>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-lg-3">
+                            <input class="form-control" type="text" placeholder="Specialty"/>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-lg-4">
+                            <input class="form-control" type="text" placeholder="Vehicle"/>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-lg-4">
+                            <input class="form-control" type="text" placeholder="Years of Experience"/>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-lg-4">
+                            <input class="form-control" type="text" placeholder="Certified"/>
+                        </div>
+                    </div>
+                </form>
+
+                <div class="row">
+                    <div class="col-xs-12">
+                        <h4>{{#if users}}Local {{rolename}} Nearest You{{else}}Nobody found. Try changing your search.{{/if}}</h4>
+                    </div>
+                    {{#each users}}
+                        <div class="col-xs-12 col-md-6 col-lg-4 mB24">
+                            {{>helpers/person}}
+                        </div>
+                    {{/each}}
+                </div>
+
+                <div class="table-pagination text-center">
+                    <nav>
+                        <ul class="pagination">
+                            {{#pagination index=spec.i total=total size=spec.n}}
+                                <li {{#if active}}class="active"{{/if}}><a href="#" data-index="{{index}}">{{label}}</a></li>
+                            {{/pagination}}
+                        </ul>
+                    </nav>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>

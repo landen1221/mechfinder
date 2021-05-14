@@ -1,0 +1,73 @@
+<script type="text/javascript">
+    {{#compare user.role to="seller"}}
+        var PROJECTS_TABLE_WHERE_ASSIGNED = '{{user._id}}';
+    {{else}}
+        var PROJECTS_TABLE_WHERE_OWNER = '{{user._id}}';
+    {{/compare}}
+</script>
+
+<div class="user">
+    <div class="row center"><h1>{{user.first}} {{user.last}}</h1></div>
+    <div class="row center">
+        <p>
+            {{#compare user.role to="seller"}}Mechanic{{else}}Customer{{/compare}}<br />
+            <i class="fa fa-{{#compare user.role to="seller"}}wrench{{else}}user{{/compare}}"></i>
+            {{#if user.facebookId}}<i class="fa fa-facebook" title="Registerd via Facebook"></i>{{/if}}
+            {{#if user.verified}}<i class="fa fa-check-circle-o" title="Verified Email on {{date user.verificationDate}}"></i>{{/if}}
+            {{#if user.braintree.hasAccount}}<i class="fa fa-credit-card" title="Braintree Verified"></i>{{/if}}
+        </p>
+    </div>
+    {{#if user.picture}}
+        <div class="picture">
+            <img src="/api/public/image/{{user.picture}}" />
+        </div>
+    {{/if}}
+    <div class="row center">
+        <p><a href="mailto:{{user.email}}">{{user.email}}</a>{{#if user.phone.number}} - {{user.phone.number}}{{/if}}</p>
+    </div>
+    <div class="row center">
+        <p><a href="https://www.google.com/maps?q=directions+to+{{user.geo.loc.coordinates.[1]}},{{user.geo.loc.coordinates.[0]}}" target="_blank"><i class="fa fa-map-o"></i> {{user.geo.city}} {{user.geo.state}}, {{user.geo.postal}}</a></p>
+    </div>
+
+    <div class="row center topspace">
+        <p>
+            <span class="sidespace"><strong>Created:</strong> {{date user.created}}</span>
+            <span class="sidespace"><strong>Last Login:</strong> {{date user.last_login}}</span>
+            <span class="sidespace"><string>Avg Rating:</string> {{#if user.average_rating}}{{user.average_rating}}{{else}}N/A{{/if}}</span>
+        </p>
+    </div>
+
+
+    <div class="row topspace xl">
+        <div class="row center"><h2>Admin Controls</h2></div>
+        <div class="row center topspace">
+            {{#compare user.role to="seller"}}
+                {{> admin/sellers/admin-controls}}
+            {{else}}
+                {{> admin/buyers/admin-controls}}
+            {{/compare}}
+        </div>
+    </div>
+
+    <div class="row topspace xl"><h2>{{user.first}}'s Discounts</h2></div>
+    {{> admin/users/discounts-table}}
+
+    {{#compare user.role to="seller"}}
+        <div class="row topspace xl">
+            <div class="half">
+                <div class="row"><h2>{{user.first}}'s Mechanic Info</h2></div>
+                {{> admin/sellers/seller-info}}
+            </div>
+            <div class="half">
+                <div class="row"><h2>{{user.first}}'s Business Info</h2></div>
+                {{> admin/sellers/business-info}}
+            </div>
+        </div>
+
+        <div class="row topspace xl"><h2>{{user.first}}'s Projects</h2></div>
+        {{> admin/projects/projects-table}}
+    {{else}}
+        <div class="row topspace xl"><h2>{{user.first}}'s Projects</h2></div>
+        {{> admin/projects/projects-table}}
+    {{/compare}}
+</div>

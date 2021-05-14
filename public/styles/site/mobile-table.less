@@ -1,0 +1,226 @@
+// this table can be used across internal pages for consistency
+// uses mf prefix to avoid naming collisions
+// Marcus is writing a JQuery plugin for this table
+@screenXS: 320px;
+@screenSM: 480px;
+@screenMD: 768px;
+@screenMDOverlap: 769px;
+@screenLG: 992px;
+@screenXL: 1200px;
+.internal-page {
+    table.mf-mobile-table {
+        tr {
+            td,
+            th {
+                display: table-cell;
+                padding: 5px;
+                cursor: pointer;
+                &.mf-table-xs {
+                    display: none;
+                    @media only screen and (min-width: @screenXS) {
+                        display: table-cell;
+                    }
+                    .xs-only {
+                        @media only screen and (min-width: @screenSM) {
+                            display: none;
+                        }
+                    }
+                    .not-xs {
+                        @media only screen and (max-width: @screenSM) {
+                            display: none;
+                        }
+                    }
+                }
+                &.result-date {
+                    @media only screen and (min-width: @screenXS) {
+                        // text-align: left;
+                    }
+                }               
+                &.result-actions {
+                    .contact-action {
+                        color: @colorBlue;
+                    }
+                }
+                &.mf-table-sm {
+                    display: none;
+                    @media only screen and (min-width: @screenSM) {
+                        display: table-cell;
+                    }
+                }
+                &.mf-table-md {
+                    display: none;
+                    @media only screen and (min-width: @screenMD) {
+                        display: table-cell;
+                    }
+                }
+                &.mf-table-lg {
+                    display: none;
+                    @media only screen and (min-width: @screenLG) {
+                        display: table-cell;
+                    }
+                }
+                &.mf-table-xl {
+                    display: none;
+                    @media only screen and (min-width: @screenXL) {
+                        display: table-cell;
+                    }
+                }
+            }
+        }
+        &.mf-mobile-table-styled {
+            max-width: 100%;
+            float: left;
+            border: 0;
+            background-color: rgba(255, 255, 255, 1);
+            border-spacing: 0;
+            border-collapse: separate;
+            box-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+            tr {
+                td,
+                th {
+                    font-family: @baseFonts;
+                    font-size: 13px;
+                    color: rgba(42, 53, 51, 1);
+                    text-align: center;
+                    border: 0;
+                    border-top: 1px solid rgba(222, 222, 222, 1);
+                    padding: 10px;
+                    background-color: rgba(255, 255, 255, 1);
+                    -moz-transition: all 300ms ease;
+                    -ms-transition: all 300ms ease;
+                    -o-transition: all 300ms ease;
+                    transition: all 300ms ease;
+                    &.fill-space {
+                        width: 100%;
+                    }
+                    &.nowrap {
+                        white-space: nowrap;
+                    }
+                    &.green {
+                        color: rgba(38, 182, 90, 1);
+                    }
+                    &.red {
+                        color: rgba(236, 22, 39, 1);
+                    }
+                    &.blue {
+                        color: rgba(54, 72, 214, 1);
+                    }
+                    a.btn:link,
+                    a.btn:visited {
+                        display: inline-block;
+                        padding: 5px;
+                        border-radius: 3px;
+                        font-family: @baseFonts;
+                        font-size: 13px;
+                        color: rgba(234, 234, 234, 1);
+                        text-align: center;
+                        background-color: rgba(7, 166, 244, 1);
+                        text-decoration: none;
+                        outline: none;
+                        -moz-transition: all 300ms ease;
+                        -ms-transition: all 300ms ease;
+                        -o-transition: all 300ms ease;
+                        transition: all 300ms ease;
+                    }
+                    a.btn:active,
+                    a.btn:focus,
+                    a.btn:hover {
+                        background-color: rgba(27, 186, 255, 1);
+                        color: rgba(255, 255, 255, 1);
+                    }                    
+                }
+                &:first-child td,
+                &:first-child th {
+                    border-top: 0;
+                }
+                &:last-child td,
+                &:last-child th {
+                    border-bottom: 1px solid rgba(222, 222, 222, 1);
+                }
+                // avoid using .colnames to avoid namespace collisions (it's only there for backward compatibility with existing tables)
+                & th,
+                &.colnames td,
+                &.mf-mobile-table-colheading td {
+                    padding: 15px;
+                    font-weight: bold;
+                    cursor: default;
+                }
+                &:nth-child(even) td,
+                &:nth-child(even) th {
+                    background-color: rgba(252, 252, 252, 1);
+                }
+                &:hover td {
+                    background-color: rgba(241, 241, 241, 1);
+                }
+                &.no-hover {
+                    &:hover td {
+                        background-color: red;
+                    }
+                }
+                th {
+                    background: @standardFontColorLight !important;
+                    border-radius: 0px;
+                    color: white;
+                }
+                .rating {
+                    .fa {
+                        font-size: 25px;
+                        &.fa-star, &.fa-wrench {
+                            color: @colorGold;
+                            &.off {
+                                color: @standardFontColorXtraLight;
+                            }
+                        }
+                    }
+                }
+                .fa-wrench {
+                    color: @colorGold;
+
+                    &.off {
+                        color: @colorGray;
+                    }
+                }
+                .red {
+                    color: @colorRed;
+                }
+                .green {
+                    color: @colorGreen;
+                }
+                &.viewed * {
+                    color: @standardFontColorXtraLight;
+                    .fa-star, .fa-wrench {
+                        color: @colorGoldLight;
+                        &.off {
+                            color: @standardFontColorXtraLight;
+                        }
+                    }
+                }
+            }
+            &.no-hover {
+                tr {
+                    &:hover {
+                        td {
+                            background: rgba(252, 252, 252, 1);
+                            cursor: default;
+                        }
+                    }
+                }
+            }
+        }
+        &.stacktable {
+            display: none;
+            @media only screen and (min-width: @screenMDOverlap) {
+                display: table;
+            }
+        }
+        &.mobile-stacktable {
+            display: none;
+            @media only screen and (max-width: @screenMD) {
+                display: table;
+            }
+        }
+        &.full-width {
+            width: 100%;
+        }
+    }
+}

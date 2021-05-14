@@ -1,0 +1,546 @@
+<script type="text/javascript">
+    var USER = {{{json user}}};
+    var VEHICLES = {{{json vehicles}}};
+</script>
+
+<script type="text/javascript" src="{{settings.static_path}}/js/filedrop.js"></script>
+<script type="text/javascript" src="{{settings.static_path}}/js/vehicle-filter.js"></script>
+<script type="text/javascript" src="{{settings.static_path}}/js/post-project.js"></script>
+<script type="text/javascript" src="{{settings.static_path}}/js/tooltips.js"></script>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCmKExouanVwkFVhIgIxdUgigCjuglQu0g&callback=postProject.location.googleInit" async="async" defer="defer"></script>
+<script src="{{ settings.static_path }}/js/searchable-dropdown.js"></script>
+
+<div class="heading-row"><h1>{{#if project}}Edit{{else}}Post{{/if}} a Job</h1></div>
+
+<div class="post-project mf-ui">
+    {{#sameID user._id targetUser._id}}
+        {{#if quickPost}}
+            <div class="card-container">
+            <div class="mf-card full-width">
+                <div class="card-buttons">
+                    <a class="mf-button green" href="/projects/post/quick/d" style="width:45%;box-sizing: border-box;padding-left:0px;padding-right:0px;">QUICK DIAGNOSIS</a>
+                    <a class="mf-button green" href="/projects/post/quick" style="width:45%;box-sizing: border-box;padding-left:0px;padding-right:0px;">QUICK WORKORDER</a>
+                </div>
+            </div>
+            </div>
+        {{/if}}
+    {{/sameID}}
+    <div class="post-steps">
+        <div class="numbers">
+            <div id="numberVehicleStep" class="number current" data-order="1" data-step="vehicleStep" data-label="Select a Vehicle">
+                <div class="mf-circle-number">1</div>
+            </div>
+            <div id="numberDiagnosisStep" class="number" data-order="2" data-step="diagnosisStep" data-label="Diagnosis">
+                <div class="mf-circle-number">2</div>
+            </div>
+            {{!--<div id="numberRepairStep" class="number" data-order="3" data-step="repairStep" data-label="Repair Category">
+                <div class="mf-circle-number">3</div>
+            </div>--}}
+            <div id="numberDescriptionStep" class="number" data-order="3" data-step="descriptionStep" data-label="Diagnosis Description">
+                <div class="mf-circle-number">3</div>
+            </div>
+            <div id="numberPartsStep" class="number" data-order="4" data-step="partsStep" data-label="Existing Parts">
+                <div class="mf-circle-number">4</div>
+            </div>
+            <div id="numberAcceptablePartsStep" class="number" data-order="5" data-step="acceptablePartsStep" data-label="Acceptable Parts">
+                <div class="mf-circle-number">5</div>
+            </div>
+            {{!--<div id="numberTowStep" class="number" data-order="6" data-step="towStep" data-label="Towing">
+                <div class="mf-circle-number">7</div>
+            </div>--}}
+            {{!--<div id="numberMechanicPreferenceStep" class="number" data-order="7" data-step="mechanicPreferenceStep" data-label="Mechanic Preference">
+                <div class="mf-circle-number">8</div>
+            </div>--}}
+            {{!--<div id="numberScheduleStep" class="number" data-order="8" data-step="scheduleStep" data-label="Desired Completion Date">
+                <div class="mf-circle-number">9</div>
+            </div>--}}
+            {{!--<div id="numberAvailabilityStep" class="number" data-order="9" data-step="availabilityStep" data-label="Availability">
+                <div class="mf-circle-number">10</div>
+            </div>--}}
+            <div id="numberPhotosStep" class="number" data-order="6" data-step="photosStep" data-label="Photos">
+                <div class="mf-circle-number">6</div>
+            </div>
+            <div id="numberLocationStep" class="number" data-order="7" data-step="locationStep" data-label="Vehicle Location">
+                <div class="mf-circle-number">7</div>
+            </div>
+            <div id="numberNameStep" class="number" data-order="8" data-step="nameStep" data-label="Name Your Job">
+                <div class="mf-circle-number">8</div>
+            </div>
+            <div id="numberFinalStep" class="number" data-order="9" data-step="finalStep" data-label="Finish">
+                <div class="mf-circle-number icon"><i class="fa fa-flag-checkered"></i></div>
+                {{!--<span class="fa-stack fa-lg mf-circle-num">
+                    <i class="fa fa-circle-o fa-stack-2x"></i>
+                    <i class="fa fa-stack-1x fa-flag-o"></i>
+                </span>--}}
+            </div>
+        </div>
+        <div id="stepsNow" class="now">Select a Vehicle</div>
+    </div>
+
+    <div id="vehicleStep" class="card-container step" data-numberid="numberVehicleStep" style="display: block;">
+        <div class="mf-card full-width">
+            <div class="card-header">{{#if vehicles.length}}Which vehicle is having problems?{{else}}Find Your Vehicle{{/if}}</div>
+            <div id="existingVehicleContainer" class="card-container" {{#unless vehicles.length}}style="display: none;"{{/unless}}>
+                <!--Pick the vehicle that you need fixed:-->
+                <div class="card-container">
+                    <select id="vehicleSelection" {{#if project}}value="{{project.vehicle}}"{{else}}{{#if vehicles.length}}value="{{vehicles.0._id}}"{{/if}}{{/if}}>
+                        {{#each vehicles}}
+                            <option data-id="{{this._id}}" {{#if ../project}}{{#sameID ../../project.vehicle this._id}}selected="selected"{{/sameID}}{{/if}} value="{{this._id}}">{{this.year}} {{this.make}} {{this.model}}</option>
+                        {{/each}}
+                    </select>
+                </div>
+                or<br />
+                <a class="mf-button" id="addNewVehicle" href="javascript:void(0);">Add a new vehicle</a>
+                <div class="card-buttons">
+                    <a id="setVehicle" class="changeStep mf-button blue">Continue<i class="fa fa-fw fa-arrow-circle-right"></i></a>
+                </div>
+            </div>
+            <div id="newVehicleContainer" class="card-container" {{#if vehicles.length}}style="display: none;"{{/if}}>
+                Add your new vehicle:
+                <div class="card-content">
+                    <table class="two-col">
+                        <tr>
+                            <td>
+                                <label for="inputVehicle">Vehicle Make</label>
+                            </td>
+                            <td>
+                                <div class="mf-dropdown">
+                                    <input type="text" class="liveSearchBox mf-dropdown-input" placeholder="Enter Vehicle Make" id="inputMake" />
+                                    <ul class="liveSearchList mf-dropdown-content" id="dropdownMake"></ul>
+                                </div>
+                            </td>   
+                        </tr>
+                        <tr>
+                            <td>
+                                <label for="inputModel">Vehicle Model</label>
+                            </td>
+                            <td>
+                                <div class="mf-dropdown">
+                                    <input type="text" class="liveSearchBox mf-dropdown-input" placeholder="Enter Vehicle Model" id="inputModel" />
+                                    <ul class="liveSearchList mf-dropdown-content" id="dropdownModel"></ul>
+                                </div>
+                            </td>   
+                        </tr>
+                        <tr>
+                            <td>
+                                <label for="inputYear">Vehicle Year</label>
+                            </td>
+                            <td>
+                                <div class="mf-dropdown">
+                                    <input type="text" class="liveSearchBox mf-dropdown-input" placeholder="Enter Vehicle Year" id="inputYear" />
+                                    <ul class="liveSearchList mf-dropdown-content" id="dropdownYear"></ul>
+                                </div>
+                            </td>   
+                        </tr>
+                        <tr>
+                            <td><label for="newVehicleEngine">Engine Cylinders</label></td>
+                            <td><input type="text" id="newVehicleEngine" placeholder="Cylinders" class="project-input" /></td>
+                        </tr>
+                        <tr>
+                            <td><label for="newVehicleMileage">Current Mileage</label></td>
+                            <td><input id="newVehicleMileage" type="text" placeholder="Mileage" class="project-input" /></td>
+                        </tr>
+                    </table>
+                    <div class="card-buttons">
+                        {{#if vehicles.length}}<a class="mf-button" id="backExistingVehicle" href="javascript:void(0);">I already have my vehicle added</a>{{/if}}
+                        <a id="setNewVehicle" class="mf-button blue" href="javascript:void(0);">Continue<i class="fa fa-fw fa-arrow-circle-right"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="diagnosisStep" class="card-container step" data-numberid="numberDiagnosisStep" style="display: none;">
+        <div class="mf-card full-width">
+            <div class="card-header">Do you need a diagnosis?</div>
+            <!--Do you need a mechanic to diagnose the problems with your vehicle before getting it fixed?-->
+            <div class="card-content reverse">
+                <div class="diagnosisChoice mf-card half-width button-func green" data-value="1">
+                    <div class="card-header"><i class="fa fa-fw fa-check"></i> Yes</div>
+                    <div class="card-content">I know my vehicle needs fixed, but I don't know what is wrong with it</div> 
+                </div>
+                <div class="diagnosisChoice mf-card half-width button-func blue" data-value="0">
+                    <div class="card-header"><i class="fa fa-fw fa-times"></i> No</div>
+                    <div class="card-content">I know the parts and labor that are required to fix my vehicle</div>
+                </div>              
+            </div>
+
+            <div class="card-buttons">
+                <a class="mf-button left" id="backDiagnosis" href="javascript:void(0);"><i class="fa fa-fw fa-arrow-circle-left"></i> Previous</a>
+            </div>
+        </div>
+    </div>
+
+    {{!--<div id="repairStep" class="card-container step" data-numberid="numberRepairStep" style="display: none;">
+        <div class="mf-card full-width">
+            <div class="card-header">Service Needed</div>
+            <!--Select the service that best describes what you need:-->
+            <div class="card-content">
+                <select id="projectRepair" class="project-input" value="">
+                    <option value="Auto Repair">Auto Repair</option>
+                    <option value="Audio">Audio</option>
+                    <option value="Body Work">Body Work</option>
+                    <option value="Electrical">Electrical</option>
+                    <option value="Maintenance">Maintenance</option>
+                    <option value="Restoration">Restoration</option>
+                    <option value="Windows">Windows</option>
+                    <option value="Tires">Tires</option>
+                    <option value="Other/Not Sure">Other/Not Sure</option>
+                    <option value="" selected="selected" disabled="disabled">Select the service that best describes what you need</option>
+                </select>
+            </div>
+
+            <div class="card-buttons">
+                <a class="mf-button left" id="backRepair" href="javascript:void(0);"><i class="fa fa-fw fa-arrow-circle-left"></i> Previous</a>
+                <a id="setRepair" class="mf-button blue" href="javascript:void(0);">Continue<i class="fa fa-fw fa-arrow-circle-right"></i></a>
+            </div>
+        </div>
+    </div>--}}
+
+    <div id="descriptionStep" class="card-container step" data-numberid="numberDescriptionStep" style="display: none;">
+        <div class="mf-card full-width">
+            <div class="card-header" id="descriptionHeader">What's Happening?</div>
+            <span id="descriptionText">Describe what is happening to your vehicle. Include any noises or smells that it makes as well as how it looks/feels when you drive</span>
+            <div class="card-content">
+                <textarea id="jobDescription" placeholder="E.g. My car keeps overheating after it runs for about 10 minutes and I smell smoke after 15 minutes of driving"></textarea>
+            </div>
+            <div class="card-buttons">
+                <a id="backDescription" class="mf-button left" href="javascript:void(0);"><i class="fa fa-fw fa-arrow-circle-left"></i> Previous</a>
+                <a id="setDescription" class="mf-button blue" href="javascript:void(0);">Continue<i class="fa fa-fw fa-arrow-circle-right"></i></a>
+            </div>
+        </div>
+    </div>
+
+    <div id="partsStep" class="card-container step" data-numberid="numberPartsStep" style="display: none;">
+        <div class="mf-card full-width">
+            <div class="card-header">Do you already have parts?</div>
+            <!--Do you already have some parts to help fix your vehicle?-->
+            <div class="card-content reverse">
+                <div class="partsChoice mf-card half-width button-func green" data-value="1">
+                    <div class="card-header"><i class="fa fa-fw fa-check"></i> Yes</div>
+                    <div class="card-content">I have parts to help fix this vehicle</div>
+                </div>
+                <div class="partsChoice mf-card half-width button-func blue" data-value="0">
+                    <div class="card-header"><i class="fa fa-fw fa-times"></i> No</div>
+                    <div class="card-content">I'll need the mechanic to order the parts to fix this vehicle</div>
+                </div>
+            </div>
+
+            <div class="card-buttons">
+                <a id="backParts" class="mf-button left" href="javascript:void(0);"><i class="fa fa-fw fa-arrow-circle-left"></i> Previous</a>
+            </div>
+        </div>
+    </div>
+
+    <div id="acceptablePartsStep" class="card-container step" data-numberid="numberAcceptablePartsStep" style="display: none;">
+        <div class="mf-card full-width">
+            <div class="card-header">Acceptable Parts</div>
+            Check off all of the acceptable parts for mechanics to use on your car (if applicable):
+
+            <div class="card-content">
+                <table class="data-table" style="text-align:left;">
+                    <tr>
+                        <td><div class="inline-div">
+                            <input name="acceptablePart" id="knows-diagnosis-parts-oemnew" type="checkbox" value="OEM/New" {{#if project}}{{#contains project.acceptableParts needle="OEM/New"}}checked="checked"{{/contains}}{{/if}} />
+                            <label for="knows-diagnosis-parts-oemnew">OEM/New</label>
+                        </div></td>
+                        <td><div class="inline-div">
+                            <input name="acceptablePart" id="knows-diagnosis-parts-aftermarket" type="checkbox" value="Aftermarket" {{#if project}}{{#contains project.acceptableParts needle="Aftermarket"}}checked="checked"{{/contains}}{{/if}} />
+                            <label for="knows-diagnosis-parts-aftermarket">Aftermarket</label>
+                        </div></td>
+                    </tr>
+                    <tr>
+                        <td><div class="inline-div">
+                            <input name="acceptablePart" id="knows-diagnosis-parts-used" type="checkbox" value="Used" {{#if project}}{{#contains project.acceptableParts needle="Used"}}checked="checked"{{/contains}}{{/if}} />
+                            <label for="knows-diagnosis-parts-used">Used</label>
+                        </div></td>
+                        <td><div class="inline-div">
+                            <input name="acceptablePart" id="knows-diagnosis-parts-remanufactured" type="checkbox" value="Remanufactured" {{#if project}}{{#contains project.acceptableParts needle="Remanufactured"}}checked="checked"{{/contains}}{{/if}} />
+                            <label for="knows-diagnosis-parts-remanufactured">Remanufactured</label>
+                        </div></td>
+                    </tr>
+                    <tr>
+                        <td><div class="inline-div">
+                            <input name="acceptablePart" id="knows-diagnosis-parts-notsure" type="checkbox" value="Not Sure" {{#if project}}{{#contains project.acceptableParts needle="Not Sure"}}checked="checked"{{/contains}}{{/if}} />
+                            <label for="knows-diagnosis-parts-notsure">Not Sure</label>
+                        </div></td>
+                        <td><div class="inline-div">
+                            <input name="acceptablePart" id="knows-diagnosis-parts-na" type="checkbox" value="N/A" {{#if project}}{{#contains project.acceptableParts needle="N/A"}}checked="checked"{{/contains}}{{/if}} />
+                            <label for="knows-diagnosis-parts-na">N/A</label>
+                        </div></td>
+                    </tr>
+                </table>
+            </div>
+
+            <div class="card-buttons">
+                <a id="backAcceptableParts" class="mf-button left" href="javascript:void(0);"><i class="fa fa-fw fa-arrow-circle-left"></i> Previous</a>
+                <a id="setAcceptableParts" class="mf-button blue" href="javascript:void(0);">Continue<i class="fa fa-fw fa-arrow-circle-right"></i></a>
+            </div>
+        </div>
+    </div>
+            
+    {{!--<div id="towStep" class="card-container step" data-numberid="numberTowStep" style="display: none;">
+        <div class="mf-card full-width">
+            <div class="card-header">Need a tow?</div>
+            <!--Will you need the mechanic to tow your vehicle?-->
+            <div class="card-content reverse">
+                <div class="towChoice mf-card half-width button-func green" data-value="1">
+                    <div class="card-header"><i class="fa fa-fw fa-check"></i> Yes</div>
+                    <div class="card-content">I need the mechanic to tow my car to a location where it can be fixed</div>
+                </div>
+                <div class="towChoice mf-card half-width button-func blue" data-value="0">
+                    <div class="card-header"><i class="fa fa-fw fa-times"></i> No</div>
+                    <div class="card-content">My vehicle is driveable or in a location where a mobile mechanic can fix it</div>
+                </div>
+            </div>
+
+            <div class="card-buttons">
+                <a id="backTow" class="mf-button left" href="javascript:void(0);"><i class="fa fa-fw fa-arrow-circle-left"></i> Previous</a>
+            </div>
+        </div>
+    </div>--}}
+
+    {{!--<div id="mechanicPreferenceStep" class="card-container step" data-numberid="numberMechanicPreferenceStep" style="display: none;">
+        <div class="mf-card full-width">
+            <div class="card-header">Mobile Mechanic or Shop?</div>
+            <!--Do you prefer a mobile mechanic or a shop?-->
+            <div class="card-content reverse">
+                <div class="mechanicPreference mf-card half-width button-func green" data-value="1">
+                    <div class="card-header">Mobile Mechanic</div>
+                    <div class="card-content">I want my mechanic to come to me to fix my vehicle</div>
+                </div>
+                <div class="mechanicPreference mf-card half-width button-func blue" data-value="-1">
+                    <div class="card-header">Shop</div>
+                    <div class="card-content">I want to take my vehicle into a shop to get fixed</div>
+                </div>
+                <div class="card-buttons">
+                    <a id="backPreference" class="mf-button left" href="javascript:void(0);"><i class="fa fa-fw fa-arrow-circle-left"></i> Previous</a>
+                    <a class="mechanicPreference mf-button" href="javascript:void(0);" data-value="0">I don't have a preference <i class="fa fa-fw fa-arrow-circle-right"></i></a>
+                </div>    
+            </div>
+        </div>
+    </div>--}}
+
+    {{!--<div id="scheduleStep" class="card-container step" data-numberid="numberScheduleStep" style="display: none;">
+        <div class="mf-card full-width">
+            <div class="card-header">When should the job be completed by?</div>
+            <!--When do you need this job completed by?-->            
+            <div class="card-container">
+                <select id="projectDateMM" class="project-input" name="mfDatePickerMM"><option value="0" disabled="disabled" selected="selected">MM</option></select>
+                <select id="projectDateDD" class="project-input" name="mfDatePickerDD"><option value="0" disabled="disabled" selected="selected">DD</option></select>
+                <select id="projectDateYY" class="project-input" name="mfDatePickerYY"><option value="0" disabled="disabled" selected="selected">YYYY</option></select>
+            </div>
+
+            <div class="card-buttons">
+                <a id="backSchedule" class="mf-button left" href="javascript:void(0);"><i class="fa fa-fw fa-arrow-circle-left"></i> Previous</a>
+                <a id="setSchedule" class="mf-button blue" href="javascript:void(0);">Continue<i class="fa fa-fw fa-arrow-circle-right"></i></a>
+            </div>
+        </div>
+    </div>--}}
+
+    {{!--<div id="availabilityStep" class="card-container step" data-numberid="numberAvailabilityStep" style="display: none;">
+        <div class="mf-card full-width">
+            <div class="card-header">When are you available?</div>
+            <!--When are you available?-->
+            <div class="card-container">
+                <table class="two-col">
+                    <tr>
+                        <td colspan="2" class="centered">
+                            <select id="availability" class="project-input">
+                                <option value="0" selected="selected">Weekdays After 5</option>
+                                <option value="1">Weekends</option>
+                                <option value="2">I'm Flexible</option>
+                                <option value="3">Customize</option>
+                            </select>
+                        </td>
+                    </tr>
+                    <tr><td colspan="2" class="centered">
+                        <div id="customHours" class="custom-hours" style="display: none;">
+                            <div id="hoursSelectors" class="hours-selectors">
+                                <label>Custom Hours: </label><br/>
+                                <div class="inline-div">
+                                    <select id="hoursDay" class="project-input">
+                                        <option value="0">Sunday</option>
+                                        <option value="1">Monday</option>
+                                        <option value="2">Tuesday</option>
+                                        <option value="3">Wednesday</option>
+                                        <option value="4">Thursday</option>
+                                        <option value="5">Friday</option>
+                                        <option value="6">Saturday</option>
+                                    </select>
+                                    <div class="inline-div">
+                                        <select id="hoursOpen" class="project-input">
+                                                <option value="" selected="selected">(Closed)</option>
+                                                <option value="1">1:00 AM</option>
+                                                <option value="2">2:00 AM</option>
+                                                <option value="3">3:00 AM</option>
+                                                <option value="4">4:00 AM</option>
+                                                <option value="5">5:00 AM</option>
+                                                <option value="6">6:00 AM</option>
+                                                <option value="7">7:00 AM</option>
+                                                <option value="8">8:00 AM</option>
+                                                <option value="9">9:00 AM</option>
+                                                <option value="10">10:00 AM</option>
+                                                <option value="11">11:00 AM</option>
+                                                <option value="12">12:00 PM</option>
+                                                <option value="13">1:00 PM</option>
+                                                <option value="14">2:00 PM</option>
+                                                <option value="15">3:00 PM</option>
+                                                <option value="16">4:00 PM</option>
+                                                <option value="17">5:00 PM</option>
+                                                <option value="18">6:00 PM</option>
+                                                <option value="19">7:00 PM</option>
+                                                <option value="20">8:00 PM</option>
+                                                <option value="21">9:00 PM</option>
+                                                <option value="22">10:00 PM</option>
+                                                <option value="23">11:00 PM</option>
+                                                <option value="24">12:00 AM</option>
+                                        </select>
+                                        <select id="hoursClose" class="project-input">
+                                                <option value="" selected="selected">(Closed)</option>
+                                                <option value="1">1:00 AM</option>
+                                                <option value="2">2:00 AM</option>
+                                                <option value="3">3:00 AM</option>
+                                                <option value="4">4:00 AM</option>
+                                                <option value="5">5:00 AM</option>
+                                                <option value="6">6:00 AM</option>
+                                                <option value="7">7:00 AM</option>
+                                                <option value="8">8:00 AM</option>
+                                                <option value="9">9:00 AM</option>
+                                                <option value="10">10:00 AM</option>
+                                                <option value="11">11:00 AM</option>
+                                                <option value="12">12:00 PM</option>
+                                                <option value="13">1:00 PM</option>
+                                                <option value="14">2:00 PM</option>
+                                                <option value="15">3:00 PM</option>
+                                                <option value="16">4:00 PM</option>
+                                                <option value="17">5:00 PM</option>
+                                                <option value="18">6:00 PM</option>
+                                                <option value="19">7:00 PM</option>
+                                                <option value="20">8:00 PM</option>
+                                                <option value="21">9:00 PM</option>
+                                                <option value="22">10:00 PM</option>
+                                                <option value="23">11:00 PM</option>
+                                                <option value="24">12:00 AM</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <br/><div class="spacer"><label><a href="javascript:void(0);" class="mf-button blue extra-wide" id="addHours"><i class="fa fa-plus"></i> Add</a></label></div>
+                            </div>
+                            <div class="hours-display mf-mobile-table mf-mobile-table-styled">
+                                <table id="hoursTable" class="mf-mobile-table mf-mobile-table-styled data-table"></table>
+                            </div>
+                        </div>
+                    </td></tr>
+                </table>
+            </div>
+
+            <div class="card-buttons">
+                <a id="backAvailability" class="mf-button left" href="javascript:void(0);"><i class="fa fa-fw fa-arrow-circle-left"></i> Previous</a>
+                <a id="setAvailability" class="mf-button blue">Continue<i class="fa fa-fw fa-arrow-circle-right"></i></a>
+            </div>
+        </div>
+    </div>--}}
+
+    <div id="photosStep" class="card-container step" data-numberid="numberPhotosStep" style="display: none;">
+        <div class="mf-card full-width">
+            <div class="card-header">Photos</div>
+            <div class="card-content">
+                <div class="addpic">{{{tooltip tooltips "575dba10d00b43b8ff89c270"}}}Photos: (if possible, we recommend: the car, repair, or previous estimates) <a id="add-photos-link" href="javascript:void(0);">Add Photos</a></div><!-- .addpic -->
+                <input type="file" id="add-photos-fileinput" style="display: none;" multiple="multiple" accept="image/*" />
+                <div id="addError" class="add-error" style="display: none;">&nbsp;</div>
+                <div id="piclist" class="piclist mf-card full-width invisible">
+                    <div id="picboxes" class="picboxes">
+                        {{#if project}}
+                            {{#if project.photos.length}}
+                                {{#each project.photos}}
+                                    <div id="picbox-savedPhoto{{this}}" class="picbox">
+                                        <img id="upload-savedPhoto{{this}}" src="/api/public/image/{{this}}" />
+                                        <div id="remove-savedPhoto{{this}}" class="remove" data-id="savedPhoto{{this}}">X</div>
+                                    </div>
+                                {{/each}}
+                            {{/if}}
+                        {{/if}}
+                    <div id="dragndrop" class="mf-dragndrop" {{#if project}}{{#if project.photos.length}}style="display: none;"{{/if}}{{/if}}><div class="editPhotos">Drop photos here to <a id="addPhotosDroplink" href="javascript:void(0);">add them to this job</a></div></div>
+                    </div>
+                </div>
+
+                <div class="card-buttons">
+                    <a id="backPhotos" class="mf-button left" href="javascript:void(0);"><i class="fa fa-fw fa-arrow-circle-left"></i> Previous</a>
+                    <a id="setPhotos" class="mf-button blue" href="javascript:void(0);">Continue<i class="fa fa-fw fa-arrow-circle-right"></i></a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="locationStep" class="card-container step" data-numberid="numberLocationStep" style="display: none;">
+        <div class="mf-card full-width">
+            <div class="card-content">
+                <div class="card-header">Vehicle Location</div>
+                Where is your vehicle? Drag and drop the pin to connect with mechanics near you.
+                
+                <div class="mf-card invisible mapping-card">
+                    <div class="card-content small-screen-flex" style="padding:0px;">
+                        <div class="expand"><input type="text" id="geocodeAddress" style="width: 100%; text-align: center;" placeholder="{{#if user.geo.city}}{{user.geo.city}}, {{/if}}{{#if user.geo.state}}{{user.geo.state}}{{/if}} {{#if user.geo.postal}}{{user.geo.postal}}{{/if}}" /></div>
+                        <div class="expand"><a id="updateGeocoding" class="mf-button green" style="width: 100%; margin-top:2px;" href="javascript:void(0);"><i class="fa fa-map-marker"></i> Find Me</a></div>
+                    </div>
+                    <div class="map-wrapper">
+                        <div id="projectMap" class="project-map"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="card-buttons">
+                <a id="backLocation" class="mf-button left" href="javascript:void(0);"><i class="fa fa-fw fa-arrow-circle-left"></i> Previous</a>
+                <a id="setLocation" class="mf-button blue" href="javascript:void(0);">Continue<i class="fa fa-fw fa-arrow-circle-right"></i></a>
+            </div>
+        </div>
+    </div>
+
+    <div id="nameStep" class="card-container step" data-numberid="numberNameStep" style="display: none;">
+        <div class="mf-card full-width">
+            <div class="card-content">
+                <div class="card-header">Name Your Job</div>
+                Describe your job in a few words to give it a title
+
+                <div class="mf-card full-width invisible">
+                    <div class="card-content">
+                        <input type="text" id="jobName" value="{{user.username}}'s Vehicle" />
+                    </div>
+                </div>
+            </div>
+            <div class="card-buttons">
+                <a id="backName" class="mf-button left" href="javascript:void(0);"><i class="fa fa-fw fa-arrow-circle-left"></i> Previous</a>
+                <a id="setName" class="mf-button blue" href="javascript:void(0);">Finish <i class="fa fa-fw fa-flag-checkered"></i></a>
+            </div>
+        </div>
+    </div>
+
+    {{!--<div id="finishStep" class="card-container step" data-numberid="numberFinalStep" style="display: none;">
+        <div class="mf-card full-width">
+            <div class="card-header">All Done</div>
+            You're all done. Would you like to open this job now or save it as a draft?<br /><br />
+            <strong><em>THOUGHT BY MARCUS: Maybe we could put some sort of review thing here</em></strong>
+            You're all set! As soon as you open your job to estimates, we'll notify mechanics near you to get your car fixed.
+
+            <div class="card-content">
+                <div class="publishOrDraft mf-card full-width button-func green invisible" data-value="1">
+                    <div class="card-header">Open to Estimates</div>
+                    <div class="card-content" id="publishDescription">I want to publish this job so that mechanics can place estimates on parts &amp; labor to fix it</div>
+                </div>
+                <div class="mf-card full-width invisible">
+                    <div class="card-content">
+                        or <a href="#">Save for Later</a>
+                    </div>
+                </div>
+                <div class="publishOrDraft mf-card half-width button-func blue" data-value="0">
+                    <div class="card-header">Save as Draft</div>
+                    <div class="card-content">I want to save this job for later</div>
+                </div>
+            </div>
+
+            <div class="card-buttons">
+                <a id="backFinish" class="mf-button left" href="javascript:void(0);"><i class="fa fa-fw fa-arrow-circle-left"></i> Previous</a>
+            </div>
+        </div>
+    </div>--}}
+</div>

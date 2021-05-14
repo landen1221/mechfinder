@@ -1,0 +1,72 @@
+<div id="hire-confirmation">
+    
+    <hr/>
+    You will pay : <br />
+     <h4>${{revealPrice}} </h4>
+     You current Balance is: {{currency user.balance}} , please select appropriate payment method , we will charge your card the amount of {{currency remaining_amount}}
+    <hr/>
+    <form id="form-hire-confirmation" class="form-inline" method="post" action="/api/profile/{{ id }}/revealsaved">
+
+        <table>
+        <thead>
+          <tr>
+            <th>Default</th>
+            <th>Credit Card</th>
+            <th>Expiration</th>
+          </tr>
+        </thead>
+        <tbody>
+          {{#if user.stripe.cards }}
+          {{#each user.stripe.cards.data }}
+          <tr>
+            <td><input type="radio" name="optionsRadios" {{#compare ../user.stripe.default_card to=id}} CHECKED {{/compare}} class="default_selector" value="{{id}}"></td>
+            <td>{{brand}} ******{{last4}}</td>
+            <td>{{exp_month}}/{{exp_year}}</td>
+          </tr>
+          {{/each}}
+          {{/if}}
+
+        </tbody>
+      </table>
+      
+        <div class="btn-group">
+            <input type="submit" value="Reveal Number" class="btn btn-success" />
+            <button class="btn" id="button-hire-cancel">Back</button>
+        </div>
+        <div class="alert error" style="display: none;">
+            There was a problem completing this request.
+        </div>
+    </form> 
+</div>
+
+<script type="text/javascript">
+jQuery(function($) {
+    $('#button-hire-cancel').click(function() {
+        // NOTE: would be lovely to target just this popover
+        $('*[rel=popover][data-load]').popover('hide');
+        return false;
+    });
+    $('#form-hire-confirmation').validate({
+        submitHandler: function(form) {
+            form = $(form);
+            form.ajaxSubmit({
+                success: function (data) {
+                    location.reload();
+                },
+                error: function (xhr, err) {
+                    form.find('.alert-error').show(); 
+                },
+                complete: function() {
+                    form.find(':input:not(:submit)').removeAttr('disabled');
+                    form.find(':submit').button('reset');
+                }
+            });
+            form.find('.alert').hide();
+            form.find(':input:not(:submit)').attr('disabled', 'disabled');
+            form.find(':submit').button('loading');
+            return false;
+        }
+    });
+
+});
+</script>

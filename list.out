@@ -1,0 +1,106 @@
+Mechfinder@0.0.1 /var/www/mechfinder.com
+├── async@0.2.9
+├── coffee-script@1.6.3
+├─┬ connect-redis@1.4.5
+│ ├── debug@0.7.2
+│ └── redis@0.7.3
+├── csv@0.3.5
+├─┬ express@3.3.4
+│ ├── buffer-crc32@0.2.1
+│ ├─┬ commander@1.2.0
+│ │ └── keypress@0.1.0
+│ ├─┬ connect@2.8.4
+│ │ ├── bytes@0.2.0
+│ │ ├── formidable@1.0.14
+│ │ ├── pause@0.0.1
+│ │ ├── qs@0.6.5
+│ │ └── uid2@0.0.2
+│ ├── cookie@0.1.0
+│ ├── cookie-signature@1.0.1
+│ ├── debug@0.7.2
+│ ├── fresh@0.1.0
+│ ├── methods@0.0.1
+│ ├── mkdirp@0.3.5
+│ ├── range-parser@0.0.4
+│ └── send@0.1.3
+├─┬ handlebars@1.0.12
+│ └─┬ optimist@0.3.7
+│   └── wordwrap@0.0.2
+├── humanize@0.0.8
+├── imagemagick@0.1.3 extraneous
+├─┬ knox@0.8.6
+│ ├── debug@0.7.2
+│ ├─┬ stream-counter@0.1.0
+│ │ └── readable-stream@1.0.15
+│ └─┬ xml2js@0.2.8
+│   └── sax@0.5.4
+├─┬ less@1.4.2
+│ ├── mkdirp@0.3.5
+│ ├─┬ request@2.25.0
+│ │ ├── aws-sign@0.3.0
+│ │ ├── cookie-jar@0.3.0
+│ │ ├── forever-agent@0.5.0
+│ │ ├─┬ form-data@0.1.0
+│ │ │ └─┬ combined-stream@0.0.4
+│ │ │   └── delayed-stream@0.0.5
+│ │ ├─┬ hawk@1.0.0
+│ │ │ ├── boom@0.4.2
+│ │ │ ├── cryptiles@0.2.2
+│ │ │ ├── hoek@0.9.1
+│ │ │ └── sntp@0.2.4
+│ │ ├─┬ http-signature@0.10.0
+│ │ │ ├── asn1@0.1.11
+│ │ │ ├── assert-plus@0.1.2
+│ │ │ └── ctype@0.5.2
+│ │ ├── json-stringify-safe@5.0.0
+│ │ ├── oauth-sign@0.3.0
+│ │ ├── qs@0.6.5
+│ │ └── tunnel-agent@0.3.0
+│ └── ycssmin@1.0.1
+├─┬ markdown@0.5.0
+│ └─┬ nopt@2.1.2
+│   └── abbrev@1.0.4
+├── mime@1.2.10
+├── moment@2.1.0
+├─┬ mongoose@3.6.15
+│ ├── hooks@0.2.1
+│ ├─┬ mongodb@1.3.11
+│ │ ├── bson@0.1.9
+│ │ └── kerberos@0.0.3
+│ ├── mpath@0.1.1
+│ ├─┬ mpromise@0.2.1
+│ │ └── sliced@0.0.4
+│ ├── ms@0.1.0
+│ ├── muri@0.3.1
+│ ├── regexp-clone@0.0.1
+│ └── sliced@0.0.3
+├── node-uuid@1.4.0
+├─┬ nodemailer@0.5.2
+│ ├─┬ mailcomposer@0.2.1
+│ │ ├── mime@1.2.9
+│ │ └─┬ mimelib@0.2.12
+│ │   ├── addressparser@0.1.3
+│ │   └─┬ encoding@0.1.6
+│ │     └── iconv-lite@0.2.7
+│ └─┬ simplesmtp@0.3.5
+│   ├── rai@0.1.7
+│   └── xoauth2@0.1.8
+├── sitemap@0.6.0
+├── stream-buffers@0.2.5
+├─┬ uglify-js@2.3.6
+│ ├─┬ optimist@0.3.7
+│ │ └── wordwrap@0.0.2
+│ └─┬ source-map@0.1.27
+│   └── amdefine@0.0.8
+└─┬ up@0.2.2
+  ├── commander@0.6.1
+  ├── debug@0.1.0
+  ├─┬ distribute@0.1.4
+  │ └─┬ http-proxy@0.8.0
+  │   ├── colors@0.6.1
+  │   ├─┬ optimist@0.2.8
+  │   │ └── wordwrap@0.0.2
+  │   └── pkginfo@0.2.3
+  ├── eq@0.1.0
+  └── ms@0.1.0
+

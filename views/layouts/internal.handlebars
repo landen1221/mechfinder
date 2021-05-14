@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        {{> layouts/head }}
+        <!--<link rel="stylesheet" href="{{settings.static_path}}/css/internal.css">-->
+        <script src="/static/js/filedrop.js"></script>
+        <script src="/static/js/geo.js"></script>
+        <script src="{{ settings.static_path }}/js/handlebars.js"></script>
+        <script src="/static/js/internal.js"></script>
+        <script type="text/javascript" src="{{settings.static_path}}/js/tooltips.js"></script>
+        <script src="{{ settings.static_path }}/js/favorites-listener.js"></script>
+        <script type="text/javascript" src="{{settings.static_path}}/js/vehicle-filter.js"></script>
+        <script type="text/javascript" src="{{settings.static_path}}/js/gallery.js"></script>
+        {{> layouts/analytics }}
+    </head>
+
+    <body>
+        {{#if user}}
+            {{> layouts/chat }}
+            {{> layouts/notifications }}
+        {{/if}}
+        {{> layouts/modal }}
+        {{> layouts/gallery }}
+
+        <div class="internal-page">
+            {{> layouts/navbar-internal}}
+
+            <div class="internal-content">
+                <div class="internal-content-body">
+                    <div id="side-menu" class="side-menu">
+                        <div class="top"><div id="side-menu-hamburger" class="hamburger"></div></div>
+
+                        {{#if user}}
+                            <a class="item-link" id="dashboard-item" href="/profile"><div class="item"><div class="icon"><div class="frame dashboard"></div></div><div class="text">Dashboard</div></div></a>
+                            {{#compare user.role to="seller"}}
+                                <a class="item-link" id="my-projects-item" href="/my/projects"><div class="item"><div class="icon"><div class="frame projects"></div></div><div class="text">My Jobs</div></div></a>
+                                <a class="item-link" id="projects-item" href="/projects"><div class="item"><div class="icon"><div class="frame find-project"></div></div><div class="text">Find Jobs</div></div></a>
+                                <a class="item-link" id="mechanics-item" href="/mechanics"><div class="item"><div class="icon"><div class="frame find-mechanic"></div></div><div class="text">Find Mechanics</div></div></a>
+                                <a class="item-link" id="favorites-item" href="/my/favorites"><div class="item"><div class="icon"><div class="frame favorites"></div></div><div class="text">Favorites</div></div></a>
+                            {{else}}
+                                {{#compare user.role to="admin"}}{{else}}
+                                    <a class="item-link" id="post-item" href="/projects/post"><div class="item"><div class="icon"><div class="frame post-project"></div></div><div class="text">Post Job</div></div></a>
+                                    <a class="item-link" id="my-projects-item" href="/my/projects"><div class="item"><div class="icon"><div class="frame projects"></div></div><div class="text">My Jobs</div></div></a>
+                                {{/compare}}
+                                <a class="item-link" id="mechanics-item" href="/mechanics"><div class="item"><div class="icon"><div class="frame find-mechanic"></div></div><div class="text">Find Mechanics</div></div></a>
+                                <a class="item-link" id="projects-item" href="/projects"><div class="item"><div class="icon"><div class="frame find-project"></div></div><div class="text">See Other Jobs</div></div></a>
+                                <a class="item-link" id="favorites-item" href="/my/favorites"><div class="item"><div class="icon"><div class="frame favorites"></div></div><div class="text">Favorites</div></div></a>
+                            {{/compare}}
+                        {{else}}
+                            <a class="item-link" id="projects-item" href="/projects"><div class="item"><div class="icon"><div class="frame find-project"></div></div><div class="text">Find Jobs</div></div></a>
+                            <a class="item-link" id="mechanics-item" href="/mechanics"><div class="item"><div class="icon"><div class="frame find-mechanic"></div></div><div class="text">Find Mechanics</div></div></a>
+                        {{/if}}
+                    </div>
+                    <div id="wrapper" class="wrapper">
+                        <div id="open-side-menu-hamburger" class="open-side-menu-hamburger"></div>
+                        <div class="inside">
+                            {{{ body }}}
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            {{> layouts/footer }}
+
+            <!-- these divs are for JS use to detect CSS media queries -->
+            <div id="mq-320"></div>
+            <div id="mq-480"></div>
+            <div id="mq-768"></div>
+            <div id="mq-992"></div>
+            <div id="mq-1200"></div>
+        </div><!-- .internal-page -->
+    </body>
+</html>

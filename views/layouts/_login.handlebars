@@ -1,0 +1,74 @@
+<form method="post" action="/api/session" id="form-login" class="form-inline">
+    <h2>Members Login</h2>
+    <input type="email" id="login-email" name="email" placeholder="Email Address" class="required email input-medium" />
+    <label class="checkbox" for="login-persistent">
+        <input type="checkbox" id="login-persistent" name="persistent" />
+        Stay logged in
+    </label>
+    <input type="password" id="login-password" name="password" placeholder="Password" class="required input-medium" />
+    <a id="login-reset" href="/reset">Forgot Password</a>
+    <input type="submit" class="btn btn-primary pull-left" style="margin-left: 87px;" value="Login" />
+    <div id="login-signup" class="pull-left">Not a Member? </div>
+    <a id="button-login-signup" href="/#signup-chooser" class="btn btn-success pull-left">Sign Up</a>
+    <div class="clearfix"></div>
+    <div class="alert alert-error hide">
+        <strong>Login Failed.</strong> The email address or password entered is incorrect. If you are having
+        trouble logging in, please either reset your password or contact us at info@mechfinder.com.
+    </div>
+</form>
+
+<div id="modal-login-reset" class="modal hide fade" tabindex="-1" role="dialog" style="width 700px;">
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+        <h3>Reset Your Password</h3>
+    </div>
+    <div class="modal-body">
+    </div>
+    <div class="modal-footer">
+        <button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
+    </div>
+</div>
+
+<script type="text/javascript">
+jQuery(function($) {
+    $('#form-login').validate({
+        messages: {
+            'email': '*',
+            'password': '*'
+        },
+        submitHandler: function(form) {
+            form = $(form);
+            form.ajaxSubmit({
+                success: function (data) {
+                    window.location = data.role == 'buyer' ? '/Find-Mechanic' : '/projects';
+                },
+                error: function (xhr, err) {
+                    form.find('.alert-error').show();
+                },
+                complete: function() {
+                    form.find(':input:not(:submit)').removeAttr('disabled');
+                    form.find(':submit').button('reset');
+                }
+            });
+            form.find('.alert').hide();
+            form.find(':input:not(:submit)').attr('disabled', 'disabled');
+            form.find(':submit').button('loading');
+            return false;
+        }
+    });
+    $('#login-reset').click(function() {
+        if (window.location.pathname == '/reset')
+        {
+            return false;
+        }
+        $('#modal-login-reset .modal-body').html($.loading).load(
+            '/reset',
+            function() {
+                $('#modal-login-reset input[name="email"]').val($('#login-email').val());
+            }
+        );
+        $('#modal-login-reset').modal('show');
+        return false;
+    });
+});
+</script>

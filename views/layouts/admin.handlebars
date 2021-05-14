@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>{{#if title}}{{title}} - {{/if}}MF Admin Console</title>
+
+        <link rel="stylesheet" type="text/css" href="/static/styles/admin.css" />
+        
+        <script src="{{ settings.static_path }}/js/admin.js"></script>
+    </head>
+    <body>
+        <div class="admin-nav">
+            <div class="nav-wrapper">
+                <div class="home-pic"><a href="/admin"><img src="/static/img/mechfinder-logo-beta.png" /></a></div>
+                <div class="links">
+                    <ul>
+                        <li><a href="/admin"><i class="fa fa-home fa-fw"></i> Home</a></li>
+                        <li><a href="/admin/sellers"><i class="fa fa-wrench fa-fw"></i> Mechanics</a></li>
+                        <li><a href="/admin/buyers"><i class="fa fa-user fa-fw"></i> Customers</a></li>
+                        <li><a href="/admin/projects"><i class="fa fa-car fa-fw"></i> Projects</a></li>
+                        <li><a href="/admin/cms"><i class="fa fa-fighter-jet fa-fw"></i> CMS</a></li>
+                        <li><a href="/admin/holla"><i class="fa fa-battery-three-quarters fa-fw"></i> Hollas</a></li>
+                        <li><a href="/admin/tickets"><i class="fa fa-ticket fa-fw"></i> Tickets</a></li>
+                        <li><a href="/admin/logout"><i class="fa fa-sign-out fa-fw"></i> Logout</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="admin-body">
+            {{{body}}}
+        </div>
+    </body>
+</html>

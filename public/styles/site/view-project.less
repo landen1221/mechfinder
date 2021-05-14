@@ -1,0 +1,1107 @@
+/* view-project.less */
+
+.view-project {
+    width: 100%;
+    display: block;
+    float: left;
+
+    @screenXS: 320px;
+    @screenSM: 480px;
+    @screenMD: 768px;
+    @screenLG: 992px;
+    @screenXL: 1200px;
+
+    @defaultFont: "Myriad Pro", Arial, Helvetica, sans-serif;
+
+    @defaultColor: rgba(41, 41, 41, 1);
+    @grayTextColorLight: rgba(162, 162, 188, 1);
+    @grayTextColor: rgba(92, 92, 112, 1);
+    @headingColor: rgba(45, 62, 90, 1);
+    @linkColor: rgba(111, 138, 185, 1);
+    @linkColorHover: rgba(143, 177, 213, 1);
+
+    @redColor: rgba(169, 1, 1, 1);
+    @lightRedColor: rgba(199, 1, 1, 1);
+
+    * {
+        margin: 0px auto;
+        padding: 0px;
+
+        outline: none;
+        text-decoration: none;
+    }
+
+    .standard-div {
+        width: 100%;
+        display: block;
+        float: left;
+        text-align: left;
+    }
+
+    .inline-div {
+        display: inline-block;
+    }
+
+    .transitions {
+        -moz-transition: all 300ms ease;
+        -ms-transition: all 300ms ease;
+        -o-transition: all 300ms ease;
+        transition: all 300ms ease;
+    }
+
+    .background-defaults {
+        background-size: contain;
+        background-position: center;
+        background-repeat: no-repeat;
+    }
+
+    .standard-font {
+        color: @defaultColor;
+        font-family: @defaultFont;
+        font-size: 13px;
+        line-height: 17px;
+        font-weight: normal;
+    }
+
+    .link-font {
+        .standard-font;
+        .transitions;
+        -webkit-tap-highlight-color: transparent;
+        outline: none;
+        text-decoration: none;
+
+        &:link,
+        &:visited {
+            color: @redColor;
+            border-bottom: 1px solid transparent;
+        }
+
+        &:hover,
+        &:active,
+        &:focus {
+            color: @lightRedColor;
+            border-bottom-color: @lightRedColor;
+        }
+    }
+
+    .heading {
+        .standard-div;
+
+        h1 {
+            color: @headingColor;
+            font-family: @defaultFont;
+            font-size: 32px;
+            font-weight: normal;
+            line-height: 36px;
+            text-align: left;
+        }
+
+        h2 {
+            color: @headingColor;
+            font-family: @defaultFont;
+            font-size: 22px;
+            font-weight: normal;
+            line-height: 26px;
+            text-align: left;
+        }
+
+        h3 {
+            color: @headingColor;
+            font-family: @defaultFont;
+            font-size: 18px;
+            font-weight: normal;
+            line-height: 21px;
+            text-align: left;
+        }
+
+        h4 {
+            color: @headingColor;
+            font-family: @defaultFont;
+            font-size: 15px;
+            font-weight: normal;
+            line-height: 18px;
+            text-align: left;
+        }
+    }
+
+    .topspaced {
+        margin-top: 25px;
+    }
+
+    .topspaced.largespace {
+        margin-top: 40px;
+    }
+
+    .topspaced.smallspace {
+        margin-top: 15px;
+    }
+
+    .bottomspaced {
+        margin-bottom: 25px;
+    }
+
+    .underlined {
+        border-bottom: 1px solid @headingColor;
+    }
+
+    input[type="radio"] {
+        vertical-align: middle;
+    }
+
+    .project-actions {
+        .fa {
+            &.circled {
+                .transitions;
+                .mf-ui.drop-shadow;
+                background: @colorBlue;
+                color: white;
+                box-sizing: border-box;
+                /*position: absolute;*/
+                /*bottom: 0px;                        */
+                border-radius: 50%;
+                /*border: 1px solid red;*/
+                padding-top: 4px;
+                width: 26px;
+                height: 26px;
+                &:hover {
+                    .transitions;
+                    background: @colorBlueLight;
+                    .mf-ui.drop-shadow-deep;
+                }
+                &.fa-th-list,
+                &.fa-plus,
+                &.fa-star-half-o,
+                &.fa-ban,
+                &.fa-check-circle-o {
+                    padding-top: 5px;
+                }
+            }
+        }
+        ul {
+            list-style-type: none;
+
+            &.unindented {
+                padding-left: 0px;
+                margin-left: 0px;
+            }
+
+            li {
+                padding-top: 8px;
+                padding-bottom: 8px;
+                font-size: 14px;
+
+                &.unpadded {
+                    padding: 0px;
+                }
+
+                a {
+                    font-size: 16px;
+                    &:hover,
+                    &:active,
+                    &:focus {
+                        text-decoration: underline;
+                    }
+                }
+            }
+        }
+    }
+
+    .project-breakdown {
+        .standard-div;
+
+        .quickstats {
+            .standard-div;
+
+            .quickbox {
+                .standard-div;
+                display: inline-block;
+                width: 100%;
+                margin-top: 5px;
+
+                color: @defaultColor;
+                font-family: @defaultFont;
+                font-size: 13px;
+                line-height: 13px;
+
+                span.gray {
+                    color: @grayTextColorLight;
+                }
+
+                span.red {
+                    color: @redColor;
+                }
+
+                &.righted {
+                    float: right;
+                }
+
+                @media only screen and (min-width: @screenXS) {
+                    .inline-div;
+
+                    width: auto;
+                    margin-top: 0px;
+                    margin-right: 10px;
+                }
+            }
+
+            .quickbox:last-child {
+                margin-right: 0px;
+            }
+        }
+
+        .customer-vs-mechanic {
+            .standard-div;
+            .inline-div;
+            text-align: center;
+
+            .third-box {
+                .standard-div;
+                margin-top: 10px;
+
+
+                @media only screen and (min-width: @screenSM) {
+                    .inline-div;
+                    width: 48%;
+                    float: left;
+                    margin-left: 1%;
+                    margin-right: 1%;
+                    // margin-top: 0px;
+                }
+
+                @media only screen and (min-width: @screenMD) {
+                    .inline-div;
+                    width: 31%;
+
+                    &.two-thirds {
+                        width: 62%;
+                    }
+                }
+
+                .profile-box,
+                .service-description {
+                    .standard-div;
+                    background-color: @colorBlueDark;
+                    border-radius: 2px;
+                    padding: 10px;
+                    box-sizing: border-box;
+                    box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+                    min-height: 160px;
+
+                    .customer-type {
+                        .standard-div;
+                        // .standard-font;
+                        color: white;
+                        font-weight: bold;
+                        font-size: 22px;
+                        padding-bottom: 7px;
+                        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+                    }
+
+                    .no-mechanic {
+                        .standard-div;
+                        margin-bottom: 5px;
+
+                        color: white;
+                        font-family: @baseFonts;
+                        font-size: 13px;
+                        line-height: 16px;
+                        text-align: left;
+                    }
+
+                    .image-side {
+                        .standard-div;
+                        padding-right: 10px;
+                        box-sizing: border-box;
+
+                        @media only screen and (min-width: @screenXS) {
+                            .inline-div;
+                            width: 40%;
+                        }
+
+                        .profile-picture {
+                            .standard-div;
+
+                            // height: 64px;
+
+                            // background-image: url('../img/personicon.png');
+                            // background-size: contain;
+                            // background-position: center;
+                            // background-repeat: no-repeat;
+                            &.fa {
+                                font-size: 80px;
+                                text-align: center;
+                                color: white;
+                            }
+
+                            &.vehicle {
+                                background-image: url('../img/fa-car.png');
+                            }
+                        }
+
+                        .favorite-message {
+                            .standard-div;
+                            text-align: center;
+
+                            .profile-favorite {
+                                display: inline-block;
+                                text-align: center;
+
+                                // a:link,
+                                // a:visited {
+                                //     .transitions;
+                                //     color: rgba(204, 187, 1, 1);
+                                //     font-family: @defaultFont;
+                                //     font-size: 20px;
+
+                                //     text-decoration: none;
+                                //     outline: none;
+                                // }
+
+                                // a:hover,
+                                // a:active,
+                                // a:focus {
+                                //     color: rgba(224, 207, 21, 1);
+                                // }
+                            }
+
+                            .profile-message {
+                                display: inline-block;
+                                text-align: center;
+
+                                a:link,
+                                a:visited {
+                                    .transitions;
+                                    color: white;
+                                    font-family: @baseFonts;
+                                    font-size: 20px;
+
+                                    text-decoration: none;
+                                    outline: none;
+                                }
+
+                                a:hover,
+                                a:active,
+                                a:focus {
+                                    color: @linkColorHover;
+                                }
+                            }
+                        }
+                    }
+
+                    .description-side {
+                        .standard-div;
+                        .standard-font;
+                        font-size: 16px;
+                        margin-top: 10px;
+                        color: white;
+                    }
+
+                    .info-side {
+                        .standard-div;
+                        margin-top: 10px;
+
+                        @media only screen and (min-width: @screenXS) {
+                            .inline-div;
+                            width: 60%;
+                            margin-top: 0px;
+                        }
+
+                        .profile-name {
+                            .standard-div;
+
+                            color: white;
+                            font-family: @baseFonts;
+                            font-size: 18px;
+                            line-height: 20px;
+                            word-wrap: break-word;
+                        }
+
+                        .profile-rows {
+                            .standard-div;
+
+                            .profile-row {
+                                .standard-div;
+
+                                .profile-col {
+                                    .inline-div;
+                                    max-width: 100%;
+
+                                    color: white;
+                                    font-family: @baseFonts;
+                                    font-size: 15px;
+                                    line-height: 20px;
+                                }
+
+                                .profile-col.strong {
+                                    font-weight: bold;
+                                }
+                            }
+                        }
+
+                        .profile-rating {
+                            .standard-div;
+                            .standard-font;
+                            font-size: 16px;
+                            margin-top: 5px;
+
+                            .on {
+                                color: @standardFontColor;
+                            }
+
+                            .off {
+                                color: rgba(177, 177, 177, 1);;
+                            }
+
+                            // .rating {
+                            //     .inline-div;
+                            //     float: left;
+                            //
+                            //     width: 16px;
+                            //     height: 16px;
+                            //     background-image: url('../img/mechanic-wrench-lightgray.png');
+                            //     background-size: contain;
+                            //     background-position: center;
+                            //     background-repeat: no-repeat;
+                            // }
+                            //
+                            // .rating.selected {
+                            //     background-image: url('../img/mechanic-wrench-black.png');
+                            // }
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    .vehicle-information {
+        .standard-div;
+
+        .vehicle-row {
+            .standard-div;
+
+            .vehicle-col {
+                .standard-div;
+
+                @media only screen and (min-width: @screenSM) {
+                    .inline-div;
+                    width: 48%;
+                    margin-left: 1%;
+                    margin-right: 1%;
+                }
+
+                @media only screen and (min-width: @screenMD) {
+                    width: 31%;
+                }
+
+                color: @defaultColor;
+                font-family: @defaultFont;
+                font-size: 15px;
+                line-height: 25px;
+            }
+        }
+
+        .acceptable-parts {
+            .standard-div;
+
+            label {
+                color: @defaultColor;
+                font-family: @defaultFont;
+                font-weight: normal;
+                font-size: 15px;
+                line-height: 18px;
+                margin-left: 3px;
+            }
+        }
+    }
+
+    .photos {
+        .standard-div;
+
+        .photo-lines {
+            .standard-div;
+            margin-top: 15px;
+            text-align: left;
+
+            .photo {
+                display: inline-block;
+                max-width: 23%;
+                margin-left: 1%;
+                margin-right: 1%;
+                max-width: 98%;
+                margin-top: 5px;
+                margin-bottom: 5px;
+
+                img {
+                    max-width: 100%;
+                    margin: 5px;
+                    max-height: 150px;
+                    box-sizing: border-box;
+                    border: 2px solid rgba(255, 255, 255, 1);
+                    box-shadow: 2px 2px 8px rgba(0,0,0,0.2);
+                    &:hover {
+                        cursor: zoom-in;
+                        border: 2px solid @colorBlueLight;
+                        box-shadow: 2px 2px 16px rgba(0,0,0,0.4);
+                    }
+                }
+            }
+        }
+    }
+
+    .service-information {
+        .standard-div;
+
+        .service-info {
+            .standard-div;
+
+            color: @defaultColor;
+            font-family: @defaultFont;
+            font-size: 13px;
+            line-height: 17px;
+
+            @media only screen and (min-width: @screenMD) {
+                .inline-div;
+                width: 50%;
+                margin-right: 10%;
+            }
+        }
+
+        .need-by {
+            .standard-div;
+
+            margin-top: 15px;
+            color: @grayTextColor;
+            font-family: @defaultFont;
+            font-size: 15px;
+            line-height: 18px;
+            text-align: left;
+
+            span.strong {
+                font-weight: bold;
+                color: @defaultColor;
+            }
+        }
+
+        .service-hours {
+            .standard-div;
+            margin-top: 25px;
+
+            @media only screen and (min-width: @screenMD) {
+                .inline-div;
+                width: 40%;
+                margin-top: 0px;
+            }
+
+            .hours-table-heading {
+                .standard-div;
+                padding-bottom: 10px;
+
+                color: @defaultColor;
+                font-family: @defaultFont;
+                font-size: 15px;
+                line-height: 18px;
+                text-align: center;
+                font-weight: bold;
+            }
+
+            .hours-table-wrapper {
+                .standard-div;
+            }
+
+            table {
+                width: 100%;
+                box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+                border-radius: 2px;
+            }
+        }
+    }
+
+    .project-estimates {
+        .standard-div;
+
+        table {
+            width: 100%;
+            max-width: 100%;
+            float: left;
+            border: 0;
+            background-color: rgba(255, 255, 255, 1);
+            border-spacing: 0;
+            border-collapse: separate;
+            box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+            border-radius: 2px;
+
+            tr {
+                td, th {
+                    font-family: @baseFonts;
+                    font-size: 13px;
+                    color: rgba(42, 53, 51, 1);
+                    text-align: center;
+                    border: 0;
+                    border-top: 1px solid rgba(222, 222, 222, 1);
+                    padding: 3px 2px;
+                    background-color: rgba(255, 255, 255, 1);
+                    -moz-transition: all 300ms ease;
+                    -ms-transition: all 300ms ease;
+                    -o-transition: all 300ms ease;
+                    transition: all 300ms ease;
+
+                    a.standard-button {
+                        padding: 10px;
+                        min-width: 100px;
+
+                        .unfixed {
+                            min-width: auto;
+                        }
+                    }
+
+                    .menu {
+                        /*width: 40px;*/
+                        /*height: 40px;*/
+                        display: inline-block;
+                        position: relative;
+                        // float: right;
+                        /*background-image: url("../img/mobilemenu-dropdown.png");*/
+                        background-size: 50%;
+                        background-repeat: no-repeat;
+                        background-position: center;
+                        -moz-transition: all 300ms ease;
+                        -ms-transition: all 300ms ease;
+                        o-transition: all 300ms ease;
+                        transition: all 300ms ease;
+
+                        &:active,
+                        &:hover,
+                        &:focus {
+                            /*background-image: url("../img/mobilemenu-dropdown-hover.png");*/
+                        }
+
+                        .dropdown {
+                            position: absolute;
+                            top: 10px;
+                            right: 10px;
+                            background-color: rgba(242, 242, 242, 1);
+                            background-color: white;
+                            box-shadow: 1px 1px 5px 0px rgba(1, 1, 1, 1);
+                            display: block;
+                            z-index: 600;
+                        }
+
+                        .dropdown {
+                            display: none;
+
+                            ul {
+                                display: block;
+                                float: left;
+                                list-style-position: inside;
+                                list-style-type: none;
+                                // padding-top: 7px;
+                                // padding-bottom: 7px;
+
+                                li {
+                                    color: rgba(81, 81, 81, 1);
+                                    font-family: @baseFonts;
+                                    font-size: 15px;
+                                    font-weight: bold;
+                                    white-space: nowrap;
+                                    text-overflow: ellipsis;
+                                    max-width: 300px;
+                                    text-align: right;
+
+                                    a {
+                                        .transitions;
+                                    }
+
+                                    a:link,
+                                    a:visited {
+                                        font-family: @baseFonts;
+                                        font-size: 13px;
+                                        text-decoration: none;
+                                        outline: none;
+                                        border-bottom: 1px solid transparent;
+                                        padding: 10px 15px;
+                                        display: block;
+                                        color: @colorBlue;
+                                        background-color: rgba(252, 252, 252, 1);
+
+                                        &.disabled {
+                                            color: rgba(144, 144, 144, 1);
+                                            background-color: rgba(252, 252, 252, 1);
+                                        }
+                                    }
+
+                                    a:active,
+                                    a:focus,
+                                    a:hover {
+                                        color: rgba(252, 252, 252, 1);
+                                        background-color: @colorBlueLight;
+
+                                        &.disabled {
+                                            cursor: default;
+                                            // color: rgba(252, 252, 252, 1);
+                                            // background-color: rgba(144, 144, 144, 1);
+                                            color: rgba(144, 144, 144, 1);
+                                            background-color: rgba(252, 252, 252, 1);
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+
+                &:first-child td,
+                &:first-child th {
+                    border-top: 0;
+                }
+
+                &:last-child td,
+                &:last-child th {
+                    border-bottom: 1px solid rgba(222, 222, 222, 1);
+                }
+
+                // avoid using .colnames to avoid namespace collisions (it's only there for backward compatibility with existing tables)
+                & th {
+                    padding: 15px;
+                    font-weight: bold;
+                    cursor: default;
+                }
+
+                &:nth-child(even) td {
+                    background-color: rgba(252, 252, 252, 1);
+                }
+
+                &:hover td {
+                    background-color: rgba(248, 248, 248, 1);
+                }
+            }
+        }
+    }
+
+    .needs-table {
+        margin-right: auto;
+        margin-left: 0px;
+        padding-left: 0px;
+        font-size: 16px;
+        padding-bottom: 10px;
+        td {
+            padding: 2px;
+            padding-right: 5px;
+        }
+    }
+
+    .project-buttons {
+        .standard-div;
+
+        .buttons-row {
+            display: inline-block;
+            float: right;
+            text-align: right;
+        }
+    }
+
+
+    a.button {
+        .inline-div;
+        .standard-font;
+        .transitions;
+        padding: 8px;
+        border-radius: 2px;
+
+        &:link,
+        &:visited {
+            color: rgba(245, 245, 245, 1);
+            background-color: rgba(1, 163, 232, 1);
+
+            &.green {
+                background-color: rgba(92, 184, 92, 1);
+            }
+
+            &.red {
+                background-color: @redColor;
+            }
+
+            &.gray {
+                background-color: rgba(155, 155, 155, 1);
+            }
+        }
+
+        &:hover,
+        &:active,
+        &:focus {
+            color: rgba(255, 255, 255, 1);
+            background-color: rgba(31, 193, 252, 1);
+
+            &.green {
+                background-color: rgba(122, 214, 122, 1);
+            }
+
+            &.red {
+                background-color: @lightRedColor;
+            }
+
+            &.gray {
+                background-color: rgba(155, 155, 155, 1);
+            }
+        }
+
+    }
+
+    .mf-popup {
+        .standard-div;
+        position: fixed;
+        z-index: 999;
+        width: 100%;
+        height: 100%;
+        height: 100vh;
+        top: 0px;
+        left: 0px;
+        background-color: rgba(41, 41, 41, .3);
+        text-align: center;
+
+        .white-box {
+            .inline-div;
+            max-width: 90%;
+            margin-top: 100px;
+            margin-top: 5vh;
+            max-height: 50%;
+            max-height: 90vh;
+            border-radius: 2px;
+            overflow-y: auto;
+            box-shadow: 0px 0px 5px 0px rgba(41, 41, 41, 1);
+            background: rgba(255, 255, 255, 1);
+
+            @media only screen and (min-width: @screenMD) {
+                max-width: @screenMD;
+            }
+
+            .exit-row {
+                .standard-div;
+                text-align: right;
+                padding-bottom: 5px;
+
+                a.exit-button {
+                    .inline-div;
+                    .transitions;
+                    font-family: @defaultFont;
+                    font-size: 13px;
+                    line-height: 13px;
+                    font-weight: normal;
+                    text-align: center;
+                    min-width: 20px;
+                    padding: 7px;
+                    border-bottom-left-radius: 2px;
+
+                    &:link,
+                    &:visited {
+                        color: rgba(245, 245, 245, 1);
+                        background-color: @redColor;
+                    }
+
+                    &:hover,
+                    &:active,
+                    &:focus {
+                        color: rgba(255, 255, 255, 1);
+                        background-color: @lightRedColor;
+                    }
+                }
+            }
+
+            .popup-content {
+                .standard-div;
+                max-width: 100%;
+                padding: 10px;
+                box-sizing: border-box;
+
+                .offer-diagnosis {
+                    .standard-div;
+                    width: 250px;
+                    max-width: 100%;
+
+                    .first-diagnosis {
+                        .standard-div;
+
+                        .first-diagnosis-message {
+                            .standard-div;
+                            .standard-font;
+                            margin-top: 10px;
+                            margin-bottom: 10px;
+                        }
+
+                        .accept-terms {
+                            .standard-div;
+                            text-align: right;
+
+                            input[type="checkbox"] {
+                                vertical-align: middle;
+                            }
+
+                            label {
+                                .inline-div;
+                                .standard-font;
+                            }
+                        }
+                    }
+
+                    .confirm-fee {
+                        .standard-div;
+
+                        .confirm-fee-message {
+                            .standard-div;
+                            .standard-font;
+                            margin-top: 10px;
+
+                            &.centered {
+                                text-align: right;
+                            }
+                        }
+                    }
+                }
+
+                .view-mechanic-profile {
+                    .standard-div;
+                    width: auto;
+
+                    .mechanic-profile {
+                        .standard-div;
+                        width: auto;
+                        display: flex;
+                        flex-flow: row;
+
+                        .profile-picture {
+                            .inline-div;
+                            .background-defaults;
+                            width: 100px;
+                            height: 100px;
+                            flex-shrink: 0;
+                            background-image: url('../img/customer-profile-pic.png');
+                        }
+
+                        .profile-info {
+                            .inline-div;
+                            flex-shrink: 1;
+                            margin-left: 10px;
+
+                            .info-row {
+                                .standard-div;
+                                .standard-font;
+                                clear: both;
+                                max-width: 100%;
+
+                                &.gray-row {
+                                    color: @grayTextColor;
+                                }
+
+                                &.message-row {
+
+                                    a.message-icon {
+                                        .inline-div;
+                                        .background-defaults;
+                                        .transitions;
+                                        width: 20px;
+                                        height: 20px;
+                                        outline: none;
+
+                                        &:link,
+                                        &:visited {
+                                            background-image: url('../img/mail-icon.png');
+                                        }
+
+                                        &:hover,
+                                        &:active,
+                                        &:focus {
+                                            background-image: url('../img/mail-icon-blue.png');
+                                            text-decoration: none;
+                                        }
+                                    }
+                                }
+
+                                &.wrenches {
+                                    .wrench {
+                                        .inline-div;
+                                        .background-defaults;
+                                        width: 15px;
+                                        height: 15px;
+                                        background-image: url('../img/mechanic-wrench-lightgray.png');
+
+                                        &.selected {
+                                            background-image: url('../img/mechanic-wrench-black.png');
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+
+                    .hire {
+                        .standard-div;
+                        width: auto;
+                        clear: both;
+                        margin-top: 10px;
+                        padding-top: 10px;
+                        border-top: 1px solid rgba(234, 234, 234, 1);
+
+                        .hire-row {
+                            .standard-div;
+                            .standard-font;
+                            clear: both;
+                            margin-top: 5px;
+
+                            &.hire-buttons {
+                                text-align: center;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+    .fa {
+        // text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+        // font-size: 23px;
+        // &.fa-star, &.fa-star-o:hover, &.fa-wrench {
+        //     color: @colorGold;
+        //     &.off {
+        //         color: @colorGray;
+        //     }
+        // }
+        // &.fa-star-o {
+        //     color: white;
+        // }
+        // .transitions;
+    }
+    .standard-button {
+        padding: 10px;
+    }
+    .mf-mobile-table {
+        td, th {
+            // padding-left: 5px !important;
+            // padding-right: 5px !important;
+        }
+    }
+
+    a.profile-link {
+        color: @colorWhite;
+
+        .fa {
+            font-size: 13px;
+        }
+
+        &:hover {
+            border-bottom: 1px solid @colorBlue;
+            color: @colorBlueLight;
+        }
+    }
+
+    .st-key {
+        font-weight: bold;
+    }
+}
+
+
+
+
+
+
+
+/* */

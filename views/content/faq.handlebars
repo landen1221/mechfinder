@@ -1,0 +1,47 @@
+<script type="text/javascript">
+    {{#if questionId}}
+        var QID = {{{questionId}}};
+    {{else}}
+        var QID = null;
+    {{/if}}
+</script>
+<script src="{{ settings.static_path }}/js/faq-page.js"></script>
+<div class="more-info">
+    <div class="group">
+        <div class="page-title"><h1>Frequently Asked Questions</h1></div>
+        <div class="spacer"></div>
+        <div id="accordion">
+            {{!--
+            <h3 class="question">Basic Question</h3>
+            <div class="answer default" id="1">
+                <p>Here's the answer to your basic question. It's a pretty good answer.</p>
+            </div>
+
+            <h3 class="question">Here's a question with multiple steps</h3>
+            <div class="answer" id="2">
+                <p>Just follow these simple steps and good things happen:</p>
+                <ol>
+                    <li><strong>Do</strong> the thing.</li>
+                    <li><strong>Click</strong> on that other thing.</li>
+                    <li><strong>Sign up</strong> for the thing.</li>
+                    <li><strong>Pet</strong> the neighbor's dog.</li>
+                </ol>
+            </div>
+
+            <h3 class="question">This question references another FAQ</h3>
+            <div class="answer" id="3">
+                <p><a class="qlink" href="#1">This link</a> demonstrates how to link between FAQs.</p>
+                <p><a href="../faq/2">This link</a> demonstrates how other pages can link directly to an FAQ.</p>
+                </p>
+            </div>
+            --}}
+
+            <div class="question"><h3>Why do you ask for mileage?</h3></div>
+            <div class="answer" id="4">
+                <p>Adding the mileage to a job offers many benefits. It can give mechanics a better idea of what the problem might be, and sometimes mileage can influence the job itself. For example, higher mileage cars require different oil.</p>
+                <p>For the customer, adding the mileage helps you remember when a job was done. Easily remember when you last had your oil changed, or the mileage of your transmission. Knowing these numbers will also help when it comes time to sell your vehicle.</p>
+            </div>
+
+        </div>
+    </div>
+</div>

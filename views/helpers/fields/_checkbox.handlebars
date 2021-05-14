@@ -1,0 +1,15 @@
+<div class="row">
+    <div class="col-xs-12">
+        <label class="control-label">
+            <input type="hidden" name="{{#if name}}{{name}}{{else}}{{to_input_name id}}{{/if}}" value="0" />
+            <input type="checkbox"
+                   id="{{id}}"
+                   name="{{#if name}}{{name}}{{else}}{{to_input_name id}}{{/if}}"
+                   class="{{class}}"
+                   value="1"
+                   {{#if value}}checked="checked"{{/if}} />
+            {{label}}
+        </label>
+        {{#if help}}<span class="help-block">{{help}}</span>{{/if}}
+    </div>
+</div>

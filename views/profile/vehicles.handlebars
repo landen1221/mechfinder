@@ -1,0 +1,152 @@
+<script type="text/javascript">
+    var USER  = {{#if user}}{{{json user}}}{{else}}null{{/if}};
+    var VEHICLES = {{#if vehicles}}{{{json vehicles}}}{{else}}[]{{/if}};
+</script>
+
+<script type="text/javascript" src="{{settings.static_path}}/js/vehicle-filter.js"></script>
+<script type="text/javascript" src="{{settings.static_path}}/js/vehicle-profile.js"></script>
+<script src="{{ settings.static_path }}/js/searchable-dropdown.js"></script>
+
+<div class="mf-ui">
+    <div class="card-container">
+        <div class="mf-card full-width">
+            <div class="card-header">My Vehicles</div>
+            <div class="accordion" id="accordionContainer">
+                <div class="accordion-container">
+                    <div class="accordion-header green" id="addNewAccordion"><i class="fa fa-plus"></i> Add a New Vehicle<div class="expand-icon"><i class="fa fa-plus-circle"></i></div></div>
+                    <div class="accordion-details" style="display:none;">
+                        <div class="card-content">
+                            <table class="two-col">
+                                <tr>
+                                    <td><label for="inputMake">Make: </label><br /></td>
+                                    <td>
+                                        <div class="mf-dropdown">
+                                            <input type="text" class="liveSearchBox mf-dropdown-input" placeholder="Enter Vehicle Make" id="inputMake" />
+                                            <ul class="liveSearchList mf-dropdown-content" id="dropdownMake"></ul>
+                                        </div>
+                                    </td>  
+                                </tr>
+                                <tr>
+                                    <td><label for="inputModel">Model: </label>
+                                    <td>
+                                        <div class="mf-dropdown">
+                                            <input type="text" class="liveSearchBox mf-dropdown-input" placeholder="Enter Vehicle Model" id="inputModel" />
+                                            <ul class="liveSearchList mf-dropdown-content" id="dropdownModel"></ul>
+                                        </div>
+                                    </td> 
+                                </tr>
+                                <tr>
+                                    <td><label for="inputYear">Year: </label>
+                                    <td>
+                                        <div class="mf-dropdown">
+                                            <input type="text" class="liveSearchBox mf-dropdown-input" placeholder="Enter Vehicle Year" id="inputYear" />
+                                            <ul class="liveSearchList mf-dropdown-content" id="dropdownYear"></ul>
+                                        </div>
+                                    </td> 
+                                </tr>
+                                <tr>
+                                    <td colspan="2" class="centered break"></td>
+                                </tr>
+                            </table>
+                            <table class="two-col right">
+                                <tr>
+                                    <td><label for="vehicleEngine">Engine Cylinders: </label></td>
+                                    <td><input id="vehicleEngine" type="text" placeholder="Engine" /></td>
+                                </tr>
+                                <tr>
+                                    <td><label for="vehicleMileage">Mileage: </label></td>
+                                    <td><input id="vehicleMileage" type="text" placeholder="Mileage" /></td>
+                                </tr>
+                            </table>
+                            <div class="card-buttons right-align">
+                                <div><a id="saveVehicleProfile" class="mf-button green" href="javascript:void(0);"><i class="fa fa-floppy-o fa-fw"></i> Add This Vehicle</a></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {{#each vehicles}}
+                <div class="accordion-container">
+                    <div class="accordion-header" id="accordionHeader{{this._id}}">{{this.year}} {{this.make}} {{this.model}}<div class="expand-icon"><i class="fa fa-plus-circle"></i></div></div>
+                    <div class="accordion-details" id="accordionDetails{{this._id}}" style="display:none;">
+                        <div class="card-content">
+                            <table class="two-col">
+                                <tr>
+                                    <td><label for="editVehicleMake{{this._id}}">Make: </label></td>
+                                    <td><input id="editVehicleMake{{this._id}}" type="text" placeholder="Make" value="{{this.make}}" data-id="{{this._id}}" /></td>
+                                </tr>
+                                <tr>
+                                    <td><label for="editVehicleModel{{this._id}}">Model: </label></td>
+                                    <td><input id="editVehicleModel{{this._id}}" type="text" placeholder="Model" value="{{this.model}}" data-id="{{this._id}}" /></td>
+                                </tr>
+                                <tr>
+                                    <td><label for="editVehicleYear{{this._id}}">Year: </label></td>
+                                    <td><input id="editVehicleYear{{this._id}}" type="text" placeholder="Year" value="{{this.year}}" data-id="{{this._id}}" /></td>
+                                </tr>
+                                <tr>
+                                    <td colspan="2" class="centered break"></td>
+                                </tr>
+                            </table>
+                            <table class="two-col">
+                                <tr>
+                                    <td><label for="editVehicleEngine{{this._id}}">Engine Cylinders: </label></td>
+                                    <td><input id="editVehicleEngine{{this._id}}" type="text" placeholder="Engine" value="{{this.engine}}" data-id="{{this._id}}" /></td>
+                                </tr>
+                                <tr>
+                                    <td><label for="editVehicleMileage{{this._id}}">Mileage: </label></td>
+                                    <td><input id="editVehicleMileage{{this._id}}" type="text" placeholder="Mileage" value="{{this.mileage}}" data-id="{{this._id}}" /></td>
+                                </tr>
+                            </table>
+                            <div class="card-buttons right-align">
+                                <div>
+                                <a id="saveVehicleEdits{{this._id}}" class="saveVehicleButton mf-button green flat" href="javascript:void(0);" data-id="{{this._id}}"><i class="fa fa-check fa-fw"></i> Saved</a>
+                                <a id="deleteVehicle{{this._id}}" class="deleteVehicleButton mf-button red" href="javascript:void(0);" data-id="{{this._id}}"><i class="fa fa-trash-o fa-fw"></i> Delete Vehicle</a>
+                                </div>
+                            </div>
+                        </div>                    
+                    </div>
+                </div>
+                {{/each}}
+                <div class="accordion-container" style="display:none;" id="accordionTemplate">
+                    <div class="accordion-header" id="accordionHeaderTemplate"><div class="expand-icon"><i class="fa fa-plus-circle"></i></div></div>
+                    <div class="accordion-details" id="accordionDetailsTemplate" style="display:none;">
+                        <div class="card-content">
+                            <table class="two-col">
+                                <tr>
+                                    <td><label for="editVehicleMake">Make: </label></td>
+                                    <td><input id="editVehicleMake" type="text" placeholder="Make" value="" /></td>
+                                </tr>
+                                <tr>
+                                    <td><label for="editVehicleModel">Model: </label></td>
+                                    <td><input id="editVehicleModel" type="text" placeholder="Model" value="" /></td>
+                                </tr>
+                                <tr>
+                                    <td><label for="editVehicleYear">Year: </label></td>
+                                    <td><input id="editVehicleYear" type="text" placeholder="Year" value="" /></td>
+                                </tr>
+                                <tr>
+                                    <td colspan="2" class="centered break"></td>
+                                </tr>
+                            </table>
+                            <table class="two-col">
+                                <tr>
+                                    <td><label for="editVehicleEngine">Engine Cylinders: </label></td>
+                                    <td><input id="editVehicleEngine" type="text" placeholder="Engine" value="" /></td>
+                                </tr>
+                                <tr>
+                                    <td><label for="editVehicleMileage">Mileage: </label></td>
+                                    <td><input id="editVehicleMileage" type="text" placeholder="Mileage" value="" /></td>
+                                </tr>
+                            </table>
+                            <div class="card-buttons right-align">
+                                <div>
+                                <a id="saveVehicleEdits" class="saveVehicleButton mf-button green flat" href="javascript:void(0);" data-id=""><i class="fa fa-check fa-fw"></i> Saved</a>
+                                <a id="deleteVehicle" class="deleteVehicleButton mf-button red" href="javascript:void(0);" data-id=""><i class="fa fa-trash-o fa-fw"></i> Delete Vehicle</a>
+                                </div>
+                            </div>
+                        </div>                    
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,232 @@
+.favoritesPage,
+.searchPage,
+.myProjectsPage {
+   
+    .h1 {
+        margin-bottom: 20px;
+    }
+
+    .fa-star, .fa-wrench {
+        color: @colorGold;  
+        &.off {
+            color: @colorGray;
+        }
+    }
+
+    .result-rating {
+        white-space: nowrap;
+    }
+
+    .result-vehicle {
+        text-transform: capitalize;
+        width: 33%;
+    }
+
+    #status {
+        &.gray {
+            color: gray;
+            font-size: 10pt;
+        }
+
+        &.error {
+            color: @colorRed;
+            font-size: 10pt;
+            font-weight: bold;
+        }
+    }
+
+    input, textarea, select {
+        &.error {
+            border: 2px solid @colorRed !important;
+        }
+    }
+
+    table {
+        tr.error {
+            border: 2px solid @colorRed;
+            color: @colorRed;
+            font-weight: bold;
+            font-size: 25px;
+        }
+    }
+
+    .form-container {
+        margin: 20px 0;
+        overflow: hidden;
+        .form-group {
+            display: inline-block;
+        }
+        input,
+        select {
+            margin-right: 20px;
+            background: #ffffff;
+            margin: 10px 0;
+        }
+        label {
+            font-family: @baseFonts;
+            padding: 0 8px 0 15px;
+            @media @phonescreens, @regularphonescreens {
+                padding-left: 0;
+                padding-top: 10px;
+            }
+        }
+        .advanced-search-options {
+            display: none;
+            margin-top: 20px;
+            .form-group {
+                width: 50%;
+                float: left;
+                @media @phonescreens {
+                    width: 100%;
+                }
+            }
+            input,
+            select {
+                width: 50%;
+                @media @regularphonescreens {
+                    width: 90%;
+                }
+                @media @phonescreens {
+                    width: 100%;
+                }
+            }
+            label {
+                width: 40%;
+                text-align: left;
+                display: inline-block;
+                @media @phonescreens, @regularphonescreens {
+                    width: 100%;
+                }
+            }
+        }
+    }
+    .results-table {
+        // margin-top: 30px;
+        table {
+            border-collapse: collapse;
+            width: 100%;
+            th {
+                text-align: center;
+            }
+            li {
+                list-style: none;
+            }
+            tr:nth-child(even) {
+                background: #e6e6e6;
+            }
+            tr td {
+                font-size: 14px;
+                line-height: 20px;
+                text-align: center;
+                ul {
+                    text-align: center;
+                }
+                &.result-save {
+                    width: 5%;
+                    display: table-cell;
+                    text-align: center;
+                    cursor: pointer;
+                }
+                &.result-profile {
+                    width: 25%;
+                    text-align: center;
+                    .profile-avatar {
+                        width: 20%;
+                        float: left;
+                        img {
+                            width: 100%;
+                        }
+                    }
+                    .profile-info {
+                        float: left;
+                        width: 50%;
+                        padding-left: 10px;
+                    }
+                }
+                &.result-mechanic {
+                    text-transform: capitalize;
+                }
+                &.result-type {
+                    text-transform: capitalize;
+                }
+                &.result-zip {
+                    width: 10%;
+                    text-align: center;
+                }
+                &.result-type {
+                    width: 15%;
+                    text-align: center;
+                }
+                &.result-highlights {
+                    width: 15%;
+                }
+                &.result-specialties {
+                    width: 15%;
+                }
+                &.result-actions {
+                    width: 5%;
+                    display: table-cell;
+                    text-align: center;
+                    cursor: pointer;
+                    .contact-action-styles,
+                    .favorite-action-styles {
+                        display: flex;
+                        flex-direction: column;
+                        height: 54px;
+                        justify-content: center;
+                        align-items: center;
+                        color: #313131;
+                        padding: 0 4px;
+                        .fa {
+                            font-size: 24px;
+                            width: 18px;
+                            font-family: FontAwesome !important;
+                            text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+                            color: @standardFontColor;
+                            &.fa-envelope-o {
+                                width: initial;
+                            }
+                        }
+                        span.favorite-label {
+                            font-size: 12px;
+                        }
+                        .fa-star-o:hover {
+                            color: @colorGold;
+                        }
+                        .fa-star {
+                            color: @colorGold;
+                        }
+                    }
+                    .contact-action-styles {
+                        height: 50px;
+                        display: flex;
+                        align-items: center;
+                        color: #313131;
+                        span.fa {
+                            font-size: 24px;
+                        }
+                        .icon.mail {
+                            background-image: url("../img/mail-icon.png");
+                            width: 28px;
+                            height: 20px;
+                            display: block;
+                            background-repeat: no-repeat;
+                            background-position: center center;
+                        }
+                        .fa-envelope-o {
+                            &:hover {
+                                color: rgba(37, 196, 255, 1);
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        .favorite-customers-table .result-actions {
+            // display: flex;
+            justify-content: space-around;
+            width: auto;
+        }
+        
+    }
+}

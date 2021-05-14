@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        {{> layouts/head }}
+    </head>
+
+    <body class="public"{{#if user.complete}} data-user-id="{{user._id}}"{{/if}}>
+        <div class="top">
+            <div class="container">
+                <div class="header">
+                    <div class="row">
+                        <div class="col-xs-12 col-sm-4">
+                            <a href="/"><img class="logo" src="{{settings.static_path}}/img/logo.jpg" alt="logo_img"></a>
+                        </div>
+
+                        <div class="col-xs-12 col-sm-5">
+
+                        </div>
+
+                        <div class="col-xs-12 col-sm-3 customer">
+                            <div class="row">
+                                {{#if user.complete}}{{> layouts/profile }}{{/if}}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        {{#if user.complete}}
+        <nav class="navbar navbar-default">
+            <div class="container">
+
+                <ul class="message-menu-max-left navbar-nav">
+                    <li class="{{ifpath '/inbox' then="active"}}">
+                        <a href="/inbox"><span class="glyphicon glyphicon-newmessages" aria-hidden="true"></span>New Messages</a>
+                        {{#if unread_mail_count}}<button type="button" class="btn btn-default nav-circle-status">{{unread_mail_count}}</button>{{/if}}
+                    </li>
+                </ul>
+                <div class="col-xs-12 col-super-0 col-sm-3"></div>
+                <div class="col-xs-12 col-super-9 col-sm-6">
+                    <ul class="nav navbar-nav">
+                        <li class="displaydesktop {{ifpath '/inbox' then="active"}}">
+                            <a href="/inbox"><span class="glyphicon glyphicon-newmessages" aria-hidden="true"></span>New Messages</a>
+                            {{#if unread_mail_count}}<button type="button" class="btn btn-default nav-circle-status">{{unread_mail_count}}</button>{{/if}}
+                        </li>
+                        <li class="{{ifpath '/projects' then="active"}}"><a href="/projects">Find Jobs</a></li>
+                        <li class="{{ifpath '/Find-Mechanic' then="active"}}"><a href="/Find-Mechanic">Find Mechanic</a></li>
+                        <li class="{{ifpath '/projects/post' then="active"}}"><a href="/projects/post">Post job</a></li>
+                        <li class="{{ifpath '/my/projects' then="active"}}">
+                            <a href="/my/projects">My jobs
+                                {{#if active_projects_count}}<div class="btn btn-default nav-circle-status">{{active_projects_count}}</div>{{/if}}
+                            </a>
+                        </li>
+
+                    </ul>
+                </div>
+                <div class="col-xs-12 col-sm-3">
+                    <form class="navbar-form navbar-left search" action="/projects" method="post" role="search">
+                        <div class="form-group">
+                            <button type="submit" class="glyphicon glyphicon-search"></button>
+                            <input type="text" name="query" class="form-control" placeholder="Project search...">
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </nav>
+        {{/if}}
+
+        <div class="container">
+            {{{ body }}}
+        </div>
+
+        {{> layouts/counter }}
+
+        {{> layouts/footer }}
+
+        {{> layouts/analytics }}
+        {{> profile/include }}
+    </body>
+</html>

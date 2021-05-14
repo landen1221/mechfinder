@@ -1,0 +1,140 @@
+
+<script type="text/javascript" src="{{settings.static_path}}/js/vehicle-filter.js"></script>
+<script src="{{ settings.static_path }}/js/search-pages.js"></script>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCmKExouanVwkFVhIgIxdUgigCjuglQu0g&callback=searchPage.googleInit" async="async" defer="defer"></script>
+
+<script type="text/javascript">
+    var USER = {{#if user}}{{{json user}}}{{else}}null{{/if}};
+</script>
+
+<div class="heading-row"><h1>{{#compare user.role to="buyer"}}Other Jobs{{else}}Find A Job{{/compare}}</h1></div>
+<div class="searchPage mf-ui" id="projects-page">
+    <div class="container card-container">
+        <div class="mf-card full-width">
+        <div class="form-container">
+            <form>
+                <div class="main-search-options">
+                    <div>
+                    {{!--<select id="specialization">
+                        <option disabled selected>Service needed: </option>
+                        <option>Any</option>
+                        <option value="Auto Repair">Engine/Mechanical</option>
+                        <option>Diagnostic</option>
+                        <option>Audio</option>
+                        <option>Body Work</option>
+                        <option>Electrical</option>
+                        <option>Maintenance</option>
+                        <option>Restoration</option>
+                        <option>Windows</option>
+                        <option>Tires</option>
+                        <option>Other/Not Sure</option>
+                    </select>--}}
+                    <label id="distance-label" for="distance">Jobs Within</label>
+                    <select id="distance">
+                        <option disabled selected>Distance</option>
+                        <option>1 mile</option>
+                        <option>5 miles</option>
+                        <option>10 miles</option>
+                        <option>15 miles</option>
+                        <option>25 miles</option>
+                        <option>50 miles</option>
+                        <option>100 miles</option>
+                        <option>Any</option>
+                    </select>
+                    <label id="address-label" for="address">of</label>
+                    <input type="text" id="address" placeholder="Address or Location" value="{{#if region}}{{region}}{{/if}}" />
+                    <a href="javascript:void(0);" class="mf-button green" id="search-button"><i class="fa fa-search" aria-hidden="true"></i> Search</a>
+                    </div>
+                    <div class="submitthing" style="text-align:center; padding-top: 20px; width:100%;display:block;">
+                        <a href="javascript:void(0);" class="advanced-search-toggle mf-button flat"><i class="fa fa-cogs" aria-hidden="true"></i> Advanced <i id="advancedExpIcon" class="fa fa-chevron-down" aria-hidden="true"></i></a>
+                        
+                    </div>
+                </div>
+                <div class="form-group">
+                <div class="advanced-search-options clearfix vehicleSelector">
+                    <div class="form-group">
+                        <label for="posted_within">Posted within</label>
+                        <select id="posted_within">
+                            <option selected>No preference</option>
+                            <option>Past 2 days</option>
+                            <option>Past 3 days</option>
+                            <option>Past 5 days</option>
+                            <option>Past week</option>
+                            <option>Past 2 weeks</option>
+                            <option>Past month</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="customer_prefers">Prefered Mechanic</label>
+                        <select id="customer_prefers">
+                            <option selected>No preference</option>
+                            <option>Shop</option>
+                            <option>Mobile mechanic</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="vehicleMake">Vehicle Make</label>
+                        <select name="vehicleMake" id="vehicleMake" class="project-input">
+                            <option value="" disabled="disabled">No Preference</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="language">Language</label>
+                        <select id="language" class="project-input">
+                            <option selected>No Preference</option>
+                            <option>English</option>
+                            <option>Español</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label id="starting_year_label" for="starting_year">Made After</label>
+                        <input type="text" id="starting_year" placeholder="1900">
+                    </div>
+                    <div class="form-group">
+                        <label id="years_between_label" for="ending_year">Made Before</label>
+                        <input type="text" id="ending_year" placeholder="2020">
+                    </div>
+                    <div class="form-group">
+                        <label id="show_seen_jobs_label" for="show_seen_jobs">Show Viewed</label>
+                        <select id="show_seen_jobs" value="1">
+                            <option value="1">Yes</option>
+                            <option value="0">No</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <div class="standard-div" style="padding-top: 11px; padding-right: 8px; text-align: center; box-sizing: border-box;">
+                            <a class="searchButton mf-button green" id="apply-filters" href="javascript:void(0);"><i class="fa fa-search" aria-hidden="true"></i> Apply Filters</a>
+                        </div>
+                    </div>
+                    {{!--
+                    <div class="form-group">
+                        <label for="minimum_rating">Minimum Rating:</label>
+                        <select id="minimum_rating">
+                            <option selected>No preference</option>
+                            <option>5</option>
+                            <option>4+</option>
+                            <option>3+</option>
+                            <option>2+</option>
+                            <option>1+</option>
+                        </select>
+                    </div>
+                    --}}
+                </div>
+                </div>
+
+            </form>
+
+    </div>
+    {{#if user}}<em class="gray" id="status">Jobs you've {{#compare user.role to="seller"}}submitted an estimate on{{else}}posted{{/compare}} will appear in <a href="/my/projects/">My Jobs</a></em>{{/if}}
+    <div class="results-table">
+        <div class="container">
+            <table border="0" class="mf-mobile-table mf-mobile-table-styled results-append-target">
+                {{!-- Search results are appended here via jQuery --}}
+            </table>
+        </div>
+    </div>
+    <div style="padding: 2% 25% 2% 20%;">
+        <a href="javascript:void(0);" class="mf-button loadmore-button" style="width: 100%; text-align: center; margin-top: 10px;" id="loadmore"><i class="fa fa-search-plus"></i> Load More Results</a>
+    </div>
+    </div>
+</div>

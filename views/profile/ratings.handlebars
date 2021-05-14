@@ -1,0 +1,24 @@
+
+<div class="row-fluid header">
+    <div class="span4">User</div>
+    <div class="span3">Date/Job</div>
+    <div class="span5">Rating</div>
+</div>
+
+{{#each ratings}}
+<div class="row-fluid data">
+    <div class="span4">
+        {{#with user}}{{>helpers/nanoperson}}{{/with}}
+    </div>
+    <div class="span3">
+        {{#if rel}}<a href="/projects/{{rel.number}}">{{rel.title}}</a><br/>{{/if}}
+        {{since date}}
+    </div>
+    <div class="span5">
+        {{helper 'stars' stars=stars}}
+        {{notes}}
+    </div>
+</div>
+{{else}}
+<p>This user has received no ratings.</p>
+{{/each}}

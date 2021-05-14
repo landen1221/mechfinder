@@ -1,0 +1,14 @@
+<script type="text/javascript">
+    var USER = {{#if user}}{{{json user}}}{{else}}null{{/if}};
+</script>
+<script type="text/javascript" src="/static/js/admin/admin-controls-referral.js"></script>
+
+<label for="referralRateDiagnosis">Diagnosis Referral %</label>
+<input id="referralRateDiagnosis" type="text" value="{{toPercentage user.referral.diagnosis}}" />
+<input id="saveReferralDiagnosis" class="saveReferral" data-type="diagnosis" type="button" value="Save Diagnosios Referral %" />
+<i id="savingReferralDiagnosis" class="savingIcon fa fa-cog fa-spin fa-fw transitions"></i><br /><br />
+
+<label for="referralRateWorkorder">Workorder Referral %</label>
+<input id="referralRateWorkorder" type="text" value="{{toPercentage user.referral.workorder}}" />
+<input id="saveReferralWorkorder" class="saveReferral" data-type="workorder"  type="button" value="Save Workorder Referral %" />
+<i id="savingReferralWorkorder" class="savingIcon fa fa-cog fa-spin fa-fw transitions"></i><br /><br />

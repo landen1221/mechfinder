@@ -1,0 +1,355 @@
+.notify-popup {
+    .standard-div;
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    width: 100vw;
+    height: 100%;
+    height: 100vh;
+    background-color: rgba(41, 41, 41, .5);
+    z-index: 800;
+    text-align: center;
+
+    @heightTextareaMessage: 50px;
+
+    .notify-container {
+        .standard-div;
+        display: inline-block;
+        box-shadow: 0px 0px 10px 0px rgba(41, 41, 41, 1);
+        width: 96%;
+        float: none;
+        max-width: 600px;
+        margin-top: 20px;
+        margin-top: 5vh;
+        height: 300px;
+        height: 90vh;
+        max-height: 400px;
+        max-height: 90vh;
+        background-color: @colorWhite;
+        position: relative;
+
+        .background-text {
+            .standard-div;
+            .standard-font;
+            box-sizing: border-box;
+            width: 100%;
+            font-weight: normal;
+            color: @colorGrayLight;
+            text-align: center;
+            position: absolute;
+            top: 48%;
+            left: 0px;
+
+            & {
+                display: none;
+            }
+
+            &.no-messages {
+                display: block;
+            }
+        }
+
+        .exit-row {
+            .standard-div;
+            text-align: right;
+            position: absolute;
+            top: 0px;
+            left: 0px;
+            z-index: 803;
+
+            a {
+                display: inline-block;
+                .standard-font;
+                float: right;
+                text-align: center;
+                padding: 5px;
+                padding-left: 20px;
+                padding-right: 20px;
+                text-decoration: none;
+
+                &:link,
+                &:visited {
+                    color: @colorWhite;
+                    background-color: rgba(169, 1, 1, 1);
+                }
+
+                &:hover,
+                &:active,
+                &:focus {
+                    color: @colorWhite;
+                    background-color: rgba(199, 1, 1, 1);
+                }
+            }
+        }
+
+        .clear-row {
+            .standard-div;
+            width: auto;
+            text-align: left;
+            position: absolute;
+            top: 5px;
+            left: 5px;
+            z-index: 803;
+
+            .clear-button {
+                display: inline-block;
+                float: left;
+                margin-right: 8px;
+            }
+
+            a {
+                .standard-font;
+                .transitions;
+                font-weight: normal;
+                display: inline-block;
+                line-height: 30px;
+                float: left;
+                text-align: center;
+                color: @colorGray;
+                text-decoration: none;
+                padding-left: 5px;
+                padding-right: 5px;
+                background-color: @colorWhite;
+                border: 1px solid @colorGrayLight;
+                box-shadow: 0px 0px 5px @colorGrayLight;
+
+                i.fa {
+                    font-size: 30px;
+                    vertical-align: middle;
+                }
+
+                span.text {
+                    font-size: 15px;
+                    vertical-align: middle;
+                }
+
+                &:hover,
+                &:active,
+                &:focus {
+                    color: @colorBlue;
+                    box-shadow: 0px 0px 3px @colorBlueLight;
+                }
+            }
+        }
+
+        .inbox-wrapper {
+            .standard-div;
+
+            .toast {
+                .standard-div;
+                .standard-font;
+                position: absolute;
+                bottom: 20px;
+                left: 0px;
+                z-index: 802;
+                text-align: center;
+
+                .toast-message {
+                    .standard-font;
+                    display: inline-block;
+                    width: auto;
+                    max-width: 75%;
+                    background-color: rgba(111, 111, 111, 1);
+                    border-radius: 2px;
+                    box-shadow: 0px 0px 2px 0px rgba(111, 111, 111, 1);
+                    color: @colorWhite;
+                    padding: 10px;
+                    box-sizing: border-box;
+                }
+            }
+
+            .inbox {
+                .standard-div;
+                .transitions;
+                padding-top: 60px;
+                box-sizing: border-box;
+                position: absolute;
+                height: 100%;
+                padding-top: 60px;
+                overflow-y: auto;
+                z-index: 801;
+
+                &.loading {
+                    background-image: url('../img/preloader.gif');
+                    background-position: center;
+                    background-repeat: no-repeat;
+                }
+
+                .inbox-row {
+                    .standard-div;
+                    .transitions;
+                    background-color: @colorWhite;
+                    border-top: 1px solid @colorGrayLight;
+
+                    &:last-child {
+                        border-bottom: 1px solid @colorGrayLight;
+                    }
+
+                    &:nth-child(even) {
+                        background-color: @colorWhite;
+                    }
+
+                    &:hover,
+                    &:active,
+                    &:focus,
+                    &.dropped {
+                        background-color: rgba(245, 245, 245, 1);
+                        cursor: pointer;
+                    }
+
+                    .inbox-flex {
+                        .standard-div;
+                        display: flex;
+
+                        .inbox-flexbox {
+                            display: inline-block;
+                            box-sizing: border-box;
+                            .standard-font;
+                            width: auto;
+                            padding: 15px;
+                            white-space: nowrap;
+                            text-overflow: ellipsis;
+
+                            &.time {
+                                width: auto;
+                                color: @colorGrayLight;
+                            }
+
+                            &.message {
+                                display: block;
+                                width: 100%;
+                                white-space: normal;
+                            }
+
+                            &.actions {
+                                width: auto;
+                                text-align: right;
+
+                                a {
+                                    .standard-font;
+                                    .transitions;
+                                    padding: 5px;
+
+                                    &:link,
+                                    &:visited {
+                                        color: @colorGreenLight;
+                                    }
+
+                                    &:hover,
+                                    &:active,
+                                    &:focus {
+                                        color: @colorGreen;
+                                    }
+
+                                    i {
+                                        vertical-align: middle;
+                                    }
+
+                                    &.blue {
+                                        &:link,
+                                        &:visited {
+                                            color: @colorBlueLight;
+                                        }
+
+                                        &:hover,
+                                        &:active,
+                                        &:focus {
+                                            color: @colorBlue;
+                                        }
+                                    }
+
+                                    &.yellow {
+                                        &:link,
+                                        &:visited {
+                                            color: @colorYellowLight;
+                                        }
+
+                                        &:hover,
+                                        &:active,
+                                        &:focus {
+                                            color: @colorYellow;
+                                        }
+                                    }
+
+                                    &.red {
+                                        &:link,
+                                        &:visited {
+                                            color: @colorRedLight;
+                                        }
+
+                                        &:hover,
+                                        &:active,
+                                        &:focus {
+                                            color: @colorRed;
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+
+                    .inbox-drop {
+                        .standard-div;
+                        box-sizing: border-box;
+                        border-top: 1px dashed @colorGrayLight;
+                        padding: 20px;
+
+                        @media only screen and (min-width: @screenSM) {
+                            padding-left: 40px;
+                            padding-right: 40px;
+                        }
+
+                        .message-info {
+                            .standard-div;
+                            .standard-font;
+                            color: @colorGrayLight;
+                            margin-top: 10px;
+
+                            &:first-child {
+                                margin-top: 0px;
+                            }
+
+                            strong {
+                                font-weight: normal;
+                                color: rgba(41, 41, 41, 1);
+                            }
+                        }
+
+                        .message {
+                            .standard-div;
+                            .standard-font;
+                            color: @colorGrayLight;
+                            line-height: 150%;
+                            white-space: pre-wrap;
+                            margin-top: 10px;
+                        }
+
+                        .actions {
+                            .standard-div;
+                            margin-top: 10px;
+                            text-align: center;
+
+                            input[type="button"] {
+                                width: 100%;
+                                margin-top: 5px;
+
+                                &:first-child {
+                                    margin-top: 0px;
+                                }
+
+                                @media only screen and (min-width: @screenSM) {
+                                    width: auto;
+                                    margin-top: 0px;
+                                }
+                            }
+
+                            @media only screen and (min-width: @screenSM) {
+                                text-align: right;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

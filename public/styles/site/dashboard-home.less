@@ -1,0 +1,323 @@
+@import "defaults.less";
+
+.dashboard-page {
+    .within {
+        .group {
+            @screenXS: 320px;
+            @screenSM: 480px;
+            @screenMD: 768px;
+            @screenLG: 920px;
+            @screenXL: 1200px;
+
+            @colorRed: rgba(169, 1, 1, 1);
+            @colorRedLight: rgba(199, 1, 1, 1);
+            @colorGreen: rgba(92, 184, 92, 1);
+            @colorGreenLight: rgba(122, 214, 122, 1);
+            @colorBlue: rgba(7, 166, 244, 1);
+            @colorBlueLight: rgba(37, 196, 255, 1);
+
+            @standardFontColor: rgba(41, 41, 41, 1);
+            @standardFontSize: 13px;
+            @standardFontWeight: normal;
+
+            @standardLineHeight: 18px;
+
+            .standard-div {
+                display: block;
+                float: left;
+                width: 100%;
+                text-align: left;
+            }
+
+            .flex-div {
+                display: -webkit-flex;
+                display: flex;
+            }
+
+            .inline-div {
+                display: inline-block;
+            }
+
+            .spacer {
+                .standard-div;
+                height: 1px;
+                margin-top: 15px;
+                margin-bottom: 15px;
+
+                &.large {
+                    margin-top: 30px;
+                    margin-bottom: 30px;
+                }
+
+                &.small {
+                    margin-top: 7px;
+                    margin-bottom: 7px;
+                }
+
+                &.lined {
+                    background-color: rgba(199, 199, 199, 1);
+                }
+
+                &.remove-top-margin {
+                    margin-top: 0px;
+                }
+
+                &.remove-bottom-margin {
+                    margin-bottom: 0px;
+                }
+            }
+
+            .remove-effects {
+                outline: none;
+                text-decoration: none;
+                -webkit-tap-highlight-color: transparent;
+            }
+
+            .transitions {
+                -moz-transition: all 300ms ease;
+                -ms-transition: all 300ms ease;
+                -o-transition: all 300ms ease;
+                transition: all 300ms ease;
+            }
+
+            .standard-background {
+                background-position: center;
+                background-repeat: no-repeat;
+                background-size: contain;
+            }
+
+            .standard-font {
+                color: @standardFontColor;
+                font-family: @baseFonts;
+                font-size: @standardFontSize;
+                font-weight: @standardFontWeight;
+                line-height: @standardLineHeight;
+            }
+
+            .standard-link {
+                .standard-font;
+                .transitions;
+                .remove-effects;
+
+                &:link,
+                &:visited {
+                    color: @colorBlue;
+                    border-bottom: 1px solid transparent;
+                }
+
+                &:hover,
+                &:active,
+                &:focus {
+                    color: @colorBlueLight;
+                    border-bottom-color: @colorBlueLight;
+                }
+            }
+
+            // .standard-button {
+            //     .inline-div;
+            //     .standard-font;
+            //     .transitions;
+            //     .remove-effects;
+            //     padding: 10px;
+            //     border-radius: 2px;
+
+            //     &:link,
+            //     &:visited {
+            //         color: rgba(245, 245, 245, 1);
+            //         background-color: @colorBlue;
+
+            //         &.red {
+            //             background-color: @colorRed;
+            //         }
+
+            //         &.green {
+            //             background-color: @colorGreen;
+            //         }
+
+            //         &.blue {
+            //             background-color: @colorBlue;
+            //         }
+            //     }
+
+            //     &:hover,
+            //     &:active,
+            //     &:focus {
+            //         color: rgba(255, 255, 255, 1);
+            //         background-color: @colorBlueLight;
+
+            //         &.red {
+            //             background-color: @colorRedLight;
+            //         }
+
+            //         &.green {
+            //             background-color: @colorGreenLight;
+            //         }
+
+            //         &.blue {
+            //             background-color: @colorBlueLight
+            //         }
+            //     }
+            // }
+
+            // .standard-input {
+            //     .inline-div;
+            //     .standard-font;
+            //     .remove-effects;
+            //     .transitions;
+            //     max-width: 100%;
+            //     padding: 10px;
+            //     box-sizing: border-box;
+            //     color: rgba(123, 123, 123, 1);
+            //     border: 1px solid rgba(221, 221, 221, 1);
+            //     background-color: rgba(255, 255, 255, 1);
+            //     border-radius: 2px;
+            //     box-shadow: 0px 2px 3px 0px rgba(221, 221, 221, 1) inset;
+            //     text-align: left;
+
+            //     &[disabled="disabled"] {
+            //         color: rgba(153, 153, 153, 1);
+            //         background-color: rgba(245, 245, 245, 1);
+            //     }
+            // }
+
+            // .standard-select {
+            //     .standard-input;
+            //     box-shadow: none;
+            // }
+
+            .input-error {
+                border: 1px solid @colorRed;
+            }
+
+            .dashboard {
+                .standard-div;
+
+                .mechanic {
+                    .standard-div;
+
+                    .welcome-back {
+                        .standard-div;
+
+                        .userbox {
+                            .standard-div;
+                            margin-right: 0px;
+                            margin-bottom: 20px;
+
+                            .welcome-message {
+                                .standard-div;
+
+                                .message-heading {
+                                    .standard-div;
+                                    .standard-font;
+                                    font-size: 15px;
+                                    line-height: 18px;
+                                    font-weight: bold;
+                                }
+
+                                .message-content {
+                                    .standard-div;
+                                    .standard-font;
+                                    margin-top: 10px;
+
+                                    &.align-right {
+                                        text-align: right;
+                                    }
+                                }
+                            }
+                        }
+
+                        .money-boxes {
+                            .standard-div;
+
+                            .money-box {
+                                .standard-div;
+                                width: 50%;
+                                padding: 15px;
+                                padding-top: 35px;
+                                padding-bottom: 35px;
+                                box-sizing: border-box;
+                                text-align: center;
+                                background-color: rgba(222, 222, 222, 1);
+
+                                &:first-child {
+                                    background-color: rgba(234, 234, 234, 1);
+                                }
+
+                                .message-line {
+                                    .standard-div;
+                                    .standard-font;
+                                    color: rgba(111, 111, 111, 1);
+                                    font-size: 15px;
+                                    line-height: 18px;
+                                    text-align: center;
+                                    font-weight: bold;
+                                }
+
+                                .amount-earned {
+                                    .standard-div;
+                                    .standard-font;
+                                    font-size: 25px;
+                                    line-height: 30px;
+                                    padding-top: 10px;
+                                    padding-bottom: 10px;
+                                    text-align: center;
+
+                                    a {
+                                        .standard-link;
+                                        font-size: 25px;
+                                        line-height: 30px;
+                                    }
+                                }
+                            }
+                        }
+                    }
+
+                    .notifications {
+                        .standard-div;
+
+                        .notification {
+                            .standard-div;
+                            margin-top: 15px;
+                            box-sizing: border-box;
+                            padding: 10px;
+                            border-radius: 2px;
+                            background-color: rgba(255, 255, 148, 1);
+                            border: 1px solid rgba(163, 211, 183, 1);
+
+                            .message {
+                                .standard-div;
+                                .standard-font;
+                                font-size: 15px;
+                                line-height: 18px;
+                            }
+
+                            &.red {
+                                background-color: rgba(255, 179, 191, 1);
+                                border-color: rgba(225, 148, 161, 1);
+                            }
+
+                            &.yellow {
+                                background-color: rgba(255, 255, 148, 1);
+                                border-color: rgba(255, 211, 98, 1);
+                            }
+
+                            &.green {
+                                background-color: rgba(193, 241, 213, 1);
+                                border-color: rgba(163, 211, 183, 1);
+                            }
+
+                        }
+                    }
+
+                    .project-stats {
+                        .standard-div;
+
+                        table {
+                            max-width: 100%;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

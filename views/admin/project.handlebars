@@ -1,0 +1,37 @@
+<div class="project">
+    <div class="row center"><h1>Project: {{{project.title}}}</h1></div>
+    <div class="row center"><p>{{#if project.diagnosis}}Diagnosis{{else}}Workorder{{/if}}</p></div>
+    <div class="row center">
+        <p>
+            <a href="/admin/user/{{project.owner._id}}">
+                <i class="fa fa-user fa-fw"></i> {{project.owner.username}}
+            </a>
+            {{#if project.assigned}}
+                <a href="/admin/user/{{project.assigned._id}}">
+                    <i class="fa fa-wrench fa-fw"></i> {{project.assigned.username}}
+                </a>
+            {{/if}}
+        </p>
+    </div>
+    <div class="row center">
+        <p>{{project.vehicle.year}} {{project.vehicle.make}} {{project.vehicle.model}}</p>
+    </div>
+
+    <div class="row topspace xl">
+        <div class="row"><h1>Estimates</h1></div>
+        <div class="row topspace"><p>Estimates can be in the following states:</p></div>
+        <div class="row">
+            <ul>
+                <li><strong>submitted</strong>: the mechanic has submitted the estimate to an open project</li>
+                <li><strong>accepted</strong>: customer hired the mechanic for this estimate</li>
+                <li><strong>requested</strong>: mechanic has request payment for this estimate</li>
+                <li><strong>released</strong>: customer has released funds for this estimate</li>
+                <li><strong>refunded</strong>: an MF representative has refunded the money to the customer</li>
+            </ul>
+        </div>
+
+        <div class="row topspace xl">
+            {{> admin/projects/estimates-table}}
+        </div>
+    </div>
+</div>

@@ -1,0 +1,187 @@
+
+<div class='milestones'>
+<h4>
+    <div class="pull-left">Escrow Funds</div>
+    <div class="pull-right btn-group">
+    {{#if can_escrow}}
+    <button id="button-cancel-project"
+        class="btn btn-success"
+        rel="popover"
+        data-title="Create Escrow"
+        data-container="body"
+        data-placement="bottom"
+        data-load="/projects/{{p._id}}/escrow"
+    ><a href="/projects/{{p._id}}/escrow">Create Escrow</a></button>
+    {{/if}}
+</div>
+</h4>
+
+<br />
+
+  <table class="table table-striped" width='100%'>
+                    <thead>
+                        <tr>
+                            <th>
+                                Date
+                            </th>
+
+                        <th width='100px'>
+                                Description
+                            </th>
+
+
+                            <th>
+                                Amount
+                            </th>
+
+                            <th>
+                               Status / Action
+                            </th>
+                        </tr>
+                    </thead>
+                    {{#if charges }}
+                    <tbody>
+
+                    {{#each charges }}
+                    {{#if ../can_see_milestones}}
+
+                        <tr>
+                            <td>
+                                    {{date ./date}}
+                            </td>
+                            <td>
+                                    {{titlecase desc}}
+                            </td>
+
+                                <td>
+                                        {{deccurrency amount}}
+                                </td>
+
+                            <td>
+
+
+{{#compare state to='canceled'}}
+Canceled.
+{{/compare}}
+{{#compare state to='closed'}}
+    Released.
+{{/compare}}
+{{#compare state to='open'}}
+                {{#if ../../../is_owner}}
+                <a id="button-cancel-project"
+                        class="btn btn-danger"
+                        rel="popover"
+                        data-title="Cancel Escrow"
+                        data-container="body"
+                        data-placement="bottom"
+                        data-load="/milestones/{{_id}}/cancel"
+                >Cancel </a>
+                {{/if}}
+
+{{/compare}}
+
+{{#compare state to='assigned'}}
+
+<div class="btn-group pull-right releasnbtngrb{{ _id }}" role="group"  data-container="body" >
+
+    {{#if ../../../is_owner}}
+    <button type="button" class="btn btn-primary"
+        rel="popover"
+        data-title="Release Funds"
+        data-placement="bottom"
+        data-container="body"
+        data-load="/milestones/{{_id}}/release"
+    ><a href="/milestones/{{_id}}/release">Release</a></button>
+    {{/if}}
+    {{#if ../../../is_assigned}}
+    <button type="button" class="btn btn-primary"
+        rel="popover"
+        data-title="Release Funds"
+        data-container="body"
+        data-placement="bottom"
+        data-load="/milestones/{{_id}}/requestrelease"
+    ><a href="/milestones/{{_id}}/requestrelease">Request</a></button>
+    {{/if}}
+
+    <button type="button" class="btn btn-primary dropdown-toggle"
+        data-toggle="dropdown"  data-container="body">
+        <span class="caret"></span>
+    </button>
+    <ul class="dropdown-menu" role="menu">
+        <li><a href="/milestones/{{_id}}/dispute"  class="btn btn-warning" target='_new' >Dispute</a></li>
+        {{#if ../../../../is_assigned}}
+        <li><a id="button-cancel-project"
+            class="btn btn-danger"
+            rel="popover"
+            data-title="Cancel Escrow"
+            data-container="body"
+            data-placement="bottom"
+            data-load="/milestones/{{_id}}/cancel"
+        >Cancel</a></li>
+        {{/if}}
+    </ul>
+</div>
+
+</hr>
+
+
+
+{{/compare}}
+
+{{#compare state to='requested' }}
+
+<div class="btn-group pull-right  btn-xs dropdown-toggle releasnbtngrb{{ _id }}" role="group"  data-container="body">
+
+                {{#if ../../../is_owner}}
+
+    <button type="button" class="btn btn-primary "
+        rel="popover"
+        data-title="Release Funds"
+        data-placement="bottom"
+        data-container="body"
+        data-load="/milestones/{{_id}}/release"
+    ><a href="/milestones/{{_id}}/release">Release</a></button>
+                  {{/if}}
+
+    <button type="button" class="btn btn-primary dropdown-toggle"
+        data-toggle="dropdown"  data-container="body">
+        <span class="caret"></span>
+        <span class="sr-only">Select Option</span>
+    </button>
+    <ul class="dropdown-menu" role="menu">
+        <li><a href="/milestones/{{_id}}/dispute"  class="btn btn-warning" target='_new' >Dispute</a> </li>
+        {{#if ../../../../is_assigned}}
+        <li><a id="button-cancel-project"
+            class="btn btn-danger"
+            rel="popover"
+            data-title="Cancel Escrow"
+            data-container="body"
+            data-placement="bottom"
+            data-load="/milestones/{{_id}}/cancel"
+        >Cancel</a></li>
+        {{/if}}
+    </ul>
+</div>
+<br />
+Release Requested
+
+</hr>
+
+{{/compare}}
+
+{{#compare state to='disputed'}}
+    <a href="/disputes/{{dispute}}" target="_blank"> Disputed. </a>
+{{/compare}}
+
+                           </td>
+                        </tr>
+                    {{/if}}
+
+                    {{/each}}
+
+                    </tbody>
+                    {{/if}}
+                </table>
+
+            <hr />
+            </div>

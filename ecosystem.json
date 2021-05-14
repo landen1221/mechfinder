@@ -1,0 +1,36 @@
+{
+  "apps" : [
+    {
+      "name"      : "mechfinder",
+      "script"    : "pm2Startup.coffee",
+      "env": {
+        "COMMON_VARIABLE": "true"
+      }
+    }
+  ],
+  "deploy" : {
+    "production" : {
+      "user" : "prod",
+      "host" : "104.197.241.216",
+      "ref"  : "origin/master",
+      "repo" : "git@github.com:landen1221/dev.mechfinder.com.git",
+      "path" : "/var/www/production",
+      "post-deploy" : "npm install && pm2 restart mechfinder",
+      "env" : {
+        "NODE_ENV": "production"
+      }
+    },
+    "development" : {
+      "key"  : "/deployment",
+      "user" : "deploy",
+      "host" : "104.197.67.187",
+      "ref"  : "origin/master",
+      "repo" : "git@github.com:landen1221/dev.mechfinder.com.git",
+      "path" : "/var/www/development",
+      "post-deploy" : "npm install && pm2 restart mechfinder",
+      "env"  : {
+        "NODE_ENV": "development"
+      }
+    }
+  }
+}

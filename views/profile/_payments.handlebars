@@ -1,0 +1,56 @@
+
+    
+    
+    
+      
+        <table class="table">
+        <thead>
+          <tr>
+            <th>Default</th>
+            <th>Credit Card</th>
+            <th>Expiration</th>
+            <th>Remove</th>
+          </tr>
+        </thead>
+        <tbody>
+          {{#if user.stripe.cards }}
+          {{#each user.stripe.cards.data }}
+          <tr>
+            <td><input type="radio" name="optionsRadios" {{#compare ../user.stripe.default_card to=id}} CHECKED {{/compare}} class="default_selector" value="{{id}}"></td>
+            <td>{{brand}} ******{{last4}}</td>
+            <td>{{exp_month}}/{{exp_year}}</td>
+            <td><a class="btn btn-danger" href="/profile/delcard/{{id}}">
+          <i class="glyphicon glyphicon-trash"></i>delete</a>
+            </td>
+          </tr>
+          {{/each}}
+          {{/if}}
+
+        </tbody>
+      </table>
+      
+      <!--Table Ends-->
+         <button type="button" class="btn btn-primary"                          
+
+    rel="popover"
+    data-title="Add Credit Card"
+    data-placement="bottom"
+    data-container="body"
+    data-load="/profile/addcard"> Add Credit Card    </button>
+ 
+  <!--Add Button Ends-->
+  
+        
+ 
+   <script>
+   $(".default_selector").click(function(){
+    $.post("/api/profile/setDefaultCard",
+    {
+        card : $(this).val()
+    },
+    function(data, status){
+        console.log("Data: " + data + "\nStatus: " + status);
+    });
+   })
+
+   </script>

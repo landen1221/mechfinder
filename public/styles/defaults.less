@@ -1,0 +1,269 @@
+@import url(https://fonts.googleapis.com/css?family=Droid+Sans:400,700);
+
+@screenXS: 320px;
+@screenSM: 480px;
+@screenMD: 768px;
+@screenLG: 992px;
+@screenXL: 1200px;
+
+@baseFonts: "Droid Sans", Arial, Helvetica, sans-serif;
+@colorRedDark: rgba(120, 1, 1, 1);
+@colorRed: rgba(169, 1, 1, 1);
+@colorRedLight: rgba(199, 1, 1, 1);
+@colorRedLightHighlight: rgba(206, 165, 165, 1);
+@colorYellow: rgba(216, 211, 69, 1);
+@colorYellowLight: rgba(246, 241, 99, 1);
+@colorYellowLightHighlight: rgba(239, 236, 155, 1);
+@colorGold: rgb(224, 185, 29);
+@colorGoldLight: rgb(232, 200, 74);
+// @colorGreen: rgba(92, 184, 92, 1);
+// @colorGreenLight: rgba(122, 214, 122, 1);
+@colorGreen: #429f53;
+@colorGreenLight: #6cbd7a;
+@colorGreenLightHighlight: rgba(196, 237, 198, 1);
+// @colorBlue: rgba(7, 166, 244, 1);
+@colorBlue: #3399d9;
+@colorBlueLight: #57abe2;
+@colorBlueLightHighlight: rgba(185, 218, 247, 1);
+@colorBlueDark: #34495e;
+@colorGray: rgba(151, 151, 151, 1);
+@colorGrayLight: rgba(211, 211, 211, 1);
+@colorWhite: rgba(250, 250, 250, 1);
+@colorWhiteLight: rgba(255, 255, 255, 1);
+@colorWhiteDark: #f1f1f1;
+@standardFontColor: rgba(41, 41, 41, 1);
+@standardFontColorLight: rgba(91, 91, 91, 1);
+@standardFontColorXtraLight: rgba(150, 150, 150, 1);
+@baseFonts: "Droid Sans", Arial, Helvetica, sans-serif;
+@standardFontSize: 13px;
+@standardFontWeight: normal;
+@standardLineHeight: 18px;
+@phonescreens: ~"only screen and (max-width: 479px)";
+@regularphonescreens: ~"only screen and (min-width:480px) and (max-width: 767px)";
+@tablets: ~"only screen and (min-width:768px) and (max-width: 959px)";
+
+.remove-effects {
+    outline: none;
+    text-decoration: none;
+    -webkit-tap-highlight-color: transparent;
+}
+
+.titlecase {
+    text-transform: capitalize;
+}
+
+.lowercase {
+    text-transform: lowercase;
+}
+
+.transitions {
+    -moz-transition: all 300ms ease;
+    -ms-transition: all 300ms ease;
+    -o-transition: all 300ms ease;
+    transition: all 300ms ease;
+}
+
+.standard-div {
+    width: 100%;
+    display: block;
+    float: left;
+    text-align: left;
+}
+
+.standard-font {
+    color: @standardFontColor;
+    font-family: @baseFonts;
+    font-size: @standardFontSize;
+    font-weight: @standardFontWeight;
+    line-height: @standardLineHeight;
+}
+
+.standard-link {
+    .standard-font;
+    .remove-effects;
+    .transitions;
+
+    &:link,
+    &:visited {
+        color: @colorBlue;
+
+        &.red {
+            color: @colorRed;
+        }
+
+        &.green {
+            color: @colorGreen;
+        }
+    }
+
+    &:hover,
+    &:active,
+    &:focus {
+        color: @colorBlueLight;
+        text-decoration: underline;
+
+        &.red {
+            color: @colorRedLight;
+        }
+
+        &.green {
+            color: @colorGreenLight;
+        }
+    }
+}
+
+.standard-input {
+    box-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+    max-width: 100%;
+    min-height: 39px;
+    font-size: 13px;
+    padding-left: 9px;
+    padding-right: 9px;
+    margin-top: 3px;
+    box-sizing: border-box;
+    color: rgba(123, 123, 123, 1);
+    border: 1px solid transparent;
+    background-color: rgba(255, 255, 255, 1);
+    border-radius: 2px;
+    text-align: left;
+    &[disabled="disabled"] {
+        color: rgba(153, 153, 153, 1);
+        background-color: rgba(245, 245, 245, 1);
+    }
+    &.error {
+        border: 2px solid @colorRed;
+    }
+    &:focus {
+        .transitions;
+        border: 1px solid @colorBlueLight;
+    }
+}
+
+.standard-select {
+    box-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+    max-width: 100%;
+    padding: 10px;
+    margin-top: 3px;
+    box-sizing: border-box;
+    color: rgba(123, 123, 123, 1);
+    border: 1px solid transparent;
+    background-color: rgba(255, 255, 255, 1);
+    border-radius: 2px;
+    text-align: left;
+    &[disabled="disabled"] {
+        color: rgba(153, 153, 153, 1);
+        background-color: rgba(245, 245, 245, 1);
+    }
+    &.error {
+        border: 2px solid @colorRed;
+    }
+    &:focus {
+        .transitions;
+        border: 1px solid @colorBlueLight;
+    }
+}
+
+.standard-button {
+    .standard-font;
+    .transitions;
+    .remove-effects;
+    display: inline-block;
+    padding: 12px;
+    border-radius: 2px;
+    box-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+
+    &.green {
+        background-color: @colorGreen;
+        color: rgba(245, 245, 245, 1);
+    }
+
+    &.red {
+        background-color: @colorRed;
+        color: rgba(245, 245, 245, 1);
+    }
+
+    &.blue {
+        background-color: @colorBlue;
+        color: rgba(245, 245, 245, 1);
+    }
+
+    &.gray {
+        background-color: @colorGray;
+    }
+
+    
+
+    &.wide {
+        padding-left: 20px;
+        padding-right: 20px;
+    }
+
+    &.extra-wide {
+        padding-left: 40px;
+        padding-right: 40px;
+    }
+
+    &.border {
+        border: 1px solid white;
+    }
+
+    &:link,
+    &:visited {
+        // These important overrides are only here until
+        //   buttons are added to mf-ui
+        color: rgba(245, 245, 245, 1) !important;
+
+        &.red {
+            background-color: @colorRed;
+        }
+
+        &.green {
+            background-color: @colorGreen;
+        }
+
+        &.blue {
+            background-color: @colorBlue;
+        }
+
+        &.gray {
+            background-color: @colorGray;
+        }
+    }
+
+    &:active,
+    &:focus,
+    &:hover {
+        color: rgba(255, 255, 255, 1) !important;
+        cursor: pointer !important;
+
+        &.red {
+            background-color: @colorRedLight;
+        }
+
+        &.green {
+            background-color: @colorGreenLight;
+        }
+
+        &.blue {
+            background-color: @colorBlueLight
+        }
+
+        &.gray {
+            background-color: @colorGrayLight;
+        }
+    }
+
+    &.empty {
+        background-color: transparent !important;
+        box-shadow: none;
+        color: @standardFontColor !important;
+        &.green {
+            .fa {
+                color: @colorGreen !important;
+            }
+        }
+    }
+}
+body {
+    font-family: @baseFonts;
+}

@@ -1,0 +1,56 @@
+.user {
+    .standard-div;
+
+    .row {
+        .standard-div;
+        
+        &.center {
+            text-align: center;
+
+            h1, h2, p {
+                text-align: center;
+            }
+        }
+
+        &.topspace {
+            margin-top: 10px;
+
+            &.lg {
+                margin-top: 25px;
+            }
+
+            &.xl {
+                margin-top: 50px;
+            }
+        }
+
+        span.sidespace {
+            padding-left: 3px;
+            padding-right: 3px;
+        }
+
+        span.titlecase {
+            text-transform: capitalize;
+        }
+
+        .half {
+            display: inline-block;
+            float: left;
+            width: 50%;
+            box-sizing: border-box;
+            padding-left: 10px;
+            padding-right: 10px;
+        }
+    }
+
+    .picture {
+        .standard-div;
+        text-align: center;
+
+        img {
+            max-width: 100px; 
+            max-height: 100px;
+            border-radius: 100%;
+        }
+    }
+}

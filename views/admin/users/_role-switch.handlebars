@@ -1,0 +1,13 @@
+<script type="text/javascript">
+    var USER = {{#if user}}{{{json user}}}{{else}}null{{/if}};
+</script>
+<script type="text/javascript" src="/static/js/admin/admin-role-switch.js"></script>
+
+<input type="radio" name="userRole" id="userRoleBuyer" class="userRole" value="buyer" {{#compare user.role to="buyer"}}checked="checked"{{/compare}} />
+<label for="userRoleBuyer">Customer</label>
+
+<input type="radio" name="userRole" id="userRoleSeller" class="userRole" value="seller" {{#compare user.role to="seller"}}checked="checked"{{/compare}} />
+<label for="userRoleSeller">Mechanic</label>
+
+<input type="button" id="userRoleSave" value="Update User Role" />
+<i id="userRoleSaving" class="fa fa-cog fa-spin fa-fw transitions"></i>

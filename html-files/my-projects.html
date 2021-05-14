@@ -1,0 +1,708 @@
+<!doctype html>
+<html>
+
+<head>
+    <!-- Meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <!-- Responsive -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <meta name="description" content="">
+    <meta name="author" content="MechFinder.com">
+    <meta name="keywords" content="">
+    <title>MechFinder</title>
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+    <!--CSS -->
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="css/bootstrap-datetimepicker.min.css">
+    <link rel="stylesheet" type="text/css" href="css/bootstrap-datepicker.css">
+    <link href="css/bootstrap-switch.css" rel="stylesheet">
+    <!-- Add custom CSS here -->
+    <link rel="stylesheet" type="text/css" href="css/custom.css">
+    <!-- Gallery -->
+    <link rel="stylesheet" type="text/css" href="plugins/gallery-slider/touchTouch.css">
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
+</head>
+
+<body>
+    <div class="top">
+        <div class="container">
+            <div class="header">
+                <div class="row">
+                    <div class="col-xs-12 col-sm-4">
+                        <a href="/"><img class="logo" src="images/logo.png" alt="logo_img"></a>
+                    </div>
+                    <div class="col-xs-12 col-sm-5">
+                    </div>
+                    <div class="col-xs-12 col-sm-3 customer">
+                        <div class="row">
+                            <div class="col-xs-12">
+                                <div class="image-panel">
+                                    <a href="#"><img class="img-circle" src="http://lorempixel.com/50/50" alt="" /></a>
+                                </div>
+                                <div class="stars stars-customer">
+                                    <form action="test">
+                                        <input class="star star-5" id="star-5" type="radio" name="star">
+                                        <label class="star star-5" for="star-5"></label>
+                                        <input class="star star-4" id="star-4" type="radio" name="star">
+                                        <label class="star star-4" for="star-4"></label>
+                                        <input class="star star-3" id="star-3" type="radio" name="star">
+                                        <label class="star star-3" for="star-3"></label>
+                                        <input class="star star-2" id="star-2" type="radio" name="star">
+                                        <label class="star star-2" for="star-2"></label>
+                                        <input class="star star-1" id="star-1" type="radio" name="star">
+                                        <label class="star star-1" for="star-1"></label>
+                                    </form>
+                                </div>
+                                <div class="customer-name-panel">
+                                    <p class="name-customer">Alex Siminitzki</p>
+                                    <div class="btn-group">
+                                        <button type="button" class="customer-menu dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><span class="caret"></span></button>
+                                        <ul class="dropdown-menu dropdown-menu-right" role="menu">
+                                            <li><a href="#"><span class="glyphicon glyphicon-cog"
+																		  aria-hidden="true"></span>My Account</a></li>
+                                            <li class="divider"></li>
+                                            <li><a href="#"><span class="glyphicon glyphicon-usd"
+																		  aria-hidden="true"></span>Accounting</a></li>
+                                            <li class="divider"></li>
+                                            <li><a href="#"><span class="glyphicon glyphicon-user"
+																		  aria-hidden="true"></span>Favorites</a></li>
+                                            <li class="divider"></li>
+                                            <li><a href="#"><span class="glyphicon glyphicon-log-out"
+																		  aria-hidden="true"></span>Log Out</a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <nav class="navbar navbar-default">
+        <div class="container">
+            <ul class="message-menu-max-left">
+                <li>
+                    <a href="#"><span class="glyphicon glyphicon-newmessages" aria-hidden="true"></span>New Messages</a>
+                    <button type="button" class="btn btn-default nav-circle-status">4</button>
+                </li>
+            </ul>
+            <div class="col-xs-12 col-super-0 col-sm-3"></div>
+            <div class="col-xs-12 col-super-9 col-sm-6">
+                <ul class="nav navbar-nav">
+                    <li class="displaydesktop">
+                        <a href="#"><span class="glyphicon glyphicon-newmessages" aria-hidden="true"></span>New Messages</a>
+                        <div class="btn btn-default nav-circle-status">4</div>
+                    </li>
+                    <li class="active"><a href="#">Find projects</a></li>
+                    <li><a href="#">Find Mechanic</a></li>
+                    <li><a href="#">Post project</a></li>
+                    <li>
+                        <a href="#">My projects
+								<div class="btn btn-default nav-circle-status">4</div>
+							</a>
+                    </li>
+                </ul>
+            </div>
+            <div class="col-xs-12 col-sm-3">
+                <form class="navbar-form navbar-left search" role="search">
+                    <div class="form-group">
+                        <button type="submit" class="glyphicon glyphicon-search"></button>
+                        <input type="text" class="form-control" placeholder="Project search...">
+                    </div>
+                </form>
+            </div>
+        </div>
+    </nav>
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12 col-sm-8 col-md-9">
+                <div class="row">
+                    <div class="col-xs-12 col-sm-6">
+                        <div class="info-page-content">
+                            <h1>My Projects</h1></div>
+                    </div>
+                    <div class="col-xs-12 col-sm-6">
+                        <ul class="nav nav-myprojects" role="tablist">
+                            <li role="presentation" class="active"><a href="#your-bids" aria-controls="your-bids" role="tab" data-toggle="tab">Your Bids</a></li>
+                            <li role="presentation"><a href="#looking-to-hire" aria-controls="looking-to-hire" role="tab" data-toggle="tab">Looking To Hire</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xs-12">
+                        <div class="tab-content">
+                            <div role="tabpanel" class="tab-pane active" id="your-bids">
+                                <ul class="nav projects-tabs" role="tablist">
+                                    <li role="presentation" class="active"><a href="#open-projects" aria-controls="open-projects" role="tab" data-toggle="tab">Open Projects <span>5</span></a></li>
+                                    <li role="presentation"><a href="#assigned-projects" aria-controls="assigned-projects" role="tab" data-toggle="tab">Assigned Projects</a></li>
+                                    <li role="presentation"><a href="#finished-projects" aria-controls="finished-projects" role="tab" data-toggle="tab">Finished Projects<span>1</span></a></li>
+                                    <li role="presentation"><a href="#canceled-rojects" aria-controls="canceled-rojects" role="tab" data-toggle="tab">Canceled Projects</a></li>
+                                </ul>
+                                <div class="tab-content">
+                                    <div role="tabpanel" class="tab-pane active" id="open-projects">
+                                        <h2>Open Projects</h2>
+                                        <div class="table-responsive">
+                                            <table class="table table-striped">
+                                                <thead>
+                                                    <tr>
+                                                        <th>Date</th>
+                                                        <th>Customer</th>
+                                                        <th>Project</th>
+                                                        <th>Bids</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <tr>
+                                                        <td>07/10/2015</td>
+                                                        <td>
+                                                            <div class="estimate-photo-circle">
+                                                                <img src="http://lorempixel.com/70/70/" alt="" class="" />
+                                                            </div>
+                                                            <div class="estimate-stats">
+                                                                <div class="row stars">
+                                                                    <form action="1">
+                                                                        <label class="star-counter"> 24</label>
+                                                                        <input class="star star-1" id="star-111100" type="radio" name="star">
+                                                                        <label class="star star-1" for="star-111100"></label>
+                                                                        <input class="star star-2" id="star-111300" type="radio" name="star">
+                                                                        <label class="star star-2" for="star-111300"></label>
+                                                                        <input class="star star-3" id="star-111500" type="radio" name="star">
+                                                                        <label class="star star-3" for="star-111500"></label>
+                                                                        <input class="star star-4" id="star-111600" type="radio" name="star">
+                                                                        <label class="star star-4" for="star-111600"></label>
+                                                                        <input class="star star-5" id="star-111900" type="radio" name="star">
+                                                                        <label class="star star-5" for="star-111900"></label>
+                                                                    </form>
+                                                                </div>
+                                                                <div class="h4-in-table">Richard Hartzell</div>
+                                                                <p>south st poul, MN</p>
+                                                            </div>
+                                                        </td>
+                                                        <td>2002 Ford focus
+                                                            <br />Transmission</td>
+                                                        <td>Bids
+                                                            <br />$500.00</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>07/10/2015</td>
+                                                        <td>
+                                                            <div class="estimate-photo-circle">
+                                                                <img src="http://lorempixel.com/70/70/" alt="" class="" />
+                                                            </div>
+                                                            <div class="estimate-stats">
+                                                                <div class="row stars">
+                                                                    <form action="1">
+                                                                        <label class="star-counter"> 24</label>
+                                                                        <input class="star star-1" id="star-11114112" type="radio" name="star">
+                                                                        <label class="star star-1" for="star-11114112"></label>
+                                                                        <input class="star star-2" id="star-11134112" type="radio" name="star">
+                                                                        <label class="star star-2" for="star-11134112"></label>
+                                                                        <input class="star star-3" id="star-11154112" type="radio" name="star">
+                                                                        <label class="star star-3" for="star-11154112"></label>
+                                                                        <input class="star star-4" id="star-11164112" type="radio" name="star">
+                                                                        <label class="star star-4" for="star-11164112"></label>
+                                                                        <input class="star star-5" id="star-11194112" type="radio" name="star">
+                                                                        <label class="star star-5" for="star-11194112"></label>
+                                                                    </form>
+                                                                </div>
+                                                                <div class="h4-in-table">Richard Hartzell</div>
+                                                                <p>south st poul, MN</p>
+                                                            </div>
+                                                        </td>
+                                                        <td>2002 Ford focus
+                                                            <br />Transmission</td>
+                                                        <td>Bids
+                                                            <br />$500.00</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>07/10/2015</td>
+                                                        <td>
+                                                            <div class="estimate-photo-circle">
+                                                                <img src="http://lorempixel.com/70/70/" alt="" class="" />
+                                                            </div>
+                                                            <div class="estimate-stats">
+                                                                <div class="row stars">
+                                                                    <form action="1">
+                                                                        <label class="star-counter"> 24</label>
+                                                                        <input class="star star-1" id="star-11113" type="radio" name="star">
+                                                                        <label class="star star-1" for="star-11113"></label>
+                                                                        <input class="star star-2" id="star-11133" type="radio" name="star">
+                                                                        <label class="star star-2" for="star-11133"></label>
+                                                                        <input class="star star-3" id="star-11153" type="radio" name="star">
+                                                                        <label class="star star-3" for="star-11153"></label>
+                                                                        <input class="star star-4" id="star-11163" type="radio" name="star">
+                                                                        <label class="star star-4" for="star-11163"></label>
+                                                                        <input class="star star-5" id="star-11193" type="radio" name="star">
+                                                                        <label class="star star-5" for="star-11193"></label>
+                                                                    </form>
+                                                                </div>
+                                                                <div class="h4-in-table">Richard Hartzell</div>
+                                                                <p>south st poul, MN</p>
+                                                            </div>
+                                                        </td>
+                                                        <td>2002 Ford focus
+                                                            <br />Transmission</td>
+                                                        <td>Bids
+                                                            <br />$500.00</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>07/10/2015</td>
+                                                        <td>
+                                                            <div class="estimate-photo-circle">
+                                                                <img src="http://lorempixel.com/70/70/" alt="" class="" />
+                                                            </div>
+                                                            <div class="estimate-stats">
+                                                                <div class="row stars">
+                                                                    <form action="1">
+                                                                        <label class="star-counter"> 24</label>
+                                                                        <input class="star star-1" id="star-11112" type="radio" name="star">
+                                                                        <label class="star star-1" for="star-11112"></label>
+                                                                        <input class="star star-2" id="star-11132" type="radio" name="star">
+                                                                        <label class="star star-2" for="star-11132"></label>
+                                                                        <input class="star star-3" id="star-11152" type="radio" name="star">
+                                                                        <label class="star star-3" for="star-11152"></label>
+                                                                        <input class="star star-4" id="star-11162" type="radio" name="star">
+                                                                        <label class="star star-4" for="star-11162"></label>
+                                                                        <input class="star star-5" id="star-11192" type="radio" name="star">
+                                                                        <label class="star star-5" for="star-11192"></label>
+                                                                    </form>
+                                                                </div>
+                                                                <div class="h4-in-table">Richard Hartzell</div>
+                                                                <p>south st poul, MN</p>
+                                                            </div>
+                                                        </td>
+                                                        <td>2002 Ford focus
+                                                            <br />Transmission</td>
+                                                        <td>Bids
+                                                            <br />$500.00</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>07/10/2015</td>
+                                                        <td>
+                                                            <div class="estimate-photo-circle">
+                                                                <img src="http://lorempixel.com/70/70/" alt="" class="" />
+                                                            </div>
+                                                            <div class="estimate-stats">
+                                                                <div class="row stars">
+                                                                    <form action="1">
+                                                                        <label class="star-counter"> 24</label>
+                                                                        <input class="star star-1" id="star-11111" type="radio" name="star">
+                                                                        <label class="star star-1" for="star-11111"></label>
+                                                                        <input class="star star-2" id="star-11131" type="radio" name="star">
+                                                                        <label class="star star-2" for="star-11131"></label>
+                                                                        <input class="star star-3" id="star-11151" type="radio" name="star">
+                                                                        <label class="star star-3" for="star-11151"></label>
+                                                                        <input class="star star-4" id="star-11161" type="radio" name="star">
+                                                                        <label class="star star-4" for="star-11161"></label>
+                                                                        <input class="star star-5" id="star-11191" type="radio" name="star">
+                                                                        <label class="star star-5" for="star-1119"></label>
+                                                                    </form>
+                                                                </div>
+                                                                <div class="h4-in-table">Richard Hartzell</div>
+                                                                <p>south st poul, MN</p>
+                                                            </div>
+                                                        </td>
+                                                        <td>2002 Ford focus
+                                                            <br />Transmission</td>
+                                                        <td>Bids
+                                                            <br />$500.00</td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                    <div role="tabpanel" class="tab-pane" id="assigned-projects">
+                                        <h2>Assigned Projects</h2>
+                                        <div class="table-responsive">
+                                            <table class="table table-striped">
+                                                <thead>
+                                                    <tr>
+                                                        <th>Date</th>
+                                                        <th>Customer</th>
+                                                        <th>Project</th>
+                                                        <th>Bids</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                        <div class="empty-content">
+                                            <p>You have no projects being worked on right now. Why not find local projects to bid on?</p>
+                                        </div>
+                                    </div>
+                                    <div role="tabpanel" class="tab-pane" id="finished-projects">
+                                        <h2>Finished Projects</h2>
+                                        <div class="table-responsive">
+                                            <table class="table table-striped">
+                                                <thead>
+                                                    <tr>
+                                                        <th>Customer</th>
+                                                        <th>Project</th>
+                                                        <th>My Bid</th>
+                                                        <th>My Rating</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <tr>
+                                                        <td>
+                                                            <div class="h4-in-table">Richard Hartzell</div>
+                                                        </td>
+                                                        <td>2002 Ford focus
+                                                            <br />Transmission</td>
+                                                        <td>$70</td>
+                                                        <td>
+                                                            <div class="estimate-stats">
+                                                                <div class="row stars">
+                                                                    <form action="1">
+                                                                        <label class="star-counter"> 24</label>
+                                                                        <input class="star star-1" id="star-111132" type="radio" name="star">
+                                                                        <label class="star star-1" for="star-111132"></label>
+                                                                        <input class="star star-2" id="star-111332" type="radio" name="star">
+                                                                        <label class="star star-2" for="star-111332"></label>
+                                                                        <input class="star star-3" id="star-111532" type="radio" name="star">
+                                                                        <label class="star star-3" for="star-111532"></label>
+                                                                        <input class="star star-4" id="star-111632" type="radio" name="star">
+                                                                        <label class="star star-4" for="star-111632"></label>
+                                                                        <input class="star star-5" id="star-111932" type="radio" name="star">
+                                                                        <label class="star star-5" for="star-111932"></label>
+                                                                    </form>
+                                                                </div>
+                                                            </div>
+                                                            <div class="comment-finished">Awesome job will use you again !
+                                                                <br /><span>Brat Pitt</span></div>
+                                                        </td>
+                                                    </tr>
+                                                    <tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                    <div role="tabpanel" class="tab-pane" id="canceled-rojects">
+                                        <h2>Canceled Projects</h2>
+                                        <div class="table-responsive">
+                                            <table class="table table-striped">
+                                                <thead>
+                                                    <tr>
+                                                        <th>Date</th>
+                                                        <th>Vehicle</th>
+                                                        <th>Project</th>
+                                                        <th>Mechanic</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                        <div class="empty-content">
+                                            <p>You have no canceled projects. Thats not such a bad thing.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div role="tabpanel" class="tab-pane" id="looking-to-hire">
+                                <ul class="nav projects-tabs" role="tablist">
+                                    <li role="presentation" class="active"><a href="#looking-open-projects" aria-controls="looking-open-projects" role="tab" data-toggle="tab">Open Projects<span>2</span></a></li>
+                                    <li role="presentation"><a href="#looking-assigned-projects" aria-controls="looking-assigned-projects" role="tab" data-toggle="tab">Assigned Projects</a></li>
+                                    <li role="presentation"><a href="#looking-finished-projects" aria-controls="looking-finished-projects" role="tab" data-toggle="tab">Finished Projects</a></li>
+                                    <li role="presentation"><a href="#looking-canceled-projects" aria-controls="looking-canceled-projects" role="tab" data-toggle="tab">Canceled Projects</a></li>
+                                </ul>
+                                <div class="tab-content">
+                                    <div role="tabpanel" class="tab-pane active" id="looking-open-projects">
+                                        <h2>Open Projects</h2>
+                                        <div class="table-responsive">
+                                            <table class="table table-striped">
+                                                <thead>
+                                                    <tr>
+                                                        <th>Date</th>
+                                                        <th>Vehicle</th>
+                                                        <th>Project</th>
+                                                        <th>Lowest Bid</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <tr>
+                                                        <td>07/10/2015</td>
+                                                        <td>2002 Ford focus</td>
+                                                        <td>Transmission</td>
+                                                        <td>
+                                                            <div class="lowest-bid">$500.00</div>
+                                                            <br />
+                                                            <div class="estimate-photo-circle">
+                                                                <img src="http://lorempixel.com/70/70/" alt="" class="" />
+                                                            </div>
+                                                            <div class="estimate-stats">
+                                                                <div class="row stars">
+                                                                    <form action="1">
+                                                                        <label class="star-counter"> 24</label>
+                                                                        <input class="star star-1" id="star-11114" type="radio" name="star">
+                                                                        <label class="star star-1" for="star-11114"></label>
+                                                                        <input class="star star-2" id="star-11134" type="radio" name="star">
+                                                                        <label class="star star-2" for="star-11134"></label>
+                                                                        <input class="star star-3" id="star-11154" type="radio" name="star">
+                                                                        <label class="star star-3" for="star-11154"></label>
+                                                                        <input class="star star-4" id="star-11164" type="radio" name="star">
+                                                                        <label class="star star-4" for="star-11164"></label>
+                                                                        <input class="star star-5" id="star-11194" type="radio" name="star">
+                                                                        <label class="star star-5" for="star-11194"></label>
+                                                                    </form>
+                                                                </div>
+                                                                <div class="h4-in-table">Richard Hartzell</div>
+                                                                <p>south st poul, MN</p>
+                                                            </div>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>07/10/2015</td>
+                                                        <td>2002 Ford focus</td>
+                                                        <td>Transmission</td>
+                                                        <td>
+                                                            <div class="lowest-bid">$500.00</div>
+                                                            <br />
+                                                            <div class="estimate-photo-circle">
+                                                                <img src="http://lorempixel.com/70/70/" alt="" class="" />
+                                                            </div>
+                                                            <div class="estimate-stats">
+                                                                <div class="row stars">
+                                                                    <form action="1">
+                                                                        <label class="star-counter"> 24</label>
+                                                                        <input class="star star-1" id="star-11114333" type="radio" name="star">
+                                                                        <label class="star star-1" for="star-11114333"></label>
+                                                                        <input class="star star-2" id="star-11134333" type="radio" name="star">
+                                                                        <label class="star star-2" for="star-11134333"></label>
+                                                                        <input class="star star-3" id="star-11154333" type="radio" name="star">
+                                                                        <label class="star star-3" for="star-11154333"></label>
+                                                                        <input class="star star-4" id="star-11164333" type="radio" name="star">
+                                                                        <label class="star star-4" for="star-11164333"></label>
+                                                                        <input class="star star-5" id="star-11194333" type="radio" name="star">
+                                                                        <label class="star star-5" for="star-11194333"></label>
+                                                                    </form>
+                                                                </div>
+                                                                <div class="h4-in-table">Richard Hartzell</div>
+                                                                <p>south st poul, MN</p>
+                                                            </div>
+                                                        </td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                    <div role="tabpanel" class="tab-pane" id="looking-assigned-projects">
+                                        <h2>Assigned Projects</h2>
+                                        <div class="table-responsive">
+                                            <table class="table table-striped">
+                                                <thead>
+                                                    <tr>
+                                                        <th>Date</th>
+                                                        <th>Vehicle</th>
+                                                        <th>Project</th>
+                                                        <th>Mechanic</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                        <div class="empty-content">
+                                            <p>You have no projects being worked on right now. Why not <a href="#">post a new project</a>?</p>
+                                        </div>
+                                    </div>
+                                    <div role="tabpanel" class="tab-pane" id="looking-finished-projects">
+                                        <h2>Finished Projects</h2>
+                                        <div class="table-responsive">
+                                            <table class="table table-striped">
+                                                <thead>
+                                                    <tr>
+                                                        <th>Date</th>
+                                                        <th>Vehicle</th>
+                                                        <th>Project</th>
+                                                        <th>Mechanic</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                        <div class="empty-content">
+                                            <p>You have no finished projects yet. Why not <a href="#">post a new project</a>?</p>
+                                        </div>
+                                    </div>
+                                    <div role="tabpanel" class="tab-pane" id="looking-canceled-projects">
+                                        <h2>Canceled Projects</h2>
+                                        <div class="table-responsive">
+                                            <table class="table table-striped">
+                                                <thead>
+                                                    <tr>
+                                                        <th>Date</th>
+                                                        <th>Vehicle</th>
+                                                        <th>Project</th>
+                                                        <th>Mechanic</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                        <div class="empty-content">
+                                            <p>You have no canceled projects. Thats not such a bad thing.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xs-12 col-sm-4 col-md-3">
+                <div style="background: #ccc; color: red; line-height: 500px; height: 500px; font-size: 20px; text-align: center;">
+                    Placeholder for Ads
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--Project-Counter -->
+    <div class="counter">
+        <div class="container">
+            <div class="row">
+                <div class="col-xs-12 col-sm-4 total-users">
+                    <h1>Total Users</h1>
+                    <span>127,453</span>
+                </div>
+                <div class="col-xs-12 col-sm-4  total-projects">
+                    <h1>Total Projects</h1>
+                    <span>70,123</span>
+                </div>
+                <div class="col-xs-12 col-sm-4 total-mechanics">
+                    <h1>Total Mechanics</h1>
+                    <span>143,009</span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--Project-Counter-End-->
+    <div class="footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-xs-12 col-sm-3 navigation">
+                    <h1>Navigation</h1>
+                    <ul>
+                        <li><a href="#">Home</a></li>
+                        <li><a href="#">Find a Mechanic</a></li>
+                        <li><a href="#">Forum</a></li>
+                        <li><a href="#">Advertising</a></li>
+                        <li><a href="#">Careers</a></li>
+                        <li><a href="#">Articles</a></li>
+                        <li><a href="#">Contact MechFinder</a></li>
+                    </ul>
+                </div>
+                <div class="col-xs-12 col-sm-4 col-sm-offset-2">
+                    <h1>For Users</h1>
+                    <ul>
+                        <li><a href="#">Get Estimate</a></li>
+                        <li><a href="#">Testimonials</a></li>
+                        <li><a href="#">Sign In</a></li>
+                        <li><a href="#">Sign Up</a></li>
+                    </ul>
+                    <h1>Legal</h1>
+                    <ul>
+                        <li><a href="#">Terms and Conditions</a></li>
+                        <li><a href="#">Privacy Policy</a></li>
+                        <li><a href="#">Our Garantee</a></li>
+                        <li><a href="#">Repair Warranty</a></li>
+                    </ul>
+                </div>
+                <div class="col-xs-12 col-sm-3">
+                    <h1>Projects Near You</h1>
+                    <div class="row client-row">
+                        <div class="col-xs-2 col-sm-3 col-lg-2">
+                            <a href="#"><img class="img-circle" src="http://lorempixel.com/50/50" alt="" /></a>
+                            <label class="status-circle"></label>
+                        </div>
+                        <div class="col-xs-9 col-sm-8 col-lg-9 help">
+                            <a href="#"><span><strong>Chris - I Need Help</strong></span></a>
+                            <br> <span>Auto Repair, Apple Valley, MN</span>
+                        </div>
+                    </div>
+                    <div class="row client-row">
+                        <div class="col-xs-2 col-sm-3 col-lg-2">
+                            <a href="#"><img class="img-circle" src="http://lorempixel.com/50/50" alt="" /></a>
+                            <label class="status-circle status-circle-orange"></label>
+                        </div>
+                        <div class="col-xs-9 col-sm-8 col-lg-9 help">
+                            <a href="#"><span><strong>Chris - I Need Help</strong></span></a>
+                            <br> <span>Auto Repair, Apple Valley, MN</span>
+                        </div>
+                    </div>
+                    <div class="row client-row">
+                        <div class="col-xs-2 col-sm-3 col-lg-2">
+                            <a href="#"><img class="img-circle" src="http://lorempixel.com/50/50" alt="" /></a>
+                            <label class="status-circle status-circle-green "></label>
+                        </div>
+                        <div class="col-xs-9 col-sm-8 col-lg-9 help">
+                            <a href="#"><span><strong>Chris - I Need Help</strong></span></a>
+                            <br> <span>Auto Repair, Apple Valley, MN</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="footer-bottom">
+        <div class="container">
+            <div class="row">
+                <div class="col-xs-12 col-sm-6">
+                    <div class="copy">
+                        <span>&copy; 2015 <a href="#">Mechalance.com</a> All Rights Reserved.</span>
+                    </div>
+                </div>
+                <div class="col-xs-12 col-sm-6">
+                    <div class="social">
+                        <ul>
+                            <li>
+                                <a href="#" class="facebook"><img src="images/facebook.png" alt="" /></a>
+                            </li>
+                            <li>
+                                <a href="#" class="facebook"><img src="images/twitter.png" alt="" /></a>
+                            </li>
+                            <li>
+                                <a href="#" class="facebook"><img src="images/tumblr.png" alt="" /></a>
+                            </li>
+                            <li>
+                                <a href="#" class="facebook"><img src="images/gplus.png" alt="" /></a>
+                            </li>
+                        </ul>
+                    </div>
+                    <span class="follow hidden-xs">Follow Us:</span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+
+    <script src="js/shiv.v3.7.2.js"></script>
+    <script src="js/respond.v1.4.2.min.js"></script>
+    <![endif]-->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+    <script>
+    $.widget.bridge('uibutton', $.ui.button);
+    $.widget.bridge('uitooltip', $.ui.tooltip);
+    </script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/moment.js"></script>
+    <script src="js/customscript.js"></script>
+    <script src="js/Chart.js"></script>
+    <script src="js/bootstrap-datetimepicker.min.js"></script>
+    <script src="js/bootstrap-datepicker.js"></script>
+    <script src="plugins/gallery-slider/touchTouch.jquery.js"></script>
+    <script src="js/jquery.countdown.js"></script>
+    <script src="js/bootstrap-switch.js"></script>
+    <script src="js/custom.js"></script>
+</body>
+
+</html>

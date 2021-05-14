@@ -1,0 +1,30 @@
+<div id="profile-album-picker">
+    <input type="hidden" name="album" value="" />
+    <ul class="thumbnails">
+        {{#each user.profile.album}}
+        <li class="span4" data-image-id="{{this}}">
+            <input type="hidden" name="album" value="{{this}}" />
+            <div class="thumbnail">
+                <img src="/i/{{this}}/152/140/i" />
+                <div style="margin-top: 5px;">
+                    <button class="btn btn-danger btn-mini pull-right"><i class="icon-trash"></i>Remove</button>
+                    <span>&nbsp</span>
+                </div>
+            </div>
+        </li>
+        {{/each}}
+    </ul>
+    {{#unless user.profile.album}}
+    <p>You haven't uploaded any pictures yet. Try uploading pictures of your cars, projects, shop, employees, etc.</p>
+    {{/unless}}
+    <a href="#" class="btn btn-primary picker">Upload Pictures</a>
+    <div class="modal hide fade viewer" role="dialog" style="width: 800px; height: 600px;">
+        <div class="carousel slide" style="margin-bottom: 0;">
+            <div class="carousel-inner"></div>
+            <a class="carousel-control left" href="#project-picture-carousel" data-slide="prev">&lsaquo;</a>
+            <a class="carousel-control right" href="#project-picture-carousel" data-slide="next">&rsaquo;</a>
+        </div>
+    </div>
+</div>
+<hr/>
+    <input type="submit" class="clear-fix btn btn-success" value="Save Profile" />

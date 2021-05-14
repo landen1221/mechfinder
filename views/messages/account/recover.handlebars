@@ -1,0 +1,22 @@
+{{#if user}}
+
+
+
+<a href="{{recoveryHref}}"><img src="{{imageHref}}" alt="MechFinder Logo" title="MechFinder Logo" /></a>
+
+<p>{{user.first}},</p>
+
+<h2>Account Recovery</h2>
+<p>{{user.first}}, we have received a password recovery request for the account associated with your email. If you have recieved this email erroneously, please <a href="{{contactHref}}">Contact Us</a> so that we can rectify this issue as soon as possible.</p>
+
+<p>If you did submit an account recovery request, please visit the following link to <a href="{{recoveryHref}}">reset your password</a>: </p>
+<p><a href="{{recoveryHref}}">{{recoveryHref}}</a></p><br />
+
+<p>Your recovery link will expire after 24 hours.</p><br />
+
+<p>Thank you for using MechFinder,</p>
+
+<p>MechFinder Support Team</p>
+<p>support@mechfinder.com</p>
+
+{{/if}}

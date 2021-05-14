@@ -1,0 +1,230 @@
+<script src="{{ settings.static_path }}/js/favorites-page.js"></script>
+
+<div class="heading-row"><h1>My Jobs</h1></div>
+<div class="dashboard-page my-projects-page favoritesPage mf-ui">
+    <div class="card-container">
+    <div class="mf-card full-width">
+    <div class="projects-container container">
+        <div class="card-header small">
+        <ul class="tabs">
+            <li class="tab-link current blue" data-tab="tab-1" id="openJobs">Open Jobs</li>
+            <li class="tab-link blue" data-tab="tab-2" id="jobsWon">Jobs Won</li>
+            <li class="tab-link blue" data-tab="tab-3" id="jobsCompleted">Jobs Completed</li>
+            <li class="tab-link blue" data-tab="tab-4" id="jobsLost">Jobs Lost</li>
+        </ul>
+        </div>
+    </div>
+
+    <div class="tab-contents">
+        {{!-- open projects --}}
+        <div id="tab-1" class="tab-content current">
+            <div class="row results-table">
+                <div class="col-xs-12">
+                    {{#compare data.seller_bidding.length lt="1"}}
+                    You don't have any open jobs. You can find some <a href="/projects">here</a>.
+                    {{else}}
+                    <table border="0" class="mf-mobile-table mf-mobile-table-styled">
+                        <tr class="table-labels">
+                            <th class="mf-table-sm"></th>
+                            <th class="mf-table-xs">Post Date</th>
+                            <th class="mf-table-xs">Job</th>
+                            <th class="mf-table-sm">Customer</th>
+                            <th></th>
+                        </tr>
+                        {{#each data.seller_bidding}}
+                        <tr class="project-row" data-href="/projects/{{_id}}">
+                            <td class="photo project-photo mf-table-sm">
+                                {{#compare photos.length gt="0"}}
+                                    <div class="photo project-photo"><img width="50" height="50" class="project-photo" src="/api/public/image/{{photos.[0]}}" /></div>
+                                {{else}}
+                                    {{#if owner.picture}}
+                                    <div class="photo project-photo"><img width="50" height="50" class="profile-photo" src="/api/public/image/{{owner.picture}}" /></div>
+                                    {{else}}
+                                    <div class="photo project-photo"><img width="50" height="50" class="profile-photo" src="/static/img/customer-profile-pic.png" /></div>
+                                    {{/if}}
+                                {{/compare}}
+                            </td>
+                            <td class="mf-table-xs">
+                                {{date date_created}}
+                            </td>
+                            <td class="mf-table-xs">
+                                <strong>{{vehicle.year}} {{vehicle.make}} {{vehicle.model}}</strong><br/>
+                                {{truncate title "50"}}
+                            </td>
+                            <td class="mf-table-sm">
+                                {{owner.username}}
+                            </td>
+                            <td class="result-actions" id={{_id}}>
+                                <div class="contact-action" data-ids="{{owner._id}}">
+                                    <span class="fa fa-envelope-o" aria-hidden="true"></span>
+                                    <span class="favorite-label">Message</span>
+                                </div>
+                            </td>
+                        </tr>
+                        {{/each}}
+                    </table>
+                    {{/compare}}
+                </div>
+            </div>
+        </div>
+        {{!-- Projects Won --}}
+        <div id="tab-2" class="tab-content">
+            <div class="row results-table">
+                <div class="col-xs-12">
+                    {{#compare data.seller_assigned.length lt="1"}}
+                    You don't have any open jobs in progress. Jobs will appear here after you've been hired.
+                    {{else}}
+                    <table border="0" class="mf-mobile-table mf-mobile-table-styled">
+                        <tr class="table-labels">
+                            <th class="mf-table-sm"></th>
+                            <th class="mf-table-xs">Post Date</th>
+                            <th class="mf-table-xs">Job</th>
+                            <th class="mf-table-sm">Customer</th>
+                            <th></th>
+                        </tr>
+                        {{#each data.seller_assigned}}
+                        <tr class="project-row" data-href="/projects/{{_id}}">
+                            <td class="photo project-photo mf-table-sm">
+                                {{#compare photos.length gt="0"}}
+                                    <div class="photo project-photo"><img width="50" height="50" class="project-photo" src="/api/public/image/{{photos.[0]}}" /></div>
+                                {{else}}
+                                    {{#if owner.picture}}
+                                    <div class="photo project-photo"><img width="50" height="50" class="profile-photo" src="/api/public/image/{{owner.picture}}" /></div>
+                                    {{else}}
+                                    <div class="photo project-photo"><img width="50" height="50" class="profile-photo" src="/static/img/customer-profile-pic.png" /></div>
+                                    {{/if}}
+                                {{/compare}}
+                            </td>
+                            <td class="mf-table-xs">
+                                {{date date_created}}
+                            </td>
+                            <td class="mf-table-xs">
+                                <strong>{{vehicle.year}} {{vehicle.make}} {{vehicle.model}}</strong><br/>
+                                {{truncate title "50"}}
+                            </td>
+                            <td class="mf-table-sm">
+                                {{owner.username}}
+                            </td>
+                            <td class="result-actions" id={{_id}}>
+                                <div class="contact-action" data-ids="{{owner._id}}">
+                                    <span class="fa fa-envelope-o" aria-hidden="true"></span>
+                                    <span class="favorite-label">Message</span>
+                                </div>
+                            </td>
+                        </tr>
+                        {{/each}}
+                    </table>
+                    {{/compare}}
+                </div>
+            </div>
+        </div>
+        {{!-- Projects Completed --}}
+        <div id="tab-3" class="tab-content">
+            <div class="row results-table">
+                <div class="col-xs-12">
+                    {{#compare data.seller_finished.length lt="1"}}
+                    You don't have any completed jobs.
+                    {{else}}
+                    <table border="0" class="mf-mobile-table mf-mobile-table-styled">
+                        <tr class="table-labels">
+                            <th class="mf-table-sm"></th>
+                            <th class="mf-table-xs">Post Date</th>
+                            <th class="mf-table-xs">Job</th>
+                            <th class="mf-table-md">Rate Customer</th>
+                            <th class="mf-table-sm">Customer</th>
+                            <th></th>
+                        </tr>
+                        {{#each data.seller_finished}}
+                        <tr class="project-row" data-href="/projects/{{_id}}">
+                            <td class="photo project-photo mf-table-sm">
+                                {{#compare photos.length gt="0"}}
+                                    <div class="photo project-photo"><img width="50" height="50" class="project-photo" src="/api/public/image/{{photos.[0]}}" /></div>
+                                {{else}}
+                                    {{#if owner.picture}}
+                                    <div class="photo project-photo"><img width="50" height="50" class="profile-photo" src="/api/public/image/{{owner.picture}}" /></div>
+                                    {{else}}
+                                    <div class="photo project-photo"><img width="50" height="50" class="profile-photo" src="/static/img/customer-profile-pic.png" /></div>
+                                    {{/if}}
+                                {{/compare}}
+                            </td>
+                            <td class="mf-table-xs">
+                                {{date date_created}}
+                            </td>
+                            <td class="mf-table-xs">
+                                <strong>{{vehicle.year}} {{vehicle.make}} {{vehicle.model}}</strong><br/>
+                                {{truncate title "50"}}
+                            </td>
+                            <td class="mf-table-md">
+                                {{#if buyerRated}}<span class="green">Rated</span>{{else}}<strong class="red">Needs Rating</strong>{{/if}}
+                            </td>
+                            <td class="mf-table-sm">
+                                {{owner.username}}
+                            </td>
+                            <td class="result-actions" id={{_id}}>
+                                <div class="contact-action" data-ids="{{owner._id}}">
+                                    <span class="fa fa-envelope-o" aria-hidden="true"></span>
+                                    <span class="favorite-label">Message</span>
+                                </div>
+                            </td>
+                        </tr>
+                        {{/each}}
+                    </table>
+                    {{/compare}}
+                </div>
+            </div>
+        </div>
+        {{!-- Projects Lost --}}
+        <div id="tab-4" class="tab-content">
+            <div class="row results-table">
+                <div class="col-xs-12">
+                    {{#compare data.seller_lost.length lt="1"}}
+                    Jobs you've submitted and estimate for but weren't hired for will appear here.
+                    {{else}}
+                    <table border="0" class="mf-mobile-table mf-mobile-table-styled">
+                        <tr class="table-labels">
+                            <th class="mf-table-sm"></th>
+                            <th class="mf-table-xs">Post Date</th>
+                            <th class="mf-table-xs">Job</th>
+                            <th class="mf-table-sm">Customer</th>
+                            <th></th>
+                        </tr>
+                        {{#each data.seller_lost}}
+                        <tr class="project-row" data-href="/projects/{{_id}}">
+                            <td class="photo project-photo mf-table-sm">
+                                {{#compare photos.length gt="0"}}
+                                    <div class="photo project-photo"><img width="50" height="50" class="project-photo" src="/api/public/image/{{photos.[0]}}" /></div>
+                                {{else}}
+                                    {{#if owner.picture}}
+                                    <div class="photo project-photo"><img width="50" height="50" class="profile-photo" src="/api/public/image/{{owner.picture}}" /></div>
+                                    {{else}}
+                                    <div class="photo project-photo"><img width="50" height="50" class="profile-photo" src="/static/img/customer-profile-pic.png" /></div>
+                                    {{/if}}
+                                {{/compare}}
+                            </td>
+                            <td class="mf-table-xs">
+                                {{date date_created}}
+                            </td>
+                            <td class="mf-table-xs">
+                                <strong>{{vehicle.year}} {{vehicle.make}} {{vehicle.model}}</strong><br/>
+                                {{truncate title "50"}}
+                            </td>
+                            <td class="mf-table-sm">
+                                {{owner.username}}
+                            </td>
+                            <td class="result-actions" id={{_id}}>
+                                <div class="contact-action" data-ids="{{owner._id}}">
+                                    <span class="fa fa-envelope-o" aria-hidden="true"></span>
+                                    <span class="favorite-label">Message</span>
+                                </div>
+                            </td>
+                        </tr>
+                        {{/each}}
+                    </table>
+                    {{/compare}}
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+</div>
+</div>

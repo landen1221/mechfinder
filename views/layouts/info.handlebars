@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        {{> layouts/head }}
+    </head>
+
+    <body>
+        {{>layouts/navbar}}
+
+        <div class="more-info">
+            
+            {{{ body }}}
+            {{!--
+            <div class="group">
+                <div class="info-pagelinks">
+                    {{#compare infoRole to="buyer"}}
+                        <a class="standard-button blue" href="/customer/info/howItWorks">How It Works</a>
+                        <a class="standard-button blue" href="/customer/info/benefits">Customer Benefits</a>            
+                        <a class="standard-button blue" href="/customer/info/protection">You're Protected</a>
+                        <a class="standard-button red border" href="/signup">Get Started</a>
+                    {{/compare}}
+
+                    {{#compare infoRole to="seller"}}
+                        <a class="standard-button blue" href="/mechanic/info/grow">Grow Your Business</a>
+                        <a class="standard-button blue" href="/mechanic/info/howItWorks">How It Works</a>
+                        <a class="standard-button blue" href="/mechanic/info/structure">Fee Structure</a>
+                        <a class="standard-button red border" href="/signup">Get Started</a>
+                    {{/compare}}
+                </div>
+            </div>
+            --}}
+        </div>
+
+        {{>layouts/footer}}
+        {{>layouts/analytics}}
+    </body>
+</html>

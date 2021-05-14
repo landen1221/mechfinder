@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Mechfinder</title>
+    <!-- Bootstrap -->
+    <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
+	<link href="css/prettify.css" rel="stylesheet">
+  </head>
+<body>
+<div class="container">
+
+      <!--===============================================================
+      							Nav-Tabs Tab
+      ================================================================-->
+
+
+    <ul class="nav nav-tabs">
+      <li class="active"><a href="#home" data-toggle="tab" aria-expanded="true">Identify the Issue</a></li>
+      <li class=""><a href="#profile" data-toggle="tab" aria-expanded="false">Disputes</a></li>
+      <li class=""><a href="#negotiation" data-toggle="tab" aria-expanded="false">Negotiations</a></li>
+      <li class=""><a href="#arbitration" data-toggle="tab" aria-expanded="false">Arbitration</a></li>
+    </ul>
+
+    <div id="myTabContent" class="tab-content">
+
+      <!--===============================================================
+      							Identify the Issue Tab
+      ================================================================-->
+
+      <div class="tab-pane fade active in" id="home">
+        					    <div class="tab-pane" id="tabsleft-tab1">
+					      <h3>Identify the Issue</h3><br>
+                          <ul class="stg-1">
+                             <li><p>Most disputes are the result of a simple misunderstanding.</p></li>
+                             <li><p>Our dispute resolution system is designed to allow both parties to resolve the issue amongst 								themselves.</p></li>
+                             <li><p>Most disputes are resolved without arbitration.</p></li>
+                             <li><p>If an agreement cannot be reached, either party may elect to pay an arbitration fee for our 						dispute team to resolve the matter.</p></li>
+						  </ul>
+                         <label>Select the Milestone You wish to Dispute</label>
+                            <form>
+                            <select class="form-control" id="select">
+                              <option>Project 1 Goes Here</option>
+                              <option>Project 2 Goes Here</option>
+                              <option>Project 3 Goes Here</option>
+                              <option>Project 4 Goes Here</option>
+                              <option>Project 5 Goes Here</option>
+                            </select><br>
+                         <label>Select the User</label>
+                            <select class="form-control" id="select">
+                              <option>User 1</option>
+                              <option>User 2</option>
+                              <option>User 3</option>
+                              <option>User 4</option>
+                              <option>User 5</option>
+                            </select>
+                            </form><br>
+                       <label>Describe the Dispute in Details</label><br>
+                          <textarea class="form-control" rows="3" id="textArea"></textarea><br>
+                       <label>You may attach documents to support your case</label><br>
+                              <span class="btn btn-warning btn-file">
+                                    Add Files <input type="file">
+                              </span><br><br>
+                       <label>Total amount in dispute</label>
+                            <div class="input-group">
+                                <span class="input-group-addon">$</span>
+                                <input type="text" class="form-control">
+                            </div><br>
+                        <label>Amount you are ready to accept</label>
+                            <div class="input-group">
+                                <span class="input-group-addon">$</span>
+                                <input type="text" class="form-control">
+                            </div>
+                            <p><em>Please make sure before offering the amount because you may decrease your offer in future but you may not increase it.</em></p><br><br>
+                            <button type="submit" class=" btn btn-primary pull-right">File New Dispute</button><br><br>
+					    </div>
+      </div>
+
+      <!--===============================================================
+      						Disputes Tab
+      ================================================================-->
+
+      <div class="tab-pane fade" id="profile">
+        					      <div role="tabpanel">
+
+							  <!-- Nav tabs -->
+							  <ul class="nav nav-tabs" role="tablist">
+							    <li role="presentation" class="active"><a href="#active-d" aria-controls="home" role="tab" data-toggle="tab">Active Disputes</a></li>
+							    <li role="presentation"><a href="#closed-d" aria-controls="profile" role="tab" data-toggle="tab">Closed Disputes</a></li>
+							  </ul>
+
+							  <!-- Tab panes -->
+							  <div class="tab-content">
+							    <div role="tabpanel" class="tab-pane active" id="active-d">
+							    	<table class="table table-striped">
+									  	<tr>
+									  		<th>Dispute ID</th>
+									  		<th>Project Name</th>
+									  		<th>Other Party</th>
+									  		<th>Dispute Amount</th>
+									  		<th>Status</th>
+									  		<th>Time to Respond</th>
+									  	</tr>
+									  	<tr>
+									  		<td>DID-1</td>
+									  		<td>Bootstrap</td>
+									  		<td>bee</td>
+									  		<td>500</td>
+									  		<td>Active</td>
+									  		<td>5 Hours</td>
+									  	</tr>
+									  	<tr>
+									  		<td>DID-2</td>
+									  		<td>Bootstrap</td>
+									  		<td>bee</td>
+									  		<td>500</td>
+									  		<td>Active</td>
+									  		<td>5 Hours</td>
+									  	</tr>
+									  	<tr>
+									  		<td>DID-3</td>
+									  		<td>Bootstrap</td>
+									  		<td>bee</td>
+									  		<td>500</td>
+									  		<td>Active</td>
+									  		<td>5 Hours</td>
+									  	</tr>
+									  	<tr>
+									  		<td>DID-4</td>
+									  		<td>Bootstrap</td>
+									  		<td>bee</td>
+									  		<td>500</td>
+									  		<td>Active</td>
+									  		<td>5 Hours</td>
+									  	</tr>
+									</table>
+							    </div>
+							    <div role="tabpanel" class="tab-pane" id="closed-d">
+									<table class="table table-striped">
+									  	<tr>
+									  		<th>Dispute ID</th>
+									  		<th>Project Name</th>
+									  		<th>Other Party</th>
+									  		<th>Dispute Amount</th>
+									  		<th>Status</th>
+									  		<th>Time to Respond</th>
+									  	</tr>
+									  	<tr>
+									  		<td>1</td>
+									  		<td>Bootstrap</td>
+									  		<td>bee</td>
+									  		<td>500</td>
+									  		<td>Closed</td>
+									  		<td>0 Hours</td>
+									  	</tr>
+									</table>
+							    </div>
+							  </div>
+
+							</div>
+
+      </div>
+
+
+      <!--===============================================================
+      							Negotiations Tab
+      ================================================================-->
+
+
+           <div class="tab-pane fade" id="negotiation">
+      <label>Negotiations</label><br><br>
+       <div class="row">
+        <div class="col-md-7">
+            <div class="panel panel-primary">
+                <div class="panel-heading">
+                    <span class="glyphicon glyphicon-comment"></span> Chat
+                    <div class="btn-group pull-right">
+                        <button type="button" class="btn btn-default btn-xs dropdown-toggle" data-toggle="dropdown">
+                            <span class="glyphicon glyphicon-chevron-down"></span>
+                        </button>
+                        <ul class="dropdown-menu slidedown">
+                            <li><a href="#"><span class="glyphicon glyphicon-refresh">
+                            </span>Refresh</a></li>
+                            <li><a href="#"><span class="glyphicon glyphicon-ok-sign">
+                            </span>Available</a></li>
+                            <li><a href="#"><span class="glyphicon glyphicon-remove">
+                            </span>Busy</a></li>
+                            <li><a href="#"><span class="glyphicon glyphicon-time"></span>
+                                Away</a></li>
+                            <li class="divider"></li>
+                            <li><a href="#"><span class="glyphicon glyphicon-off"></span>
+                                Sign Out</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="panel-body">
+                    <ul class="chat">
+                        <li class="left clearfix"><span class="chat-img pull-left">
+                            <img src="http://placehold.it/50/55C1E7/fff&text=U" alt="User Avatar" class="img-circle" />
+                        </span>
+                            <div class="chat-body clearfix">
+                                <div class="header">
+                                    <strong class="primary-font">Jack Sparrow</strong> <small class="pull-right text-muted">
+                                        <span class="glyphicon glyphicon-time"></span>12 mins ago</small>
+                                </div>
+                                <p>
+                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                                </p>
+                            </div>
+                        </li>
+                        <li class="right clearfix"><span class="chat-img pull-right">
+                            <img src="http://placehold.it/50/FA6F57/fff&text=ME" alt="User Avatar" class="img-circle" />
+                        </span>
+                            <div class="chat-body clearfix">
+                                <div class="header">
+                                    <small class=" text-muted"><span class="glyphicon glyphicon-time"></span>13 mins ago</small>
+                                    <strong class="pull-right primary-font">Bhaumik Patel</strong>
+                                </div>
+                                <p>
+                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                                </p>
+                            </div>
+                        </li>
+                        <li class="left clearfix"><span class="chat-img pull-left">
+                            <img src="http://placehold.it/50/55C1E7/fff&text=U" alt="User Avatar" class="img-circle" />
+                        </span>
+                            <div class="chat-body clearfix">
+                                <div class="header">
+                                    <strong class="primary-font">Jack Sparrow</strong> <small class="pull-right text-muted">
+                                        <span class="glyphicon glyphicon-time"></span>14 mins ago</small>
+                                </div>
+                                <p>
+                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                                </p>
+                            </div>
+                        </li>
+                        <li class="right clearfix"><span class="chat-img pull-right">
+                            <img src="http://placehold.it/50/FA6F57/fff&text=ME" alt="User Avatar" class="img-circle" />
+                        </span>
+                            <div class="chat-body clearfix">
+                                <div class="header">
+                                    <small class=" text-muted"><span class="glyphicon glyphicon-time"></span>15 mins ago</small>
+                                    <strong class="pull-right primary-font">Bhaumik Patel</strong>
+                                </div>
+                                <p>
+                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                                </p>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+                <div class="panel-footer">
+                    <div class="input-group">
+                        <input id="btn-input" type="text" class="form-control input-sm" placeholder="Type your message here..." />
+                        <span class="input-group-btn">
+                            <button class="btn btn-warning btn-sm" id="btn-chat">Send</button>
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-5">
+        	<div class="dispute-status">
+            	<strong class="dsp1">Dispute Status</strong>
+                <div class="page-header"></div>
+            	<p>Total amount in Dispute: <strong class="dsp2">$5000</strong></p>
+                <div class="page-header"></div>
+                <p class="you">You want to receive: <strong class="dsp2">$1000</strong></p>
+                <div class="page-header"></div>
+                <p class="you"><strong>Employer:</strong class="dsp2">(username1234)
+                </p>
+                <div class="page-header"></div>
+                <p class="you"><strong class="dsp1">Result</strong><br><br>Dispute is still Active</p>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+
+      <!--===============================================================
+      							Arbitration Tab
+      ================================================================-->
+
+
+      <div class="tab-pane fade" id="arbitration">
+                                  <ul class="stg-1">
+                             <li><p>Comapny strongly recommends you to communicate clearly with the other party to resolve the matter.</p></li>
+                             <li><p>Note: Failure for (1st) username to communicate within 7 days from when the dispute was lodged will result in favour of (2nd) username</p></li>
+                             <li><p>After 7 days either party may elect to move the dispute to arbitration at a fee of $50.00USD where the dispute will wsclate to arbitration stage. The other party will then have 4 days during this stage to agree to pay this fee and for both parties to submit any final evidence. The arbitaration fee will then refunded to the winner of the dispute. </p></li>
+						  </ul>
+						  <form>
+						  	<label>Select Dispute ID</label>
+						  	<select class="form-control" id="select">
+                              <option>DID-1</option>
+                              <option>DID-2</option>
+                              <option>DID-3</option>
+                              <option>DID-4</option>
+                              <option>DID-5</option>
+                            </select>
+						  </form>
+						 <div class="row">
+						  <div class="col-sm-8"></div>
+						  <div class="col-sm-4"></div>
+                        </div>
+
+      </div>
+    </div>
+
+
+
+
+</div><!--Container closed-->
+
+
+
+
+
+
+
+
+
+
+
+
+<script src="http://code.jquery.com/jquery-latest.js"></script>
+<script src="bootstrap/js/bootstrap.min.js"></script>
+
+</body>
+</html>

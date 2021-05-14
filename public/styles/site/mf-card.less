@@ -1,0 +1,451 @@
+@import "mf-ui.less";
+
+.mf-ui {
+    .card-container {
+        text-align: center;
+        &.gray {
+            background: #f1f1f1;
+        }
+        .mf-card {
+            .mf-ui.drop-shadow;
+            border-radius: 3px;
+            display: inline-block;
+            background: @colorWhite;
+            margin: 9px 3px 9px 3px;
+            padding: 6px;
+            position: relative;
+            font-size: 18px;
+            line-height: 145%;
+            &.invisible {
+                box-shadow: none;
+                background: transparent;
+            }
+            .emphasized {
+                border: 2px solid @colorGold;
+                background-color: lighten(@colorGold, 40%);
+            }
+            &.description {
+                .invisible;
+                text-align: left;
+                &.full-width {
+                    width: 85%;
+                    @media only screen and (max-width : 650px) {
+                        width: 93%;
+                    } 
+                }
+            }
+            .red-text {
+                color: @colorRed;
+            }
+            .back-button {
+                position: absolute;
+                left: 0;
+                top: 0;
+            }
+            &.full-width {
+                width: 98%;
+                @media only screen and (max-width : 650px) {
+                    width: 93%;
+                }   
+            }
+            &.third-width {
+                width: 96%;
+
+                @media only screen and (min-width: @screenMD) {
+                    width: 30%;
+                }
+            }
+            &.two-third-width {
+                width: 96%;
+                @media only screen and (min-width: @screenMD) {
+                    width: 63%;
+                }
+            }
+            &.half-width {
+                width: 96%;
+                @media only screen and (min-width: 600px) {
+                    width: 46%;
+                }
+            }
+            &.right-align {
+                float: right;
+            }
+            &.left-align > {
+                float: left;
+            }
+            &.fill-space {
+                flex-grow: 1;
+            }         
+            &.no-pad {
+                padding: 0px;
+            }   
+            .card-content {
+                padding: 3px;
+                @media only screen and (min-width : @screenSM) {
+                    display: flex;
+                    flex-wrap: wrap;
+                    justify-content: center;
+                    padding: 9px;
+                    // align-items: stretch;
+                }
+                &.small-screen-flex {
+                    display: flex;
+                    flex-wrap: wrap;
+                    justify-content: center;
+                    .mf-card{
+                        flex-grow: 1;
+                    }
+                    .expand {
+                        flex-grow: 1;
+                        padding: 3px;
+                    }
+                }
+                &.no-pad {
+                    padding: 0px;
+                }
+                &.full-width {
+                    width: 100%;
+                }
+                &.single-column {
+                    flex-direction: column;
+                }
+                &.reverse {
+                    flex-direction: row-reverse;
+                }
+                &.right-align > {
+                    float: right;
+                }
+                &.left-align > {
+                    float: left;
+                }
+                .left-align {
+                    text-align: left;
+                }
+                .break {
+                    border-bottom: 1px solid @colorGrayLight;
+                    padding: 6px;
+                    margin-bottom: 18px;
+                    width: 90%;
+                }
+                .empty-break {
+                    padding: 6px;
+                    margin-bottom: 6px;
+                    width: 100%;
+                }
+                div > {
+                    /*margin-bottom: 6px;*/
+                }
+                ul {
+                    width: 80%;
+                }
+                .extra-space {
+                    margin: 20px;
+                }
+                .info-picture {
+                    position: relative;
+                    font-size: 30px;
+                    /*.mf-ui.drop-shadow-text;*/
+                    a {
+                        color: @colorWhite;
+                    }
+                    img {
+                        object-fit: cover;
+                        width: 128px;
+                        height: 128px;
+                        border-radius: 50%;
+                        .mf-ui.drop-shadow-deep;
+                    }
+                    .icon-button {
+                        .transitions;
+                        .mf-ui.drop-shadow;
+                        background: white;
+                        box-sizing: border-box;
+                        position: absolute;
+                        bottom: 0px;                        
+                        border-radius: 50%;
+                        /*border: 2px solid @colorBlue;*/
+                        color: @colorBlue;
+                        padding-top: 5px;
+                        width: 40px;
+                        height: 40px;
+                        &:hover {
+                            .transitions;
+                            background: @colorWhiteDark;
+                            .mf-ui.drop-shadow-deep;
+                        }
+                        &.blue {
+                            background: @colorBlue;
+                            color: @colorWhite;
+                            &:hover {
+                                background: @colorBlueLight;
+                            }
+                        }
+                    }
+                    .image-badge {
+                        object-fit: cover;
+                        position: absolute;
+                        width: 32px;
+                        height: 32px;
+                        top: 0px;
+                        left: 0px;
+                    }
+                    .fav-button {
+                        .icon-button;
+                        left: -15px;
+                    }
+                    .msg-button {
+                        .icon-button;
+                        font-size: 25px;
+                        right: -15px;
+                        padding-top: 6px;
+                    }
+                    .profile-rating {
+                        .mf-ui.drop-shadow-text;
+                        position: absolute;
+                        color: @colorGold;
+                        bottom: 0;
+                        right: 0;
+                        left: 0;
+                        font-size: 20px;
+                        .off {
+                            color: @standardFontColorXtraLight;
+                        }
+                    }
+                }
+                .info-text {
+                    text-align: left;
+                    color: @standardFontColor;
+                    // max-width: 650px;
+                    .profile-rating {
+                        .fa-star, .fa-wrench {
+                            color: @colorGold;
+                        }
+                        .off {
+                            color: @standardFontColorXtraLight;
+                        }
+                    }                    
+                    a {
+                        color: @standardFontColor;
+                        text-decoration: none;
+                        border-bottom: 1px dotted @colorBlue;
+                        &:hover {
+                            color: @colorBlue;
+                            border-bottom: 1px solid @colorBlue;
+                        }
+                    }
+                }
+            }
+            .card-header {
+                text-align: center;
+                font-size: 22px;
+                letter-spacing: 0.15em;
+                border-bottom: 1px solid @colorGrayLight;
+                width: 90%;
+                padding: 9px;
+                margin-bottom: 6px;
+                &.small {
+                    font-size: 16px;
+                }
+                &.left {
+                    text-align: left;
+                }
+                &.no-line {
+                    border-bottom: 1px solid transparent;
+                }
+            }
+            &.button-func {
+                
+                .transitions;
+                .card-header {
+                    border-bottom: none;
+                    .mf-ui.mf-button.blue;
+                    margin: 9px auto 0px auto;
+                    .mf-ui.drop-shadow;
+                    border-radius: 3px;
+                    &:hover {
+                        cursor: pointer;
+                    }
+                }
+                .card-content {
+                    font-style: italic;
+                    font-size: 16px;
+                    color: @standardFontColor;
+                    margin: 0px;
+                }
+                &.green {
+                    .card-header {
+                        .mf-ui.mf-button.green;
+                    }                    
+                }
+            }
+            .card-buttons {
+                width: 100%;
+                text-align: right;
+                .left {
+                    text-align: left;
+                    float: left;
+                }
+                &.force-bottom {
+                    position: absolute;
+                    bottom: 6px;
+                    right: 3px;
+                    // z-index: 10000;
+                }
+                a {
+                    display: inline-block;
+                    margin-left: 5px;
+                    margin-right: 5px;
+                    margin-bottom: 1.5px;
+                    margin-top: 1.5px;
+
+                    &.min-width {
+                        min-width: 100px;
+                    }
+                }
+            }
+            .button-spacer {
+                height: 50px;
+                display: block;
+                width: 100%;
+            }
+            span.wrap {
+                max-width: 500px;
+                padding: 3px;
+                margin-bottom: 6px;
+            }
+            table.two-col {
+                padding: 3px;
+                margin-left: auto;
+                margin-right: auto;
+
+                &.full-width {
+                    width: 100%;
+                    max-width: 350px;
+                }         
+                &.shadow {
+                    .mf-ui.drop-shadow;
+                    padding: 9px;
+                    margin: 6px;
+                }       
+                tr {
+                    min-height: 45px;
+                }
+                td {
+                    min-height: 45px;
+                    padding: 3px;
+                    label {
+                        text-align: right;
+                        float: right;
+                        &.left {
+                            float: left;
+                            text-align: left;
+                        }
+
+                        &.no-float {
+                            float: none;
+                            text-align: left;
+                        }
+                    }
+                    select, input[type="text"] {
+                        width: 100%;
+                    }
+                    &.centered {
+                        label {
+                            float: none;
+                        }
+                        select, input[type="text"] {
+                            width: auto;
+                        }
+                        &.break {
+                            border-bottom: 1px solid @colorGrayLight;
+                            padding: 9px;
+                            @media only screen and (min-width : 1100px) {
+                                display: none;
+                            }   
+                        }
+                        &.empty-break {
+                            padding: 6px;
+                        }
+                    }
+                    &.error {
+                        border: 2px solid @colorRed;
+                    }
+                    .split {
+                        // The goal for this is when we have side-by-side inputs
+                        //  Add more as needed.
+                        input[type="text"], select {
+                            width: 48%;
+                        }
+                    }
+                    &.wrap-text {
+                        max-width: 250px;
+                    }
+                }
+                &.split {
+                    text-align: left;
+                    vertical-align: top;
+                    td {
+                        text-align: left;
+                        vertical-align: top;
+                        width: 50%;
+                        &.vert-mid {
+                            vertical-align: middle;
+                        }
+                    }
+                }
+                table.data-table {
+                    margin-top: 9px;
+                    float: none;
+                    width: 100%;
+                    td {
+                        // padding: 10px 5px 10px 5px;
+                        margin-top: 9px;
+                    }
+                }
+            }
+            .accordion {
+                text-align: center;
+                position: relative;
+                .accordion-header {
+                    .transitions;
+                    border-radius: 2px;
+                    display: block;
+                    position: relative;
+                    padding: 10px 0px 10px 0px;
+                    background-color: @colorBlue;
+                    color: white;
+                    &.green {
+                        background-color: @colorGreen;
+                    }
+                    &.expanded {
+                        .transitions;
+                        font-weight: bold;
+                    }
+                    &:hover {
+                        .transitions;
+                        background-color: @colorBlueLight;
+                        color: white;
+                        cursor: pointer;
+                        &.green {
+                            background-color: @colorGreenLight;
+                        }
+                    }
+                    .expand-icon {
+                        position: absolute;
+                        right: 20px;
+                        top: 8px;
+                        font-size: 20px;
+                    }
+                }
+                .accordion-container {
+                    .mf-ui.drop-shadow;
+                    width: 97%;
+                    margin-bottom: 9px;
+                }
+                .accordion-details {                    
+                    display: block;
+                }
+            }
+        }
+    }    
+}

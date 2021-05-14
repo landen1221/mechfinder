@@ -1,0 +1,96 @@
+.recover {
+    .standard-div;
+    text-align: center;
+    padding-top: 50px;
+    padding-bottom: 50px;
+
+    h1 {
+        .standard-font;
+        font-size: 45px;
+    }
+
+    .spacer {
+        .standard-div;
+        clear: both;
+        height: 50px;
+
+        &.small {
+            height: 20px;
+        }
+    }
+
+    .recover-centered {
+        display: inline-block;
+        width: 300px;
+        max-width: 90%;
+        padding-left: 2%;
+        padding-right: 2%;
+        box-sizing: border-box;
+
+        .recover-content {
+            .standard-div;
+            text-align: center;
+
+            input[type="text"],
+            input[type="email"],
+            input[type="password"] {
+                .standard-font;
+                .transitions;
+                max-width: 100%;
+                width: 100%;
+                padding: 10px;
+                box-sizing: border-box;
+                border: 1px solid rgba(123, 123, 123, 1);
+                outline: none;
+
+                &.error {
+                    border: 2px solid @colorRed;
+                }
+            }
+
+            .reset-status {
+                .standard-div;
+                max-width: 100%;
+                padding-top: 10px;
+                padding-bottom: 10px;
+                font-size: 13px;
+                text-align: center;
+
+                &.error {
+                    color: @colorRed;
+                }
+            }
+
+            .recover-button-row {
+                .standard-div;
+                clear: both;
+                text-align: center;
+
+                a {
+                    .standard-div;
+                    .standard-font;
+                    .remove-effects;
+                    .transitions;
+                    border-radius: 2px;
+                    text-align: center;
+                    max-width: 100%;
+                    box-sizing: border-box;
+                    padding: 10px;
+
+                    &:link,
+                    &:visited {
+                        color: rgba(245, 245, 245, 1);
+                        background-color: @colorRed;
+                    }
+
+                    &:hover,
+                    &:active,
+                    &:focus {
+                        color: rgba(255, 255, 255, 1);
+                        background-color: @colorRedLight;
+                    }
+                }
+            }
+        }
+    }
+}

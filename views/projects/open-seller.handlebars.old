@@ -1,0 +1,167 @@
+<div class="row">
+    <div class="col-xs-12 col-sm-8 col-md-9">
+        <div class="row">
+            <div class="col-xs-12">
+                <div class="info-page-content">
+                    <h1>My Projects</h1>
+                </div>
+                <form class="project-search-form">
+                    <div class="row">
+                        <div class="col-xs-12 col-sm-4 col-md-6">
+                            <input class="form-control" type="text" placeholder="Projects Search" />
+                        </div>
+                        <div class="col-xs-12 col-sm-5 col-md-3 col-lg-4">
+                            <select name="#">
+                                <option value="">Please Choose</option>
+                                <option value="0">Open Bids</option>
+                                <option value="1">Projects Won</option>
+                                <option value="2">Completed Projects</option>
+                                <option value="3">In Dispute</option>
+                            </select>
+                        </div>
+                        <div class="col-xs-12 col-sm-3 col-lg-2">
+                            <button type="submit" class="btn btn-success"><i class="fa fa-search"></i> Search</button>
+                        </div>
+                    </div>
+                </form>
+                <div class="table-responsive">
+                    <table class="table project-search-table">
+                        <thead>
+                            <tr>
+                                <th>Post Date</th>
+                                <th>Status</th>
+                                <th>Customer</th>
+                                <th>Contact</th>
+                                <th>Projects</th>
+                                <th>Need</th>
+                                <th>Notes</th>
+                                <th>Estimate</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {{#each seller_projects}}
+                                {{#compare state to="bidding"}}
+                                    <tr class="showing-first" data-project-id="{{_id}}">
+                                        <td>
+                                            <p>{{date date_created}}</p>
+                                            <br />
+                                            <a href="/projects/{{this.number}}" class="escrow">View</a>
+                                        </td>
+                                        <td><strong>Open</strong></td>
+                                        <td>
+                                            <div class="h4-in-table">{{owner.name}}</div>
+                                            <p>{{owner.address.0.city}}, {{owner.address.0.state}}</p>
+                                        </td>
+                                        <td class="add-fav-projekt">
+                                            <button class="reveal">Reveal For $9.95</button>
+                                            <br />
+                                            <a class="msg" href="#"><img src="{{settings.static_path}}/img/message.png" alt="" /></a>
+                                        </td>
+                                        <td>{{vehicle.display}}
+                                            <br />{{tags repair}}
+                                        </td>
+                                        <td>{{title}}</td>
+                                        <td></td>
+                                        <td>
+                                            {{#compare_document my_bid.user to=lowest_bid.user}}
+                                                <div class="alert alert-success">
+                                                    You have the lowest bid!
+                                                </div>
+                                            {{else}}
+                                                {{currency lowest_bid.estimate}}
+                                                <br />Lowest Bid:
+                                                <br />{{lowest_bid.user.name}}
+                                            {{/compare_document}}
+                                        </td>
+                                    </tr>
+                                {{/compare}}
+                                {{#compare state to="assigned"}}
+                                    <tr class="showing-first" data-project-id="{{_id}}">
+                                        <td>
+                                            <p>{{date date_created}}</p>
+                                            <br />
+                                            <a href="/projects/{{this.number}}" class="escrow">View</a>
+                                        </td>
+                                        <td><span style="color: green"><strong>Won</strong></span></td>
+                                        <td>
+                                            <div class="h4-in-table">{{owner.name}}</div>
+                                            <p>{{owner.address.0.city}}, {{owner.address.0.state}}</p>
+                                        </td>
+                                        <td></td>
+                                        <td>{{vehicle.display}}
+                                            <br />{{tags repair}}
+                                        </td>
+                                        <td>{{title}}</td>
+                                        <td></td>
+                                        <td>{{currency accepted_bid.estimate}}</td>
+                                    </tr>
+                                {{/compare}}
+                                {{#compare state to="finished"}}
+                                    <tr class="showing-first" data-project-id="{{_id}}">
+                                        <td>
+                                            <p>{{date date_created}}</p>
+                                            <br />
+                                            <a href="/projects/{{this.number}}" class="escrow">View</a>
+                                        </td>
+                                        <td><span style="color: blue"><strong>Completed</strong></span></td>
+                                        <td>
+                                            <div class="h4-in-table">{{owner.name}}</div>
+                                            <p>{{owner.address.0.city}}, {{owner.address.0.state}}</p>
+                                        </td>
+                                        <td></td>
+                                        <td>{{vehicle.display}}
+                                            <br />{{tags repair}}
+                                        </td>
+                                        <td>{{title}}</td>
+                                        <td>
+                                            {{#if owner_rating}}
+                                                <a href="#" class="escrow projekt-hover-1">View<br />Notes</a>
+                                                {{helper 'stars' stars=owner_rating.stars user=assigned._id}}
+                                            {{else}}
+                                                You haven't been rating on this project yet.
+                                            {{/if}}
+                                        </td>
+                                        <td>{{currency accepted_bid.estimate}}</td>
+                                    </tr>
+                                    {{#if owner_rating}}
+                                        {{#if owner_rating.notes}}
+                                            <tr class="showing-mouseover">
+                                                <td colspan="8" class="projekt-show-1"><strong>Description:</strong> {{owner_rating.notes}}</td>
+                                            </tr>
+                                        {{/if}}
+                                    {{/if}}
+                                {{/compare}}
+                                {{#compare state to="canceled"}}
+                                    <tr class="showing-first" data-project-id="{{_id}}">
+                                        <td>
+                                            <p>{{date date_created}}</p>
+                                            <br />
+                                            <a href="/projects/{{this.number}}" class="escrow">View</a>
+                                        </td>
+                                        <td><span style="color: red"><strong>Cancelled</strong></span></td>
+                                        <td>
+                                            <div class="h4-in-table">{{owner.name}}</div>
+                                            <p>{{owner.address.0.city}}, {{owner.address.0.state}}</p>
+                                        </td>
+                                        <td></td>
+                                        <td>{{vehicle.display}}
+                                            <br />{{tags repair}}
+                                        </td>
+                                        <td>{{title}}</td>
+                                        <td></td>
+                                        <td>{{#if assigned}}{{assigned.name}}{{/if}}</td>
+                                    </tr>
+                                {{/compare}}
+                            {{/each}}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-12">
+                {{>projects/buyer-projects}}
+            </div>
+        </div>
+    </div>
+</div>

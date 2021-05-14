@@ -1,0 +1,18 @@
+<div class="user-profile-stars my-fravorites-star">
+    <form action="#">
+        {{#defined total}}
+            <label class="star-counter my-favorite-conter"> {{#if total}}{{total}}{{else}}0{{/if}}</label>
+        {{/defined}}
+
+        {{#compare stars gte=1}}<label class="star active"></label>{{/compare}}
+        {{#compare stars gte=2}}<label class="star active"></label>{{/compare}}
+        {{#compare stars gte=3}}<label class="star active"></label>{{/compare}}
+        {{#compare stars gte=4}}<label class="star active"></label>{{/compare}}
+        {{#compare stars gte=5}}<label class="star active"></label>{{/compare}}
+        {{#compare stars lt=5}}<label class="star"></label>{{/compare}}
+        {{#compare stars lt=4}}<label class="star"></label>{{/compare}}
+        {{#compare stars lt=3}}<label class="star"></label>{{/compare}}
+        {{#compare stars lt=2}}<label class="star"></label>{{/compare}}
+        {{#compare stars lt=1}}<label class="star"></label>{{/compare}}
+    </form>
+</div>

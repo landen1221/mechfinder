@@ -1,0 +1,532 @@
+<script type="text/javascript">
+    var PROJECT = {{#if project}}{{json project}}{{else}}null{{/if}};
+    var USER = {{#if user}}{{json user}}{{else}}null{{/if}};
+</script>
+
+
+{{#if user}}<script type="text/javascript" src="{{settings.static_path}}/js/project-estimates-view.js"></script>{{/if}}
+{{#compare user.role to="buyer"}}
+    <script type="text/javascript" src="{{settings.static_path}}/js/project-estimates-buyer.js"></script>
+    <script type="text/javascript" src="{{settings.static_path}}/js/project-estimates-hire.js"></script>
+{{else}}
+    {{#compare user.role to="seller"}}
+        <script type="text/javascript" src="{{settings.static_path}}/js/project-estimates-seller.js"></script>
+        {{#sameID user._id project.assigned._id}}
+            <script type="text/javascript" src="{{settings.static_path}}/js/project-estimates-hired.js"></script>
+        {{/sameID}}
+    {{/compare}}
+{{/compare}}
+
+{{#if user}}{{#compareOr user.role to="buyer,seller"}}{{#if project.assigned}}
+    <script type="text/javascript" src="{{settings.static_path}}/js/project-estimates-dispute.js"></script>
+{{/if}}{{/compareOr}}{{/if}}
+<script type="text/javascript" src="{{settings.static_path}}/lib/stacktable/mf-stacktable.js"></script>
+
+
+
+<div class="view-project mf-ui">
+    <div class="card-container">
+        <div class="mf-card full-width">
+            <p>
+                {{#unless user}}
+                    <a class="internalSignupAction" href="javascript:void(0);">Sign Up to View More Details</a>
+                {{/unless}}
+            </p>
+            {{#compare project.state to="draft"}}
+                {{#sameID user._id project.owner._id}}
+                    <div class="card-content no-pad emphasized">
+                        <div class="card-header">Review Job Details</div>
+                        <p>Once you're satisfied with the details of your job below, open the job to estimates to start receiving estimates from mechanics near you.</p>
+
+                        <div class="mf-card full-width invisible">
+                            <a class="mf-button flat" href="/projects/{{project._id}}/edit"><i class="fa fa-pencil fa-fw" aria-hidden="true"></i> Make Changes</a>
+                            <a class="publishDraft mf-button green" href="javascript:void(0);"><i class="fa fa-send fa-fw" aria-hidden="true"></i> Open to Estimates</a>
+                        </div>
+                    </div>
+                {{/sameID}}
+            {{else}}
+                <div class="card-content no-pad">
+                    <div class="mf-card half-width invisible">
+                        <div class="card-content small-screen-flex">
+                            <div class="info-picture">
+                                <img {{#if project.owner.picture}}src="/api/public/image/{{project.owner.picture}}"{{else}} src="/static/img/customer-profile-pic.png">{{/if}}</img>
+                                {{#if user}}{{#diffID project.owner._id user._id}}
+                                <a class="favorite-action fav-button" data-ids="{{project.owner._id}}" data-role="users" href="javascript:void(0);" title="Add to Favorites"><i class="fa fa-star{{#within project.owner._id user.favorites.users}}{{else}}-o{{/within}} fa-fw"></i></a>
+                                <a class="contact-action msg-button" data-ids="{{project.owner._id}}" href="javascript:void(0);" title="Send a Message"><i class="fa fa-envelope-o fa-fw"></i></a>
+                                {{/diffID}}{{/if}}
+                            </div>
+                            <div class="info-text">
+                                <div>
+                                    <img width="20px" height="20px" src="/static/img/steering-wheel-icon.png"></img> <strong>Customer</strong>
+                                </div>
+                                <div><a href="/profile/{{project.owner._id}}/public">{{project.owner.username}}</a></div>
+                                <div>
+                                    <div>
+                                        {{#sameID user._id project.assigned._id}}<a class="profile-link" title="Get directions" href="https://www.google.com/maps?q=directions+to+{{project.geo.loc.coordinates.[1]}},{{project.geo.loc.coordinates.[0]}}" target="_blank"><i class="fa fa-map-o"></i> {{/sameID}}
+                                            {{#if project.geo.city}}{{project.geo.city}}, {{/if}}{{project.geo.state}}, {{project.geo.postal}}
+                                        {{#sameID user._id project.assigned._id}}</a>{{/sameID}}
+                                    </div>
+                                    {{#unless project.assigned}}
+                                    <div><em>Mechanic Preference: </em><br/>{{#compare project.preference to="none"}}Shop or Mobile Mechanics{{else}}{{#compare project.preference to="mobile"}}Mobile Mechanics{{else}}Shops{{/compare}}{{/compare}}</div>
+                                    {{/unless}}
+                                </div>
+                                <div class="profile-rating" title="Average Rating: {{project.owner.average_rating}} Stars">
+                                    {{ratingIcons project.owner.average_rating project.owner.role}}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="mf-card half-width invisible">
+                        {{#if project.assigned}}
+                        <div class="card-content small-screen-flex">
+                            <div class="info-picture">
+                                <img {{#if project.assigned.picture}}src="/api/public/image/{{project.assigned.picture}}"{{else}} src="/static/img/mechanic-profile-pic.png">{{/if}}</img>
+                                {{#if user}}{{#diffID project.assigned._id user._id}}
+                                <a class="favorite-action fav-button" data-ids="{{project.assigned._id}}" data-role="users" href="javascript:void(0);" title="Add to Favorites"><i class="fa fa-star{{#within project.assigned._id user.favorites.users}}{{else}}-o{{/within}} fa-fw"></i></a>
+                                <a class="contact-action msg-button" data-ids="{{project.assigned._id}}" href="javascript:void(0);" title="Send a Message"><i class="fa fa-envelope-o fa-fw"></i></a>
+                                {{/diffID}}{{/if}}
+                            </div>
+                            <div class="info-text">
+                                <div>
+                                    <img width="32px" height="16px" src="/static/img/wrench-icon.png"></img> <strong><span style="text-transform: capitalize;">{{project.assigned.mechanicType}}</span> Mechanic</strong>
+                                </div>
+                                <div><a href="/profile/{{project.assigned._id}}/public">{{project.assigned.username}}</a></div>
+                                <div>
+                                    <div>
+                                        {{#if project.assigned.geo.city}}{{project.assigned.geo.city}}, {{/if}}{{project.assigned.geo.state}}, {{project.assigned.geo.postal}}
+                                    </div>
+                                </div>                         
+                                <div class="profile-rating" title="Average Rating: {{project.assigned.average_rating}} Stars">
+                                    {{ratingIcons project.assigned.average_rating project.assigned.role}}
+                                </div>
+                            </div>
+                        </div>
+                        {{else}}
+                        <div class="card-content small-screen-flex">
+                            <div class="info-picture">
+                                <img src="/static/img/question.png"></img>
+                            </div>
+                            <div class="info-text">
+                                <div>
+                                    <strong>Mechanic Not Yet Hired</strong>
+                                </div>
+                            </div>
+                        </div>
+                            {{#if user}}
+                                <div class="button-spacer"></div>
+                                {{#diffID user._id project.owner._id}}
+                                    {{#compare user.role to="seller"}}
+                                        {{#if project.diagnosis}}
+                                            {{#hasSubmittedEstimate user._id project.bids}}
+                                                <div class="card-buttons force-bottom">
+                                                    <a class="mf-button green editDiagnosis" href="javascript:void(0);">
+                                                        <i class="fa fa-pencil fa-fw" aria-hidden="true"></i> Edit Your Diagnosis
+                                                    </a>
+                                                </div>
+                                            {{else}}
+                                                <div class="card-buttons force-bottom"><a class="mf-button green offerDiagnosis" href="javascript:void(0);">Offer Diagnosis</a></div>
+                                            {{/hasSubmittedEstimate}}
+                                        {{else}}
+                                            <div class="card-buttons force-bottom">
+                                                {{#hasSubmittedEstimate user._id project.bids}}
+                                                    <a class="mf-button green editWorkorder" href="javascript:void(0);">Edit Your Estimate</a>
+                                                {{else}}
+                                                    <a class="mf-button green offerWorkorder" href="javascript:void(0);">Place an Estimate</a>
+                                                {{/hasSubmittedEstimate}}
+                                            </div>
+                                        {{/if}}
+                                    {{/compare}}
+                                {{/diffID}}
+                            {{else}}
+                                <div class="button-spacer"></div>
+                                <div class="card-buttons force-bottom">
+                                    <a class="mf-button green internalSignupAction" href="javascript:void(0);">
+                                        <i class="fa fa-user-plus fa-fw" aria-hidden="true"></i> Sign Up to Estimate
+                                    </a>
+                                </div>
+                            {{/if}}
+                        {{/if}}
+                    </div>
+                </div>
+            {{/compare}}
+            <div class="card-content no-pad">
+                <div class="mf-card half-width">
+                    <div class="card-header">Details</div>
+                    <div class="card-content small-screen-flex">
+                        <div class="info-text">
+                            <div class="profile-rows">
+                                <table class="two-col">
+                                <tr>
+                                    <td colspan="2">
+                                        {{project.vehicle.year}} {{project.vehicle.make}} {{project.vehicle.model}}
+                                    </td>
+                                </tr>
+                                <tr>
+                                <td>
+                                {{#if project.vehicle.engine}}
+                                    <div class="profile-row"><strong>Cylinders:  </strong>{{project.vehicle.engine}}</div>
+                                {{/if}}
+                                </td>
+                                <td>
+                                {{#if project.vehicle.mileage}}
+                                    <div class="profile-row"><strong>Mileage:  </strong>{{project.vehicle.mileage}}</div>
+                                {{/if}}
+                                </td>
+                                </tr>
+                                <tr>
+                                    <td colspan="2">
+                                    <div class="profile-row"><strong>Parts: </strong> {{#if project.parts}}
+                                    Customer already has parts.
+                                {{else}}
+                                    Customer does not have parts.
+                                {{/if}}</em></div>
+                                </td>
+                                </tr>
+                                <tr>
+                                <td colspan="2">                         
+                                {{#if project.acceptableParts}}
+                                    <div class="profile-row"><strong>Acceptable Parts:  </strong>{{#each project.acceptableParts}}{{#compare @index gt="0"}}, {{/compare}}{{this}}{{/each}}</div>
+                                {{/if}}
+                                </td>
+                                </tr>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="mf-card half-width">
+                    <div class="card-header">What's Next?</div>
+                    <div class="card-content left-align full-width">
+                        <div>
+                            <p style="text-align:center;"><strong>Status:</strong> 
+                                {{#compare project.state to="finished"}}Complete{{/compare}}
+                                {{#compare project.state to="bidding"}}Open to Estimates from Mechanics{{/compare}}
+                                {{#compare project.state to="assigned"}}Mechanic Hired{{/compare}}
+                                {{#compare project.state to="draft"}}Draft{{/compare}}
+                                {{#compare project.state to="canceled"}}Canceled{{/compare}}
+                            </p>
+                        </div>
+                        <div class="project-actions" style="width:100%;">
+                            
+                        <ul>
+                            {{#if user}}
+                                {{#compare user.role to="buyer"}}
+                                    {{!-- buyer is viewing the project --}}
+                                    {{#sameID user._id project.owner._id}}
+                                        {{!-- user is viewing their own job --}}
+                                        {{#if project.assigned}}
+                                            {{!-- owner has hired a mechanic --}}
+                                            {{#hasRequestedEstimate project.assigned._id project.bids}}
+                                                <li>
+                                                    {{#if project.diagnosis}}
+                                                        {{!-- project is a diagnosis --}}
+                                                        <a href="/projects/{{project.child._id}}/review"><i class="fa fa-check-circle-o fa-fw circled" aria-hidden="true"></i> Review Diagnosis</a>
+                                                        <sup class="tooltip-container"><span class="tooltip-icons tooltip_info" href="#" title="Your mechanic has submitted a diagnosis on your vehicle. You will be able to publish your diagnosis as soon as you review it and release payment to the mechanic"><i class="fa fa-info-circle"></i></span></sup>
+                                                    {{else}}
+                                                        {{!-- project is not a diagnosis --}}
+                                                        <ul class="unindented">
+                                                            {{#each project.bids}}
+                                                                {{#compare this.state to="requested"}}
+                                                                    <li class="unpadded">
+                                                                        <a class="releaseFunds" data-bid="{{this._id}}" href="javascript:void(0);">
+                                                                            <i class="fa fa-dollar fa-fw circled" aria-hidden="true"></i> Release {{currency this.buyerTotal}} from Escrow
+                                                                        </a>
+                                                                        <sup class="tooltip-container"><span class="tooltip-icons tooltip_info" href="#" title="Release payments on estimates that your mechanic has worked on"><i class="fa fa-info-circle"></i></span></sup>
+                                                                    </li>
+                                                                {{/compare}}
+                                                            {{/each}}
+                                                        </ul>
+                                                    {{/if}}
+                                                </li>
+                                            {{/hasRequestedEstimate}}
+                                            
+                                            {{#compare project.state to="finished"}}
+                                                {{#unless project.sellerRated}}
+                                                    <li><a class="rateMechanic" href="javascript:void(0);"><i class="fa fa-star-half-o fa-fw circled" aria-hidden="true"></i> Rate Mechanic</a>
+                                                    <sup class="tooltip-container"><span class="tooltip-icons tooltip_info" href="#" title="Leave feedback about your mechanic for others"><i class="fa fa-info-circle"></i></span></sup>
+                                                    </li>
+                                                {{/unless}}
+                                                <li><a href="/projects/post"><i class="fa fa-plus fa-fw circled" aria-hidden="true"></i> Post Another Job</a>
+                                                <sup class="tooltip-container"><span class="tooltip-icons tooltip_info" href="#" title="Have anything else to fix? Post another job to find mechanics near you"><i class="fa fa-info-circle"></i></span></sup>
+                                                </li>
+                                            {{/compare}}
+                                            
+                                            <li><a class="contact-action" data-ids="{{project.owner._id}}" href="javascript:void(0);"><i class="fa fa-envelope-o fa-fw circled" aria-hidden="true"></i> Message your Mechanic</a>
+                                                <sup class="tooltip-container"><span class="tooltip-icons tooltip_info left" href="#" title="Your mechanic has been hired {{#if project.diagnosis}}to diagnose issues with your vehicle{{else}}on your estimate(s){{/if}}. Get in contact with them to find a time to meet"><i class="fa fa-info-circle"></i></span></sup>
+                                            </li>
+                                        {{else}}
+                                            {{!-- nobody has been hired on this project --}}
+                                            {{#hasActiveEstimates project.bids}}
+                                                {{!-- project has estimates on it --}}
+                                                {{#compare project.state to="draft"}}
+                                                    <li>
+                                                        <a class="publishDraft" href="javascript:void(0);"><i class="fa fa-send fa-fw circled" aria-hidden="true"></i> Publish this Job</a>
+                                                        <sup class="tooltip-container"><span class="tooltip-icons tooltip_info left" href="#" title="Make this job available for mechancis to submit estimates on."><i class="fa fa-info-circle"></i></span></sup>
+                                                    </li>
+                                                    <li>
+                                                        <a href="/projects/{{project._id}}/edit"><i class="fa fa-pencil fa-fw circled" aria-hidden="true"></i> Edit this Job</a>
+                                                        <sup class="tooltip-container"><span class="tooltip-icons tooltip_info left" href="#" title="Make changes to some of the details about this job."><i class="fa fa-info-circle"></i></span></sup>
+                                                    </li>
+                                                {{else}}
+                                                    <li>
+                                                        <a class="scrollTo" data-scroll="estimatesCard" data-speed="1000" href="javascript:void(0);"><i class="fa fa-th-list fa-fw circled" aria-hidden="true"></i> View Estimates</a>
+                                                        <sup class="tooltip-container"><span class="tooltip-icons tooltip_info left" href="#" title="You have some estimates on your project. View the estimates table below to see estimates on your job"><i class="fa fa-info-circle"></i></span></sup>
+                                                    </li>   
+                                                {{/compare}}
+                                            {{else}}
+                                                {{!-- project does NOT have any estimates on it --}}
+                                                {{#compare project.state to="draft"}}
+                                                    <li>
+                                                        <a class="publishDraft" href="javascript:void(0);"><i class="fa fa-send fa-fw circled" aria-hidden="true"></i> Publish this Job</a>
+                                                        <sup class="tooltip-container"><span class="tooltip-icons tooltip_info left" href="#" title="Make this job available for mechancis to submit estimates on."><i class="fa fa-info-circle"></i></span></sup>
+                                                    </li> 
+                                                    <li>
+                                                        <a href="/projects/{{project._id}}/edit"><i class="fa fa-pencil fa-fw circled" aria-hidden="true"></i> Edit this Job</a>
+                                                        <sup class="tooltip-container"><span class="tooltip-icons tooltip_info left" href="#" title="Make changes to some of the details about this job."><i class="fa fa-info-circle"></i></span></sup>
+                                                    </li>
+                                                {{else}}
+                                                    <li>
+                                                        <a href="/mechanics"><i class="fa fa-search fa-fw circled" aria-hidden="true"></i> Look for Mechanics</a>
+                                                        <sup class="tooltip-container"><span class="tooltip-icons tooltip_info left" href="#" title="Not getting any estimates? Search for mechanics to do your job"><i class="fa fa-info-circle"></i></span></sup>
+                                                    </li> 
+                                                {{/compare}}        
+                                            {{/hasActiveEstimates}}
+                                        {{/if}}
+                                    {{else}}
+                                        {{!-- some other buyer is viewing this job --}}
+                                        <li><a href="/projects/post"><i class="fa fa-plus fa-fw circled" aria-hidden="true"></i> Post a Job</a>
+                                        <sup class="tooltip-container"><span class="tooltip-icons tooltip_info left" href="#" title="Post a job like this one to find mechanics near you to work on your vehicle"><i class="fa fa-info-circle"></i></span></sup>  
+                                        </li>
+                                    {{/sameID}}
+                                {{else}}
+                                    {{!-- user is a seller --}}
+                                    {{#if project.assigned}}
+                                        {{!-- project is assigned to a mechanic --}}
+                                        {{#sameID user._id project.assigned._id}}
+                                            {{!-- seller is viewing his job --}}
+                                            {{#hasRequestedEstimate user._id project.bids}}{{#compare project.state to="finished"}}{{else}}
+                                                <li>
+                                                    Your payment {{#if project.diagnosis}}request has{{else}}request(s) have{{/if}} been sent to the customer. They'll review {{#if project.diagnosis}}your diagnosis{{else}}the estimates{{/if}} and release {{#if project.diagnosis}}payment on your diagnosis{{else}}payments on the estimate(s){{/if}} as soon as they accept the work you've done
+                                                </li>
+                                            {{/compare}}{{/hasRequestedEstimate}}
+                                            {{#compare project.state to="finished"}}{{else}}{{#if project.diagnosis}}{{#if project.child}}
+                                                {{#compare project.child.state to="creating"}}
+                                                    <a href="/projects/{{project.child._id}}/review"><i class="fa fa-check-circle-o fa-fw circled" aria-hidden="true"></i> Complete Your Draft</a>
+                                                    <sup class="tooltip-container"><span class="tooltip-icons tooltip_info left" href="#" title="You have started a draft for {{project.owner.username}}. Submit the draft to the customer to receive payment for your diagnosis"><i class="fa fa-info-circle"></i></span></sup>
+                                                {{else}}
+                                                    <a href="/projects/{{project.child._id}}/review"><i class="fa fa-check-circle-o fa-fw circled" aria-hidden="true"></i> Review Your Draft</a>
+                                                        <sup class="tooltip-container"><span class="tooltip-icons tooltip_info left" href="#" title="You've submitted a diagnosis draft to {{project.owner.username}}. Review and update your draft here"><i class="fa fa-info-circle"></i></span></sup>                                                    
+                                                {{/compare}}
+                                            {{/if}}{{/if}}{{/compare}}
+                                            {{#unless project.child}}{{#hasHiredEstimate user._id project.bids}}
+                                                <li>
+                                                    <ul class="unindented">
+                                                        {{#each project.bids}}
+                                                            {{#compare this.state to="accepted"}}
+                                                                <li class="unpadded">
+                                                                    <a class="requestPayment" data-bid="{{this._id}}" href="javascript:void(0);">
+                                                                        <i class="fa fa-dollar fa-fw circled" aria-hidden="true"></i> Request Your {{currency this.sellerTotal}} Payment
+                                                                    </a>
+                                                                    <sup class="tooltip-container"><span class="tooltip-icons tooltip_info left" href="#" title="Finished the job? Request payment for {{#if project.diagnosis}}your diagnosis{{else}}estimates on which you've been hired{{/if}}"><i class="fa fa-info-circle"></i></span></sup>
+                                                                </li>
+                                                            {{/compare}}
+                                                        {{/each}}
+                                                    </ul>
+                                                </li>
+                                            {{/hasHiredEstimate}}{{/unless}}
+                                            {{#unless project.diagnosis}}{{#compare project.state to="assigned"}}
+                                                <li><a class="offerWorkorder" href="javascript:void(0);"><i class="fa fa-file-text-o fa-fw circled" aria-hidden="true"></i> Add Another Estimate</a>
+                                                    <sup class="tooltip-container"><span class="tooltip-icons tooltip_info left" href="#" title="Additional repairs? Add another estimate to the project"><i class="fa fa-info-circle"></i></span></sup>
+                                                </li>
+                                            {{/compare}}{{/unless}}
+                                            {{#compare project.state to="finished"}}
+                                                {{#unless project.buyerRated}}
+                                                    <li><a class="rateCustomer" href="javascript:void(0);"><i class="fa fa-star-half-o fa-fw circled" aria-hidden="true"></i> Rate Customer</a>
+                                                        <sup class="tooltip-container"><span class="tooltip-icons tooltip_info left" href="#" title="Leave feedback about your customer for others"><i class="fa fa-info-circle"></i></span></sup>
+                                                    </li>
+                                                {{/unless}}
+                                                <li><a href="/projects"><i class="fa fa-search fa-fw circled" aria-hidden="true"></i> Find Another Job</a>
+                                                    <sup class="tooltip-container"><span class="tooltip-icons tooltip_info left" href="#" title="You're all done! Find more jobs like this one"><i class="fa fa-info-circle"></i></span></sup>
+                                                </li>
+                                            {{/compare}}
+                                            <li><a class="contact-action" data-ids="{{project.owner._id}}" href="javascript:void(0);"><i class="fa fa-envelope-o fa-fw circled" aria-hidden="true"></i> Message the Customer</a>
+                                                <sup class="tooltip-container"><span class="tooltip-icons tooltip_info left" href="#" title="Have a question? Ask the customer for more information"><i class="fa fa-info-circle"></i></span></sup>
+                                            </li>
+                                        {{else}}
+                                            {{!-- seller is viewing another seller's job --}}
+                                            <li><a href="/projects"><i class="fa fa-search fa-fw circled" aria-hidden="true"></i> Find Jobs</a>
+                                                <sup class="tooltip-container"><span class="tooltip-icons tooltip_info left" href="#" title="Search for other jobs that are like this one"><i class="fa fa-info-circle"></i></span></sup>
+                                            </li>
+                                            <li>
+                                                <a class="favorite-action" data-ids="{{project._id}}" data-role="projects" href="javascript:void(0);">
+                                                    <i class="fa fa-star{{#within project._id user.favorites.projects}}{{else}}-o{{/within}} fa-fw circled" aria-hidden="true"></i> Favorite
+                                                </a>
+                                                <sup class="tooltip-container"><span class="tooltip-icons tooltip_info left" href="#" title="Add or remove this job to or from your favorites list"><i class="fa fa-info-circle"></i></span></sup>                  
+                                            </li>
+                                        {{/sameID}}
+                                    {{else}}
+                                        <!-- project is open to estimates -->
+                                        {{#if project.diagnosis}}
+                                            {{#hasSubmittedEstimate user._id project.bids}}
+                                                <li><a class="editDiagnosis" href="javascript:void(0);"><i class="fa fa-pencil fa-fw circled" aria-hidden="true"></i> Edit Diagnosis</a>
+                                                    <sup class="tooltip-container"><span class="tooltip-icons tooltip_info left" href="#" title="Change the amount you are charging on your diagnosis"><i class="fa fa-info-circle"></i></span></sup>
+                                                </li>
+                                            {{else}}
+                                                <li><a class="offerDiagnosis" href="javascript:void(0);"><i class="fa fa-file-text-o fa-fw circled" aria-hidden="true"></i> Offer Diagnosis</a>
+                                                    <sup class="tooltip-container"><span class="tooltip-icons tooltip_info left" href="#" title="Let customer know you can do their diagnosis"><i class="fa fa-info-circle"></i></span></sup>
+                                                </li>
+                                            {{/hasSubmittedEstimate}}
+                                        {{else}}
+                                            {{#hasSubmittedEstimate user._id project.bids}}
+                                                <li><a class="editWorkorder" href="javascript:void(0);"><i class="fa fa-pencil fa-fw circled" aria-hidden="true"></i> Edit Your Estimate</a>
+                                                <sup class="tooltip-container"><span class="tooltip-icons tooltip_info left" href="#" title="Update the parts and labor on your estimate"><i class="fa fa-info-circle"></i></span></sup>
+                                                </li>
+                                            {{else}}
+                                                <li><a class="offerWorkorder" href="javascript:void(0);"><i class="fa fa-file-text-o fa-fw circled" aria-hidden="true"></i> Place an Estimate</a>
+                                                <sup class="tooltip-container"><span class="tooltip-icons tooltip_info left" href="#" title="Fill out an estimate with the parts and labor required to fix the vehicle"><i class="fa fa-info-circle"></i></span></sup>
+                                                </li>
+                                            {{/hasSubmittedEstimate}}
+                                        {{/if}}
+                                        {{#hasSubmittedEstimate user._id project.bids}}
+                                            <li>
+                                                <a class="cancelEstimate" data-bid="{{lastEstimateIdByUser user._id project.bids}}" href="javascript:void(0)">
+                                                    <i class="fa fa-ban fa-fw circled" aria-hidden="true"></i> Cancel Your {{#if project.diagnosis}}Diagnosis{{else}}Estimate{{/if}}
+                                                </a>
+                                                <sup class="tooltip-container"><span class="tooltip-icons tooltip_info left" href="#" title="Cancel your {{#if project.diagnosis}}diagnosis{{else}}estimate{{/if}} if you would no longer like to be considered for hire"><i class="fa fa-info-circle"></i></span></sup>                                                
+                                            </li>
+                                        {{/hasSubmittedEstimate}}
+                                        <li><a class="contact-action" data-ids="{{project.owner._id}}" href="javascript:void(0);"><i class="fa fa-envelope-o fa-fw circled" aria-hidden="true"></i> Message the Customer</a>
+                                            <sup class="tooltip-container"><span class="tooltip-icons tooltip_info left" href="#" title="Have a question? Ask the customer for more information"><i class="fa fa-info-circle"></i></span></sup>
+                                        </li>
+                                        <li>
+                                            <a class="favorite-action" data-ids="{{project._id}}" data-role="projects" href="javascript:void(0);">
+                                                <i class="fa fa-star{{#within project._id user.favorites.projects}}{{else}}-o{{/within}} fa-fw circled" aria-hidden="true"></i> Favorite
+                                            </a>
+                                            <sup class="tooltip-container"><span class="tooltip-icons tooltip_info left" href="#" title="Add or remove this job to or from your favorites list"><i class="fa fa-info-circle"></i></span></sup>
+                                            
+                                        </li>
+                                    {{/if}}
+                                {{/compare}}
+                            {{else}}
+                                {{!-- no user is signed in --}}
+                                <li><a class="internalSignupAction" href="javascript:void(0);">Sign up</a> for a free account to see more information about this job</li>
+                                <li>Already have an account? <a class="internalLoginAction" href="javascript:void(0);">Login</a></li>
+                            {{/if}}
+                        </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    {{#compare project.state to="finished"}}{{#if project.buyerRated}}{{#if project.sellerRated}}
+        <div class="card-container">
+            <div class="mf-card full-width">
+                <div class="card-header">Ratings</div>
+                <table style="width:100%;" id="ratingsTable" class="profile-hours-table mf-mobile-table mf-mobile-table-styled full-width">
+                    <tr class="profile-hours-table-heading">
+                        <th></th>
+                        <th>Rating</th>
+                        <th>Review</th>
+                        <th class="hideMobile blorp"></th>
+                    </tr>
+                    <tr><td>Review of {{project.owner.username}}</td>{{projectRating project.assigned.ratings project.owner.ratings project._id project.owner.role}}<td><a class="mf-button small" href="/profile/{{project.owner._id}}/public">View Profile</a></td></tr>
+                    <tr><td>Review of {{project.assigned.username}}</td>{{projectRating project.assigned.ratings project.owner.ratings project._id project.assigned.role}}<td><a class="mf-button small" href="/profile/{{project.assigned._id}}/public">View Profile</a></td></tr>
+                </table>
+            </div>
+        </div>
+    {{/if}}{{/if}}{{/compare}}
+
+    {{#if user}}{{#compare project.state to="draft"}}{{else}}
+        <div id="estimatesCard" class="card-container">
+            <div class="mf-card full-width">
+                {{#unless project.assigned}}
+                    <div class="card-header">Estimates</div>
+                    <div class="project-estimates">
+                        <table id="estimatesTable" class="mf-mobile-table mf-mobile-table-styled no-hover">
+                            {{estimatesTableRows project.bids user project}}
+                        </table>
+
+                        {{#diffID user._id project.owner._id}}
+                            {{#compare user.role to="seller"}}
+                                {{#hasSubmittedEstimate user._id project.bids}}{{else}}
+                                    <div class="inline-div topspaced smallspace" style="float: right; text-align: right;">
+                                    {{#if project.diagnosis}}
+                                        <a class="mf-button green offerDiagnosis" href="javascript:void(0);">Offer Diagnosis</a>
+                                    {{else}}
+                                        <a class="mf-button green offerWorkorder" href="javascript:void(0);">Place an Estimate</a>
+                                    {{/if}}
+                                    </div>
+                                {{/hasSubmittedEstimate}}
+                            {{/compare}}
+                        {{/diffID}}
+                    </div>
+                {{else}}
+                    <div class="card-header">Estimates</div>
+                    <div class="project-estimates">
+                        <table id="acceptedEstimatesTable" class="mf-mobile-table mf-mobile-table-styled no-hover">
+                            {{assignedEstimatesTableRows project.bids user project}}
+                        </table>
+                    </div>
+                    <div class="project-buttons topspaced">
+                        <div class="buttons-row">
+                            {{#compare project.state to="assigned"}}{{#unless project.diagnosis}}{{#sameID user._id project.assigned._id}}
+                                {{#hasKeyValue project.bids "state" "submitted"}}{{else}}
+                                    <a class="addEstimate mf-button green" href="javascript:void(0);">Add An Estimate</a>
+                                {{/hasKeyValue}}
+                            {{/sameID}}{{/unless}}{{else}}
+                                {{#compare project.state to="finished"}}
+                                    {{#sameID user._id project.owner._id}}{{#unless project.sellerRated}}
+                                        <a class="rateMechanic mf-button green" href="javascript:void(0);">Rate Mechanic</a>
+                                    {{/unless}}{{else}}{{#sameID user._id project.assigned._id}}{{#unless project.buyerRated}}
+                                        <a class="rateCustomer mf-button green" href="javascript:void(0);"><i class="fa fa-star-half-o fa-fw" aria-hidden="true"></i> Rate Customer</a>
+                                    {{/unless}}{{/sameID}}{{/sameID}}
+                                {{/compare}}
+                            {{/compare}}
+                        </div>
+                    </div>
+                {{/unless}}
+            </div>
+        </div>
+    {{/compare}}{{/if}}
+
+    <div class="card-container">
+        <div class="mf-card full-width">
+            <div class="card-header">Job Description</div>
+            <div class="card-content">
+                <div class="mf-card full-width invisible">                        
+                    <div class="card-content left-align">
+                        <div class="info-text">
+                            <div><strong>{{{project.title}}}</strong></div>
+                            <div>{{{project.description}}}</div>
+                        </div>
+                    </div>
+                    {{#diffID user._id project.owner._id}}
+                    {{else}}
+                        {{#compare project.state to="bidding"}}
+                            <div class="inline-div topspaced smallspace" style="float: right; text-align: right;">
+                                <a class="mf-button blue" href="/projects/{{project._id}}/edit">Edit Job</a>
+                            </div>
+                        {{/compare}}
+                    {{/diffID}}
+                </div>
+            </div>
+        </div>
+    </div>
+
+    {{#if project.photos.length}}
+        <div class="card-container">
+            <div class="mf-card full-width">
+                <div class="card-header">Photos</div>
+                <div class="photos">
+                    <div class="photo-lines mf-gallery">
+                        {{#each project.photos}}
+                            <div class="photo"><img src="/api/public/image/{{this}}" /></div>
+                        {{/each}}
+                    </div>
+                </div>
+            </div>
+        </div>
+    {{/if}}
+</div>

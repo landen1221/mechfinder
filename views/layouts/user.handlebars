@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>{{ meta.title }} - Mechfinder.com</title>
+        <meta name="viewport"    content="width=device-width, initial-scale=1.0">
+        <meta name="description" content="{{ meta.description }}">
+        <meta name="keywords"    content="{{ meta.keywords }}">
+        <meta name="author"      content="Mechfinder">
+        <!--[if lt IE 9]>
+        <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+        <![endif]-->
+        <link href="{{ settings.static_path }}/styles/site.css" rel="stylesheet">
+
+        <link rel="shortcut icon" href="{{settings.static_path}}/img/favicon.ico">
+        <!--
+        <link rel="apple-touch-icon-precomposed" sizes="144x144" href="{{ settings.static_path }}/ico/apple-touch-icon-144-precomposed.png">
+        <link rel="apple-touch-icon-precomposed" sizes="114x114" href="{{ settings.static_path }}/ico/apple-touch-icon-114-precomposed.png">
+        <link rel="apple-touch-icon-precomposed" sizes="72x72" href="{{ settings.static_path }}/ico/apple-touch-icon-72-precomposed.png">
+        <link rel="apple-touch-icon-precomposed" href="{{ settings.static_path }}/ico/apple-touch-icon-57-precomposed.png">
+        -->
+        <style>
+.escrow{
+ float:left;
+}
+
+.floatLeft{
+ float:left;
+}
+
+.row-fluid .span5.this{
+ width:37.2%;
+}
+
+.row-fluid .span2.this2{
+ width:11.7%;
+}
+
+.paypal {
+    margin-top: 15px;
+}
+/*body{
+      width:100vmax;
+
+    }*/
+    .form-control3 {
+  width: 52px !important;
+  float: left !important;
+  margin-left: 90px !important;
+  margin-right: -90px !important;
+}
+        </style>
+        <script src="{{ settings.static_path }}/js/master.js"></script>
+        <script type="text/javascript" src="https://js.stripe.com/v2/"></script>
+        <script>Stripe.setPublishableKey('{{stripepublic}}');
+</script>
+    </head>
+    </head>
+    <body class="user"{{#if user}} data-user-id="{{user._id}}"{{/if}}>
+        <div id="nav-container" class="navbar navbar-static-top">
+            <div class="row-fluid">
+                <div class="span5">{{> layouts/profile }}</div>
+                <div class="escrow"><img src="/static/img/secure.jpg" width="60" height="88"></div>
+                <div class="span2 this2">
+                    {{> layouts/social }}
+                    <div class="paypal"><img src="/static/img/paypal.jpg" width="120" height="33"></div>
+
+                </div>
+                <div class="span4">
+                    <a id="nav-logo" href="/"></a>
+                    <div id="nav-logo-tag-1">Let Local Mechanics Bid On Your Vehicle Repairs</div>
+                    <div id="nav-logo-tag-2">...Save Thousands</div>
+                    <div class="pull-right" style="margin-top: 10px;">
+                    {{> layouts/geo }}
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="search-container">
+            <form method="post" action="{{#compare user.role to="buyer"}}/Find-Mechanic{{else}}/projects{{/compare}}" class="form-search row-fluid">
+                <div class="input-append">
+                    <input type="text" name="query" placeholder="{{#compare user.role to="buyer"}}Mechanic{{else}}Job{{/compare}} Search" class="input-xxlarge search-query" />
+                    <button type="submit" class="btn btn-success"><i class="icon-search icon-white"></i> Search</button>
+                </div>
+            </form>
+        </div>
+        <div id="body-container">
+
+            <ul id="tab-container" class="nav nav-pills">
+                {{#compare user.role to="buyer"}}
+                <li><a href="/Find-Mechanic">Find a Mechanic</a></li>
+                <li><a href="/projects/post">Post Job</a></li>
+                {{/compare}}
+                {{#compare user.role to="seller"}}
+                <li><a href="/projects">Find Local Jobs</a></li>
+                <li><a href="/customers">Find Local Customers</a></li>
+                {{/compare}}
+                <li>
+                    <a href="/my/projects">
+                        My Jobs
+                        {{#if active_projects_count}}<span class="badge">{{active_projects_count}}</span>{{/if}}
+                    </a>
+                </li>
+                <li>
+                    <a href="/friends">
+                        My Friends
+                        <span class="badge{{#if online_friends_count}} badge-success{{/if}}">{{online_friends_count}}</span>
+                    </a>
+                </li>
+            </ul>
+            <div class="row-fluid">
+                <div class="span2">
+                    <ul class="nav nav-pills nav-stacked">
+                        <li>
+                            <a href="/inbox">
+                                New Messages
+                                <span class="badge{{#if unread_mail_count}} badge-important{{/if}} pull-right">{{unread_mail_count}}</span>
+                            </a>
+                        </li>
+                        <li><a href="/wall">My Wall</a></li>
+
+                        <li><a href="/projects/post">Post Job</a></li>
+                        {{#compare user.role to="seller"}}
+
+                        <li><a href="/profile#profile-album">Add Photos</a></li>
+
+                        {{else}}
+                            <li><a href="/Find-Mechanic">Find Mechanic</a></li>
+
+
+                        {{/compare}}
+
+                        <li>
+                            <a href="/my/projects">
+                                My Jobs
+                                {{#if active_projects_count}}<span class="badge pull-right">{{active_projects_count}}</span>{{/if}}
+                            </a>
+                        </li>
+                        <li>
+                            <a href="/my/projects/closed">
+                                Completed Jobs
+                                {{#if finished_projects_count}}<span class="badge pull-right    ">{{finished_projects_count}}</span>{{/if}}
+                            </a>
+                        </li>
+                    </ul>
+                    <ul class="nav nav-pills nav-stacked">
+                        <li>
+                            <a href="/friends">
+                                My Friends
+                                <span class="badge{{#if online_friends_count}} badge-success{{/if}} pull-right">{{online_friends_count}}</span>
+                            </a>
+                        </li>
+                        <li><a href="/profile">My Account</a></li>
+                        <li><a href="/profile/{{user._id}}">View As Guest</a></li>
+                        <li><a href="/my/disputes">My Disputes</a></li>
+                    </ul>
+
+                    {{ad section=ads.sidebar type='city' geo=geo record=record_ad_view}}
+                    {{ad section=ads.sidebar type='state' geo=geo record=record_ad_view}}
+                    {{ad section=ads.sidebar type='nation' geo=geo record=record_ad_view}}
+
+                    <p style="margin-top:10px;"><a href="/advertising"><small>Advertise on Mechfinder!</small></a></p>
+
+                </div>
+                <div class="span7">
+                    {{{ body }}}
+                </div>
+                <div class="span3">
+                    <div id="calendar"></div>
+                    <div id="mechanics">
+                        <h2>{{#compare user.role to='seller'}}Customers Online{{else}}Mechanics Online{{/compare}}</h2>
+                        <div class="local-{{#compare user.role to='seller'}}customers{{else}}mechanics{{/compare}}" data-postal="{{geo.postal}}"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        {{>events/include}}
+        {{>mail/include}}
+        {{>profile/include}}
+
+        <div id="footer-container" class="container">
+            <div class="navbar">
+                <div class="navbar-inner">
+                    <ul class="nav">
+                        <li><a href="/dashboard">Home</a></li>
+                        <li><a href="/Find-Mechanic">Find A Mechanic</a></li>
+                        <li><a href="/mechfinder-forum/forum-management/">Forum</a></li>
+                        <li><a href="/advertising">Advertising</a></li>
+                        <li><a href="/careers">Careers</a></li>
+                    </ul>
+                    <ul class="nav pull-right">
+                        <li><a href="/privacy">Privacy Policy</a></li>
+                        <li><a href="/terms">Terms &amp; Conditions</a></li>
+                        <li><a href="/articles">Articles</a></li>
+                        <li><a href="/sitemap">Site Map</a></li>
+                        <li><a href="/contact">Contact</a></li>
+                    </ul>
+                </div>
+            </div>
+            Copyright &copy; 2012 Mechfinder.com, All Right Reserved
+        </div>
+        {{> layouts/analytics }}
+    </body>
+</html>

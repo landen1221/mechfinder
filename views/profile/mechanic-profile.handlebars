@@ -1,0 +1,368 @@
+<script type="text/javascript">
+    var USER = {{#if user}}{{{json user}}}{{else}}null{{/if}};
+    var EXPLIST = {{#if user.experience}}{{{json user.experience}}}{{else}}[]{{/if}};
+</script>
+<script type="text/javascript" src="{{settings.static_path}}/js/mechanic-profile.js"></script>
+<script src="{{ settings.static_path }}/js/favorites-page.js"></script>
+<script src="{{ settings.static_path }}/js/searchable-dropdown.js"></script>
+
+<div class="dashboard-mechanic-profile mf-ui">
+    <div class="within">
+        <div id="mechanic-profile-group" class="group">
+            <div class="mechanic-profile">
+                <div class="mf-page-header top-spaced"><h1>Mechanic Profile</h1></div>
+                <ul class="tabs">
+                    <li class="tab-link current blue" data-tab="tab-1" id="mechanic">Mechanic Info</li>
+                    <li class="tab-link blue" data-tab="tab-2" id="business">Business Info</li>
+                </ul>
+                <div class="tab-contents">
+                <div id="tab-1" class="tab-content current">
+                    <div class="card-container gray" id="experienceGroup">                  
+                        <div class="card-content">
+                            <div class="mf-card full-width">
+                                <div class="mechanic-type">
+                                    <label>I am a: {{{tooltip tooltips "575d8095d00b43b8ff89c26a"}}}</label>
+                                    <select id="mechanicType" value="{{user.mechanicType}}">
+                                        <option value="mobile" {{#compare user.mechanicType to="mobile"}}selected="selected"{{/compare}}>Mobile Mechanic</option>
+                                        <option value="shop" {{#compare user.mechanicType to="shop"}}selected="selected"{{/compare}}>Mechanic Shop</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="mf-card full-width">
+                                <div class="card-header">Specialties</div>
+                                <div class="card-content small-screen-flex">
+                                <table class="two-col split">
+                                    <tr>
+                                        <td>
+                                            <input name="specialtiesItem" id="specialtyAuto" type="checkbox" value="Engine/Mechanical" {{#within "Auto" user.specialties}}checked="checked"{{/within}} />
+                                            <label class="no-float" for="specialtyAuto">Engine/Mechanical</label>
+                                        </td>
+                                        <td>
+                                            <input name="specialtiesItem" class="specialties-item" id="specialtyDiagnostics" type="checkbox" value="Diagnostics" {{#within "Diagnostics" user.specialties}}checked="checked"{{/within}} />
+                                            <label class="no-float" for="specialtyDiagnostics">Diagnostics</label>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <input name="specialtiesItem" class="specialties-item" id="specialtyBodyWork" type="checkbox" value="Body Work" {{#within "Body Work" user.specialties}}checked="checked"{{/within}} />
+                                            <label class="no-float" for="specialtyBodyWork">Body Work</label>
+                                        </td>
+                                        <td>
+                                            <input name="specialtiesItem" class="specialties-item" id="specialtyElectrical" type="checkbox" value="Electrical" {{#within "Electrical" user.specialties}}checked="checked"{{/within}} />
+                                            <label class="no-float" for="specialtyElectrical">Electrical</label>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <input name="specialtiesItem" class="specialties-item" id="specialtyMaintenance" type="checkbox" value="Maintenance" {{#within "Maintenance" user.specialties}}checked="checked"{{/within}} />
+                                            <label class="no-float" for="specialtyMaintenance">Maintenance</label>
+                                        </td>
+                                        <td>
+                                            <input name="specialtiesItem" class="specialties-item" id="specialtyRestoration" type="checkbox" value="Restoration" {{#within "Restoration" user.specialties}}checked="checked"{{/within}} />
+                                            <label class="no-float" for="specialtyRestoration">Restoration</label>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <input name="specialtiesItem" class="specialties-item" id="specialtyWindows" type="checkbox" value="Window Replacement" {{#within "Windows" user.specialties}}checked="checked"{{/within}} />
+                                            <label class="no-float" for="specialtyWindows">Window Replacement</label>
+                                        </td>
+                                        <td>                                        
+                                        </td>
+                                    </tr>
+                                </table>
+                                </div>
+                            </div>
+                            <div class="mf-card full-width">
+                                <div class="card-header">Certifications</div>
+                                <div class="card-content">
+                                    <div class="mf-card invisible">
+                                        <div class="show-if-certified" id="showIfCertified">
+                                            <div class="mechanic-certification">                                            
+                                                <input id="mechanicCertification" type="text" />
+                                                <span class="add-row"><a href="javascript:void(0);" class="mf-button" id="addEducation">Add</a></span>
+                                            </div>
+                                            <div id="certificationListingText" class="formbox-textline" style="{{#if user.certifications.length}}display: none;{{/if}}">You have not added any certifications</div>
+                                            <div id="certificationWarning" class="red-text"></div>
+                                            <div class="mf-card invisible">
+                                                <div class="card-content">
+                                                    <div class="left-align">
+                                                        <div class="certifications-listed" style="text-align:left">
+                                                            <ul id="certificationListings" style="width:100%;text-align:left;">
+                                                                {{#each user.certifications}}
+                                                                    <li id="certificationListed{{@index}}" style="">{{this}} <a class="certification-listing-delete red-text" id="deleteListing{{@index}}" data-id="{{@index}}" href="javascript:void(0);">[remove]</a></li>
+                                                                {{/each}}
+                                                            </ul>
+                                                        </div>     
+                                                    </div>
+                                                </div>
+                                            </div>                                 
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="mf-card full-width">
+                                <div class="card-header">Vehicle Experience</div>
+                                <div id="makesList" class="makes-list">
+                                    <div class="formbox-textline">Enter the makes with which you have experience:</div>
+                                    <div class="other-vehicle" id="otherVehicleTextEntry">       
+                                        <div class="mf-dropdown">
+                                            <input type="text" class="liveSearchBox mf-dropdown-input" placeholder="Enter Vehicle Make" id="inputVehicle"/>
+                                            <span><a href="javascript:void(0);" class="mf-button" id="addVehicle">Add</a></span>
+                                            <ul class="liveSearchList mf-dropdown-content" id="dropdownVehicle">
+                                                {{#each makes}}
+                                                <li>{{this}}</li>
+                                                {{/each}}
+                                            </ul>
+                                        </div>             
+                                    </div>
+                                    <div class="mf-card invisible" id="cardVehicleList" style="text-align:left;{{#if user.experience.length}}{{else}}display:none;{{/if}}">
+                                        <div class="card-content">
+                                            <div class="left-align">
+                                                <div id="warnVehicle"></div>
+                                                <div>
+                                                    <ul id="listVehicle" style="width:100%;text-align:left;">
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>                                    
+                                </div>                 
+                            </div> 
+                            <div class="mf-card full-width">
+                                <div class="card-header">You may also want to</div>
+                                <div class="card-content">
+                                    <div><a id="gotoBusinessInfo" href="javascript:void(0);" class="mf-button">update your business information</a></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div id="tab-2" class="tab-content">
+                    <div class="card-container gray" id="infoGroup">
+                            <div class="card-content small-screen-flex">
+                                <div class="mf-card full-width">
+                                    <div class="card-header">Hours of Operation{{{tooltip tooltips "575dba10d00b43b8ff89c275"}}}</div>
+                                    <div class="hours">
+                                        <table class="two-col">
+                                            <tr>
+                                                <td colspan="2" class="centered"><label>Hours Available for Service: </label></td>
+                                            </tr>
+                                            <tr>
+                                                <td colspan="2" class="centered"><select id="availability" value="3">
+                                                    <option value="0">Weekdays After 5</option>
+                                                    <option value="1">Weekends</option>
+                                                    <option value="2">I'm Flexible</option>
+                                                    <option value="3" selected="selected">Customize</option>
+                                                </select></td>
+                                            </tr>
+                                            <tr><td colspan="2" class="centered">
+                                                <div id="customHours" class="custom-hours">
+                                                    <div id="hoursSelectors" class="hours-selectors">
+                                                        <label>Custom Hours: </label><br/>
+                                                        <div class="inline-div" style="display:inline-block;">
+                                                            <select id="hoursDay" class="project-input">
+                                                                <option value="0">Sunday</option>
+                                                                <option value="1">Monday</option>
+                                                                <option value="2">Tuesday</option>
+                                                                <option value="3">Wednesday</option>
+                                                                <option value="4">Thursday</option>
+                                                                <option value="5">Friday</option>
+                                                                <option value="6">Saturday</option>
+                                                            </select>
+                                                            <div class="inline-div" style="display:inline-block;">
+                                                                <select id="hoursOpen" class="project-input">
+                                                                        <option value="" selected="selected">(Closed)</option>
+                                                                        <option value="1">1:00 AM</option>
+                                                                        <option value="2">2:00 AM</option>
+                                                                        <option value="3">3:00 AM</option>
+                                                                        <option value="4">4:00 AM</option>
+                                                                        <option value="5">5:00 AM</option>
+                                                                        <option value="6">6:00 AM</option>
+                                                                        <option value="7">7:00 AM</option>
+                                                                        <option value="8">8:00 AM</option>
+                                                                        <option value="9">9:00 AM</option>
+                                                                        <option value="10">10:00 AM</option>
+                                                                        <option value="11">11:00 AM</option>
+                                                                        <option value="12">12:00 PM</option>
+                                                                        <option value="13">1:00 PM</option>
+                                                                        <option value="14">2:00 PM</option>
+                                                                        <option value="15">3:00 PM</option>
+                                                                        <option value="16">4:00 PM</option>
+                                                                        <option value="17">5:00 PM</option>
+                                                                        <option value="18">6:00 PM</option>
+                                                                        <option value="19">7:00 PM</option>
+                                                                        <option value="20">8:00 PM</option>
+                                                                        <option value="21">9:00 PM</option>
+                                                                        <option value="22">10:00 PM</option>
+                                                                        <option value="23">11:00 PM</option>
+                                                                        <option value="24">12:00 AM</option>
+                                                                </select>
+                                                                <select id="hoursClose" class="project-input">
+                                                                        <option value="" selected="selected">(Closed)</option>
+                                                                        <option value="1">1:00 AM</option>
+                                                                        <option value="2">2:00 AM</option>
+                                                                        <option value="3">3:00 AM</option>
+                                                                        <option value="4">4:00 AM</option>
+                                                                        <option value="5">5:00 AM</option>
+                                                                        <option value="6">6:00 AM</option>
+                                                                        <option value="7">7:00 AM</option>
+                                                                        <option value="8">8:00 AM</option>
+                                                                        <option value="9">9:00 AM</option>
+                                                                        <option value="10">10:00 AM</option>
+                                                                        <option value="11">11:00 AM</option>
+                                                                        <option value="12">12:00 PM</option>
+                                                                        <option value="13">1:00 PM</option>
+                                                                        <option value="14">2:00 PM</option>
+                                                                        <option value="15">3:00 PM</option>
+                                                                        <option value="16">4:00 PM</option>
+                                                                        <option value="17">5:00 PM</option>
+                                                                        <option value="18">6:00 PM</option>
+                                                                        <option value="19">7:00 PM</option>
+                                                                        <option value="20">8:00 PM</option>
+                                                                        <option value="21">9:00 PM</option>
+                                                                        <option value="22">10:00 PM</option>
+                                                                        <option value="23">11:00 PM</option>
+                                                                        <option value="24">12:00 AM</option>
+                                                                </select>
+                                                            </div>
+                                                        </div>
+                                                        <br/><div><a href="javascript:void(0);" class="standard-button blue extra-wide" id="addHours"><i class="fa fa-plus"></i> Add</a></div>
+                                                    </div>
+                                                    <div class="internal-page">
+                                                        <div class="hours-display mf-mobile-table mf-mobile-table-styled">
+                                                            <table id="hoursOfOperationTable" class="mf-mobile-table mf-mobile-table-styled data-table"></table>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </td></tr>
+                                        </table>
+                                    </div>
+                                </div>
+                                <div class="mf-card full-width">
+                                    <div class="card-header">Diagnosis Process{{{tooltip tooltips "575dba10d00b43b8ff89c276"}}}</div>
+                                    <div class="card-content">
+                                        <table class="two-col">
+                                            <tr>
+                                                <td><label>Do offer diagnoses?</label></td>
+                                                <td><select id="mechanicDoesDiagnosis" value="{{#if user.offersDiagnosis}}1{{else}}0{{/if}}">
+                                                    <option value="1" {{#if user.offersDiagnosis}}selected="selected"{{/if}}>Yes</option>
+                                                    <option value="0" {{#unless user.offersDiagnosis}}selected="selected"{{/unless}}>No</option>
+                                                </select></td>
+                                            </tr>
+                                            <tr id="mechanicDoesDiagnosisBox" class="does-diagnosis" {{#unless user.offersDiagnosis}}style="display: none;"{{/unless}}>
+                                                <td><label>Price</label></td>
+                                                <td><input id="mechanicDiagnosisCharge" type="text" value="{{#if user.diagnosisCharge}}{{currency user.diagnosisCharge}}{{/if}}" placeholder="$0.00" /></td>
+                                            </tr>
+                                            <tr id="mechanicWaivesFeeBox" class="does-diagnosis" {{#unless user.offersDiagnosis}}style="display: none;"{{/unless}}>
+                                                <td><label for="mechanicWaivesDiagnosis" class="left">I will waive this fee if hired</label></td>
+                                                <td><select id="mechanicWaivesDiagnosis" value="{{#if user.waivesDiagnosis}}1{{else}}0{{/if}}">
+                                                    <option value="1" {{#if user.waivesDiagnosis}}selected="selected"{{/if}}>Yes</option>
+                                                    <option value="0" {{#unless user.waivesDiagnosis}}selected="selected"{{/unless}}>No</option>
+                                                </select></td>
+                                            </tr>
+                                        </table>
+                                    </div>
+                                </div>
+                                <div class="mf-card full-width">
+                                    <div class="card-header">Your Business</div>
+                                    <div class="card-content">
+                                        <table class="two-col split">
+                                            <tr>
+                                                <td class="vert-mid"><label for="mechanicYearsOfExperience">Years of Experience</label></td>
+                                                <td><input id="mechanicYearsOfExperience" type="text" value="{{user.yearsOfExperience}}" /></td>
+                                            </tr>
+                                            <tr>
+                                                <td class="vert-mid"><label for="mechanicWarranty">Warranty on Labor</label></td>
+                                                <td><div class="split">
+                                                    <input id="mechanicWarrantyLength" type="text" value="{{user.warranty.amount}}" placeholder="0" />
+                                                    <select id="mechanicWarrantyUnits" value="{{user.warranty.units}}">
+                                                            <option value="days" {{#compare user.warranty.units to="days"}}selected="selected"{{/compare}}>Days</option>
+                                                            <option value="weeks" {{#compare user.warranty.units to="weeks"}}selected="selected"{{/compare}}>Weeks</option>
+                                                            <option value="months" {{#compare user.warranty.units to="months"}}selected="selected"{{/compare}}>Months</option>
+                                                            <option value="years" {{#compare user.warranty.units to="years"}}selected="selected"{{/compare}}>Years</option>
+                                                        </select>
+                                                    </div></td>
+                                            </tr>
+                                            <tr>
+                                                <td class="vert-mid"><label for="mechanicInsurance">Carry Professional Insurance?</label></td>
+                                                <td><select id="mechanicInsurance" value="{{#if user.insurance}}1{{else}}0{{/if}}">
+                                                    <option value="1" {{#if user.insurance}}selected="selected"{{/if}}>Yes</option>
+                                                    <option value="0" {{#unless user.insurance}}selected="selected"{{/unless}}>No</option>
+                                                </select></td>
+                                            </tr>
+                                            <tr>
+                                                <td class="vert-mid"><label for="mechanicRegistrationNumber">State Registration #</label></td>
+                                                <td>
+                                                    <input id="mechanicRegistrationNumber" type="text" value="{{user.registrationNumber}}" />
+                                                </td>
+                                            </tr>     
+                                        </table>
+                                    </div>
+                                </div>
+                                <div class="mf-card full-width">
+                                    <div class="card-header">Towing</div>
+                                    <div class="card-content">
+                                        <table class="two-col split">                  
+                                            <tr>
+                                                <td class="vert-mid"><label for="mechanicTows">Do you offer towing?</label></td>
+                                                <td><select id="mechanicTows" value="{{#if user.tows}}1{{else}}0{{/if}}">
+                                                    <option value="1" {{#if user.tows}}selected="selected"{{/if}}>Yes</option>
+                                                    <option value="0" {{#unless user.tows}}selected="selected"{{/unless}}>No</option>
+                                                </select></td>
+                                            </tr>
+                                            <tr id="mechanicFlatbed" style="{{#unless user.tows}}display: none;{{/unless}}">
+                                                <td class="vert-mid"><label for="mechanicHasFlatbed">Is your truck a flatbed?</label></td>
+                                                <td><select id="mechanicHasFlatbed" value="{{#if user.flatbed}}1{{else}}0{{/if}}">
+                                                    <option value="1" {{#if user.flatbed}}selected="selected"{{/if}}>Yes</option>
+                                                    <option value="0" {{#unless user.flatbed}}selected="selected"{{/unless}}>No</option>
+                                                </select></td>
+                                            </tr>
+                                            <tr>
+                                                <td class="vert-mid wrap-text" colspan="2">If you offer towing, please include a photo of your truck in the photos section below (customers like to see how their vehicles are towed)</td>
+                                            </tr>
+                                        </table>
+                                    </div>
+                                </div>
+                                <div class="mf-card full-width">
+                                    <div class="card-header">Additional Information</div>
+                                    <div class="card-content single-column">
+                                        <span class="wrap">If you have any additional information that you think is important to share with your customers, enter it here:</span>
+                                        <textarea id="mechanicAbout" class="mf-textarea">{{{user.about}}}</textarea>
+                                    </div>
+                                </div>
+                                <div class="mf-card full-width">
+                                    <div class="card-header">Pictures</div>
+                                        <div class="add-mechanic-photo">
+                                            <div class="add-photo-link"><strong>Photos</strong>: (Pictures of your shop, before and afters, cars worked on, etc.) <a id="addPhotosLinkMechanic" href="javascript:void(0);">Add Photos</a></div>
+                                            <input type="file" id="addPhotosFileInputMechanic" style="display: none;" multiple="multiple" accept="image/*" />
+                                            <div id="addErrorMechanic" class="photo-add-error" style="display: none;">&nbsp;</div>
+                                            <div id="piclistMechanic" class="photo-list">
+                                                <div id="picboxesMechanic" class="photo-boxes">
+                                                    <div id="dragndropMechanic" class="dragndrop" {{#compare user.photos.length gt="0"}}style="display: none;"{{/compare}}>Drop photos here to <a id="addPhotosDroplinkMechanic" href="javascript:void(0);">add them to your profile</a></div>
+                                                    {{#each user.photos}}
+                                                        <div id="mechanicPicbox-{{this}}" class="picbox">
+                                                            <img src="/api/public/image/{{this}}" />
+                                                            <div id="mechanicRemove-{{this}}" class="remove mechanicPhotoRemove" data-id="{{this}}">X</div>
+                                                        </div>
+                                                    {{/each}}
+                                                </div>
+                                            </div>
+                                        </div>
+                                    <div class="card-content">
+                                    </div>
+                                </div>
+                            </div>
+                    </div>                    
+                </div>                
+                </div>
+                <div class="section-formbox">
+                    <div class="formbox-buttons" style="float:right;">
+                        <a class="mf-button red cancelChanges" href="javascript:void(0);"><i class="fa fa-ban"></i> Cancel Changes</a>
+                        <a class="mf-button green saveChanges" href="javascript:void(0);"><i class="fa fa-floppy-o"></i> Save Changes</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

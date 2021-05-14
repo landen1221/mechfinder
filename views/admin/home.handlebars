@@ -1,0 +1,28 @@
+<script type="text/javascript">
+    $(document).ready(function() {
+        console.log('jquery is working');
+    });
+
+    var request = $.ajax({
+        type: 'GET',
+        url: '/admin/api/test',
+        dataType: 'json'
+    });
+
+    request.success(function(data) {
+        console.log(data);
+    });
+</script>
+<link rel="stylesheet" type="text/css" href="/static/styles/site.css" />
+
+<p>Don't have any idea what to put here, so I'll just print out your first name :) :) {{user.first}}</p>
+
+<div style="margin-bottom:20px;">The styling test zone:</div>
+<div class="mf-ui">
+    <span class="mf-button">default</span>
+    <span class="mf-button flat">flat</span>
+    <span class="mf-button primary">primary</span>
+    <span class="mf-button action">action</span>
+    <span class="mf-button warn">warn</span>
+    <span class="mf-button danger">danger</span>
+</div>

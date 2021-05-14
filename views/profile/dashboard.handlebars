@@ -1,0 +1,168 @@
+<!--<link rel="stylesheet" href="{{settings.static_path}}/css/dashboard.css">-->
+<script src="/static/js/modal-handler.js"></script>
+<script src="/static/js/dashboard.js"></script>
+<script type="text/javascript" src="{{settings.static_path}}/js/tooltips.js"></script>
+<div class="heading-row"><h1>Dashboard</h1></div>
+<div class="mf-ui">
+    <div class="card-container">
+        <div class="mf-card full-width">
+<div class="dashboard-page">
+    <div class="within">
+        <!--<div class="card-header"><strong>Welcome, <span class="name">{{user.first}}</span>!</strong></div>-->
+    <div class="tile-container notifications">
+        <!--<h1 class="section-header">Welcome, <span class="name">{{user.first}}</span>!</h1>-->
+        {{!-- commenting out until i have time to do the modal
+        {{#if accountStatus.billingMissing}}
+        <div class="tile-notification {{#compare projects.all.length gt="0"}}red{{else}}yellow{{/compare}}">
+            <table class="tile-notification-table"><tr>
+            <td class="icon"><span class="tile-notification-text"><i class="fa fa-bank"></i></span></td><td><span>You haven't yet filled out your billing information. Click here to do that.</span></td>
+            </tr></table>
+        </div>
+        {{/if}} 
+        --}}
+        {{#compare user.role to="seller"}}
+            {{!--
+            <div class="tile-notification tile-clickable green" data-href="/mechanic/info/structure">
+                <table class="tile-notification-table"><tr>
+                    <td class="icon"><span class="tile-notification-text"><i class="fa fa-usd"></i></span></td><td><span>Promotional rate available!</span></td>
+                </tr></table>
+            </div>
+            --}}
+            {{#if accountStatus.specialtiesMissing}}
+                <div class="tile-notification tile-clickable green" data-href="/profile/{{user._id}}/mechanic">
+                    <table class="tile-notification-table"><tr>
+                    <td class="icon"><span class="tile-notification-text"><i class="fa fa-bullseye"></i></span></td><td><span>Add some specialties to your profile to help customers choose you.</span></td>
+                    </tr></table>
+                </div>
+            {{/if}}
+            {{#if accountStatus.aboutMissing}}
+                <div class="tile-notification tile-clickable green" data-href="/profile/{{user._id}}/mechanic">
+                    <table class="tile-notification-table"><tr>
+                    <td class="icon"><span class="tile-notification-text"><i class="fa fa-question"></i></span></td><td><span>Tell potential customers about yourself by filling out the Additional Information section of your mechanic profile.</span></td>
+                    </tr></table>
+                </div>
+            {{/if}}
+        {{/compare}}
+    </div>
+    {{#compare user.role to="seller"}}
+    <div class="tile-container business">
+        <div class="card-header">Your business:</div>    
+        {{#compare openReviews.buyer gt="0"}}    
+            {{#compare openReviews.buyer to=1}}
+                {{dashboardTile "Customer to rate" datahref="/my/projects?tab=jobsCompleted" classes="red tile-clickable" icon=openReviews.buyer}}
+            {{else}}
+                {{dashboardTile "Customers to rate" datahref="/my/projects?tab=jobsCompleted" classes="red tile-clickable" icon=openReviews.buyer}}
+            {{/compare}}
+        {{/compare}}
+        {{#compare projects.bidding.length gt="0"}}
+            {{#compare projects.bidding.length to=1}}
+                {{dashboardTile "Open estimate" datahref="/my/projects?tab=openJobs" classes="green tile-clickable" icon=projects.bidding.length}}
+            {{else}}
+                {{dashboardTile "Open estimates" datahref="/my/projects?tab=openJobs" classes="green tile-clickable" icon=projects.bidding.length}}
+            {{/compare}}
+        {{/compare}}
+        {{#compare projects.assigned.length gt="0"}}
+            {{#compare projects.assigned.length to=1}}
+                {{dashboardTile "Job in progress" datahref="/my/projects?tab=jobsWon" classes="yellow tile-clickable" icon=projects.assigned.length}}
+            {{else}}
+                {{dashboardTile "Jobs in progress" datahref="/my/projects?tab=jobsWon" classes="yellow tile-clickable" icon=projects.assigned.length}}
+            {{/compare}}
+        {{/compare}}
+        {{!-- {{#compare projects.finished.length gt="0"}}
+            {{#compare projects.finished.length to=1}}
+                {{dashboardTile "Finished job" datahref="/my/projects?tab=jobsCompleted" classes="blue tile-clickable" icon=projects.finished.length}}
+            {{else}}
+                {{dashboardTile "Finished jobs" datahref="/my/projects?tab=jobsCompleted" classes="blue tile-clickable" icon=projects.finished.length}}
+            {{/compare}}
+        {{/compare}} --}}
+        {{#compare user.ratings.length gt="0"}}
+            {{dashboardTile "Average rating" classes="double" avgRating=true user=user}}
+        {{/compare}}
+        <div class="card-header no-line"></div>
+    </div>
+    {{/compare}}
+    <div class="tile-container updates">
+        <div class="card-header">Updates:</div>
+        {{#compare user.role to="seller"}}
+            {{#compare projects.near.length to=0}}
+                {{dashboardTile "Find new jobs" datahref="/projects" classes="green tile-clickable" faIcon="fa-search"}}
+            {{else}}
+                {{#compare projects.near.length to=1}}
+                    {{dashboardTile "Job within 10 miles" datahref="/projects" classes="blue tile-clickable" icon=projects.near.length}}
+                {{else}}
+                    {{dashboardTile "Jobs within 10 miles" datahref="/projects" classes="blue tile-clickable" icon=projects.near.length}}
+                {{/compare}}
+            {{/compare}}
+        {{/compare}}
+        {{#compare user.ratings.length gt="0"}}
+            {{dashboardTile "Latest review:" recentRating=true user=user}}
+        {{/compare}}
+        {{#compare user.role to="buyer"}}
+            {{#compare openReviews.seller gt="0"}}    
+                {{#compare openReviews.seller to=1}}
+                    {{dashboardTile "Mechanic to rate" datahref="/my/projects?tab=jobsCompleted" classes="red tile-clickable" icon=openReviews.seller}}
+                {{else}}
+                    {{dashboardTile "Mechanics to rate" datahref="/my/projects?tab=jobsCompleted" classes="red tile-clickable" icon=openReviews.seller}}
+                {{/compare}}
+            {{/compare}}
+            {{#compare mechanics.length gt="0"}}
+                {{#compare mechanics.length to="1"}}
+                    {{dashboardTile "Mechanic within 10 miles" datahref="/mechanics" classes="blue tile-clickable" icon=mechanics.length}}
+                {{else}}
+                    {{dashboardTile "Mechanics within 10 miles" datahref="/mechanics" classes="blue tile-clickable" icon=mechanics.length}}
+                {{/compare}}
+            {{/compare}}
+            {{!--{{#if user.projects.length}}
+                {{dashboardTile "Post another job" datahref="/projects/post" classes="green tile-clickable" faIcon="fa-car"}}
+            {{else}}
+                {{dashboardTile "Post a new job" datahref="/projects/post" classes="green tile-clickable" faIcon="fa-car"}}
+            {{/if}}--}}
+            {{#compare projects.bidding.length gt=0}}
+                {{dashboardTile "Open jobs" datahref="/my/projects?tab=openJobs" classes="green tile-clickable" icon=projects.bidding.length}}
+            {{/compare}}
+            {{#compare projects.assigned.length gt=0}}
+                {{dashboardTile "Jobs in progress" datahref="/my/projects?tab=inProgress" classes="yellow tile-clickable" icon=projects.assigned.length}}
+            {{/compare}}
+        {{/compare}}
+        {{dashboardTile "View your public profile" classes="blue tile-clickable" faIcon="fa-eye" profile=true user=user}}
+        <div class="card-header no-line"></div>
+    </div>
+    
+    {{#compare user.role to="buyer"}}
+    {{#compare vehicles.length gt="0"}}
+
+    <div class="tile-container">
+        <div class="card-header">Your vehicles:</div>
+        {{#each vehicles}}
+        <div class="tile vehicle">
+            <div class="vehicle-container">
+                <table><tr>
+                    {{!--
+                    <td>
+                        {{#compare images.length gt="0"}}
+                        <img height="100%" src="/api/public/image/{{images.[0]}}" />
+                        {{else}}
+                        <span><i class="fa fa-car fa-3x"></i></span>
+                        {{/compare}}
+                    </td>
+                    --}}
+                    <td class="info-text">
+                        <span class="vehicle-title">{{year}} {{make}} {{model}}</span></br>
+                        {{#compare engline to=""}}{{else}}<span>Engine: {{engine}} Cylinder</span></br>{{/compare}}
+                        {{#compare milage to=""}}{{else}}<span>Miles: {{mileage}}</span>{{/compare}}
+                    </td>
+                    <td>
+                        <a href="/projects/post?vid={{_id}}" class="standard-button blue">Post a New Job</a>
+                    </td>
+                </tr></table>
+            </div>
+        </div>
+        {{/each}}
+    </div>
+    {{/compare}}
+    {{/compare}}
+    </div>
+</div>
+        </div>
+    </div>
+</div>

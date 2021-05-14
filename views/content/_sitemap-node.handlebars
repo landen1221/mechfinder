@@ -1,0 +1,8 @@
+<a href="{{path}}">{{heading}}</a>
+<ul>
+    {{#hash children}}
+    {{#with value}}
+    <li>{{> content/sitemap-node }}</li>
+    {{/with}}
+    {{/hash}}
+</ul>

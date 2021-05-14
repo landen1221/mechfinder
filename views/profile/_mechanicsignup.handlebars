@@ -1,0 +1,151 @@
+<div class="control-group">
+    <label class="control-label" for="profile-company">Mechanic Shop Name</label>
+    <div class="controls">
+        <input type="text" placeholder="" id="profile-company" name="company" value="{{user.company}}" />
+        <label class="checkbox">
+            <input type="hidden" value="0" name="use_company_as_display_name" />
+            <input type="checkbox" value="1" name="use_company_as_display_name" {{#if user.use_company_as_display_name}}checked="checked"{{/if}} />
+            Use as display name instead of first and last name
+        </label>
+    </div>
+</div>
+
+{{ helper 'fields/text' label="Years in Business" placeholder="Years" id="profile-years-in-biz" val=user.years_in_biz name="years_in_biz" class="number" size="small" }}
+
+<div class="control-group">
+    <label class="control-label" for="profile-company">Phone Numbers</label>
+    <div class="controls">
+        <input type="hidden" name="phones" value="1" />
+        {{#each user.phone}}
+        <div class="row-fluid">
+            
+
+            <select name="phone_kind" class="input-small mobiletypeselector">
+                <option {{#compare kind to='Shop'}}selected{{/compare}}>Shop</option>
+                <option {{#compare kind to='Mobile'}}selected{{/compare}}>Mobile</option>
+                <option {{#compare kind to='FAX'}}selected{{/compare}}>FAX</option>
+                <option {{#compare kind to='Other'}}selected{{/compare}}>Other</option>
+            </select>
+            
+            <input type="text" name="phone_number" value="{{this.number}}" placeholder="Number" class="input-large" />
+            
+
+
+            <button class="btn btn-danger btn-remove-phone"><i class="icon-trash"></i> Delete</button>
+        
+<div class="control-group">
+    <label class="control-label" >Text Message Notifications</label>
+    <div class="controls">
+            <div class="btn-group btn-toggle togler"> 
+                <button class="btn sbtn   {{#if sms_notifications}} active btn-warning {{else}} btn-default{{/if}}" mobile='true'>ON</button>
+                <button class="btn sbtn {{#if sms_notifications }} btn-default  {{else}}btn-warning {{/if}}" mobile='false'>OFF</button>
+                    <input type="hidden" class='mobilenotifications' name="mobilenotifications" value="{{sms_notifications}}" />
+            </div>
+    </div>
+</div>
+
+<div class='provider-b' {{#if sms_notifications}} {{else}} style='display:none;'{{/if}}>
+
+            {{ helper 'fields/dropdown' val=mobile_provider label="Mobile Provider"     id="seller-provider"        name="mobile_provider"       class=""               size="medium" options=../PROVIDERS }}
+</div>
+        </div>
+
+
+
+        {{/each}}
+
+        <button class="btn btn-success" id="button-phone-add">
+            <i class="icon-phone"></i> Add Phone Number
+        </button>
+    </div>
+</div>
+
+<div class="control-group">
+    <label class="control-label" for="hours-0-open">Hours of Operation</label>
+    <div class="controls">
+        {{#with user}}
+        {{>profile/hours}}
+        {{/with}}
+    </div>
+</div>
+
+<legend>Any Specials or Company Info <span style='color:red;'>( Required )</span></legend>
+<style>
+.muchbigger{
+    min-width:400px;
+    min-height:200px;
+}
+</style>
+
+{{ helper 'fields/textarea' val=user.company_info label=""     placeholder="Specials, company info, etc." id="profile-company-info" name="company_info" class="required muchbigger" size="large" }}
+
+<legend>Qualifications</legend>
+{{ helper 'fields/text'     label="Certification"       id="profile-certification" val=user.certification name="certification" class=""               size="medium" }}
+
+{{ helper 'fields/text'     val=user.profile.college   label="What College did you attend?" placeholder="Ohio State..."       id="profile-college"   name="college" class="" size="large" }}
+<div class="control-group">
+    <label class="control-label" for="profile-college">What years?</label>
+    <div class="controls">
+        <input type="text" id="profile-college-from" name="college_from" placeholder="2002" class="input-mini" value="{{user.profile.college_from}}" /> -
+        <input type="text" id="profile-college-to" name="college_to" placeholder="2006" class="input-mini" value="{{user.profile.college_to}}" />
+    </div>
+</div>
+
+<script type="text/javascript">
+jQuery(function($) {
+    $('.togler').click(function() {
+        playme($(this))
+        return false;
+    });
+});
+function playme(t){
+    t.find('.sbtn').toggleClass('active');  
+    t.find(".mobilenotifications").val(t.find('.active').attr('mobile'));
+    if (t.find('.btn-warning').size()>0) {
+        t.find('.sbtn').toggleClass('btn-warning');
+    }
+    t.find('.sbtn').toggleClass('btn-default');
+    t.parent().parent().next('.provider-b').toggle();
+    return false;
+}
+jQuery(function($){
+    $(".mobiletypeselector").change(function(){
+        console.log($(this).val())
+    })
+})
+jQuery(function($) {
+    $('#button-phone-add').click(function() {
+        $(this).before('<div class="row-fluid">\
+            <select name="phone_kind" class="input-small">\
+                <option selected>Shop</option>\
+                <option>Mobile</option>\
+                <option>FAX</option>\
+                <option>Other</option>\
+            </select>\
+            <input type="text" name="phone_number" value="" placeholder="Number" class="input-large" />\
+            <button class="btn btn-danger btn-remove-phone"><i class="icon-trash"></i> Delete</button>\
+            <div class="control-group">\
+    <label class="control-label" >Text Message Notifications</label>\
+    <div class="controls">\
+            <div class="btn-group btn-toggle togler"  onclick="playme(jQuery(this));return false;"> \
+                <button class="btn sbtn   active btn-warning " mobile="true">ON</button>\
+                <button class="btn sbtn btn-default" mobile="false">OFF</button>\
+                                <input type="hidden" class="mobilenotifications" name="mobilenotifications" value="true" /></div>\
+    </div>\
+</div>\
+<div class="provider-b" >\
+ <div class="control-group">\
+    <label class="control-label" for="seller-provider">Mobile Provider</label>\
+    <div class="controls">\
+<select id="seller-provider" name="mobile_provider" placeholder="Mobile Provider" class=" input-medium"><option value="">SELECT ONE</option>            <option value="@txt.att.net">AT&amp;T</option>            <option value="@mymetropcs.com">Metro PCS</option>        <option value="@vtext.com">Verizon</option>                    <option value="@tmomail.net">T Mobile</option>            <option value="@messaging.sprintpcs.com">Sprint</option><option value="@vmobl.com">Virgin</option>            <option value="@myboostmobile.com">Boost Mobile</option>        </select>  </div>\
+</div>\
+</div>       </div>');
+        return false;
+    });
+
+    $(document).on('click', '.btn-remove-phone', function() {
+        $(this).closest('.row-fluid').remove();
+        return false;
+    });
+});
+</script>

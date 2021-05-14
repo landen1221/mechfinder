@@ -1,0 +1,48 @@
+<script type="text/javascript">
+    var PROJECT = {{#if project}}{{{json project}}}{{else}}null{{/if}};
+</script>
+<script type="text/javascript" src="/static/js/admin/estimates-table.js"></script>
+
+<table id="estimatesTable" class="admin-table">
+    <tr>
+        <th>State</th>
+        <th>Owner</th>
+        <th>Customer $</th>
+        <th>Mechanic $</th>
+        <th>MF $</th>
+        <th>Submitted</th>
+        <th>Accepted</th>
+        <th>Requested</th>
+        <th>Released</th>
+        <th>Refunded</th>
+        <th>Actions</th>
+    </tr>
+    {{#each project.bids}}
+        {{#compareOr this.state to="retracted,canceled"}}{{else}}
+            <tr>
+                <td>{{this.state}}</td>
+                <td><a href="/admin/user/{{this.owner._id}}"><i class="fa fa-wrench fa-fw"></i> {{this.owner.username}}</a></td>
+                <td>({{currency this.buyerTotal}})</td>
+                <td>{{currency this.sellerTotal}}</td>
+                <td>{{currency this.mfTotal}}</td>
+                <td>{{date this.date_submitted}}</td>
+                <td>{{date this.date_accepted}}</td>
+                <td>{{date this.date_requested}}</td>
+                <td>{{date this.date_released}}</td>
+                <td>{{date this.date_refunded}}</td>
+                <td id="actionsCell{{this._id}}">
+                    {{#compareOr this.state to="accepted,requested"}}
+                        <a href="javascript:void(0);" id="releaseEstimate{{this._id}}" class="releaseEstimate" data-id="{{this._id}}">
+                            <i class="fa fa-university fa-fw"></i> Release
+                        </a><br />
+                        <a href="javascript:void(0);" id="refundEstimate{{this._id}}" class="refundEstimate" data-id="{{this._id}}">
+                            <i class="fa fa-credit-card fa-fw"></i> Refund
+                        </a>
+                    {{else}}
+                        <em>N/A</em>
+                    {{/compareOr}}
+                </td>
+            </tr>
+        {{/compareOr}}
+    {{/each}}
+</table>

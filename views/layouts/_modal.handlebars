@@ -1,0 +1,733 @@
+<script src="/static/js/modal.js"></script>
+
+<div class="mf-ui">
+<div class="modal" style="display: none;">
+    <div class="modal-container modalContainer">
+        <div class="exit-row"><a class="modalExit" href="javascript:void(0);">X</a></div>
+        <div class="modal-content">
+            <p>Some modal content here now</p>
+        </div>
+    </div>
+</div>
+
+<div id="modalNotification" class="modal condensed" style="display: none;">
+    <div class="modal-container modalContainer">
+        <div class="exit-row"><a id="modalNotificationExit" class="modalExit" href="javascript:void(0);">X</a></div>
+        <div class="modal-content">
+            <div id="modalNotificationTitle" class="modal-heading"></div>
+            <div class="modal-confirmation">
+                <div id="modalNotificationMessage" class="modal-message"></div>
+                <div id="modalNotificationLoading" class="modal-loading" style="display: none;">
+                    <div id="modalNotificationProgress" class="progress"></div>
+                </div>
+                <div id="modalNotificationSpinner" class="modal-spinner" style="display: none;"><i class="fa fa-cog fa-spin fa-fw"></i></div>
+                <div class="modal-buttons">
+                    <a id="modalNotificationOkay" class="standard-button modal-button unfixed blue" href="javascript:void(0);">Okay</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="modalSocial" class="modal condensed" style="display: none;">
+    <div class="modal-container modalContainer">
+        <div class="exit-row"><a id="modalSocialExit" class="modalExit" href="javascript:void(0);">X</a></div>
+        <div class="modal-content">
+            <div id="modalSocialTitle" class="modal-heading"></div>
+            <div class="modal-confirmation">
+                <div id="modalSocialMessage" class="modal-message"></div>
+                <div id="modalSocialTiles" class="modal-social">
+                    <div class="tile"><a class="social-tile" data-platform="facebook" href="https://www.facebook.com/mechfinder" target="_blank"><i class="fa fa-facebook fa-fw"></i></a></div>
+                    <div class="tile"><a class="social-tile" data-platform="twitter" href="https://twitter.com/mechfinder" target="_blank"><i class="fa fa-twitter fa-fw"></i></a></div>
+                    <div class="tile"><a class="social-tile" data-platform="gplus" href="https://plus.google.com/+Mechfinder" target="_blank"><i class="fa fa-google-plus fa-fw"></i></a></div>
+                    {{!--<div class="tile"><a href="#" target="_blank"><i class="fa fa-linkedin fa-fw"></i></a></div>--}}
+                </div>
+                <div class="modal-buttons">
+                    <a id="modalSocialSkip" class="standard-button modal-button unfixed blue" href="javascript:void(0);">No Thanks</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="modalLogin" class="modal condensed" style="display: none;">
+    <div class="modal-container modalContainer">
+        <div class="exit-row"><a id="modalLoginExit" class="modalExit" href="javascript:void(0);">X</a></div>
+        <div class="modal-content">
+            <div id="modalLoginTitle" class="modal-heading">Login</div>
+            <div class="modal-login">
+                <div id="modalLoginMessage" class="modal-message">Enter your email and password below to login or <a href="/auth/facebook">login using Facebook</a>:</div>
+                <div class="textbox-input">
+                    <form>
+                    <label>Email: </label><br />
+                    <input id="modalLoginEmail" type="text" placeholder="Email" autocomplete="email" /><br /><br />
+
+                    <label>Password: </label><br />
+                    <input id="modalLoginPassword" type="password" placeholder="Password" autocomplete="current-password" />
+                    </form>
+                </div>
+                <div class="modal-buttons">
+                    <label id="modalLoginStatus" class="error">&nbsp;</label>
+                    <a id="modalLoginCancel" class="standard-button modal-button unfixed red" href="javascript:void(0);">Cancel</a>
+                    <a id="modalLoginSubmit" class="standard-button modal-button unfixed blue" href="javascript:void(0);">Login</a>
+                </div>
+                <div class="modal-message internalSignupAction" style="text-align: center; margin-top: 15px;"><a href="javascript:void(0);">I don't have an account</a></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="modalSignup" class="modal condensed" style="display: none;">
+    <div class="modal-container modalContainer">
+        <div class="exit-row"><a id="modalLoginExit" class="modalExit" href="javascript:void(0);">X</a></div>
+        <div class="modal-content">
+            <div id="modalSignupTitle" class="modal-heading">Sign Up</div>
+            <div class="modal-login">
+                <div id="modalSignupMessage" class="modal-message">Fill out the fields below to sign up for a MechFinder account, or <a href="/auth/facebook">sign up using Facebook</a>:</div>
+                <div class="textbox-input">
+                    <form>
+                    <label>I am a:</label>
+                    <select id="modalSignupRole" value="buyer">
+                        <option value="buyer" selected="selected">Customer (I need my car fixed)</option>
+                        <option value="seller">Mechanic (I fix cars)</option>
+                    </select><br /><br />
+
+                    <label>First Name: </label><br />
+                    <input id="modalSignupFirst" type="text" placeholder="First Name" autocomplete="given-name" /><br /><br />
+
+                    <label>Last Name: </label><br />
+                    <input id="modalSignupLast" type="text" placeholder="Last Name" autocomplete="family-name" /><br /><br />
+
+                    <label>Email: </label><br />
+                    <input id="modalSignupEmail" type="text" placeholder="Email" autocomplete="email"><br /><br />
+
+                    <label>Password: </label><br />
+                    <input id="modalSignupPassword" type="password" placeholder="Password" autocomplete="current-password" /><br /><br />
+
+                    <input id="modalSignupTerms" type="checkbox"><label for="modalSignupTerms">I agree to the <a href="/terms" target="_blank">Terms &amp; Conditions</a> of MechFinder.com</label>
+                    </form>
+                </div>
+                <div class="modal-buttons">
+                    <label id="modalSignupStatus" class="error">&nbsp;</label>
+                    <a id="modalSignupCancel" class="standard-button modal-button unfixed red" href="javascript:void(0);">Cancel</a>
+                    <a id="modalSignupSubmit" class="standard-button modal-button unfixed blue" href="javascript:void(0);">Sign Up</a>
+                </div>
+                <div class="modal-message internalLoginAction" style="text-align: center; margin-top: 15px;"><a href="javascript:void(0);">I already have an account</a></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="modalConfirmation" class="modal condensed" style="display: none;">
+    <div class="modal-container modalContainer">
+        <div class="exit-row"><a id="modalConfirmationExit" class="modalExit" href="javascript:void(0);">X</a></div>
+        <div class="modal-content">
+            <div id="modalConfirmationTitle" class="modal-heading"></div>
+            <div class="modal-confirmation">
+                <div id="modalConfirmationMessage" class="modal-message"></div>
+                <div id="modalConfirmationCheckbox" class="modal-checkbox" style="display: none; margin-top: 10px; text-align: right;">
+                    <input id="modalConfirmationChecked" type="checkbox" />
+                    <label for="modalConfirmationChecked">I agree to these terms and conditions</label>
+                </div>
+                <div class="modal-buttons">
+                    <a id="modalConfirmationBack" href="javascript:void(0);"><i class="fa fa-arrow-circle-o-left fa-fw" aria-hidden="true"></i> Back</a>
+                    <a id="modalConfirmationFalse" class="standard-button modal-button unfixed red" href="javascript:void(0);">No</a>
+                    <a id="modalConfirmationTrue" class="standard-button modal-button unfixed blue" href="javascript:void(0);">Yes</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="modalTextbox" class="modal condensed" style="display: none;">
+    <div class="modal-container modalContainer">
+        <div class="exit-row"><a id="modalTextboxExit" class="modalExit" href="javascript:void(0);">X</a></div>
+        <div class="modal-content">
+            <div id="modalTextboxTitle" class="modal-heading"></div>
+            <div class="modal-textbox">
+                <div id="modalTextboxMessage" class="modal-message"></div>
+                <div id="modalTextboxInput" class="textbox-input"><input id="modalTextboxText" type="text" /></div>
+                <div id="modalTextboxArea" class="textbox-input"><textarea id="modalTextboxTextarea" class="tall"></textarea></div>
+                <div class="modal-buttons">
+                    <label id="modalTextboxStatus" class="error">&nbsp;</label>
+                    <a id="modalTextboxBack" href="javascript:void(0);"><i class="fa fa-arrow-circle-o-left fa-fw" aria-hidden="true"></i> Back</a>
+                    <a id="modalTextboxFalse" class="standard-button modal-button red" href="javascript:void(0);">Cancel</a>
+                    <a id="modalTextboxTrue" class="standard-button modal-button blue unfixed" href="javascript:void(0);">Next</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="modalCancelJob" class="modal condensed" style="display: none;">
+    <div class="modal-container modalContainer">
+        <div class="exit-row"><a id="modalCancelJobExit" class="modalExit" href="javascript:void(0);">X</a></div>
+        <div class="modal-content">
+            <div id="modalCancelJobTitle" class="modal-heading"></div>
+            <div class="modal-select">
+                <div id="modalCancelJobMessage" class="modal-message"></div>
+                <div id="modalCancelJobInput">
+                    <input type="radio" name="cancel-reason" class="cancel-reason" id="test" value="I am just testing things out."><label for="test"> I am just testing things out.</label></br>
+                    <input type="radio" name="cancel-reason" class="cancel-reason" id="slow-response" value="I didn't get a quick enough response from the mechanic"><label for="slow-response"> I didn't get a quick enough response from the mechanic.</label></br>
+                    <input type="radio" name="cancel-reason" class="cancel-reason" id="too-difficult" value="Mechfinder is too hard to use"><label for="too-difficult"> Mechfinder is too hard to use.</label></br>
+                    <input type="radio" name="cancel-reason" class="cancel-reason" id="better-deal" value="I got a better deal somewhere else"><label for="better-deal"> I got a better deal somewhere else.</label></br>
+                    <input type="radio" name="cancel-reason" class="cancel-reason" id="trust" value="I don't trust Mechfinder"><label for="trust"> I don't trust Mechfinder.</label></br>
+                    <input type="radio" name="cancel-reason" class="cancel-reason" id="other"><label for="other"> Other...</label></br>
+                    <textarea id="other-comments"></textarea>
+                </div>
+                <div class="modal-buttons">
+                    <a id="modalCancelJobTrue" class="standard-button modal-button green unfixed" href="javascript:void(0);">Save & Go to Your Dashboard</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="modalSelect" class="modal condensed" style="display: none;">
+    <div class="modal-container modalContainer">
+        <div class="exit-row"><a id="modalSelectExit" class="modalExit" href="javascript:void(0);">X</a></div>
+        <div class="modal-content">
+            <div id="modalSelectTitle" class="modal-heading"></div>
+            <div class="modal-select">
+                <div id="modalSelectMessage" class="modal-message"></div>
+                <div id="modalSelectInput" class="select-input">
+                    <select id="modalSelectSelect"></select>
+                </div>
+                <div class="modal-buttons">
+                    <a id="modalSelectBack" href="javascript:void(0);"><i class="fa fa-arrow-circle-o-left fa-fw" aria-hidden="true"></i> Back</a>
+                    <a id="modalSelectFalse" class="standard-button modal-button red" href="javascript:void(0);">Cancel</a>
+                    <a id="modalSelectTrue" class="standard-button modal-button blue" href="javascript:void(0);">Next</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="modalPhotos" class="modal condensed" style="display: none;">
+    <div class="modal-container modalContainer">
+        <div class="exit-row"><a id="modalPhotosExit" class="modalExit" href="javascript:void(0);">X</a></div>
+        <div class="modal-content">
+            <div id="modalPhotosTitle" class="modal-heading"></div>
+            <div class="modal-photos">
+                <div id="modalPhotosMessage" class="modal-message"></div>
+
+                <div id="modalPhotosSelect" class="photos-select">
+                    <div id="modalPhotosFiledrop" class="add-photo"><a id="modalPhotosTriggerFile" href="javascript:void(0);">Click or drop photos here to add them</a></div>
+                    <div id="modalPhotosPhotos" class="photos">
+                        <!-- <div class="photo">
+                            <div class="remove"><a href="javascript:void(0);">X</a></div>
+                            <img src="/api/public/image/{{user.picture}}" />
+                        </div> -->
+                    </div>
+                    <input type="file" id="modalPhotosFileInput" style="display: none;" multiple="multiple" accept="image/*" />
+                </div>
+                <div class="modal-buttons">
+                    <label id="modalPhotosStatus" class="error">&nbsp;</label>
+                    <a id="modalPhotosBack" href="javascript:void(0);"><i class="fa fa-arrow-circle-o-left fa-fw" aria-hidden="true"></i> Back</a>
+                    <a id="modalPhotosFalse" class="standard-button modal-button red" href="javascript:void(0);">Cancel</a>
+                    <a id="modalPhotosTrue" class="standard-button modal-button blue" href="javascript:void(0);">Submit</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="modalVehicle" class="modal condensed" style="display: none;">
+    <div class="modal-container modalContainer">
+        <div class="exit-row"><a id="modalVehicleExit" class="modalExit" href="javascript:void(0);">X</a></div>
+        <div class="modal-content">
+            <div id="modalVehicleTitle" class="modal-heading"></div>
+            <div class="modal-select">
+                <div id="modalVehicleMessage" class="modal-message"></div>
+
+                <div id="modalVehicleSelectInput" class="select-input vehicleSelector">
+                    <label>Make: </label><br />
+                    <select id="modalVehicleSelectMake" name="vehicleMake" value=""></select>
+                    <div class="spacer"></div>
+
+                    <label>Model: </label><br />
+                    <select id="modalVehicleSelectModel" name="vehicleModel"></select>
+                    <div class="spacer"></div>
+
+                    <label>Year: </label><br />
+                    <select id="modalVehicleSelectYear" name="vehicleYear"></select>
+                    <div class="spacer"></div>
+
+                    <label>Cylinders: </label><br />
+                    <input type="text" id="modalVehicleCylinders" name="engineCylinders" /><br />
+                    <div class="spacer"></div>
+
+                    <label>Mileage: </label><br />
+                    <input type="text" id="modalVehicleMileage" />
+                    <div class="spacer"></div>
+                </div>
+                <div class="modal-buttons">
+                    <label id="modalVehicleStatus" class="error">&nbsp;</label>
+                    <a id="modalVehicleBack" href="javascript:void(0);"><i class="fa fa-arrow-circle-o-left fa-fw" aria-hidden="true"></i> Back</a>
+                    <a id="modalVehicleFalse" class="standard-button modal-button red" href="javascript:void(0);">Cancel</a>
+                    <a id="modalVehicleTrue" class="standard-button modal-button blue" href="javascript:void(0);">Submit</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="modalMFRating" class="modal condensed" style="display: none;">
+    <div class="modal-container modalContainer">
+        <div class="exit-row"><a id="modalMFRatingExit" class="modalExit" href="javascript:void(0);">X</a></div>
+        <div class="modal-content">
+            <div id="modalMFRatingTitle" class="modal-heading">How's Our Site?</div>
+            <div class="modal-rating">
+                <div id="modalMFRatingMessage" class="modal-message">How satisfied were you with your experience with the site?</div>
+                <div id="modalMFRatingFaces" class="faces">
+                    <div class="face large"><a class="faceAnchor" id="modalMFRatingFace1" data-val="1" href="javascript:void(0);"><i class="fa fa-frown-o"></i></a></div>
+                    <div class="face large"><a class="faceAnchor" id="modalMFRatingFace2" data-val="2" href="javascript:void(0);"><i class="fa fa-smile-o"></i></a></div>
+                </div>
+                <div id="modalMFRatingInput" class="textbox-input">
+                    <textarea id="modalMFRatingInputText" class="tall" placeholder="Leave some feedback for us here"></textarea>
+                </div>
+                <div class="modal-buttons">
+                    <label id="modalMFRatingStatus" class="error">&nbsp;</label>
+                    <a id="modalMFRatingFalse" class="standard-button modal-button red" href="javascript:void(0);">Cancel</a>
+                    <a id="modalMFRatingTrue" class="standard-button modal-button blue" href="javascript:void(0);">Submit</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="modalRating" class="modal condensed" style="display: none;">
+    <div class="modal-container modalContainer">
+        <div class="exit-row"><a id="modalRatingExit" class="modalExit" href="javascript:void(0);">X</a></div>
+        <div class="modal-content">
+            <div id="modalRatingTitle" class="modal-heading">Rate <span class="roleIdentifier">{{#compare user.role to="buyer"}}Mechanic{{else}}Customer{{/compare}}</span></div>
+            <div class="modal-rating">
+                <div id="modalRatingMessage" class="modal-message">
+                    Rate your <span class="roleIdentifier lowercase">{{#compare user.role to="buyer"}}Mechanic{{else}}Customer{{/compare}}</span> by clicking the <span class="kindIdentifier lowercase">{{#compare user.role to="buyer"}}Wrenches{{else}}Stars{{/compare}}</span> below, where 1 is poor and 5 is excellent:</div>
+                <div id="modalRatingStars" class="stars" style="display: none;">
+                    <div class="star"><a class="starAnchor" id="modalRatingStar1" data-kind="star" data-val="1" href="javascript:void(0);"><i class="fa fa-star"></i></a></div>
+                    <div class="star"><a class="starAnchor" id="modalRatingStar2" data-kind="star" data-val="2" href="javascript:void(0);"><i class="fa fa-star"></i></a></div>
+                    <div class="star"><a class="starAnchor" id="modalRatingStar3" data-kind="star" data-val="3" href="javascript:void(0);"><i class="fa fa-star"></i></a></div>
+                    <div class="star"><a class="starAnchor" id="modalRatingStar4" data-kind="star" data-val="4" href="javascript:void(0);"><i class="fa fa-star"></i></a></div>
+                    <div class="star"><a class="starAnchor" id="modalRatingStar5" data-kind="star" data-val="5" href="javascript:void(0);"><i class="fa fa-star"></i></a></div>
+                </div>
+                <div id="modalRatingWrenches" class="wrenches" style="display: none;">
+                    <div class="wrench"><a class="wrenchAnchor" id="modalRatingWrench1" data-kind="wrench" data-val="1" href="javascript:void(0);"><i class="fa fa-wrench"></i></a></div>
+                    <div class="wrench"><a class="wrenchAnchor" id="modalRatingWrench2" data-kind="wrench" data-val="2" href="javascript:void(0);"><i class="fa fa-wrench"></i></a></div>
+                    <div class="wrench"><a class="wrenchAnchor" id="modalRatingWrench3" data-kind="wrench" data-val="3" href="javascript:void(0);"><i class="fa fa-wrench"></i></a></div>
+                    <div class="wrench"><a class="wrenchAnchor" id="modalRatingWrench4" data-kind="wrench" data-val="4" href="javascript:void(0);"><i class="fa fa-wrench"></i></a></div>
+                    <div class="wrench"><a class="wrenchAnchor" id="modalRatingWrench5" data-kind="wrench" data-val="5" href="javascript:void(0);"><i class="fa fa-wrench"></i></a></div>
+                </div>
+                <div id="modalRatingInput" class="textbox-input">
+                    <textarea id="modalRatingInputText" class="tall" placeholder="Leave some feedback for others to see (optional)"></textarea>
+                </div>
+                <div class="modal-buttons">
+                    <label id="modalRatingStatus" class="error">&nbsp;</label>
+                    <a id="modalRatingFalse" class="standard-button modal-button red" href="javascript:void(0);">Cancel</a>
+                    <a id="modalRatingTrue" class="standard-button modal-button blue" href="javascript:void(0);">Submit</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="modalPayment" class="modal condensed" style="display: none;">
+    <div class="modal-container modalContainer">
+        <div class="exit-row"><a id="modalPaymentExit" class="modalExit" href="javascript:void(0);">X</a></div>
+        <div class="modal-content">
+            <div id="modalPaymentTitle" class="modal-heading">Payment Information</div>
+            <div class="modal-seller-info">
+                <form>
+                <div id="modalPaymentMessage" class="modal-message">Enter your payment information below (all fields required):</div>
+
+                <div class="info-row topspaced"><label for="modalPaymentCard">Card Number</label></div>
+                <div class="info-row"><input type="text" id="modalPaymentCard" placeholder="Card Number" value="" autocomplete="cc-number" /></div>
+
+                <div class="info-row topspaced"><label for="modalPaymentNameOnCard">Name on Card</label></div>
+                <div class="info-row"><input type="text" id="modalPaymentNameOnCard" placeholder="Name on Card" value="" autocomplete="cc-name" /></div>
+
+                <div class="info-row topspaced"><label for="modalPaymentMM">Expiration Date</label></div>
+                <div class="info-row">
+                    <input class="dob" type="text" id="modalPaymentMM" placeholder="MM" value="" autocomplete="cc-exp-month" />
+                    <input class="dob" type="text" id="modalPaymentYY" placeholder="YYYY" value="" autocomplete="cc-exp-year" />
+                </div>
+
+                <div class="info-row topspaced"><label for="modalPaymentCVC">CVC</label></div>
+                <div class="info-row"><input class="dob" type="text" id="modalPaymentCVC" placeholder="CVC" value="" autocomplete="cc-csc" /></div>
+
+                <div class="info-row topspaced">
+                    <input type="checkbox" id="modalPaymentSave" />
+                    <label for="modalPaymentSave">Save this payment info</label>
+                </div>
+                </form>
+            </div>
+
+            <div class="modal-buttons">
+                <label id="modalPaymentStatus" class="error">&nbsp;</label>
+                <a id="modalPaymentFalse" class="standard-button modal-button red" href="javascript:void(0);">Cancel</a>
+                <a id="modalPaymentTrue" class="standard-button modal-button blue unfixed" href="javascript:void(0);">Submit</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="modalBanking" class="modal condensed" style="display: none;">
+    <div class="modal-container modalContainer">
+        <div class="exit-row"><a id="modalBankingExit" class="modalExit" href="javascript:void(0);">X</a></div>
+        <div class="modal-content">
+            <div id="modalBankingTitle" class="modal-heading">Bank Information</div>
+            <div class="modal-seller-info">
+                <div id="modalBankingMessage" class="modal-message">Enter your banking information below so you can get paid for your jobs. (all fields required):</div>
+
+                <div class="info-row topspaced"><label for="modalBankingBank">Name of Bank</label></div>
+                <div class="info-row"><input type="text" id="modalBankingBank" placeholder="Name of Bank" value="" /></div>
+
+                <div class="info-row topspaced"><label for="modalBankingRouting">Routing Number</label></div>
+                <div class="info-row"><input type="text" id="modalBankingRouting" placeholder="Routing Number" value="" /></div>
+
+                <div class="info-row topspaced"><label for="modalBankingAccount">Account Number</label></div>
+                <div class="info-row"><input type="text" id="modalBankingAccount" placeholder="Account Number" value="" /></div>
+
+                <div class="info-row topspaced"><label for="modalBankingAccountRepeat">Repeat Account Number</label></div>
+                <div class="info-row"><input type="text" id="modalBankingAccountRepeat" placeholder="Repeat Account Number" value="" /></div>
+            </div>
+
+            <div class="modal-buttons">
+                <label id="modalBankingStatus" class="error">&nbsp;</label>
+                <a id="modalBankingFalse" class="standard-button modal-button red" href="javascript:void(0);">Cancel</a>
+                <a id="modalBankingTrue" class="standard-button modal-button blue unfixed" href="javascript:void(0);">Submit</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="modalBilling" class="modal condensed" style="display: none;">
+    <div class="modal-container modalContainer">
+        <div class="exit-row"><a id="modalBillingExit" class="modalExit" href="javascript:void(0);">X</a></div>
+        <div class="modal-content">
+            <div id="modalBillingTitle" class="modal-heading">Billing Information</div>
+            <div class="modal-seller-info">
+                <form>
+                <div id="modalBillingMessage" class="modal-message">Enter your billing information below:</div>
+
+                <div class="info-row topspaced"><label for="modalBillingPrimary">Address 1</label></div>
+                <div class="info-row"><input type="text" id="modalBillingPrimary" placeholder="Address 1" value="{{user.billing.primary}}" autocomplete="billing street-address" /></div>
+
+                <div class="info-row topspaced"><label for="modalBillingSecondary">Address 2</label></div>
+                <div class="info-row"><input type="text" id="modalBillingSecondary" placeholder="Address 2" value="{{user.billing.secondary}}" /></div>
+
+                <div class="info-row topspaced"><label for="modalBillingCity">City</label></div>
+                <div class="info-row"><input type="text" id="modalBillingCity" placeholder="City" value="{{user.billing.city}}" autocomplete="billing address-level2" /></div>
+
+                <div class="info-row topspaced"><label for="modalBillingState">State</label></div>
+                <div class="info-row">
+                    <select id="modalBillingState" value="{{user.billing.state}}" autocomplete="billing address-level1">
+                        <option disabled="disabled" {{#unless user.billing.state}}selected="selected"{{/unless}}>Select One:</option>
+                        {{stateOptions}}
+                    </select>
+                </div>
+
+                <div class="info-row topspaced"><label for="modalBillingZip">Zip</label></div>
+                <div class="info-row"><input type="text" id="modalBillingZip" placeholder="Zip" value="{{user.billing.zip}}" autocomplete="billing postal-code" /></div>
+                </form>
+            </div>
+
+            <div class="modal-buttons">
+                <label id="modalBillingStatus" class="error">&nbsp;</label>
+                <a id="modalBillingFalse" class="standard-button modal-button red" href="javascript:void(0);">Cancel</a>
+                <a id="modalBillingTrue" class="standard-button modal-button blue unfixed" href="javascript:void(0);">Submit</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="modalSellerBusinessInfo" class="modal condensed" style="display: none;">
+    <div class="modal-container modalContainer">
+        <div class="exit-row"><a id="modalSellerBusinessInfoExit" class="modalExit" href="javascript:void(0);">X</a></div>
+        <div class="modal-content">
+            <div id="modalSellerBusinessInfoTitle" class="modal-heading">Tax ID/EIN Information</div>
+            <div class="modal-seller-info">
+                <div id="modalSellerBusinessInfoMessage" class="modal-message">Enter your information below (all fields required):</div>
+
+                <div class="info-row topspaced"><label for="modalSellerBusinessInfoLegalName">Legal Business Name</label></div>
+                <div class="info-row"><input type="text" id="modalSellerBusinessInfoLegalName" placeholder="Legal Business Name" value="{{user.business.legalName}}" /></div>
+
+                <div class="info-row topspaced"><label for="modalSellerBusinessInfoBusinessAs">Doing Business As (If Different from Above)</label></div>
+                <div class="info-row"><input type="text" id="modalSellerBusinessInfoBusinessAs" placeholder="Name Here" value="{{user.business.name}}" /></div>
+
+                <div class="info-row topspaced"><label for="modalSellerBusinessInfoTaxId">Tax ID</label></div>
+                <div class="info-row"><input type="text" id="modalSellerBusinessInfoTaxId" placeholder="Tax ID" value="" /></div>
+
+                <div class="info-row topspaced"><label for="modalSellerBusinessInfoAddress">Business Address</label></div>
+                <div class="info-row"><input type="text" id="modalSellerBusinessInfoAddress" placeholder="Business Address" value="{{user.business.address}}" /></div>
+
+                <div class="info-row topspaced"><label for="modalSellerBusinessInfoCity">City</label></div>
+                <div class="info-row"><input type="text" id="modalSellerBusinessInfoCity" placeholder="City" value="{{user.business.city}}" /></div>
+
+                <div class="info-row topspaced"><label for="modalSellerBusinessInfoState">State</label></div>
+                <div class="info-row">
+                    <select id="modalSellerBusinessInfoState" value="{{user.business.state}}">
+                        <option disabled="disabled" selected="selected">Select One:</option>
+                        {{stateOptions}}
+                    </select>
+                </div>
+
+                <div class="info-row topspaced"><label for="modalSellerBusinessInfoZip">Zip</label></div>
+                <div class="info-row">
+                    <input type="text" id="modalSellerBusinessInfoZip" placeholder="Zip" value="{{user.business.zip}}" />
+                </div>
+            </div>
+
+            <div class="modal-buttons">
+                <label id="modalSellerBusinessInfoStatus" class="error">&nbsp;</label>
+                <a id="modalSellerBusinessInfoFalse" class="standard-button modal-button red" href="javascript:void(0);">Cancel</a>
+                <a id="modalSellerBusinessInfoTrue" class="standard-button modal-button blue unfixed" href="javascript:void(0);">Submit</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="modalSellerUserInfo" class="modal condensed" style="display: none;">
+    <div class="modal-container modalContainer">
+        <div class="exit-row"><a id="modalSellerUserInfoExit" class="modalExit" href="javascript:void(0);">X</a></div>
+        <div class="modal-content">
+            <div id="modalSellerUserInfoTitle" class="modal-heading">User Information</div>
+            <div class="modal-seller-info">
+                <form>
+                <div id="modalSellerUserInfoMessage" class="modal-message">Enter your information below (all fields required):</div>
+                <div class="info-row topspaced"><label for="modalSellerUserInfoFirst">First Name</label></div>
+                <div class="info-row"><input type="text" id="modalSellerUserInfoFirst" placeholder="First Name" value="{{user.first}}" autocomplete="given-name" /></div>
+
+                <div class="info-row topspaced"><label for="modalSellerUserInfoLast">Last Name</label></div>
+                <div class="info-row"><input type="text" id="modalSellerUserInfoLast" placeholder="Last Name" value="{{user.last}}" autocomplete="family-name" /></div>
+
+                <div class="info-row topspaced"><label>Date of Birth</label></div>
+                <div class="info-row">
+                    <input class="dob" type="text" id="modalSellerUserInfoMM" placeholder="MM" value="{{monthNumber user.dob}}" autocomplete="bday-month" />
+                    <input class="dob" type="text" id="modalSellerUserInfoDD" placeholder="DD" value="{{dayNumber user.dob}}" autocomplete="bday-day" />
+                    <input class="dob" type="text" id="modalSellerUserInfoYY" placeholder="YYYY" value="{{yearNumber user.dob}}" autocomplete="bday-year" />
+                </div>
+
+                <div class="info-row topspaced"><label for="modalSellerUserInfoSSN">Social Security #:</label></div>
+                <div class="info-row"><input type="text" id="modalSellerUserInfoSSN" placeholder="XXX-XXX-XXXX" value="{{user.ssn}}" /></div>
+
+                <div class="info-row topspaced">
+                    <input type="checkbox" id="modalSellerUserInfoAddEIN" />
+                    <label for="modalSellerUserInfoAddEIN">Add Tax ID/EIN (Optional)</label>
+                </div>
+                </form>
+            </div>
+
+            <div class="modal-buttons">
+                <label id="modalSellerUserInfoStatus" class="error">&nbsp;</label>
+                <a id="modalSellerUserInfoFalse" class="standard-button modal-button red" href="javascript:void(0);">Cancel</a>
+                <a id="modalSellerUserInfoTrue" class="standard-button modal-button blue unfixed" href="javascript:void(0);">Submit</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="modalDiagnosisEstimate" class="modal condensed" style="display: none;">
+    <div class="modal-container modalContainer">
+        <div class="exit-row"><a id="modalDiagnosisEstimateExit" class="modalExit" href="javascript:void(0);">X</a></div>
+        <div class="modal-content">
+            <div id="modalDiagnosisEstimateTitle" class="modal-heading">Place Diagnosis Estimate</div>
+            <div class="modal-diagnosis-estimate">
+                <div id="modalDiagnosisEstimateMessage" class="modal-message">Please confirm your estimate before continuing:</div>
+                <div class="fee-box"><strong>Diagnosis Fee: </strong><input id="modalDiagnosisEstimateFee" type="text" value="{{currency user.diagnosisCharge false}}" placeholder="$0.00" /></div>
+                <div class="waive-box">
+                    <strong id="modalDiagnosisEstimateWaivedLabel">Waive if Hired: </strong>
+                    <select id="modalDiagnosisEstimateWaived">
+                        <option value="1" {{#if user.waivesDiagnosis}}selected="selected"{{/if}}>Yes</option>
+                        <option value="0" {{#unless user.waivesDiagnosis}}selected="selected"{{/unless}}>No</option>
+                    </select>
+                </div>
+                <div class="fee-box"><strong>Labor Tax: </strong><input id="modalDiagnosisEstimateTax" type="text" value="{{user.tax.labor}}" placeholder="0%" /></div>
+                <div class="crunch-box">
+                    <table id="modalDiagnosisEstimateCrunchBox">
+                        <tr>
+                            <td>Referral Fee:</td>
+                            <td id="modalDiagnosisFeeAmount">$0.00</td>
+                        </tr>
+                        <tr>
+                            <td>Tax:</td>
+                            <td id="modalDiagnosisTaxAmount">$0.00</td>
+                        </tr>
+                        <tr id="modalDiagnosisDiscountRow" style="display: none;">
+                            <td class="right">Discount: <select id="modalDiagnosisDiscount" value="0"></select></td>
+                            <td id="modalDiagnosisDiscountTotal">$0.00</td>
+                        </tr>
+                        <tr>
+                            <td>Total:</td>
+                            <td><strong id="modalDignosisAfterFee">$0.00</strong></td>
+                        </tr>
+                    </table>
+                </div>
+                <div id="modalDiagnosisMessageContainer" class="customer-message">
+                    <div id="modalDiagnosisMessageHeader" class="message-header">Message to Customer: </div>
+                    <textarea id="modalDiagnosisMessageEntry" placeholder="Optional: Add a message to the customer"></textarea>
+                </div>
+                <div class="modal-buttons">
+                    <label id="modalDiagnosisEstimateStatus" class="error">&nbsp;</label>
+                    <a id="modalDiagnosisEstimateCancel" class="standard-button modal-button red" href="javascript:void(0);">Cancel</a>
+                    <a id="modalDiagnosisEstimatePlace" class="standard-button modal-button blue unfixed" href="javascript:void(0);">Place Estimate</a>
+                    <a id="modalDiagnosisEstimateAccept" class="standard-button modal-button green unfixed" href="javascript:void(0);">Hire Mechanic</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="modalEstimate" class="modal" style="display: none;">
+    <div class="modal-container modalContainer">
+        <div class="exit-row"><a id="modalEstimateExit" class="modalExit" href="javascript:void(0);">X</a></div>
+        <div class="modal-content">
+            <div id="modalEstimateTitle" class="modal-heading">Create Your Estimate</div>
+            <div class="modal-estimate">
+                <div id="modalEstimateMessage" class="modal-message">Please confirm your estimate before continuing:</div>
+
+                <div id="modalEstimateCommentSectionRead" class="comment-section">
+                    <div id="modalEstimateCommentHeaderRead" class="message-header">Message from Mechanic: </div>
+                    <textarea id="modalEstimateCommentEntryRead" class="hide-nature" readonly="readonly"></textarea>
+                </div>
+
+                <div id="modalEstimatePartsBreakdown" class="workorder-section parts-section">
+                    <div class="workorder-section-heading">Parts &amp; Materials</div>
+                    <div class="workorder-breakdown">
+                        <table id="modalEstimatePartsTable" cellpadding="0" cellspacing="0">
+                            <tr>
+                                <th>&nbsp;</th>
+                                <th class="wrap fillspace left">Name</th>
+                                <th>Quantity</th>
+                                <th>Unit Price</th>
+                                <th>Line Total</th>
+                            </tr>
+                            <tr id="modalEstimatePartAddRow" class="editRow addPartRow">
+                                <td>&nbsp;</td>
+                                <td><input id="modalEstimatePartLabel" type="text" placeholder="Part/Material Name" /></td>
+                                <td><input id="modalEstimatePartQuantity" type="text" placeholder="Qty" style="text-align: center;" /></td>
+                                <td>$<input id="modalEstimatePartCost" type="text" placeholder="Unit Price" style="text-align: center;" /></td>
+                                <td><a id="modalEstimateAddPart" class="standard-button green" href="javascript:void(0);">Add</a></td>
+                            </tr>
+                            <tr>
+                                <td colspan="3"></td>
+                                <td class="right strong">Subtotal</td>
+                                <td id="modalEstimatPartsSubtotal" class="strong">$0.00</td>
+                            </tr>
+                            <tr class="editRow">
+                                <td colspan="3"></td>
+                                <td class="right strong">
+                                    <div id="modalEstimatePartsTaxCell" class="standard-div" style="float: right; text-align: right;">
+                                        <label for="modalEstimatePartsTaxRate" class="strong" for="modalEstimatePartsTaxAmount">Tax %</label>
+                                    </div>
+                                </td>
+                                <td><input type="text" id="modalEstimatePartsTaxRate" class="taxRateParts" placeholder="0%" value="{{#if user}}{{user.tax.parts}}{{/if}}" /></td>
+                            </tr>
+                            <tr id="modalEstimatePartsSubtotalWithTaxRow">
+                                <td colspan="3"></td>
+                                <td class="right strong">Tax</td>
+                                <td id="modalEstimatePartsSubtotalTax" class="strong">$0.00</td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+
+                <div id="modalEstimateLaborBreakdown" class="workorder-section labor-section">
+                    <div class="workorder-section-heading">Labor &amp; Services</div>
+                    <div class="workorder-breakdown">
+                        <table id="modalEstimateLaborTable" cellpadding="0" cellspacing="0">
+                            <tr>
+                                <th>&nbsp;</th>
+                                <th class="wrap fillspace left">Name</th>
+                                <th>Hours</th>
+                                <th>Rate</th>
+                                <th>Line Total</th>
+                            </tr>
+                            <tr id="modalEstimateLaborAddRow" class="editRow addLaborRow">
+                                <td>&nbsp;</td>
+                                <td><input id="modalEstimateLaborLabel" type="text" placeholder="Labor/Service Name" /></td>
+                                <td><input id="modalEstimateLaborHours" type="text" placeholder="Hours" style="text-align: center;" /></td>
+                                <td><input id="modalEstimateLaborRate" type="text" placeholder="Rate/Hour" style="text-align: center;" /></td>
+                                <td><a id="modalEstimateAddLabor" class="standard-button green" href="javascript:void(0);">Add</a></td>
+                            </tr>
+                            <tr>
+                                <td colspan="3"></td>
+                                <td class="right strong">Subtotal</td>
+                                <td id="modalEstimateLaborSubtotal" class="strong">$0.00</td>
+                            </tr>
+                            <tr class="editRow">
+                                <td colspan="3"></td>
+                                <td class="right strong">
+                                    <div id="modalEstimatePartsTaxCell" class="standard-div" style="float: right; text-align: right;">
+                                        <label for="modalEstimateLaborTaxRate" class="strong" for="modalEstimatePartsTaxAmount">Tax %</label>
+                                    </div>
+                                </td>
+                                <td><input type="text" id="modalEstimateLaborTaxRate" class="taxRateLabor" placeholder="0%" value="{{#if user}}{{user.tax.labor}}{{/if}}" /></td>
+                            </tr>
+                            <tr id="modalEstimateLaborSubtotalWithTaxRow">
+                                <td colspan="3"></td>
+                                <td class="right strong">Tax</td>
+                                <td id="modalEstimateLaborSubtotalTax" class="strong">$0.00</td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+
+                <div id="modalEstimateCommentSection" class="comment-section">
+                    <div id="modalEstimateCommentHeader" class="message-header">Message to Customer: </div>
+                    <textarea id="modalEstimateCommentEntry" placeholder="Optional: Leave a quick message to the customer with this estimate"></textarea>
+                </div>
+
+                <div class="workorder-section">
+                    <div class="workorder-section-heading">Total Estimate</div>
+                    <div id="modalEstimateWorkorderTabs" class="workorder-tabs">
+                        <div id="workorderTabSeller" class="workorder-tab selected">Mechanic View</div>
+                        <div id="workorderTabBuyer" class="workorder-tab">Customer View</div>
+                    </div>
+                    <div class="workorder-breakdown">
+                        <table cellpadding="0" cellspacing="0">
+                            <tr>
+                                <td class="fillspace">&nbsp;</td>
+                                <td class="right">Parts &amp; Labor</td>
+                                <td id="modalEstimatePartsLaborTotal">$0.00</td>
+                            </tr>
+                            <tr>
+                                <td class="fillspace">&nbsp;</td>
+                                <td class="right">Tax</td>
+                                <td id="modalEstimatePartsLaborTaxTotal">$0.00</td>
+                            </tr>
+                            <tr id="modalEstimateDiagnosisWaiverTotalRow">
+                                <td class="fillspace">&nbsp;</td>
+                                <td class="right">Diagnosis Waiver</td>
+                                <td id="modalEstimateDiagnosisWaiverTotal">($0.00)</td>
+                            </tr>
+                            <tr>
+                                <td class="fillspace">&nbsp;</td>
+                                <td class="right" id="modalEstimateReferralVerbiage">Referral Fee</td>
+                                <td id="modalEstimateReferralTotal">($0.00)</td>
+                            </tr>
+                            <tr id="modalEstimateDiscountRow" style="display: none;">
+                                <td class="fillspace">&nbsp;</td>
+                                <td class="right">Discount: <select id="modalEstimateDiscount" value="0"></select></td>
+                                <td id="modalEstimateDiscountTotal">$0.00</td>
+                            </tr>
+                            <tr>
+                                <td class="fillspace">&nbsp;</td>
+                                <td class="right strong" id="modalEstimateTotalVerbiage">Total</td>
+                                <td class="strong" id="modalEstimateTotalTotal">$0.00</td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+
+                <div class="modal-buttons">
+                    <label id="modalEstimateStatus" class="error">&nbsp;</label>
+                    <a id="modalEstimateCancel" class="standard-button modal-button red" href="javascript:void(0);">Cancel</a>
+                    <a id="modalEstimateAccept" class="standard-button modal-button green" href="javascript:void(0);">Hire</a>
+                    <a id="modalEstimatePlace" class="standard-button modal-button blue unfixed" href="javascript:void(0);">Place Estimate</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</div>

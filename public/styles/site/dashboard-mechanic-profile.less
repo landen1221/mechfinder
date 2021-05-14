@@ -1,0 +1,1037 @@
+@import "defaults.less";
+
+.dashboard-mechanic-profile {
+
+    @screenXS: 320px;
+    @screenSM: 480px;
+    @screenMD: 768px;
+    @screenLG: 920px;
+    @screenXL: 1200px;
+
+    @colorRed: rgba(169, 1, 1, 1);
+    @colorRedLight: rgba(199, 1, 1, 1);
+    @colorGreen: rgba(92, 184, 92, 1);
+    @colorGreenLight: rgba(122, 214, 122, 1);
+    @colorBlue: rgba(7, 166, 244, 1);
+    @colorBlueLight: rgba(37, 196, 255, 1);
+
+    @standardFontColor: rgba(41, 41, 41, 1);
+    @standardFontSize: 13px;
+    @standardFontWeight: normal;
+
+    @standardLineHeight: 18px;
+
+    input,
+    select {
+        &.error {
+            border: 2px solid @colorRed;
+        }
+    }
+
+    ul.tabs {
+        display: inline-flex;
+        width: 100%;
+        // flex-wrap: wrap;
+        // margin: 0 -10px;
+        li {
+            display: flex;
+            padding: 10px;
+            background: #E4E4E4;
+            flex: 1 0 100px;
+            margin: 10px;
+            cursor: pointer;
+            text-align: center;
+            word-wrap: break-word;
+            justify-content: center;
+            border-radius: 3px;
+            box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+            &.current {
+                color: white;
+                background-color: @colorBlue;
+                font-weight: bold;
+                &.green {
+                    background-color: @colorGreen;
+                    &:hover,
+                    &:active,
+                    &:focus {
+                        background-color: @colorGreenLight;
+                    }
+                }
+                &:hover,
+                &:active,
+                &:focus {
+                    background-color: @colorBlueLight;
+                }
+            }
+            &.green {
+                &:hover,
+                &:active,
+                &:focus {
+                    background-color: @colorGreenLight;
+                    color: white;
+                }
+            }
+            &:hover,
+            &:active,
+            &:focus {
+                background-color: @colorBlueLight;
+                color: white;
+            }
+            @media @phonescreens {
+                display: block;
+                margin: 10px 0;
+            }
+            @media @regularphonescreens {
+                flex-basis: 30%;
+            }
+        }
+        @media @phonescreens {
+            display: block;
+            margin: 0;
+        }
+        @media @regularphonescreens {
+            flex-basis: 50%;
+        }
+    }
+    .tab-content {
+        display: none;
+        &.current {
+            display: block;
+        }
+    }
+
+    .standard-div {
+        display: block;
+        float: left;
+        width: 100%;
+        text-align: left;
+    }
+
+    .flex-div {
+        display: -webkit-flex;
+        display: flex;
+    }
+
+    .inline-div {
+        display: inline-block;
+    }
+
+    .spacer {
+        .standard-div;
+        height: 1px;
+        margin-top: 15px;
+        margin-bottom: 15px;
+
+        &.large {
+            margin-top: 30px;
+            margin-bottom: 30px;
+        }
+
+        &.small {
+            margin-top: 7px;
+            margin-bottom: 7px;
+        }
+
+        &.lined {
+            background-color: rgba(199, 199, 199, 1);
+        }
+
+        &.remove-top-margin {
+            margin-top: 0px;
+        }
+
+        &.remove-bottom-margin {
+            margin-bottom: 0px;
+        }
+    }
+
+    .remove-effects {
+        outline: none;
+        text-decoration: none;
+        -webkit-tap-highlight-color: transparent;
+    }
+
+    .transitions {
+        -moz-transition: all 300ms ease;
+        -ms-transition: all 300ms ease;
+        -o-transition: all 300ms ease;
+        transition: all 300ms ease;
+    }
+
+    .standard-background {
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: contain;
+    }
+
+    .standard-font {
+        color: @standardFontColor;
+        font-family: @baseFonts;
+        font-size: @standardFontSize;
+        font-weight: @standardFontWeight;
+        line-height: @standardLineHeight;
+    }
+
+    .standard-link {
+        .standard-font;
+        .transitions;
+        .remove-effects;
+
+        &:link,
+        &:visited {
+            color: @colorBlue;
+            border-bottom: 1px solid transparent;
+
+            &.red {
+                color: @colorRed;
+            }
+
+            &.green {
+                color: @colorGreen;
+            }
+
+            &.blue {
+                color: @colorBlue;
+            }
+        }
+
+        &:hover,
+        &:active,
+        &:focus {
+            color: @colorBlueLight;
+            border-bottom-color: @colorBlueLight;
+
+            &.red {
+                color: @colorRedLight;
+                border-bottom-color: @colorRedLight;
+            }
+
+            &.green {
+                color: @colorGreenLight;
+                border-bottom-color: @colorGreenLight;
+            }
+
+            &.blue {
+                color: @colorBlueLight;
+                border-bottom-color: @colorBlueLight;
+            }
+        }
+    }
+
+    // .standard-button {
+    //     .inline-div;
+    //     .standard-font;
+    //     .transitions;
+    //     .remove-effects;
+    //     padding: 10px;
+    //     border-radius: 2px;
+
+    //     &:link,
+    //     &:visited {
+    //         color: rgba(245, 245, 245, 1);
+    //         background-color: @colorBlue;
+
+    //         &.red {
+    //             background-color: @colorRed;
+    //         }
+
+    //         &.green {
+    //             background-color: @colorGreen;
+    //         }
+
+    //         &.blue {
+    //             background-color: @colorBlue;
+    //         }
+    //     }
+
+    //     &:hover,
+    //     &:active,
+    //     &:focus {
+    //         color: rgba(255, 255, 255, 1);
+    //         background-color: @colorBlueLight;
+
+    //         &.red {
+    //             background-color: @colorRedLight;
+    //         }
+
+    //         &.green {
+    //             background-color: @colorGreenLight;
+    //         }
+
+    //         &.blue {
+    //             background-color: @colorBlueLight
+    //         }
+    //     }
+    // }
+
+    // .standard-input {
+    //     .inline-div;
+    //     .standard-font;
+    //     .remove-effects;
+    //     .transitions;
+    //     max-width: 100%;
+    //     padding: 10px;
+    //     box-sizing: border-box;
+    //     color: rgba(123, 123, 123, 1);
+    //     border: 1px solid rgba(221, 221, 221, 1);
+    //     background-color: rgba(255, 255, 255, 1);
+    //     border-radius: 2px;
+    //     box-shadow: 0px 2px 3px 0px rgba(221, 221, 221, 1) inset;
+    //     text-align: left;
+
+    //     &[disabled="disabled"] {
+    //         color: rgba(153, 153, 153, 1);
+    //         background-color: rgba(245, 245, 245, 1);
+    //     }
+
+    //     &.error {
+    //         border: 2px solid @colorRed;
+    //     }
+    // }
+
+    .standard-select {
+        .standard-input;
+        box-shadow: none;
+        border: 5px solid green;
+    }
+
+    .input-error {
+        border: 1px solid @colorRed;
+    }
+
+    select,
+    input[type="text"],
+    input[type="password"] {
+        .standard-input;
+
+        &.has-error {
+            .input-error;
+        }
+    }
+
+    .within {
+        .group {
+            .mechanic-profile {
+                .standard-div;
+
+                .grouping {
+                    .standard-div;
+
+                    .section {
+                        .standard-div;
+
+                        .section-heading {
+                            .standard-div;
+                            margin-top: 5px;
+                            margin-bottom: 5px;
+
+                            h3 {
+                                .standard-font;
+
+                                color: @standardFontColor;
+                                font-size: 20px;
+                                line-height: 25px;
+                            }
+                        }
+
+                        .section-formbox {
+                            .standard-div;
+                            padding-top: 20px;
+                            padding-bottom: 20px;
+                            box-sizing: border-box;
+
+                            &.mechanic-formbox {
+                                .mechanic-type {
+                                    .standard-div;
+                                    text-align: center;
+
+                                    label {
+                                        .inline-div;
+                                        .standard-font;
+                                    }
+                                }
+
+                                .vehicle-experience {
+                                    .standard-div;
+
+                                    .country {
+                                        .standard-div;
+
+                                        label {
+                                            .inline-div;
+                                            .standard-font;
+                                        }
+                                    }
+
+                                    .make-boxes {
+                                        .standard-div;
+
+                                        .country-heading {
+                                            .standard-div;
+                                            .standard-font;
+                                            font-size: 15px;
+                                            font-weight: bold;
+                                            line-height: 18px;
+                                            margin-bottom: 5px;
+                                            margin-top: 20px;
+                                        }
+                                    }
+                                }
+
+                                .mechanic-specialities,
+                                .vehicle-makes {
+                                    .standard-div;
+                                    text-align: center;
+                                    margin-top: 15px;
+
+                                    .specialties-list,
+                                    .makes-list {
+                                        .standard-div;
+                                        max-height: 275px;
+                                        overflow-y: auto;
+
+                                        .specialty-box,
+                                        .make-box {
+                                            .inline-div;
+                                            width: 100%;
+                                            text-align: left;
+
+                                            @media only screen and(min-width: @screenSM) {
+                                                width: 45%;
+                                            }
+
+                                            @media only screen and (min-width: @screenMD) {
+                                                width: 45%;
+                                            }
+
+                                            @media only screen and (min-width: 1000px) {
+                                                width: 30%;
+                                            }
+
+                                            label {
+                                                .inline-div;
+                                                .standard-font;
+                                            }
+
+                                            input[type="checkbox"] {
+                                                vertical-align: middle;
+                                                border: 5px solid green;
+                                            }
+                                        }
+
+                                        .add-specialty-box,
+                                        .add-make-box {
+                                            .standard-div;
+                                            .standard-font;
+                                            text-align: center;
+                                            margin-top: 10px;
+
+                                            @media only screen and (min-width: @screenMD) {
+                                                text-align: right;
+                                            }
+
+                                            label {
+                                                .inline-div;
+                                                .standard-font;
+                                            }
+                                        }
+                                    }
+
+                                    .specialties-listed,
+                                    .makes-listed {
+                                        .standard-div;
+
+                                        ul {
+                                            .standard-div;
+                                            width: 95%;
+                                            margin-left: 5%;
+                                            list-style-type: circle;
+
+                                            li {
+                                                text-align: left;
+                                                .standard-font;
+                                                padding: 5px;
+
+                                                a {
+                                                    .standard-link;
+
+                                                    &:link,
+                                                    &:visited {
+                                                        color: @colorRed;
+                                                    }
+
+                                                    &:hover,
+                                                    &:active,
+                                                    &:focus {
+                                                        color: @colorRedLight;
+                                                        border-bottom-color: @colorRedLight;
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+
+                                .mechanic-certifications {
+                                    .standard-div;
+
+                                    .show-if-certified {
+                                        .standard-div;
+                                        text-align: inherit;
+                                    }
+
+                                    .mechanic-certified,
+                                    .mechanic-certification {
+                                        .standard-div;
+                                        margin-top: 10px;
+                                        text-align: left;
+
+                                        @media screen and (min-width: @screenMD) {
+                                            // text-align: right;
+                                        }
+
+                                        label {
+                                            .inline-div;
+                                            .standard-font;
+                                            margin-right: 10px;
+                                        }
+
+                                        input[type="text"] {
+
+                                            width: 100%;
+                                            margin-top: 5px;
+
+                                            @media screen and (min-width: @screenMD) {
+                                                width: auto;
+                                                margin-top: 0px;
+                                            }
+                                        }
+                                    }
+
+                                    .warning-row {
+                                        .standard-div;
+                                        .standard-font;
+                                        color: @colorRed;
+                                        text-align: right;
+                                        margin-top: 10px;
+                                    }
+
+                                    .add-row {
+                                        // .standard-div;
+                                        .standard-font;
+                                        color: @colorRed;
+                                        // text-align: right;
+                                        margin-top: 10px;
+                                    }
+
+                                    .certifications-listed {
+                                        .standard-div;
+                                        margin-top: 15px;
+
+                                        ul {
+                                            .standard-div;
+                                            width: 95%;
+                                            margin-left: 5%;
+                                            list-style-type: circle;
+
+                                            li {
+                                                text-align: left;
+                                                .standard-font;
+                                                padding: 5px;
+
+                                                a {
+                                                    .standard-link;
+
+                                                    &:link,
+                                                    &:visited {
+                                                        color: @colorRed;
+                                                    }
+
+                                                    &:hover,
+                                                    &:active,
+                                                    &:focus {
+                                                        color: @colorRedLight;
+                                                        border-bottom-color: @colorRedLight;
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+
+                                    .certification-listings {
+                                        .standard-div;
+                                        margin-top: 10px;
+
+                                        .certification-listed {
+                                            .standard-div;
+                                            background-color: rgba(255, 255, 255, 1);
+                                            border: 1px solid rgba(222, 222, 222, 1);
+                                            box-sizing: border-box;
+                                            padding: 10px;
+                                            margin-top: 10px;
+
+                                            &:first-child {
+                                                margin-top: 0px;
+                                            }
+
+                                            .certification-listing {
+                                                .standard-div;
+                                                .standard-font;
+                                                margin-top: 5px;
+
+                                                &.button-listing {
+                                                    text-align: right;
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+
+                                .hours-of-operation {
+                                    .standard-div;
+
+                                    .custom-hours {
+                                        .standard-div;
+                                        margin-top: 10px;
+
+                                        .hours-selectors {
+                                            .standard-div;
+                                            margin-bottom: 10px;
+
+                                            label {
+                                                margin-top: 10px;
+                                                .inline-div;
+                                                .standard-font;
+                                                margin-right: 10px;
+                                            }
+
+                                            select {
+                                                margin-top: 10px;
+                                                margin-right: 10px;
+
+                                                &:last-child {
+                                                    margin-right: 0px;
+                                                }
+                                            }
+
+                                            a {
+                                                margin-top: 10px;
+                                            }
+                                        }
+
+                                        .hours-display {
+                                            .standard-div;
+                                            text-align: left;
+                                            box-sizing: border-box;
+                                            padding-left: 10px;
+                                            padding-bottom: 10px;
+
+                                            table {
+                                                float: left;
+                                                width: 100%;
+                                                max-width: 100%;
+                                                border: 0px;
+                                                cursor: default;
+                                                margin-top: 15px;
+
+                                                tr {
+                                                    td {
+                                                        font-family: @baseFonts;
+                                                        font-size: 13px;
+                                                        color: rgba(42, 53, 51, 1);
+                                                        text-align: center;
+
+                                                        border: 0px;
+                                                        border-top: 1px solid rgba(222, 222, 222, 1);
+
+                                                        padding-left: 5px;
+                                                        padding-right: 5px;
+                                                        padding-top: 10px;
+                                                        padding-bottom: 10px;
+
+                                                        background-color: rgba(255, 255, 255, 1);
+
+                                                        a.btn {
+                                                            &:link,
+                                                            &:visited {
+                                                                display: inline-block;
+                                                                padding: 5px;
+                                                                border-radius: 3px;
+
+                                                                font-family: @baseFonts;
+                                                                font-size: 13px;
+                                                                color: rgba(234, 234, 234, 1);
+                                                                text-align: center;
+
+                                                                background-color: rgba(7, 166, 244, 1);
+
+                                                                text-decoration: none;
+                                                                outline: none;
+                                                            }
+
+                                                            &:hover,
+                                                            &:active,
+                                                            &:focus {
+                                                                background-color: rgba(27, 186, 255, 1);
+                                                                color: rgba(255, 255, 255, 1);
+                                                            }
+                                                        }
+                                                    }
+
+                                                    &:first-child td {
+                                                        border-top: 0px;
+                                                    }
+
+                                                    &:last-child td {
+                                                        border-bottom: 1px solid rgba(222, 222, 222, 1);
+                                                    }
+
+                                                    &.colnames td {
+                                                        padding: 15px;
+                                                        font-weight: bold;
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+
+                                .diagnosis-process {
+                                    .standard-div;
+
+                                    @media only screen and (min-width: @screenLG) {
+                                        text-align: center;
+                                    }
+
+                                    .ask-if-diagnosis,
+                                    .does-diagnosis,
+                                    .waives-fee {
+                                        .inline-div;
+                                        float: left;
+                                        text-align: center;
+                                        margin-right: 30px;
+                                        margin-top: 10px;
+
+                                        &:last-child {
+                                            margin-right: 0px;
+                                        }
+
+                                        label {
+                                            .inline-div;
+                                            .standard-font;
+                                            margin-right: 5px;
+                                        }
+
+                                        select,
+                                        input[type="text"] {
+
+                                        }
+                                    }
+                                }
+
+                                .mechanic-experience,
+                                .mechanic-warranty,
+                                .mechanic-insurance,
+                                .experience-insurance {
+                                    .standard-div;
+
+                                    @media only screen and (min-width: @screenLG) {
+                                        text-align: center;
+                                    }
+
+                                    .inline-boxed {
+                                        .inline-div;
+                                        float: left;
+                                        margin-top: 10px;
+                                        margin-right: 30px;
+
+                                        &:last-child {
+                                            margin-right: 0px;
+                                        }
+
+                                        label {
+                                            .inline-div;
+                                            .standard-font;
+                                            margin-right: 5px;
+                                        }
+
+                                        select,
+                                        input[type="text"] {
+
+                                            width: auto;
+                                            margin-top: 0px;
+                                        }
+
+                                        input[type="text"] {
+                                            width: 50px;
+                                        }
+                                    }
+                                }
+
+                                .towing {
+                                    .standard-div;
+
+                                    .mechanic-tow {
+                                        .inline-div;
+                                        margin-top: 10px;
+                                    }
+
+                                    .mechanic-flatbed {
+                                        .inline-div;
+                                        margin-top: 10px;
+                                    }
+
+                                    label {
+                                        .inline-div;
+                                        .standard-font;
+                                    }
+
+                                    select {
+
+                                    }
+                                }
+
+                                .additional-information {
+                                    .standard-div;
+
+                                    textarea {
+                                        .standard-input;
+                                        width: 100%;
+                                        max-width: 100%;
+                                        min-width: 100%;
+                                        min-height: 150px;
+                                    }
+                                }
+
+                                .add-mechanic-photo {
+                                    .standard-div;
+
+                                    .add-photo-link {
+                                        .standard-div;
+                                        .standard-font;
+                                        font-weight: normal;
+                                        margin-bottom: 25px;
+
+                                        a {
+                                            .standard-link;
+                                            font-weight: bold;
+                                        }
+                                    }
+
+                                    .photo-list {
+                                        width: 90%;
+                                        display: block;
+                                        float: left;
+                                        margin-left: 5%;
+                                        margin-right: 5%;
+
+                                        .photo-boxes {
+                                            .standard-div;
+                                            .transitions;
+                                            padding: 15px;
+                                            box-sizing: border-box;
+                                            text-align: center;
+
+                                            background-color: transparent;
+                                            border: 2px dashed rgba(177, 177, 177, 1);
+
+                                            &.dragging {
+                                                background-color: rgba(214, 214, 214, 1);
+                                            }
+
+                                            .dragndrop {
+                                                .standard-div;
+                                                .standard-font;
+                                                .transitions;
+                                                line-height: 22px;
+                                                text-align: center;
+                                                cursor: default;
+                                                pointer-events: none;
+
+                                                a {
+                                                    .standard-link;
+                                                    line-height: 22px;
+                                                    pointer-events: all;
+                                                }
+                                            }
+                                        }
+
+                                        .picbox {
+                                            .inline-div;
+                                            position: relative;
+                                            max-width: 98%;
+                                            margin-left: 1%;
+                                            margin-right: 1%;
+                                            margin-top: 5px;
+                                            margin-bottom: 5px;
+                                            pointer-events: none;
+
+                                            .remove {
+                                                .transitions;
+                                                position: absolute;
+                                                z-index: 100;
+                                                display: block;
+                                                float: right;
+                                                top: 2px;
+                                                right: 2px;
+                                                min-width: 30px;
+                                                padding: 5px;
+                                                pointer-events: all;
+                                                text-align: center;
+
+                                                background-color: rgba(234, 234, 234, 1);
+                                                color: @standardFontColor;
+                                                border-bottom-left-radius: 1px;
+                                                font-family: @baseFonts;
+                                                font-size: 13px;
+                                                cursor: pointer;
+
+                                                &:hover,
+                                                &:focus,
+                                                &:active {
+                                                    background-color: @colorRed;
+                                                    color: rgba(255, 255, 255, 1);
+                                                }
+                                            }
+
+                                            img {
+                                                max-width: 100%;
+                                                max-height: 150px;
+
+                                                box-sizing: border-box;
+                                                border: 2px solid rgba(255, 255, 255, 1);
+                                                box-shadow: 0px 0px 3px 0px rgba(1, 1, 1, 1);
+                                            }
+
+                                            .add-btn {
+                                                width: 100%;
+                                                padding-top: 15px;
+                                                padding-bottom: 15px;
+                                                padding: 15px;
+                                                display: block;
+                                                box-sizing:  border-box;
+                                                color: rgba(177, 177, 177, 1);
+                                                font-family: @baseFonts;
+                                                font-size: 15px;
+                                                font-weight: normal;
+
+                                                background-color: rgba(255, 255, 255, 1);
+                                                border: 2px dashed rgba(177, 177, 177, 1);
+                                            }
+                                        }
+                                    }
+
+                                    .photo-add-error {
+                                        width: 100%;
+                                        display: block;
+                                        float: left;
+                                        padding-bottom: 20px;
+
+                                        color: @colorRed;
+                                        font-family: @baseFonts;
+                                        font-size: 13px;
+                                        line-height: 17px;
+                                        font-weight: normal;
+                                        text-align: center;
+                                    }
+                                }
+
+                                .left-side {
+                                    .inline-div;
+                                    float: left;
+                                    width: 100%;
+                                    padding: 20px;
+                                    text-align: left;
+                                    box-sizing: border-box;
+
+                                    @media only screen and (min-width: @screenMD) {
+                                        // width: 50%;
+                                        // text-align: right;
+                                    }
+                                }
+
+                                .right-side {
+                                    .inline-div;
+                                    float: left;
+                                    width: 100%;
+                                    padding: 20px;
+                                    text-align: left;
+                                    border: 1px solid rgba(214, 214, 214, 1);
+                                    background-color: rgba(242, 242, 242, 1);
+                                    box-sizing: border-box;
+                                }
+                            }
+
+                            .formbox-heading {
+                                .standard-div;
+                                margin-top: 15px;
+
+                                h4 {
+                                    .standard-font;
+                                    font-size: 17px;
+                                    font-weight: normal;
+                                    color: @standardFontColor;
+                                }
+                            }
+
+                            .formbox-textline {
+                                .standard-div;
+                                .standard-font;
+                                text-align: center;
+                                line-height: @standardFontSize + 5;
+                            }
+
+                            .formbox-spacer {
+                                .standard-div;
+                                height: 1px;
+                                margin-top: 15px;
+                                margin-bottom: 15px;
+                                background-color: rgba(214, 214, 214, 1);
+
+                                &.no-line {
+                                    background-color: transparent;
+                                }
+
+                                &.large-spacer {
+                                    margin-top: 25px;
+                                    margin-bottom: 25px;
+                                }
+                            }
+
+                            .formbox-buttons {
+                                .standard-div;
+                                text-align: right;
+
+                                // a.formbox-button {
+                                //     .inline-div;
+                                //     .transitions;
+                                //     .standard-font;
+                                //     .remove-effects;
+                                //     padding: 10px;
+                                //     padding-top: 11px;
+                                //     padding-bottom: 9px;
+                                //     margin-left: 5px;
+                                //     margin-right: 5px;
+                                //
+                                //     &:link,
+                                //     &:visited {
+                                //         color: rgba(234, 234, 234, 1);
+                                //         background-color: rgba(41, 41, 41, 1);
+                                //     }
+                                //
+                                //     &:hover,
+                                //     &:active,
+                                //     &:focus {
+                                //         cursor: pointer;
+                                //         color: rgba(255, 255, 255, 1);
+                                //         background-color: rgba(71, 71, 71, 1);
+                                //     }
+                                // }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

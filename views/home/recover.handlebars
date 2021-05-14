@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+    <head>
+	    {{>layouts/head}}
+
+        <script type="text/javascript">
+            {{#if key}}
+                var KEY = {{{json key}}};
+            {{else}}
+                var KEY = '';
+            {{/if}}
+        </script>
+        <script type="text/javascript" language="javascript" src="{{settings.static_path}}/js/recover.js"></script>
+    </head>
+
+    <body>
+        {{>layouts/navbar}}
+
+        {{#if err}}
+            <div class="recover">
+                <h1>Account Recovery Issues</h1>
+                <div class="spacer"></div>
+
+                <p>It looks like you may have an old link or there may have been
+	a glitch. Please try resetting your password again here:</p>
+
+                <div class="spacer"></div>
+
+                <div class="recover-centered">
+                    <div class="recover-content">
+                        <label for="recoverEmail">Enter your email: </label><br /><br />
+                        <input id="recoverEmail" type="email" placeholder="Email" />
+
+                        <div id="recoverStatus" class="reset-status">&nbsp;</div>
+
+                        <div class="recover-button-row">
+                            <a id="recoverSubmit" href="javascript:void(0);">Send Recovery Email</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="spacer"></div>
+
+                <p>If you continue to receive this error, please visit the <a href="/contact">contact</a> page to receive more assistance.</p>
+            </div>
+        {{else}}
+            <div class="recover">
+                <h1>Recover Your Account</h1>
+                <div class="spacer"></div>
+
+                <div class="recover-centered">
+                    <div id="resetContent" class="recover-content">
+                        <label for="resetEmail">Enter your email: </label><br /><br />
+                        <input id="resetEmail" type="email" placeholder="Email" /><br /><br /><br />
+
+                        <label for="resetPassword">Enter a new password: </label><br /><br />
+                        <input id="resetPassword" type="password" placeholder="Password" /><br /><br /><br />
+
+                        <label for="resetRepeat">Repeat your new password: </label><br /><br />
+                        <input id="resetRepeat" type="password" placeholder="Password" />
+
+                        <div id="resetStatus" class="reset-status">&nbsp;</div>
+
+                        <div class="recover-button-row">
+                            <a id="resetSubmit" href="javascript:void(0);">Reset My Password</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        {{/if}}
+
+
+        {{>layouts/footer}}
+        {{>layouts/analytics}}
+    </body>
+</html>

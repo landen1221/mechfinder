@@ -1,0 +1,48 @@
+<div id="cancel-confirmation">
+    You will cancel a milestone of:<br />
+     <h4>{{deccurrency c.charge.amount }} </h4>
+     That amount will be added to Owner's Mechfinder balance {{currency user.balance}}
+    <hr/>
+    <form id="form-cancel-confirmation" class="form-inline" method="post" action="/api/milestones/{{ c._id }}/cancel">
+        <div class="btn-group">
+            <input type="submit" value="Cancel Escrow" class="btn btn-success" />
+            <button class="btn" id="button-cancel-cancel">Cancel</button>
+        </div>
+        <div class="alert error" style="display: none;">
+            There was a problem completing this request.
+        </div>
+    </form>
+</div>
+
+<script type="text/javascript">
+jQuery(function($) {
+    $('#button-cancel-cancel').click(function() {
+        // NOTE: would be lovely to target just this popover
+        $('*[rel=popover][data-load]').popover('hide');
+        return false;
+    });
+    $('#form-cancel-confirmation').validate({
+        submitHandler: function(form) {
+            form = $(form);
+            form.ajaxSubmit({
+                success: function (data) {
+                    window.location = '/projects/' + data.number;
+
+                },
+                error: function (xhr, err) {
+                    form.find('.alert-error').show();
+                },
+                complete: function() {
+                    form.find(':input:not(:submit)').removeAttr('disabled');
+                    form.find(':submit').button('reset');
+                }
+            });
+            form.find('.alert').hide();
+            form.find(':input:not(:submit)').attr('disabled', 'disabled');
+            form.find(':submit').button('loading');
+            return false;
+        }
+    });
+
+});
+</script>

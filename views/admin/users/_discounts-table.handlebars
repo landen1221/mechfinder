@@ -1,0 +1,303 @@
+<script type="text/javascript">
+    var USER = {{#if user}}{{{json user}}}{{else}}null{{/if}};
+</script>
+
+<script type="text/javascript" src="/static/js/admin/user-discounts.js"></script>
+
+<div class="spacer sm"></div>
+
+<label for="discountName">Discount Name: </label>
+<input type="text" id="discountName" placeholder="Shows up on estimate modal" /><br /><br />
+
+
+<label for="discountNumber">Discount Amount: </label>
+<input id="discountNumber" type="text" placeholder="5" />
+<select id="discountUnit" value="$">
+    <option value="$" selected="selected">Dollars ($)</option>
+    <option value="%">Percent (%)</option>
+</select><br /><br />
+
+
+<label for="discountKind">Applies To: </label>
+<select id="discountKind">
+    <option value="" selected="selected">Diagnosis &amp; Workorder Jobs</option>
+    <option value="diagnosis">Diagnosis Jobs</option>
+    <option value="workorder">Workorder Jobs</option>
+</select>
+
+<label for="discountExpiration">Expires On: </label>
+<select id="discountExpMM" value="-1">
+    <option value="-1" selected="selected">MM</option>
+    <option value="0">1</option>
+    <option value="1">2</option>
+    <option value="2">3</option>
+    <option value="3">4</option>
+    <option value="4">5</option>
+    <option value="5">6</option>
+    <option value="6">7</option>
+    <option value="7">8</option>
+    <option value="8">9</option>
+    <option value="9">10</option>
+    <option value="10">11</option>
+    <option value="11">12</option>
+</select> / 
+<select id="discountExpDD" value="-1">
+    <option value="-1" selected="selected">DD</option>
+    <option value="1">1</option>
+    <option value="2">2</option>
+    <option value="3">3</option>
+    <option value="4">4</option>
+    <option value="5">5</option>
+    <option value="6">6</option>
+    <option value="7">7</option>
+    <option value="8">8</option>
+    <option value="9">9</option>
+    <option value="10">10</option>
+    <option value="11">11</option>
+    <option value="12">12</option>
+    <option value="13">13</option>
+    <option value="14">14</option>
+    <option value="15">15</option>
+    <option value="16">16</option>
+    <option value="17">17</option>
+    <option value="18">18</option>
+    <option value="19">19</option>
+    <option value="20">20</option>
+    <option value="21">21</option>
+    <option value="22">22</option>
+    <option value="23">23</option>
+    <option value="24">24</option>
+    <option value="25">25</option>
+    <option value="26">26</option>
+    <option value="27">27</option>
+    <option value="28">28</option>
+    <option value="29">29</option>
+    <option value="30">30</option>
+    <option value="31">31</option>
+</select> / 
+<select id="discountExpYYYY" value="-1">
+    <option value="-1" selected="selected">YYYY</option>
+    <option value="2016">2016</option>
+    <option value="2017">2017</option>
+    <option value="2018">2018</option>
+    <option value="2019">2019</option>
+    <option value="2020">2020</option>
+    <option value="2021">2021</option>
+    <option value="2022">2022</option>
+    <option value="2023">2023</option>
+    <option value="2024">2024</option>
+    <option value="2025">2025</option>
+    <option value="2026">2026</option>
+    <option value="2027">2027</option>
+    <option value="2028">2028</option>
+    <option value="2029">2029</option>
+    <option value="2030">2030</option>
+    <option value="2031">2031</option>
+    <option value="2032">2032</option>
+    <option value="2033">2033</option>
+    <option value="2034">2034</option>
+    <option value="2035">2035</option>
+    <option value="2036">2036</option>
+    <option value="2037">2037</option>
+    <option value="2038">2038</option>
+    <option value="2039">2039</option>
+    <option value="2040">2040</option>
+    <option value="2041">2041</option>
+    <option value="2042">2042</option>
+    <option value="2043">2043</option>
+    <option value="2044">2044</option>
+    <option value="2045">2045</option>
+    <option value="2046">2046</option>
+    <option value="2047">2047</option>
+    <option value="2048">2048</option>
+    <option value="2049">2049</option>
+    <option value="2050">2050</option>
+    <option value="2051">2051</option>
+    <option value="2052">2052</option>
+    <option value="2053">2053</option>
+    <option value="2054">2054</option>
+    <option value="2055">2055</option>
+    <option value="2056">2056</option>
+    <option value="2057">2057</option>
+    <option value="2058">2058</option>
+    <option value="2059">2059</option>
+    <option value="2060">2060</option>
+    <option value="2061">2061</option>
+    <option value="2062">2062</option>
+    <option value="2063">2063</option>
+    <option value="2064">2064</option>
+    <option value="2065">2065</option>
+    <option value="2066">2066</option>
+    <option value="2067">2067</option>
+    <option value="2068">2068</option>
+    <option value="2069">2069</option>
+    <option value="2070">2070</option>
+    <option value="2071">2071</option>
+    <option value="2072">2072</option>
+    <option value="2073">2073</option>
+    <option value="2074">2074</option>
+    <option value="2075">2075</option>
+    <option value="2076">2076</option>
+    <option value="2077">2077</option>
+    <option value="2078">2078</option>
+    <option value="2079">2079</option>
+    <option value="2080">2080</option>
+    <option value="2081">2081</option>
+    <option value="2082">2082</option>
+    <option value="2083">2083</option>
+    <option value="2084">2084</option>
+    <option value="2085">2085</option>
+    <option value="2086">2086</option>
+    <option value="2087">2087</option>
+    <option value="2088">2088</option>
+    <option value="2089">2089</option>
+    <option value="2090">2090</option>
+    <option value="2091">2091</option>
+    <option value="2092">2092</option>
+    <option value="2093">2093</option>
+    <option value="2094">2094</option>
+    <option value="2095">2095</option>
+    <option value="2096">2096</option>
+    <option value="2097">2097</option>
+    <option value="2098">2098</option>
+    <option value="2099">2099</option>
+</select><br /><br />
+
+<label for="discountUses">Maximum Uses: </label>
+<select id="discountUses" selected="selected">
+    <option value="0" selected="selected">Unlimited</option>
+    <option value="1">1</option>
+    <option value="2">2</option>
+    <option value="3">3</option>
+    <option value="4">4</option>
+    <option value="5">5</option>
+    <option value="6">6</option>
+    <option value="7">7</option>
+    <option value="8">8</option>
+    <option value="9">9</option>
+    <option value="10">10</option>
+    <option value="11">11</option>
+    <option value="12">12</option>
+    <option value="13">13</option>
+    <option value="14">14</option>
+    <option value="15">15</option>
+    <option value="16">16</option>
+    <option value="17">17</option>
+    <option value="18">18</option>
+    <option value="19">19</option>
+    <option value="20">20</option>
+    <option value="21">21</option>
+    <option value="22">22</option>
+    <option value="23">23</option>
+    <option value="24">24</option>
+    <option value="25">25</option>
+    <option value="26">26</option>
+    <option value="27">27</option>
+    <option value="28">28</option>
+    <option value="29">29</option>
+    <option value="30">30</option>
+    <option value="31">31</option>
+    <option value="32">32</option>
+    <option value="33">33</option>
+    <option value="34">34</option>
+    <option value="35">35</option>
+    <option value="36">36</option>
+    <option value="37">37</option>
+    <option value="38">38</option>
+    <option value="39">39</option>
+    <option value="40">40</option>
+    <option value="41">41</option>
+    <option value="42">42</option>
+    <option value="43">43</option>
+    <option value="44">44</option>
+    <option value="45">45</option>
+    <option value="46">46</option>
+    <option value="47">47</option>
+    <option value="48">48</option>
+    <option value="49">49</option>
+    <option value="50">50</option>
+    <option value="51">51</option>
+    <option value="52">52</option>
+    <option value="53">53</option>
+    <option value="54">54</option>
+    <option value="55">55</option>
+    <option value="56">56</option>
+    <option value="57">57</option>
+    <option value="58">58</option>
+    <option value="59">59</option>
+    <option value="60">60</option>
+    <option value="61">61</option>
+    <option value="62">62</option>
+    <option value="63">63</option>
+    <option value="64">64</option>
+    <option value="65">65</option>
+    <option value="66">66</option>
+    <option value="67">67</option>
+    <option value="68">68</option>
+    <option value="69">69</option>
+    <option value="70">70</option>
+    <option value="71">71</option>
+    <option value="72">72</option>
+    <option value="73">73</option>
+    <option value="74">74</option>
+    <option value="75">75</option>
+    <option value="76">76</option>
+    <option value="77">77</option>
+    <option value="78">78</option>
+    <option value="79">79</option>
+    <option value="80">80</option>
+    <option value="81">81</option>
+    <option value="82">82</option>
+    <option value="83">83</option>
+    <option value="84">84</option>
+    <option value="85">85</option>
+    <option value="86">86</option>
+    <option value="87">87</option>
+    <option value="88">88</option>
+    <option value="89">89</option>
+    <option value="90">90</option>
+    <option value="91">91</option>
+    <option value="92">92</option>
+    <option value="93">93</option>
+    <option value="94">94</option>
+    <option value="95">95</option>
+    <option value="96">96</option>
+    <option value="97">97</option>
+    <option value="98">98</option>
+    <option value="99">99</option>
+    <option value="100">100</option>
+</select>
+
+<br />
+<input id="addDiscount" type="button" value="Add Discount" />
+
+<div class="spacer sm"></div>
+
+<table class="admin-table">
+    <tr>
+        <th>Rate/Amount</th>
+        <th>Job Type</th>
+        <th>Applied</th>
+        <th>Expiration</th>
+        <th>Uses</th>
+        <th>Used</th>
+    </tr>
+    {{#each user.discounts}}
+        <tr>
+            <td>{{#if this.rate}}{{toPercentage this.rate}}{{else}}{{currency this.amount}}{{/if}}</td>
+            <td class="titlecase">{{#if this.kind}}{{this.kind}}{{else}}Diagnosis &amp; Workorder Jobs{{/if}}</td>
+            <td>{{date this.created}}</td>
+            <td>{{#if this.expiration}}{{date this.expiration}}{{else}}<em>N/A</em>{{/if}}</td>
+            <td>{{#if this.uses}}{{this.uses}}{{else}}Unlimited{{/if}}</td>
+            <td>{{this.used.length}} Times
+                {{#if this.used.length}}
+                    <br /><ul>
+                        {{#each this.used}}
+                            <li>{{date this}}</li>
+                        {{/each}}
+                    </ul>
+                {{/if}}
+            </td>
+        </tr>
+    {{/each}}
+</table>

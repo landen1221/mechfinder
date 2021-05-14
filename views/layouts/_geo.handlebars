@@ -1,0 +1,68 @@
+
+<div class="position btn-group">
+    <button class="btn btn-info position-refresh">
+        <span data-bind="geo.city">{{ geo.city }}</span>,
+        <span data-bind="geo.state">{{ geo.state }}</span>
+    </button>
+    <button
+        class="btn btn-info dropdown-toggle"
+        rel="popover"
+        data-load="/geo"
+        data-title="Update Your Location"
+        data-placement="bottom"
+    >
+        <span class="caret"></span>
+    </button>
+</div>
+
+<script type="text/javascript">
+var geo = {{ json geo }};
+function updateGeo(data) {
+    geo = data;
+    $('*[data-bind="geo.city"]').text(geo.city);
+    $('*[data-bind="geo.state"]').text(geo.state);
+    var locals = $('.local-mechanics');
+    if (locals.length > 0 && geo.postal) {
+        locals.data('postal', geo.postal);
+        locals.load('/mechanics/' + geo.postal);
+    }
+}
+function requestPosition(enableHighAccuracy, override, done, err) {
+    if (navigator.geolocation === undefined) { if (err) err(); }
+    if (override === null || override === undefined) { override = false; }
+    navigator.geolocation.getCurrentPosition(
+        function(data) {
+            $.ajax({
+                type: 'POST',
+                url: '/api/geo',
+                data: {
+                    latitude: data.coords.latitude,
+                    longitude: data.coords.longitude,
+                    source: 'browser',
+                    override: override
+                }
+            }).done(function(data) { 
+                updateGeo(data);
+                if (done) done();
+            }).error(err);
+        },
+        function(e) {
+            if (e.code == e.TIMEOUT && enableHighAccuracy == true)
+                requestPosition(false, override, done, err);
+            else if (err) err(e);
+        },
+        {
+            enableHighAccuracy: enableHighAccuracy,
+            timeout: 20*1024
+        }
+    );
+}
+jQuery(function($) {
+    // if (geo && (geo.source === undefined || geo.source == 'ip')) {
+    //     requestPosition(true, false, null, null);
+    // }
+    $('.position-refresh').click(function() {
+        requestPosition(true, true, null, null);
+    });
+});
+</script>

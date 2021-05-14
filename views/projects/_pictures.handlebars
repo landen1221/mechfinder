@@ -1,0 +1,103 @@
+<div id="project-picture-thumbnails" class="gallery-post form">
+    {{#each pictures}}
+    <a href="#" class="picture-thumbnail" data-image-id="{{this}}">
+        <img src="/i/{{this}}/152/140/i" alt="">
+        <input type="hidden" name="pictures" value="{{this}}">
+        <div>
+            <button class="btn">Delete</button>
+        </div>
+    </a>
+    {{/each}}
+    <a href="#"><img src="images/imgaddphoto.jpg" style="max-height: 86.7031px" alt="" /></i>
+        <div>
+            <button id="project-picture-picker" type="button" class="btn addphoto">Add Photo</button>
+        </div>
+    </a>
+</div>
+<div id="project-picture-viewer" class="modal hide fade viewer" role="dialog" style="width: 800px; height: 600px;">
+    <div id="project-picture-carousel" class="carousel slide" style="margin-bottom: 0;">
+        <div class="carousel-inner"></div>
+        <a class="carousel-control left" href="#project-picture-carousel" data-slide="prev">&lsaquo;</a>
+        <a class="carousel-control right" href="#project-picture-carousel" data-slide="next">&rsaquo;</a>
+    </div>
+</div>
+
+<script type="text/javascript">
+jQuery(function($) {
+    var $project_picture_picker = $('#project-picture-picker');
+    var $project_picture_thumbnails = $('#project-picture-thumbnails');
+    var $project_picture_carousel = $('#project-picture-carousel');
+    var profile_picture_uploader = new qq.FineUploaderBasic({
+        button: $project_picture_picker[0],
+        request: { endpoint: '/i' },
+        multiple: true,
+        validation: {
+            acceptFiles:     'image/*',
+            sizeLimit:    10*1024*1024, // 10 Mb
+            minSizeLimit:         1024  //  1 Kb
+        },
+        callbacks: {
+            onSubmit: function(id, filename) {
+                if ($project_picture_thumbnails.find('.picture-thumbnail').length > 8) return false;
+                $project_picture_thumbnails.append(
+                '<a href="#" class="picture-thumbnail" data-image-id="' + id + '">' +
+                    '<div>' +
+                        '<div class="progress"><div class="progress-bar" style="width: 0"></div></div>' +
+                    '</div>' +
+                '</a>'
+                );
+            },
+            onUpload: function(id, filename) {
+                var $pb = $project_picture_thumbnails.find('.picture-thumbnail[data-file-id="' + id + '"] .progress-bar');
+            },
+            onProgress: function(id, filename, uploaded, total) {
+                //console.log('id: ' + id + ', fn: ' + filename + ', up: ' + uploaded + ', total: ' + total);
+                var $pb = $project_picture_thumbnails.find('.picture-thumbnail[data-file-id="' + id + '"] .progress-bar');
+                var percent = Math.floor(100*uploaded/total);
+                $pb.css('width', percent + '%');
+                if (percent >= 99)
+                {
+                    $pb.addClass('progress-bar-striped');
+                }
+            },
+            onComplete: function(id, filename, data) {
+                var $thumb = $project_picture_thumbnails.find('.picture-thumbnail[data-file-id="' + id + '"]');
+                $thumb.data('image-id', data.id);
+                $thumb.empty();
+                $thumb.append(
+                    '<img src="/i/' + data.id + '/152/140/i"/>' +
+                    '<input type="hidden" name="pictures" value="' + data.id + '">' +
+                    '<div>' +
+                        '<button class="btn">Delete</button>' +
+                    '</div>'
+                );
+                $project_picture_carousel.find('.carousel-inner').empty();
+            }
+        }
+    });
+    $project_picture_thumbnails.find('button.btn').on('click', function() {
+        $(this).closest('.picture-thumbnail').remove();
+        $project_picture_carousel.find('.carousel-inner').empty();
+    });
+    $project_picture_thumbnails.find('.picture-thumbnail').on('click', function() {
+        var id = $(this).data('image-id');
+        var $items = $project_picture_carousel.find('.carousel-inner');
+        $items.find('.active').removeClass('active');
+        if ($items.find('*').length == 0)
+        {
+            $project_picture_thumbnails.$('img').each(function() {
+                var x = $(this).closest('.picture-thumbnail').data('image-id');
+                $items.append('<div class="item" data-image-id="' + x + '"><img src="/i/' + x + '/800/600/i"/></div>');
+            });
+        }
+        $items.find('.item[data-image-id="' + id + '"]').addClass('active');
+        $('#project-picture-viewer').modal();
+    });
+    $('#project-picture-viewer').click(function(e) {
+        if ($(e.target).is('.carousel-control')) return;
+        $('#project-picture-viewer').modal('hide');
+    });
+    $project_picture_carousel.carousel({interval: false});
+
+});
+</script>

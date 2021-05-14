@@ -1,0 +1,48 @@
+{
+  "name": "MechFinder",
+  "version": "0.46.11",
+  "private": true,
+  "main": "index.js",
+  "scripts": {
+    "start": "./node_modules/.bin/cake run",
+    "deploy": "pm2 deploy ecosystem.json development"
+  },
+  "dependencies": {
+    "async": "0.2.9",
+    "authy": "1.1.2",
+    "braintree": "1.31.0",
+    "coffee-script": "1.6.3",
+    "connect-redis": "3.0.2",
+    "csv": "0.3.5",
+    "express": "3.3.4",
+    "express-session": "1.12.1",
+    "fb": "0.7.3",
+    "handlebars": "1.0.12",
+    "html-entities": "1.2.0",
+    "humanize": "0.0.8",
+    "idp-facebook": "0.1.0",
+    "knox": "0.8.6",
+    "less": "1.4.2",
+    "markdown": "0.5.0",
+    "mime": "1.2.10",
+    "moment": "2.1.0",
+    "mongoose": "3.6.15",
+    "node-uuid": "1.4.0",
+    "nodemailer": "0.5.2",
+    "paypal-express-checkout-simple": "0.1.2",
+    "paypal-ipn": "3.0.0",
+    "paypal-rest-sdk": "1.5.2",
+    "redis": "2.4.2",
+    "sitemap": "0.6.0",
+    "socket.io": "1.4.8",
+    "stream-buffers": "0.2.5",
+    "stripe": "4.0.0",
+    "swagger-node-express": "2.1.3",
+    "uglify-js": "2.3.6",
+    "up": "",
+    "valid-url": "1.0.9"
+  },
+  "engines": {
+    "node": "4.2.2"
+  }
+}

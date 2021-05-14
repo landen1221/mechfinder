@@ -1,0 +1,422 @@
+/* diagnosis.css */
+
+
+
+.view-buyer-profile {
+    width: 100%;
+    display: block;
+    float: left;
+
+    @screenXS: 320px;
+    @screenSM: 480px;
+    @screenMD: 768px;
+    @screenLG: 992px;
+    @screenXL: 1200px;
+
+    @defaultColor: rgba(41, 41, 41, 1);
+    @grayTextColor: rgba(92, 92, 112, 1);
+    @headingColor: rgba(45, 62, 90, 1);
+    @linkColor: rgba(111, 138, 185, 1);
+    @linkColorHover: rgba(143, 177, 213, 1);
+
+    * {
+        margin: 0px auto;
+        padding: 0px;
+
+        outline: none;
+        text-decoration: none;
+    }
+
+    .standard-div {
+        width: 100%;
+        display: block;
+        float: left;
+        text-align: left;
+    }
+
+    .inline-div {
+        display: inline-block;
+    }
+
+    .transitions {
+        -moz-transition: all 300ms ease;
+        -ms-transition: all 300ms ease;
+        -o-transition: all 300ms ease;
+        transition: all 300ms ease;
+    }
+
+    .heading {
+        .standard-div;
+
+        h2 {
+            color: @headingColor;
+            font-family: @baseFonts;
+            font-size: 22px;
+            font-weight: normal;
+            line-height: 26px;
+            text-align: left;
+        }
+    }
+
+    .heading.topspaced {
+        margin-top: 25px;
+    }
+
+    .heading.underlined {
+        border-bottom: 1px solid @headingColor;
+    }
+
+    .toprow {
+        .standard-div;
+
+        .picside {
+            .standard-div;
+            .inline-div;
+
+            @media only screen and (min-width: @screenSM) {
+                max-width: 30%;
+                width: auto;
+            }
+
+            .pic {
+                .standard-div;
+
+                @media only screen and (min-width: @screenSM) {
+                    text-align: center;
+                }
+
+                .picframe {
+                    .inline-div;
+
+                    width: 65px;
+                    height: 65px;
+
+                    // this should be swapped out eventually with whatever profile image belongs to the user
+                    background-image: url('../img/personicon.png');
+                    background-size: cover;
+                    background-repeat: no-repeat;
+                    background-position: center;
+
+                    border: 2px solid rgba(166, 166, 166, 1);
+                    border-radius: 1px;
+                }
+            }
+
+            .favorite-message {
+                .standard-div;
+
+                margin-top: 7px;
+
+                @media only screen and (min-width: 480px) {
+                    text-align: center;
+                }
+
+                .favorite {
+                    .inline-div;
+
+                    a:link,
+                    a:visited {
+                        .standard-div;
+                        .transitions;
+
+                        width: auto;
+                        max-width: 100%;
+
+                        color: @linkColor;
+                        font-family: @baseFonts;
+                        font-size: 13px;
+                        font-weight: normal;
+                        line-height: 13px;
+
+                        text-decoration: none;
+                        background: white;
+                        padding: 4px;
+                        border-radius: 2px;
+                        box-sizing: border-box;
+                        background-color: rgba(244, 244, 244, 1);
+                        box-shadow: 0px 0px 3px -2px rgba(1, 1, 1, 1);
+                    }
+
+                    a:hover,
+                    a:active,
+                    a:focus {
+                        color: @linkColorHover;
+                        background-color: rgba(255, 255, 255, 1);
+                        box-shadow: 0px 0px 3px -2px @linkColorHover;
+                    }
+                }
+
+                .message {
+                    .inline-div;
+
+                    width: 22px;
+                    height: 19px;
+                }
+
+                .message .icon {
+                    .standard-div;
+                    .transitions;
+
+                    width: 22px;
+                    height: 15px;
+                    margin-top: 1px;
+
+                    background-image: url('../img/mail-icon.png');
+                    background-size: contain;
+                    background-position: center;
+                    background-repeat: no-repeat;
+                }
+
+                .message .icon:hover {
+                    cursor: pointer;
+                    background-image: url('../img/mail-icon-blue.png');
+                }
+            }
+
+        }
+
+        .infoside {
+            .standard-div;
+            .inline-div;
+
+            margin-top: 15px;
+
+            @media only screen and (min-width: @screenSM) {
+                width: 70%;
+                margin-top: 0px;
+            }
+
+            .buyerinfo {
+                .standard-div;
+                .inline-div;
+
+                color: @headingColor;
+                font-family: @baseFonts;
+                font-size: 20px;
+                font-weight: bold;
+                line-height: 24px;
+            }
+
+            .buyerinfo {
+                .standard-div;
+                .inline-div;
+
+                width: auto;
+
+                .info-row {
+                    .standard-div;
+                }
+
+                .info-col {
+                    .standard-div;
+                    .inline-div;
+
+                    width: auto;
+                    margin-right: 5px;
+                }
+
+                .info-col:last-child {
+                    margin-right: 0px;
+                }
+
+                .info-col .txt {
+                    .standard-div;
+
+                    width: auto;
+
+                    color: @grayTextColor;
+                    font-family: @baseFonts;
+                    font-size: 13px;
+                    font-weight: normal;
+                    line-height: 17px;
+                }
+
+                .info-col .txt.strong {
+                    font-weight: bold;
+                }
+            }
+        }
+    }
+
+    .projects {
+        .standard-div;
+
+        margin-top: 25px;
+
+        table {
+            tr {
+                td {
+                    .rating {
+                        .inline-div;
+
+                        text-align: center;
+
+                        .wrench {
+                            display: inline-block;
+                            width: 10px;
+                            height: 10px;
+                            margin: 1px;
+
+                            background-image: url('../img/mechanic-wrench-lightgray.png');
+                            background-size: contain;
+                            background-position: center;
+                            background-repeat: no-repeat;
+                        }
+
+                        .wrench.selected {
+                            background-image: url('../img/mechanic-wrench-black.png');
+                        }
+                    }
+
+                    .review {
+                        .standard-div;
+
+                        .customer {
+                            width: 100%;
+                            display: block;
+                            float: left;
+                            text-align: left;
+
+                            color: @defaultColor;
+                            font-family: @baseFonts;
+                            font-size: 14px;
+                            font-weight: bold;
+                            line-height: 18px;
+                        }
+
+                        .reviewtxt {
+                            width: 100%;
+                            display: block;
+                            float: left;
+                            text-align: left;
+                            margin-top: 10px;
+
+                            color: @defaultColor;
+                            font-family: @baseFonts;
+                            font-size: 14px;
+                            font-weight: normal;
+                            line-height: 18px;
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    table {
+        width: 100%;
+        float: left;
+        border: 0px;
+        cursor: default;
+    }
+
+    table tr td {
+        font-family: @baseFonts;
+        font-size: 13px;
+        color: rgba(42, 53, 51, 1);
+        text-align: center;
+
+        border: 0px;
+        border-top: 1px solid rgba(222, 222, 222, 1);
+
+        padding-left: 5px;
+        padding-right: 5px;
+        padding-top: 10px;
+        padding-bottom: 10px;
+
+        display: none;
+    }
+
+    table tr:first-child td {
+        border-top: 0px;
+    }
+
+    table tr:last-child td {
+        border-bottom: 1px solid rgba(222, 222, 222, 1);
+    }
+
+    table tr td.mobile-priority-1 {
+        display: table-cell;
+    }
+
+    table.override-mobile-priority tr td {
+        display: table-cell;
+    }
+
+    table tr.colnames td {
+        padding: 15px;
+        font-weight: bold;
+    }
+
+    table tr:nth-child(even) td {
+        background-color: rgba(251, 251, 251, 1);
+    }
+
+    table tr td a.btn:link,
+    table tr td a.btn:visited {
+        display: inline-block;
+        padding: 5px;
+        border-radius: 3px;
+
+        font-family: @baseFonts;
+        font-size: 13px;
+        color: rgba(234, 234, 234, 1);
+        text-align: center;
+
+        background-color: rgba(7, 166, 244, 1);
+
+        text-decoration: none;
+        outline: none;
+
+        -moz-transition: all 300ms ease;
+        -ms-transition: all 300ms ease;
+        -o-transition: all 300ms ease;
+        transition: all 300ms ease;
+    }
+
+    table tr td a.btn:hover,
+    table tr td a.btn:active,
+    table tr td a.btn:focus {
+        background-color: rgba(27, 186, 255, 1);
+        color: rgba(255, 255, 255, 1);
+    }
+
+
+    /* Custom, iPhone Retina */
+    @media only screen and (min-width : 320px) {
+
+    }
+
+    /* Extra Small Devices, Phones */
+    @media only screen and (min-width : 480px) {
+        table tr td.mobile-priority-2 {
+            display: table-cell;
+        }
+    }
+
+    /* Small Devices, Tablets */
+    @media only screen and (min-width : 768px) {
+        table tr td {
+            display: table-cell;
+        }
+    }
+
+    /* Medium Devices, Desktops */
+    @media only screen and (min-width : 992px) {
+
+    }
+
+    /* Large Devices, Wide Screens */
+    @media only screen and (min-width : 1200px) {
+
+    }
+
+}
+
+
+
+
+
+
+
+/* */

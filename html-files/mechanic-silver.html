@@ -1,0 +1,610 @@
+<!doctype html>
+<html>
+
+<head>
+    <!-- Meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <!-- Responsive -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <meta name="description" content="">
+    <meta name="author" content="MechFinder.com">
+    <meta name="keywords" content="">
+    <title>MechFinder</title>
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+    <!--CSS -->
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="css/bootstrap-datetimepicker.min.css">
+    <link rel="stylesheet" type="text/css" href="css/bootstrap-datepicker.css">
+    <link href="css/bootstrap-switch.css" rel="stylesheet">
+    <!-- Add custom CSS here -->
+    <link rel="stylesheet" type="text/css" href="css/custom.css">
+    <!-- Gallery -->
+    <link rel="stylesheet" type="text/css" href="plugins/gallery-slider/touchTouch.css">
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
+</head>
+
+<body>
+    <div class="top">
+        <div class="container">
+            <div class="header">
+                <div class="row">
+                    <div class="col-xs-12 col-sm-4">
+                        <a href="/"><img class="logo" src="images/logo.png" alt="logo_img"></a>
+                    </div>
+                    <div class="col-xs-12 col-sm-5">
+                    </div>
+                    <div class="col-xs-12 col-sm-3 customer">
+                        <div class="row">
+                            <div class="col-xs-12">
+                                <div class="image-panel">
+                                    <a href="#"><img class="img-circle" src="http://lorempixel.com/50/50" alt="" /></a>
+                                </div>
+                                <div class="stars stars-customer">
+                                    <form action="test">
+                                        <input class="star star-5" id="star-5" type="radio" name="star">
+                                        <label class="star star-5" for="star-5"></label>
+                                        <input class="star star-4" id="star-4" type="radio" name="star">
+                                        <label class="star star-4" for="star-4"></label>
+                                        <input class="star star-3" id="star-3" type="radio" name="star">
+                                        <label class="star star-3" for="star-3"></label>
+                                        <input class="star star-2" id="star-2" type="radio" name="star">
+                                        <label class="star star-2" for="star-2"></label>
+                                        <input class="star star-1" id="star-1" type="radio" name="star">
+                                        <label class="star star-1" for="star-1"></label>
+                                    </form>
+                                </div>
+                                <div class="customer-name-panel">
+                                    <p class="name-customer">Alex Siminitzki</p>
+                                    <div class="btn-group">
+                                        <button type="button" class="customer-menu dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><span class="caret"></span></button>
+                                        <ul class="dropdown-menu dropdown-menu-right" role="menu">
+                                            <li><a href="#"><span class="glyphicon glyphicon-cog"
+																		  aria-hidden="true"></span>My Account</a></li>
+                                            <li class="divider"></li>
+                                            <li><a href="#"><span class="glyphicon glyphicon-usd"
+																		  aria-hidden="true"></span>Accounting</a></li>
+                                            <li class="divider"></li>
+                                            <li><a href="#"><span class="glyphicon glyphicon-user"
+																		  aria-hidden="true"></span>Favorites</a></li>
+                                            <li class="divider"></li>
+                                            <li><a href="#"><span class="glyphicon glyphicon-log-out"
+																		  aria-hidden="true"></span>Log Out</a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <nav class="navbar navbar-default">
+        <div class="container">
+            <ul class="message-menu-max-left">
+                <li>
+                    <a href="#"><span class="glyphicon glyphicon-newmessages" aria-hidden="true"></span>New Messages</a>
+                    <button type="button" class="btn btn-default nav-circle-status">4</button>
+                </li>
+            </ul>
+            <div class="col-xs-12 col-super-0 col-sm-3"></div>
+            <div class="col-xs-12 col-super-9 col-sm-6">
+                <ul class="nav navbar-nav">
+                    <li class="displaydesktop">
+                        <a href="#"><span class="glyphicon glyphicon-newmessages" aria-hidden="true"></span>New Messages</a>
+                        <div class="btn btn-default nav-circle-status">4</div>
+                    </li>
+                    <li class="active"><a href="#">Find projects</a></li>
+                    <li><a href="#">Find Mechanic</a></li>
+                    <li><a href="#">Post project</a></li>
+                    <li>
+                        <a href="#">My projects
+								<div class="btn btn-default nav-circle-status">4</div>
+							</a>
+                    </li>
+                </ul>
+            </div>
+            <div class="col-xs-12 col-sm-3">
+                <form class="navbar-form navbar-left search" role="search">
+                    <div class="form-group">
+                        <button type="submit" class="glyphicon glyphicon-search"></button>
+                        <input type="text" class="form-control" placeholder="Project search...">
+                    </div>
+                </form>
+            </div>
+        </div>
+    </nav>
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12">
+                <div class="row">
+                    <div class="col-xs-12">
+                        <div class="info-page-content">
+                            <h1>Mechanic Profile</h1></div>
+                    </div>
+                    <div class="col-xs-12">
+                        <div class="row mB24 mobileMB0">
+                            <div class="col-xs-12 col-sm-5 col-md-4">
+                                <div class="customer-profile-new">
+                                    <div class="row">
+                                        <div class="col-xs-5">
+                                            <img class="img-profile silver" src="http://lorempixel.com/130/130/" alt="" />
+                                        </div>
+                                        <div class="col-xs-7">
+                                            <div class="user-profile-stars">
+                                                <form action="#">
+                                                    <label class="star-counter"> 24</label>
+                                                    <input class="star star-5" id="star-251" type="radio" name="star">
+                                                    <label class="star star-5" for="star-251"></label>
+                                                    <input class="star star-4" id="star-241" type="radio" name="star">
+                                                    <label class="star star-4" for="star-241"></label>
+                                                    <input class="star star-3" id="star-231" type="radio" name="star">
+                                                    <label class="star star-3" for="star-231"></label>
+                                                    <input class="star star-2" id="star-221" type="radio" name="star">
+                                                    <label class="star star-2" for="star-221"></label>
+                                                    <input class="star star-1" id="star-211" type="radio" name="star">
+                                                    <label class="star star-1" for="star-211"></label>
+                                                </form>
+                                            </div>
+                                            <h3>John Carter</h3>
+                                            <p id="customer-location">Apple Valley, NY</p>
+                                            <div class="contact-profile">
+                                                <button class="chat">CHAT</button>
+                                                <a class="msg" href="#"><img src="images/message.png" alt="" /></a>
+                                                <a class="user1" href="#"><img src="images/friends.png" alt="" /></a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-xs-12 col-sm-7 col-md-8">
+                                <div class="row user-details">
+                                    <div class="col-xs-12 col-md-6">
+                                        <p><strong>Company Name:</strong> John Carter</p>
+                                    </div>
+                                    <div class="col-xs-12 col-md-6">
+                                        <p><strong>Years in Business:</strong> 5</p>
+                                    </div>
+                                    <div class="col-xs-12 col-md-6">
+                                        <p><strong>Phone Number:</strong>
+                                            <button class="reveal">Reveal For $9.95</button>
+                                        </p>
+                                    </div>
+                                    <div class="col-xs-12 col-md-6">
+                                        <p><strong>Location:</strong>Mineapolis, MN 55401</p>
+                                    </div>
+                                    <div class="col-xs-12 col-md-6">
+                                        <p><strong>Education/Certification:</strong> ACE Master Mechanic</p>
+                                    </div>
+                                    <div class="col-xs-12 col-sm-6 col-md-3">
+                                        <p><strong>Graduated:</strong> 2008</p>
+                                    </div>
+                                    <div class="col-xs-12 col-sm-6 col-md-3">
+                                        <p><strong>From:</strong> Penn Foster</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-xs-12">
+                                <div class="row user-details2">
+                                    <div class="col-xs-12 col-sm-5 col-md-4">
+                                        <h2>Hours of operation</h2>
+                                        <div class="operation-hours table-responsive">
+                                            <table class="table table-striped">
+                                                <tbody>
+                                                    <tr>
+                                                        <th>Monday</th>
+                                                        <td>7:00am-8:00pm</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <th>Tuesday</th>
+                                                        <td>7:00am-8:00pm</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <th>Wednesday</th>
+                                                        <td>7:00am-8:00pm</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <th>Thursday</th>
+                                                        <td>7:00am-8:00pm</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <th>Friday</th>
+                                                        <td>7:00am-8:00pm</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <th>Saturday</th>
+                                                        <td>7:00am-8:00pm</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <!--<td style="border: none; background: #fff;">
+								<div class="edit" title="Edit" onclick=""><i class="fa fa-pencil"></i></div></td>
+							<td style="border: none; background: #fff;">
+								<div class="delete" title="Delete" onclick=""><i class="fa fa-trash"></i></div>
+							</td>-->
+                                                        <th>Sunday</th>
+                                                        <td>7:00am-8:00pm</td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                    <div class="col-xs-12 col-sm-7 col-md-8">
+                                        <h2>Mechanic Info</h2>
+                                        <p>body work needed done new headlight , grill , needs new hood , radiator is leaking please check the body work needed done new headlight , grill , needs new hood , radiator is leaking please check the
+                                        </p>
+                                        <h2>Specialization <span class="question-mark"><a href="#" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="Lorem ipsum dolor sit amet, consectetur adipiscing elit. In sed orci fringilla, consectetur eros ut, pharetra urna. Mauris non pharetra eros. Aenean malesuada ultricies massa, ac pulvinar nulla tempor iaculis. Fusce et quam orci. In malesuada posuere nulla eu ornare. Phasellus ac porttitor magna. Nullam efficitur ligula eget arcu sagittis, sit amet congue nisi aliquam." class="blue-tooltip">?</a></span></h2>
+                                        <div class="row mB24">
+                                            <div class="col-xs-12">
+                                                <ul class="chart-legend">
+                                                    <li>
+                                                        <label class="auto-repair"></label>
+                                                        <p>Auto repair</p>
+                                                    </li>
+                                                    <li>
+                                                        <label class="diagnostic"></label>
+                                                        <p>Diagnostic</p>
+                                                    </li>
+                                                    <li>
+                                                        <label class="auto-body"></label>
+                                                        <p>Body Work</p>
+                                                    </li>
+                                                    <li>
+                                                        <label class="electrical"></label>
+                                                        <p>Electrical</p>
+                                                    </li>
+                                                    <li>
+                                                        <label class="maintenance"></label>
+                                                        <p>Maintenance</p>
+                                                    </li>
+                                                    <li>
+                                                        <label class="restoration"></label>
+                                                        <p>Restoration Jobs</p>
+                                                    </li>
+                                                    <li>
+                                                        <label class="windows"></label>
+                                                        <p>Windows</p>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xs-12">
+                        <h2>Completed projects <span class="counter-title">24<span></h2>
+                        <div class="row">
+                            <div class="col-xs-12">
+                                <button href="" class="escrow button-post" style="float: right;">Rating of Customer</button>
+                            </div>
+                        </div>
+                        <div class="completed-projects">
+                            <div class="table-responsive">
+                                <table class="table table-striped">
+                                    <thead>
+                                        <tr>
+                                            <th></th>
+                                            <th>Project Name</th>
+                                            <th>Rating of Mechanic</th>
+                                            <th>Review</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td><a href="#" class="escrow">View</a></td>
+                                            <td>1995 dodge intrepid</td>
+                                            <td>
+                                                <div class="estimate-stats">
+                                                    <div class="row stars">
+                                                        <form action="2">
+                                                            <input class="star star-1" id="star-221112" type="radio" name="star">
+                                                            <label class="star star-1" for="star-221112"></label>
+                                                            <input class="star star-2" id="star-221312" type="radio" name="star">
+                                                            <label class="star star-2" for="star-221312"></label>
+                                                            <input class="star star-3" id="star-221512" type="radio" name="star">
+                                                            <label class="star star-3" for="star-221512"></label>
+                                                            <input class="star star-4" id="star-221612" type="radio" name="star">
+                                                            <label class="star star-4" for="star-221612"></label>
+                                                            <input class="star star-5" id="star-221912" type="radio" name="star">
+                                                            <label class="star star-5" for="star-221912"></label>
+                                                        </form>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                            <td><strong>Matt: </strong>
+                                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut leo justo, gravida nec ligula eget, suscipit sagittis erat. Quisque iaculis iaculis scelerisque. Curabitur eu ipsum rhoncus</p>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td><a href="#" class="escrow">View</a></td>
+                                            <td>2001 Mitsubishi I303</td>
+                                            <td>
+                                                <div class="estimate-stats">
+                                                    <div class="row stars">
+                                                        <form action="2">
+                                                            <input class="star star-1" id="star-221132" type="radio" name="star">
+                                                            <label class="star star-1" for="star-221132"></label>
+                                                            <input class="star star-2" id="star-221332" type="radio" name="star">
+                                                            <label class="star star-2" for="star-221332"></label>
+                                                            <input class="star star-3" id="star-221532" type="radio" name="star">
+                                                            <label class="star star-3" for="star-221532"></label>
+                                                            <input class="star star-4" id="star-221632" type="radio" name="star">
+                                                            <label class="star star-4" for="star-221632"></label>
+                                                            <input class="star star-5" id="star-221932" type="radio" name="star">
+                                                            <label class="star star-5" for="star-221932"></label>
+                                                        </form>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                            <td><strong>Matt: </strong>
+                                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut leo justo, gravida nec ligula eget, suscipit sagittis erat. Quisque iaculis iaculis scelerisque. Curabitur eu ipsum rhoncus</p>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td><a href="#" class="escrow">View</a></td>
+                                            <td>1995 dodge intrepid</td>
+                                            <td>
+                                                <div class="estimate-stats">
+                                                    <div class="row stars">
+                                                        <form action="2">
+                                                            <input class="star star-1" id="star-22113211" type="radio" name="star">
+                                                            <label class="star star-1" for="star-22113211"></label>
+                                                            <input class="star star-2" id="star-22133211" type="radio" name="star">
+                                                            <label class="star star-2" for="star-22133211"></label>
+                                                            <input class="star star-3" id="star-22153211" type="radio" name="star">
+                                                            <label class="star star-3" for="star-22153211"></label>
+                                                            <input class="star star-4" id="star-22163211" type="radio" name="star">
+                                                            <label class="star star-4" for="star-22163211"></label>
+                                                            <input class="star star-5" id="star-22193211" type="radio" name="star">
+                                                            <label class="star star-5" for="star-22193211"></label>
+                                                        </form>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                            <td><strong>Matt: </strong>
+                                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut leo justo, gravida nec ligula eget, suscipit sagittis erat. Quisque iaculis iaculis scelerisque. Curabitur eu ipsum rhoncus</p>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td><a href="#" class="escrow">View</a></td>
+                                            <td>2001 Mitsubishi I303</td>
+                                            <td>
+                                                <div class="estimate-stats">
+                                                    <div class="row stars">
+                                                        <form action="2">
+                                                            <input class="star star-1" id="star-221177" type="radio" name="star">
+                                                            <label class="star star-1" for="star-221177"></label>
+                                                            <input class="star star-2" id="star-221377" type="radio" name="star">
+                                                            <label class="star star-2" for="star-221377"></label>
+                                                            <input class="star star-3" id="star-221577" type="radio" name="star">
+                                                            <label class="star star-3" for="star-221577"></label>
+                                                            <input class="star star-4" id="star-221677" type="radio" name="star">
+                                                            <label class="star star-4" for="star-221677"></label>
+                                                            <input class="star star-5" id="star-221977" type="radio" name="star">
+                                                            <label class="star star-5" for="star-221977"></label>
+                                                        </form>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                            <td><strong>Matt: </strong>
+                                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut leo justo, gravida nec ligula eget, suscipit sagittis erat. Quisque iaculis iaculis scelerisque. Curabitur eu ipsum rhoncus</p>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td><a href="#" class="escrow">View</a></td>
+                                            <td>1995 dodge intrepid</td>
+                                            <td>
+                                                <div class="estimate-stats">
+                                                    <div class="row stars">
+                                                        <form action="2">
+                                                            <input class="star star-1" id="star-221188" type="radio" name="star">
+                                                            <label class="star star-1" for="star-221188"></label>
+                                                            <input class="star star-2" id="star-221388" type="radio" name="star">
+                                                            <label class="star star-2" for="star-221388"></label>
+                                                            <input class="star star-3" id="star-221588" type="radio" name="star">
+                                                            <label class="star star-3" for="star-221588"></label>
+                                                            <input class="star star-4" id="star-221688" type="radio" name="star">
+                                                            <label class="star star-4" for="star-221688"></label>
+                                                            <input class="star star-5" id="star-221988" type="radio" name="star">
+                                                            <label class="star star-5" for="star-221988"></label>
+                                                        </form>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                            <td><strong>Matt: </strong>
+                                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut leo justo, gravida nec ligula eget, suscipit sagittis erat. Quisque iaculis iaculis scelerisque. Curabitur eu ipsum rhoncus</p>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td><a href="#" class="escrow">View</a></td>
+                                            <td>2001 Mitsubishi I303</td>
+                                            <td>
+                                                <div class="estimate-stats">
+                                                    <div class="row stars">
+                                                        <form action="2">
+                                                            <input class="star star-1" id="star-221199" type="radio" name="star">
+                                                            <label class="star star-1" for="star-221199"></label>
+                                                            <input class="star star-2" id="star-221399" type="radio" name="star">
+                                                            <label class="star star-2" for="star-221399"></label>
+                                                            <input class="star star-3" id="star-221599" type="radio" name="star">
+                                                            <label class="star star-3" for="star-221599"></label>
+                                                            <input class="star star-4" id="star-221699" type="radio" name="star">
+                                                            <label class="star star-4" for="star-221699"></label>
+                                                            <input class="star star-5" id="star-221999" type="radio" name="star">
+                                                            <label class="star star-5" for="star-221999"></label>
+                                                        </form>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                            <td><strong>Matt: </strong>
+                                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut leo justo, gravida nec ligula eget, suscipit sagittis erat. Quisque iaculis iaculis scelerisque. Curabitur eu ipsum rhoncus</p>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                        <h2>Photos</h2>
+                        <div class="gallery">
+                            <a data-gal href="images/car1.jpg"><img src="images/car1.jpg" alt="" /></a>
+                            <a data-gal href="images/car2.jpg"><img src="images/car2.jpg" alt="" /></a>
+                            <a data-gal href="images/car1.jpg"><img src="images/car1.jpg" alt="" /></a>
+                            <a data-gal href="images/car2.jpg"><img src="images/car2.jpg" alt="" /></a>
+                            <a data-gal href="images/car1.jpg"><img src="images/car1.jpg" alt="" /></a>
+                            <a data-gal href="images/car2.jpg"><img src="images/car2.jpg" alt="" /></a>
+                            <a data-gal href="images/car1.jpg"><img src="images/car1.jpg" alt="" /></a>
+                            <a data-gal href="images/car2.jpg"><img src="images/car2.jpg" alt="" /></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+    <!--Project-Counter -->
+    <div class="counter">
+        <div class="container">
+            <div class="row">
+                <div class="col-xs-12 col-sm-4 total-users">
+                    <h1>Total Users</h1>
+                    <span>127,453</span>
+                </div>
+                <div class="col-xs-12 col-sm-4  total-projects">
+                    <h1>Total Projects</h1>
+                    <span>70,123</span>
+                </div>
+                <div class="col-xs-12 col-sm-4 total-mechanics">
+                    <h1>Total Mechanics</h1>
+                    <span>143,009</span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--Project-Counter-End-->
+    <div class="footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-xs-12 col-sm-3 navigation">
+                    <h1>Navigation</h1>
+                    <ul>
+                        <li><a href="#">Home</a></li>
+                        <li><a href="#">Find a Mechanic</a></li>
+                        <li><a href="#">Forum</a></li>
+                        <li><a href="#">Advertising</a></li>
+                        <li><a href="#">Careers</a></li>
+                        <li><a href="#">Articles</a></li>
+                        <li><a href="#">Contact MechFinder</a></li>
+                    </ul>
+                </div>
+                <div class="col-xs-12 col-sm-4 col-sm-offset-2">
+                    <h1>For Users</h1>
+                    <ul>
+                        <li><a href="#">Get Estimate</a></li>
+                        <li><a href="#">Testimonials</a></li>
+                        <li><a href="#">Sign In</a></li>
+                        <li><a href="#">Sign Up</a></li>
+                    </ul>
+                    <h1>Legal</h1>
+                    <ul>
+                        <li><a href="#">Terms and Conditions</a></li>
+                        <li><a href="#">Privacy Policy</a></li>
+                        <li><a href="#">Our Garantee</a></li>
+                        <li><a href="#">Repair Warranty</a></li>
+                    </ul>
+                </div>
+                <div class="col-xs-12 col-sm-3">
+                    <h1>Projects Near You</h1>
+                    <div class="row client-row">
+                        <div class="col-xs-2 col-sm-3 col-lg-2">
+                            <a href="#"><img class="img-circle" src="http://lorempixel.com/50/50" alt="" /></a>
+                            <label class="status-circle"></label>
+                        </div>
+                        <div class="col-xs-9 col-sm-8 col-lg-9 help">
+                            <a href="#"><span><strong>Chris - I Need Help</strong></span></a>
+                            <br> <span>Auto Repair, Apple Valley, MN</span>
+                        </div>
+                    </div>
+                    <div class="row client-row">
+                        <div class="col-xs-2 col-sm-3 col-lg-2">
+                            <a href="#"><img class="img-circle" src="http://lorempixel.com/50/50" alt="" /></a>
+                            <label class="status-circle status-circle-orange"></label>
+                        </div>
+                        <div class="col-xs-9 col-sm-8 col-lg-9 help">
+                            <a href="#"><span><strong>Chris - I Need Help</strong></span></a>
+                            <br> <span>Auto Repair, Apple Valley, MN</span>
+                        </div>
+                    </div>
+                    <div class="row client-row">
+                        <div class="col-xs-2 col-sm-3 col-lg-2">
+                            <a href="#"><img class="img-circle" src="http://lorempixel.com/50/50" alt="" /></a>
+                            <label class="status-circle status-circle-green "></label>
+                        </div>
+                        <div class="col-xs-9 col-sm-8 col-lg-9 help">
+                            <a href="#"><span><strong>Chris - I Need Help</strong></span></a>
+                            <br> <span>Auto Repair, Apple Valley, MN</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="footer-bottom">
+        <div class="container">
+            <div class="row">
+                <div class="col-xs-12 col-sm-6">
+                    <div class="copy">
+                        <span>&copy; 2015 <a href="#">Mechalance.com</a> All Rights Reserved.</span>
+                    </div>
+                </div>
+                <div class="col-xs-12 col-sm-6">
+                    <div class="social">
+                        <ul>
+                            <li>
+                                <a href="#" class="facebook"><img src="images/facebook.png" alt="" /></a>
+                            </li>
+                            <li>
+                                <a href="#" class="facebook"><img src="images/twitter.png" alt="" /></a>
+                            </li>
+                            <li>
+                                <a href="#" class="facebook"><img src="images/tumblr.png" alt="" /></a>
+                            </li>
+                            <li>
+                                <a href="#" class="facebook"><img src="images/gplus.png" alt="" /></a>
+                            </li>
+                        </ul>
+                    </div>
+                    <span class="follow hidden-xs">Follow Us:</span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+
+    <script src="js/shiv.v3.7.2.js"></script>
+    <script src="js/respond.v1.4.2.min.js"></script>
+    <![endif]-->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+    <script>
+    $.widget.bridge('uibutton', $.ui.button);
+    $.widget.bridge('uitooltip', $.ui.tooltip);
+    </script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/moment.js"></script>
+    <script src="js/customscript.js"></script>
+    <script src="js/Chart.js"></script>
+    <script src="js/bootstrap-datetimepicker.min.js"></script>
+    <script src="js/bootstrap-datepicker.js"></script>
+    <script src="plugins/gallery-slider/touchTouch.jquery.js"></script>
+    <script src="js/jquery.countdown.js"></script>
+    <script src="js/bootstrap-switch.js"></script>
+    <script src="js/custom.js"></script>
+</body>
+
+</html>

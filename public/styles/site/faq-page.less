@@ -1,0 +1,37 @@
+.faq-page {
+    .question {
+        background-color: #fafafa;
+        border-top: 1px solid gray;
+        border-bottom: 2px solid gray !important;
+        padding: 5px;
+    }
+    .answer {
+        padding: 20px;
+    }
+    .page-title {
+        padding-top: 100px;
+    }
+    .question {
+        cursor: pointer;
+    }
+    .answer {
+        display: none;
+    }
+    .answer.default {
+        display: block;
+    }
+    @-webkit-keyframes red-fade {
+        0% {background: rgb(255,255,255);}
+        80% {background: rgb(255,200,200)}
+    }
+    @keyframes red-fade {
+        0% {background: rgb(255,255,255);}
+        80% {background: rgb(255,200,200);}
+    }
+
+    .highlight {
+        -webkit-animation: red-fade 1s ease-in 1;
+        animation: red-fade 1s ease-in 1;
+        background: rgb(255,200,200);
+    }
+}

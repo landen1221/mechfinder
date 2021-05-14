@@ -1,0 +1,138 @@
+<style type="text/css">
+.image-picker
+{
+    padding: 0;
+    width: 161px;
+    height: 149px;
+    cursor: pointer;
+}
+.image-picker > i {
+    display: block;
+    width: 161px;
+    line-height: 149px;
+    text-align: center;
+    font-size: 80px;
+}
+.image-picker > .progress {
+    display: none;
+    margin-left: 20px;
+    margin-top: 70px;
+    width: 121px;
+}
+.image-picker > input[type='file'] { height: 149px; }
+.image-picker > .preview {
+     width: 161px;
+     height: 149px;
+     display: none;
+ }
+</style>
+
+<form class="form-horizontal" id="form-profile" method="post" action="/api/profile">
+
+    <ul class="nav nav-tabs">
+        {{#compare user.role to="seller"}}
+            <li><a href="#profile-mechanic" data-toggle="tab">Mechanic Info</a></li>
+        {{/compare}}
+        <li><a href="#profile-basic"    data-toggle="tab">Basic Info   </a></li>
+        <li><a href="#my-payments"    data-toggle="tab">Payment Methods </a></li>
+        <li><a href="#withdrawal"    data-toggle="tab">Withdraw Funds  </a></li>
+        <li><a href="#my-transactions"    data-toggle="tab">My Transactions  </a></li>
+        {{#compare user.role to="seller"}}
+        <li><a href="#profile-album"    data-toggle="tab">Photo Album  </a></li>
+        {{/compare}}
+    </ul>
+    <div class="tab-content">
+        {{#compare user.role to="seller"}}
+        <div class="tab-pane fade" id="profile-mechanic">{{> profile/mechanic }}</div>
+        {{/compare}}
+        <div class="tab-pane fade" id="profile-basic">   {{> profile/basic    }}</div>
+        <div class="tab-pane fade" id="profile-album">  {{> profile/album   }}</div>
+        <div class="tab-pane fade" id="withdrawal">  {{> profile/withdrawal   }}</div>
+        <div class="tab-pane fade" id="my-transactions">  {{> profile/transactions   }}</div>
+        <div class="tab-pane fade" id="my-payments">  {{> profile/payments   }}</div>
+     </div>
+
+
+    <div class="alert alert-error" style="display: none;">
+        <strong>Error Processing Request.</strong> We're sorry, but there was an error
+        processing your project update request. Please try again shortly, and if problems persist,
+        please contact us directly at info@mechfinder.com.
+    </div>
+
+</form>
+
+<script type="text/javascript">
+jQuery(function($) {
+
+    if (window.location.hash) {
+        setTimeout(function() {
+            $('#form-profile a[href="' + window.location.hash + '"]').tab('show');
+        }, 0);
+    }
+
+    var STATES = {{json states}};
+    $('#profile-country').change(function() {
+        $(this).closest('form').find('input[name="state"], input[name="city"], input[name="zip"]').val('');
+    });
+    $('#profile-state').typeahead({
+        source: function (query, next) {
+            var country = $('#profile-country').val();
+            if (STATES[country]) {
+                output = []
+                for (key in STATES[country]) {
+                    output.push(STATES[country][key]);
+                }
+                return output;
+            }
+        }
+    });
+    $('#profile-city').typeahead({
+        source: function(query, next) {
+            var country = $('#profile-country').val();
+            var state = $('#profile-state').val();
+            req = $.ajax({
+                type: 'get',
+                url: '/api/cities/' + country + '/' + state,
+                accept: 'application/json'
+            }).done(function(data) {
+                next(data);
+            });
+        }
+    });
+    $('#profile-picture-picker').imagePicker({scaling: 'o'});
+    $('#profile-album-picker').albumPicker({name: 'album'});
+    $('a[href="#profile-basic"]').tab('show');
+
+    var opts = {
+        errorElement: 'span',
+        errorClass: 'help-inline',
+        rules: {
+        },
+        messages: {
+            'first': '*',
+            'last': '*'
+        },
+        submitHandler: function(form) {
+            form = $(form);
+            form.ajaxSubmit({
+                success: function (data) {
+                    window.location = (data.role == 'buyer' ? '/Find-Mechanic' : '/projects');
+                },
+                error: function (xhr, err) {
+                    form.find('.alert-error').show();
+                },
+                complete: function() {
+                    form.find(':input:not(:submit)').removeAttr('disabled');
+                    form.find(':submit').button('reset');
+                }
+            });
+            form.find('.alert').hide();
+            form.find(':input:not(:submit)').attr('disabled', 'disabled');
+            form.find(':submit').button('loading');
+            return false;
+        }
+    };
+    $('#form-profile').validate(opts);
+
+});
+</script>

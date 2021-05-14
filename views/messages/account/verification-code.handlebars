@@ -1,0 +1,23 @@
+{{#if user}}
+
+
+
+<a href="{{profileHref}}"><img src="{{imageHref}}" alt="MechFinder Logo" title="MechFinder Logo" /></a>
+
+<p>{{user.first}},</p>
+
+<h2>Account Verification</h2>
+<p>{{user.first}}, we have received a request for an email verification code for a MechFinder account associated with this email address. Copy and paste this code into the box to verify your account: </p>
+
+<p>{{user.verification}}</p><br />
+
+<p>If you have received this message erroneously, please reply to this email to let us know so that we can resolve the issue as soon as possible.</p>
+
+<p>Thank you for using MechFinder,</p>
+
+<p>MechFinder Support Team</p>
+<p>contact.us@mechfinder.com</p>
+
+
+
+{{/if}}

@@ -1,0 +1,1531 @@
+/* signup.less */
+
+/* reset all browser-default padding and margins */
+* {
+    margin: 0px auto;
+    padding: 0px;
+}
+
+.signup {
+    @screenXS: 320px;
+    @screenSM: 480px;
+    @screenMD: 768px;
+    @screenLG: 992px;
+    @screenXL: 1200px;
+
+    @defaultColor: rgba(108, 108, 108, 1);
+    @defaultFontSize: 15px;
+    @defaultFontWeight: normal;
+    @defaultLineHeight: @defaultFontSize + 3;
+
+    @headingColor: rgba(41, 41, 41, 1);
+
+    @inputColor: rgba(138, 138, 138, 1);
+
+    @labelColor: rgba(108, 108, 108, 1);
+
+    @linkColor: rgba(169, 1, 1, 1);
+    @linkColorHover: rgba(199, 1, 1, 1);
+
+    @labelGray: rgba(108, 108, 108, 1);
+    @darkGray: rgba(41, 41, 41, 1);
+    @darkRed: rgba(171, 1, 1, 1);
+    @mainFont: @baseFonts;
+
+    .standard-div {
+        display: block;
+        float: left;
+        width: 100%;
+        text-align: left;
+        cursor: auto;
+    }
+
+    .inline-div {
+        display: inline-block;
+    }
+
+    .remove-defaults {
+        outline: none;
+        text-decoration: none;
+        -webkit-tap-highligh-color: transparent;
+    }
+
+    .transitions {
+        -moz-transition: all 300ms ease;
+        -ms-transition: all 300ms ease;
+        -o-transition: all 300ms ease;
+        transition: all 300ms ease;
+    }
+
+    .standard-background {
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: contain;
+    }
+
+    .standard-font {
+        color: @defaultColor;
+        font-family: @baseFonts;
+        font-size: @defaultFontSize;
+        font-weight: @defaultFontWeight;
+    }
+
+    .label-font {
+        .standard-font;
+        color: @labelColor;
+        font-weight: bold;
+    }
+
+    .input-font {
+        .standard-font;
+        color: @inputColor;
+    }
+
+    .input-box {
+        .input-font;
+        .remove-defaults;
+        .transitions;
+        .standard-input;
+
+        box-sizing: border-box;
+        background-color: rgba(252, 252, 252, 1);
+        border: 0px;
+        border-bottom: 1px solid transparent;
+        padding: 10px;
+        height: auto;
+
+        &:hover,
+        &:focus,
+        &:active {
+            background-color: rgba(255, 255, 255, 1);
+            border-bottom-color: @colorBlue;
+        }
+
+        &.has-error {
+            border: 1px solid @darkRed;
+        }
+
+        
+    }
+
+    .link-font {
+        .standard-font;
+
+        color: @linkColor;
+        font-weight: bold;
+    }
+
+    a.red-button {
+        .inline-div;
+        margin-left: 5px;
+        padding: 10px;
+        padding-top: 12px;
+        padding-bottom: 8px;
+        border-radius: 2px;
+        text-align: center;
+        box-sizing: border-box;
+
+        &:link,
+        &:visited {
+            .label-font;
+            .remove-defaults;
+            .transitions;
+
+            background-color: @darkRed;
+            color: rgba(245, 245, 245, 1);
+            font-weight: normal;
+        }
+
+        &:hover,
+        &:active,
+        &:focus {
+            color: rgba(255, 255, 255, 1);
+            background-color: rgba(199, 1, 1, 1);
+        }
+    }
+
+    input[type="checkbox"] {
+        vertical-align: middle;
+    }
+
+    .customer-content,
+    .mechanic-content {
+        .standard-div;
+
+        .grouping {
+            .standard-div;
+
+            .page-heading {
+                .standard-div;
+                margin-top: 55px;
+                margin-bottom: 55px;
+
+                h1 {
+                    .standard-font;
+                    color: @headingColor;
+                    font-size: 35px;
+                    line-height: 40px;
+                    text-align: center;
+                    font-weight: 500;
+                }
+            }
+
+            .disclaimer {
+                .standard-div;
+                .standard-font;
+                text-align: center;
+                margin-bottom: 55px;
+            }
+
+            .section-spacer {
+                .standard-div;
+                height: 55px;
+            }
+
+            .section {
+                .standard-div;
+                width: 90%;
+                margin-left: 5%;
+                margin-right: 5%;
+
+                .section-heading {
+                    .standard-div;
+                    margin-top: 5px;
+                    margin-bottom: 5px;
+
+                    h3 {
+                        .standard-font;
+
+                        color: @headingColor;
+                        font-size: 20px;
+                        line-height: 25px;
+                    }
+                }
+
+                .section-formbox {
+                    .standard-div;
+                    padding: 20px;
+                    box-sizing: border-box;
+                    background-color: rgba(238, 238, 238, 1);
+
+
+                    &.customer-formbox {
+                        .vehicle-profile {
+                            .standard-div;
+                            text-align: center;
+
+                            .vehicle-profile-box {
+                                .inline-div;
+                                width: 100%;
+                                max-width: 100%;
+                                padding: 15px;
+                                box-sizing: border-box;
+
+                                @media only screen and (min-width: @screenMD) {
+                                    width: 215px;
+                                }
+
+                                @media only screen and (min-width: @screenLG) {
+                                    width: 300px;
+                                }
+
+                                label {
+                                    .standard-div;
+                                    .label-font;
+
+                                    margin-bottom: 5px;
+                                }
+                                
+                                input[type="email"],
+                                input[type="text"], 
+                                select {
+                                    .input-box;
+                                    .transitions;
+                                    width: 100%;
+
+                                    &.error {
+                                        border: 2px solid @colorRed;
+                                    }
+                                }
+                            }
+                        }
+
+                        .project-information {
+                            .project-name {
+                                .standard-div;
+
+                                label {
+                                    .inline-div;
+                                    .label-font;
+                                    margin-right: 10px;
+                                }
+
+                                input[type="email"],
+                                input[type="text"] {
+                                    .input-box;
+                                    width: 100%;
+                                    margin-top: 5px;
+
+                                    @media only screen and (min-width: @screenMD) {
+                                        width: 50%;
+                                        margin-top: 0px;
+                                    }
+
+                                    &.error {
+                                        border: 2px solid @colorRed;
+                                    }
+                                }
+                            }
+
+                            .tow-preference-completion {
+                                .standard-div;
+
+                                .inline-box {
+                                    .inline-div;
+                                    width: 100%;
+                                    margin-top: 15px;
+
+                                    @media only screen and (min-width: @screenMD) {
+                                        width: auto;
+                                        margin-right: 20px;
+                                    }
+
+                                    label {
+                                        .inline-div;
+                                        .label-font;
+                                        margin-right: 15px;
+                                        margin-left: 5px;
+                                    }
+
+                                    select,
+                                    input[type="email"],
+                                    input[type="text"] {
+                                        .input-box;
+                                        border-radius: 0px;
+                                        max-width: 100%;
+                                        width: 100%;
+
+                                        @media only screen and (min-width: @screenMD) {
+                                            width: auto;
+                                        }
+
+                                        &.error {
+                                            border: 2px solid @colorRed;
+                                        }
+                                    }
+                                }
+                            }
+
+                            .diagnosis-type {
+                                .standard-div;
+
+                                .diagnosis-selection {
+                                    .standard-div;
+
+                                    label {
+                                        .inline-div;
+                                        .label-font;
+                                        margin-right: 10px;
+                                    }
+
+                                    select {
+                                        .input-box;
+                                        max-width: 100%;
+                                        width: 100%;
+
+                                        @media only screen and (min-width: @screenMD) {
+                                            width: auto;
+                                        }
+                                    }
+                                }
+
+                                .diagnosis-option {
+                                    .standard-div;
+                                    margin-top: 25px;
+
+                                    .problem-description {
+                                        .standard-div;
+                                        margin-top: 15px;
+
+                                        label {
+                                            .standard-div;
+                                            .label-font;
+                                            margin-bottom: 5px;
+                                        }
+
+                                        textarea {
+                                            .input-box;
+                                            .transitions;
+                                            width: 100%;
+                                            min-width: 100%;
+                                            max-width: 100%;
+                                            box-sizing: border-box;
+                                            min-height: 75px;
+
+                                            &.error {
+                                                border: 2px solid @colorRed;
+                                            }
+                                        }
+                                    }
+
+
+                                    .service-type,
+                                    .has-parts {
+                                        .standard-div;
+                                        margin-top: 15px;
+
+                                        label {
+                                            .inline-div;
+                                            .label-font;
+                                            margin-right: 10px;
+                                        }
+
+                                        select {
+                                            .input-box;
+                                            width: 100%;
+
+                                            @media only screen and (min-width: @screenMD) {
+                                                width: auto;
+                                            }
+                                        }
+                                    }
+
+                                    .acceptable-parts {
+                                        .standard-div;
+                                        margin-top: 15px;
+
+                                        .main-label {
+                                            .inline-div;
+                                            margin-top: 5px;
+                                        }
+
+                                        .part-options {
+                                            .inline-div;
+                                            margin-top: 5px;
+
+                                            .part-option {
+                                                .inline-div;
+                                                margin-top: 5px;
+                                            }
+                                        }
+
+                                        label {
+                                            .inline-div;
+                                            .label-font;
+                                            margin-right: 15px;
+                                            margin-left: 1px;
+                                        }
+                                    }
+                                }
+                            }
+
+                            .add-photo {
+                                .standard-div;
+
+                                .add-photo-link {
+                                    .standard-div;
+                                    .label-font;
+                                    font-weight: normal;
+                                    margin-bottom: 25px;
+
+                                    a {
+                                        .standard-font;
+                                        .remove-defaults;
+                                        .transitions;
+                                        font-weight: bold;
+
+                                        &:link,
+                                        &:visited {
+                                            color: @darkRed;
+                                            border-bottom: 1px solid transparent;
+                                        }
+
+                                        &:hover,
+                                        &:active,
+                                        &:focus {
+                                            color: rgba(199, 1, 1, 1);
+                                            border-bottom-color: rgba(199, 1, 1, 1);
+                                        }
+                                    }
+                                }
+
+                                .photo-list {
+                                    width: 90%;
+                                    display: block;
+                                    float: left;
+                                    margin-left: 5%;
+                                    margin-right: 5%;
+
+                                    .photo-boxes {
+                                        .standard-div;
+                                        .transitions;
+                                        padding: 15px;
+                                        box-sizing: border-box;
+                                        text-align: center;
+
+                                        background-color: transparent;
+                                        border: 2px dashed rgba(177, 177, 177, 1);
+
+                                        &.dragging {
+                                            background-color: rgba(214, 214, 214, 1);
+                                        }
+
+                                        .dragndrop {
+                                            .standard-div;
+                                            .standard-font;
+                                            .transitions;
+                                            line-height: 22px;
+                                            text-align: center;
+                                            cursor: default;
+                                            pointer-events: none;
+
+                                            a {
+                                                &:link,
+                                                &:visited {
+                                                    .standard-font;
+                                                    .transitions;
+                                                    .remove-defaults;
+                                                    color: @darkRed;
+                                                    font-weight:  bold;
+                                                	line-height: 22px;
+                                                    pointer-events: all;
+                                                    border-bottom: 1px solid transparent;
+                                                }
+
+                                                &:hover,
+                                                &:focus,
+                                                &:active {
+                                                    border-bottom-color: rgba(199, 1, 1, 1);
+                                                }
+                                            }
+                                        }
+                                    }
+
+                                    .picbox {
+                                        .inline-div;
+                                        position: relative;
+                                        max-width: 98%;
+                                        margin-left: 1%;
+                                        margin-right: 1%;
+                                        margin-top: 5px;
+                                        margin-bottom: 5px;
+                                        pointer-events: none;
+
+                                        .remove {
+                                            .transitions;
+                                            position: absolute;
+                                            z-index: 100;
+                                            display: block;
+                                            float: right;
+                                            top: 2px;
+                                            right: 2px;
+                                            min-width: 30px;
+                                            padding: 5px;
+                                            pointer-events: all;
+                                            text-align: center;
+
+                                            background-color: rgba(234, 234, 234, 1);
+                                            color: @darkGray;
+                                            border-bottom-left-radius: 1px;
+                                            font-family: @mainFont;
+                                            font-size: 13px;
+                                            cursor: pointer;
+
+                                            &:hover,
+                                            &:focus,
+                                            &:active {
+                                                background-color: @darkRed;
+                                                color: rgba(255, 255, 255, 1);
+                                            }
+                                        }
+
+                                        img {
+                                            max-width: 100%;
+                                            max-height: 150px;
+
+                                            box-sizing: border-box;
+                                            border: 2px solid rgba(255, 255, 255, 1);
+                                            box-shadow: 0px 0px 3px 0px rgba(1, 1, 1, 1);
+                                        }
+
+                                        .add-btn {
+                                            width: 100%;
+                                            padding-top: 15px;
+                                            padding-bottom: 15px;
+                                            padding: 15px;
+                                            display: block;
+                                            box-sizing:  border-box;
+                                            color: rgba(177, 177, 177, 1);
+                                            font-family: @mainFont;
+                                            font-size: 15px;
+                                            font-weight: normal;
+
+                                            background-color: rgba(255, 255, 255, 1);
+                                            border: 2px dashed rgba(177, 177, 177, 1);
+                                        }
+                                    }
+                                }
+
+                                .photo-add-error {
+                                    width: 100%;
+                                    display: block;
+                                    float: left;
+                                    padding-bottom: 20px;
+
+                                    color: @labelGray;
+                                    color: @darkRed;
+                                    font-family: @mainFont;
+                                    font-size: 13px;
+                                    line-height: 17px;
+                                    font-weight: normal;
+                                    text-align: center;
+                                }
+                            }
+                        }
+                    } // .customer-content .grouping .section .section-formbox.customer-formbox
+
+                    &.mechanic-formbox {
+                        .mechanic-type {
+                            .standard-div;
+                            text-align: center;
+
+                            label {
+                                .inline-div;
+                                .label-font;
+                                margin-right: 10px;
+                            }
+
+                            select {
+                                .input-box;
+                            }
+                        }
+
+                        .vehicle-experience {
+                            .standard-div;
+
+                            .country {
+                                .standard-div;
+
+                                label {
+                                    .inline-div;
+                                    .label-font;
+                                }
+
+                                select {
+                                    .input-box;
+                                }
+                            }
+
+                            .make-boxes {
+                                .standard-div;
+                                width: 95%;
+                                padding-right: 5%;
+
+                                .country-heading {
+                                    .standard-div;
+                                    .standard-font;
+                                    padding-bottom: 3px;
+                                    border-bottom: 1px solid rgba(219, 219, 219, 1);
+                                    font-size: 18px;
+                                    line-height: 21px;
+                                    font-weight: bold;
+                                    margin-bottom: 5px;
+                                    margin-top: 20px;
+                                }
+                            }
+                        }
+
+                        .mechanic-specialities,
+                        .vehicle-makes {
+                            .standard-div;
+                            text-align: center;
+                            margin-top: 15px;
+
+                            .specialties-list,
+                            .makes-list {
+                                .standard-div;
+                                max-height: 275px;
+                                overflow-y: auto;
+
+                                .specialty-box,
+                                .make-box {
+                                    .inline-div;
+                                    width: 100%;
+                                    text-align: left;
+
+                                    @media only screen and(min-width: @screenSM) {
+                                        width: 45%;
+                                    }
+
+                                    @media only screen and (min-width: @screenMD) {
+                                        width: 45%;
+                                    }
+
+                                    @media only screen and (min-width: @screenLG) {
+                                        width: 30%;
+                                    }
+
+                                    label {
+                                        .inline-div;
+                                        .label-font;
+                                    }
+                                }
+
+                                .add-specialty-box,
+                                .add-make-box {
+                                    .standard-div;
+                                    .standard-font;
+                                    text-align: center;
+                                    margin-top: 10px;
+
+                                    @media only screen and (min-width: @screenMD) {
+                                        text-align: right;
+                                    }
+
+                                    label {
+                                        .inline-div;
+                                        .label-font;
+                                        font-weight: normal;
+                                    }
+
+                                    a.red-button {
+                                        min-width: 85px;
+                                    }
+                                }
+                            }
+
+                            .specialties-listed,
+                            .makes-listed {
+                                .standard-div;
+
+                                ul {
+                                    .standard-div;
+                                    width: 95%;
+                                    margin-left: 5%;
+                                    list-style-type: circle;
+
+                                    li {
+                                        text-align: left;
+                                        .standard-font;
+                                        padding: 5px;
+
+                                        a {
+                                            .link-font;
+                                            .remove-defaults;
+                                            .transitions;
+                                            font-weight: normal;
+
+                                            &:link,
+                                            &:visited {
+                                                border-bottom: 1px solid transparent;
+                                            }
+
+                                            &:hover,
+                                            &:active,
+                                            &:focus {
+                                                color: @linkColorHover;
+                                                border-bottom-color: @linkColorHover;
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+
+                        .mechanic-certifications {
+                            .standard-div;
+
+                            .mechanic-certified,
+                            .show-if-certified {
+                                .standard-div;
+                                margin-top: 10px;
+                                text-align: left;
+
+                                @media screen and (min-width: @screenMD) {
+                                    text-align: right;
+                                }
+
+                                label {
+                                    .inline-div;
+                                    .label-font;
+                                    margin-right: 10px;
+                                }
+
+                                input[type="text"] {
+                                    .input-box;
+                                    width: 100%;
+                                    margin-top: 5px;
+
+                                    @media screen and (min-width: @screenMD) {
+                                        width: auto;
+                                        margin-top: 0px;
+                                    }
+
+                                    &.error {
+                                        border: 2px solid @colorRed;
+                                    }
+                                }
+
+                                select {
+                                    .input-box;
+                                }
+                            }
+
+                            .warning-row {
+                                .standard-div;
+                                .standard-font;
+                                color: @darkRed;
+                                text-align: right;
+                                margin-top: 10px;
+                            }
+
+                            .add-row {
+                                .standard-div;
+                                .standard-font;
+                                color: @darkRed;
+                                text-align: right;
+                                margin-top: 10px;
+                            }
+
+                            .certifications-listed {
+                                .standard-div;
+                                margin-top: 15px;
+
+                                ul {
+                                    .standard-div;
+                                    width: 95%;
+                                    margin-left: 5%;
+                                    list-style-type: circle;
+
+                                    li {
+                                        text-align: left;
+                                        .standard-font;
+                                        padding: 5px;
+
+                                        a {
+                                            .link-font;
+                                            .remove-defaults;
+                                            .transitions;
+                                            font-weight: normal;
+
+                                            &:link,
+                                            &:visited {
+                                                border-bottom: 1px solid transparent;
+                                            }
+
+                                            &:hover,
+                                            &:active,
+                                            &:focus {
+                                                color: @linkColorHover;
+                                                border-bottom-color: @linkColorHover;
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+
+                        .hours-of-operation {
+                            .standard-div;
+
+                            .custom-hours {
+                                .standard-div;
+                                margin-top: 10px;
+
+                                .hours-selectors {
+                                    .standard-div;
+                                    margin-bottom: 10px;
+
+                                    @media only screen and (min-width: @screenMD) {
+                                        .inline-div;
+                                        width: 59%;
+                                        margin-right: 1%;
+                                        text-align: right;
+                                    }
+
+                                    @media only screen and (min-width: @screenLG) {
+                                        width: 50%;
+                                    }
+
+                                    label {
+                                        .inline-div;
+                                        .label-font;
+                                        margin-right: 10px;
+                                        margin-top: 5px;
+
+                                        a {
+                                            .inline-div;
+                                            margin-left: 5px;
+                                            padding: 10px;
+                                            border-radius: 2px;
+
+                                            &:link,
+                                            &:visited {
+                                                .label-font;
+                                                .remove-defaults;
+                                                .transitions;
+
+                                                background-color: @darkRed;
+                                                color: rgba(245, 245, 245, 1);
+                                                font-weight: normal;
+                                            }
+
+                                            &:hover,
+                                            &:active,
+                                            &:focus {
+                                                color: rgba(255, 255, 255, 1);
+                                                background-color: rgba(199, 1, 1, 1);
+                                            }
+                                        }
+                                    }
+
+                                    select {
+                                        .input-box;
+                                        margin-right: 10px;
+                                        margin-top: 5px;
+
+                                        &:last-child {
+                                            margin-right: 0px;
+                                        }
+                                    }
+                                }
+
+                                .hours-display {
+                                    .standard-div;
+                                    text-align: left;
+                                    margin-top: 10px;
+
+                                    @media only screen and (min-width: @screenMD) {
+                                        .inline-div;
+                                        width: 40%;
+                                        margin-top: 0px;
+                                    }
+
+                                    table {
+                                        float: left;
+                                        width: 100%;
+                                        max-width: 100%;
+                                        border: 0px;
+                                        cursor: default;
+
+                                        tr {
+                                            td {
+                                                font-family: @mainFont;
+                                                font-size: 13px;
+                                                color: rgba(42, 53, 51, 1);
+                                                text-align: center;
+
+                                                border: 0px;
+                                                border-top: 1px solid rgba(222, 222, 222, 1);
+
+                                                padding-left: 5px;
+                                                padding-right: 5px;
+                                                padding-top: 10px;
+                                                padding-bottom: 10px;
+
+                                                background-color: rgba(255, 255, 255, 1);
+
+                                                a.btn {
+                                                    &:link,
+                                                    &:visited {
+                                                        display: inline-block;
+                                                        padding: 5px;
+                                                        border-radius: 3px;
+
+                                                        font-family: @mainFont;
+                                                        font-size: 13px;
+                                                        color: rgba(234, 234, 234, 1);
+                                                        text-align: center;
+
+                                                        background-color: rgba(169, 1, 1, 1);
+
+                                                        text-decoration: none;
+                                                        outline: none;
+                                                    }
+
+                                                    &:hover,
+                                                    &:active,
+                                                    &:focus {
+                                                        background-color: rgba(199, 1, 1, 1);
+                                                        color: rgba(255, 255, 255, 1);
+                                                    }
+                                                }
+                                            }
+
+                                            &:first-child td {
+                                                border-top: 0px;
+                                            }
+
+                                            &:last-child td {
+                                                border-bottom: 1px solid rgba(222, 222, 222, 1);
+                                            }
+
+                                            &.colnames td {
+                                                padding: 15px;
+                                                font-weight: bold;
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+
+                        .diagnosis-process {
+                            .standard-div;
+
+                            .ask-if-diagnosis,
+                            .does-diagnosis,
+                            .waives-fee {
+                                .inline-div;
+                                text-align: center;
+                                margin-right: 30px;
+                                margin-top: 10px;
+
+                                &:last-child {
+                                    margin-right: 0px;
+                                }
+
+                                label {
+                                    .inline-div;
+                                    .label-font;
+                                    margin-right: 5px;
+                                }
+
+                                select,
+                                input[type="text"] {
+                                    .input-box;
+
+                                    &.error {
+                                        border: 2px solid @colorRed;
+                                    }
+                                }
+                            }
+                        }
+
+                        .experience-insurance {
+                            .standard-div;
+
+                            .inline-boxed {
+                                .inline-div;
+                                margin-top: 10px;
+                                margin-right: 30px;
+
+                                &:last-child {
+                                    margin-right: 0px;
+                                }
+
+                                label {
+                                    .inline-div;
+                                    .label-font;
+                                    margin-right: 5px;
+                                }
+
+                                select,
+                                input[type="text"] {
+                                    .input-box;
+                                    width: auto;
+                                    margin-top: 0px;
+
+                                    &.error {
+                                        border: 2px solid @colorRed;
+                                    }
+                                }
+
+                                input[type="text"] {
+                                    width: 50px;
+
+                                    &.error {
+                                        border: 2px solid @colorRed;
+                                    }
+                                }
+                            }
+                        }
+
+                        .towing {
+                            .standard-div;
+
+                            .inline-div {
+                                margin-right: 10px;
+                                margin-top: 10px;
+
+                                &:last-child {
+                                    margin-right: 0px;
+                                }
+                            }
+
+                            label {
+                                .inline-div;
+                                .label-font;
+                            }
+
+                            select {
+                                .input-box;
+                            }
+                        }
+
+                        .additional-information {
+                            .standard-div;
+
+                            textarea {
+                                .input-box;
+                                width: 100%;
+
+                                &.error {
+                                    border: 2px solid @colorRed;
+                                }
+                            }
+                        }
+
+                        .add-mechanic-photo {
+                            .standard-div;
+
+                            .add-photo-link {
+                                .standard-div;
+                                .label-font;
+                                font-weight: normal;
+                                margin-bottom: 25px;
+
+                                a {
+                                    .standard-font;
+                                    .remove-defaults;
+                                    .transitions;
+                                    font-weight: bold;
+
+                                    &:link,
+                                    &:visited {
+                                        color: @darkRed;
+                                        border-bottom: 1px solid transparent;
+                                    }
+
+                                    &:hover,
+                                    &:active,
+                                    &:focus {
+                                        color: rgba(199, 1, 1, 1);
+                                        border-bottom-color: rgba(199, 1, 1, 1);
+                                    }
+                                }
+                            }
+
+                            .photo-list {
+                                width: 90%;
+                                display: block;
+                                float: left;
+                                margin-left: 5%;
+                                margin-right: 5%;
+
+                                .photo-boxes {
+                                    .standard-div;
+                                    .transitions;
+                                    padding: 15px;
+                                    box-sizing: border-box;
+                                    text-align: center;
+
+                                    background-color: transparent;
+                                    border: 2px dashed rgba(177, 177, 177, 1);
+
+                                    &.dragging {
+                                        background-color: rgba(214, 214, 214, 1);
+                                    }
+
+                                    .dragndrop {
+                                        .standard-div;
+                                        .standard-font;
+                                        .transitions;
+                                        line-height: 22px;
+                                        text-align: center;
+                                        cursor: default;
+                                        pointer-events: none;
+
+                                        a {
+                                            &:link,
+                                            &:visited {
+                                                .standard-font;
+                                                .transitions;
+                                                .remove-defaults;
+                                                color: @darkRed;
+                                                font-weight:  bold;
+                                                line-height: 22px;
+                                                pointer-events: all;
+                                                border-bottom: 1px solid transparent;
+                                            }
+
+                                            &:hover,
+                                            &:focus,
+                                            &:active {
+                                                border-bottom-color: rgba(199, 1, 1, 1);
+                                            }
+                                        }
+                                    }
+                                }
+
+                                .picbox {
+                                    .inline-div;
+                                    position: relative;
+                                    max-width: 98%;
+                                    margin-left: 1%;
+                                    margin-right: 1%;
+                                    margin-top: 5px;
+                                    margin-bottom: 5px;
+                                    pointer-events: none;
+
+                                    .remove {
+                                        .transitions;
+                                        position: absolute;
+                                        z-index: 100;
+                                        display: block;
+                                        float: right;
+                                        top: 2px;
+                                        right: 2px;
+                                        min-width: 30px;
+                                        padding: 5px;
+                                        pointer-events: all;
+                                        text-align: center;
+
+                                        background-color: rgba(234, 234, 234, 1);
+                                        color: @darkGray;
+                                        border-bottom-left-radius: 1px;
+                                        font-family: @mainFont;
+                                        font-size: 13px;
+                                        cursor: pointer;
+
+                                        &:hover,
+                                        &:focus,
+                                        &:active {
+                                            background-color: @darkRed;
+                                            color: rgba(255, 255, 255, 1);
+                                        }
+                                    }
+
+                                    img {
+                                        max-width: 100%;
+                                        max-height: 150px;
+
+                                        box-sizing: border-box;
+                                        border: 2px solid rgba(255, 255, 255, 1);
+                                        box-shadow: 0px 0px 3px 0px rgba(1, 1, 1, 1);
+                                    }
+
+                                    .add-btn {
+                                        width: 100%;
+                                        padding-top: 15px;
+                                        padding-bottom: 15px;
+                                        padding: 15px;
+                                        display: block;
+                                        box-sizing:  border-box;
+                                        color: rgba(177, 177, 177, 1);
+                                        font-family: @mainFont;
+                                        font-size: 15px;
+                                        font-weight: normal;
+
+                                        background-color: rgba(255, 255, 255, 1);
+                                        border: 2px dashed rgba(177, 177, 177, 1);
+                                    }
+                                }
+                            }
+
+                            .photo-add-error {
+                                width: 100%;
+                                display: block;
+                                float: left;
+                                padding-bottom: 20px;
+
+                                color: @labelGray;
+                                color: @darkRed;
+                                font-family: @mainFont;
+                                font-size: 13px;
+                                line-height: 17px;
+                                font-weight: normal;
+                                text-align: center;
+                            }
+                        }
+
+                        .left-side {
+                            .inline-div;
+                            float: left;
+                            width: 100%;
+                            padding: 20px;
+                            text-align: left;
+                            box-sizing: border-box;
+
+                            @media only screen and (min-width: @screenMD) {
+                                width: 50%;
+                                text-align: right;
+                                border-right: 1px solid rgba(214, 214, 214, 1);
+                            }
+                        }
+
+                        .right-side {
+                            .inline-div;
+                            float: left;
+                            width: 100%;
+                            padding: 20px;
+                            text-align: left;
+                            border: 1px solid rgba(214, 214, 214, 1);
+                            background-color: rgba(242, 242, 242, 1);
+                            box-sizing: border-box;
+
+                            @media only screen and (min-width: @screenMD) {
+                                width: 50%;
+                                border: 0px;
+                                text-align: right;
+                                background-color: transparent;
+                            }
+                        }
+                    }
+
+                    &.customer-formbox,
+                    &.mechanic-formbox {
+                        .map {
+                            .standard-div;
+                            height: 300px;
+                            max-height: 50vh;
+                            background-image: url('../img/preloader.gif');
+                            background-size: auto;
+                            background-position: center;
+                            background-repeat: no-repeat;
+                            box-sizing: border-box;
+                            border: 1px solid @colorGrayLight;
+                        }
+
+                        .hours {
+                            .service-hours {
+                                .standard-div;
+                                margin-top: 15px;
+
+                                label {
+                                    .inline-div;
+                                    .label-font;
+                                    margin-right: 10px;
+                                }
+
+                                select {
+                                    .input-box;
+                                    width: 100%;
+
+                                    @media only screen and (min-width: @screenMD) {
+                                        width: auto;
+                                    }
+                                }
+                            }
+
+                            .custom-hours {
+                                .standard-div;
+                                width: 95%;
+                                margin-left: 5%;
+                                margin-top: 10px;
+
+                                .hours-selectors {
+                                    .standard-div;
+                                    margin-bottom: 10px;
+
+                                    label {
+                                        .inline-div;
+                                        .label-font;
+                                        margin-right: 10px;
+                                        margin-top: 5px;
+
+                                        a {
+                                            .inline-div;
+                                            margin-left: 5px;
+                                            padding: 10px;
+                                            border-radius: 2px;
+
+                                            &:link,
+                                            &:visited {
+                                                .label-font;
+                                                .remove-defaults;
+                                                .transitions;
+
+                                                background-color: @darkRed;
+                                                color: rgba(245, 245, 245, 1);
+                                                font-weight: normal;
+                                            }
+
+                                            &:hover,
+                                            &:active,
+                                            &:focus {
+                                                color: rgba(255, 255, 255, 1);
+                                                background-color: rgba(199, 1, 1, 1);
+                                            }
+                                        }
+                                    }
+
+                                    select {
+                                        .input-box;
+                                        margin-right: 10px;
+                                        margin-top: 5px;
+
+                                        &:last-child {
+                                            margin-right: 0px;
+                                        }
+                                    }
+                                }
+
+                                .hours-display {
+                                    .standard-div;
+                                    text-align: left;
+                                    margin-top: 10px;
+
+                                    table {
+                                        float: left;
+                                        width: 100%;
+                                        max-width: 100%;
+                                        border: 0px;
+                                        cursor: default;
+                                        border: 0px;
+
+                                        @media only screen and (min-width: @screenMD) {
+                                            width: auto;
+                                            max-width: 95%;
+                                            margin-left: 5%;
+                                        }
+
+                                        tr {
+                                            td {
+                                                font-family: @mainFont;
+                                                font-size: 13px;
+                                                color: rgba(42, 53, 51, 1);
+                                                text-align: center;
+
+                                                border: 0px;
+                                                border-top: 1px solid rgba(222, 222, 222, 1);
+
+                                                padding-left: 5px;
+                                                padding-right: 5px;
+                                                padding-top: 10px;
+                                                padding-bottom: 10px;
+
+                                                background-color: rgba(255, 255, 255, 1);
+
+                                                a.btn {
+                                                    &:link,
+                                                    &:visited {
+                                                        display: inline-block;
+                                                        padding: 5px;
+                                                        border-radius: 3px;
+
+                                                        font-family: @mainFont;
+                                                        font-size: 13px;
+                                                        color: rgba(234, 234, 234, 1);
+                                                        text-align: center;
+
+                                                        background-color: rgba(7, 166, 244, 1);
+
+                                                        text-decoration: none;
+                                                        outline: none;
+                                                    }
+
+                                                    &:hover,
+                                                    &:active,
+                                                    &:focus {
+                                                        background-color: rgba(27, 186, 255, 1);
+                                                        color: rgba(255, 255, 255, 1);
+                                                    }
+                                                }
+                                            }
+
+                                            &:first-child td {
+                                                border-top: 0px;
+                                            }
+
+                                            &:last-child td {
+                                                border-bottom: 1px solid rgba(222, 222, 222, 1);
+                                            }
+
+                                            &.colnames td {
+                                                padding: 15px;
+                                                font-weight: bold;
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+
+                    .formbox-heading {
+                        .standard-div;
+                        margin-top: 15px;
+
+                         h4 {
+                             .standard-font;
+                             font-size: 17px;
+                             font-weight: normal;
+                             color: @headingColor;
+                         }
+                    }
+
+                    .formbox-textline {
+                        .standard-div;
+                        .standard-font;
+                        text-align: center;
+                        line-height: @defaultFontSize + 5;
+                    }
+
+                    .formbox-spacer {
+                        .standard-div;
+                        height: 1px;
+                        margin-top: 15px;
+                        margin-bottom: 15px;
+                        background-color: rgba(214, 214, 214, 1);
+
+                        &.no-line {
+                            background-color: transparent;
+                        }
+
+                        &.large-spacer {
+                            margin-top: 25px;
+                            margin-bottom: 25px;
+                        }
+                    }
+
+                    .formbox-buttons {
+                        .standard-div;
+                        text-align: right;
+
+                        label.status {
+                            .standard-font;
+                            .standard-div;
+                            text-align: right;
+                            margin-bottom: 10px;
+
+                            &.error {
+                                color: @colorRed;
+                            }
+                        }
+
+                        a.formbox-button {
+                            .inline-div;
+                            .transitions;
+                            .standard-font;
+                            .remove-defaults;
+                            padding: 10px;
+                            padding-top: 11px;
+                            padding-bottom: 9px;
+                            margin-left: 5px;
+                            margin-right: 5px;
+
+                            &:link,
+                            &:visited {
+                                color: rgba(234, 234, 234, 1);
+                                background-color: rgba(41, 41, 41, 1);
+                            }
+
+                            &:hover,
+                            &:active,
+                            &:focus {
+                                cursor: pointer;
+                                color: rgba(255, 255, 255, 1);
+                                background-color: rgba(71, 71, 71, 1);
+                            }
+                        }
+                    }
+                }
+            }
+
+            &.gray-grouping {
+                background-color: rgba(247, 247, 247, 1);
+            }
+        }
+    }
+} // .signup

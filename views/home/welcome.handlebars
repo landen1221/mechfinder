@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        {{>layouts/head}}
+    </head>
+
+    <body>
+        {{>layouts/navbar}}
+
+        <div class="main-home-page">
+            <div class="home-container customer-home-container">
+                <div class="mf-slider">                    
+                    <!--<div class="mf-slide-info">
+                        <div class="slide-info-centered">
+                            <div class="black-strip">Auto Repairs Just Got Easier</div>
+                            <div class="white-strip">
+                                <div class="white-left">Real estimates from real mechanics<br />for almost any job on any vehicle</span></div>
+                                <div class="white-right"><a href="/signup">Sign Up to Get Started</a></div>
+                            </div>
+                        </div>
+                    </div>-->
+                </div>
+                <div class="slide-overlay">
+                    <h1>Local Mechanics Compete; You Save!</h1></br>
+                    <h4><div class="box">Take the frustration out of auto repair.</div></h4></br>
+                    <a href="/signup" class="standard-button green">Get Started</a>
+                </div>
+
+                <div class="group">
+                    <div class="centered">
+                        <div class="inside">
+                            <div class="spacer"></div>
+                            <div class="seperator-title"><h1><span class="line">Customer Benefits</span></h1></div>
+                            <div class="spacer"></div>
+
+                            <div class="benefits">
+                                <div class="benefit">
+                                    <div class="icon"><img src="{{settings.static_path}}/img/save-money.png" alt="save money" title="Save Money" /></div>
+                                    <div class="title">Save Money</div>
+                                    <div class="text">Mechanics are competing for your business. Customers often save 50% or more.</div>
+                                </div>
+                                <div class="benefit">
+                                    <div class="icon"><img src="{{settings.static_path}}/img/simple-system.png" alt="save money" title="Save Money" /></div>
+                                    <div class="title">Simple System</div>
+                                    <div class="text">An easy to use process, regardless of how much you know about cars.</div>
+                                </div>
+                                <div class="benefit">
+                                    <div class="icon"><img src="{{settings.static_path}}/img/youre-in-control.png" alt="save money" title="Save Money" /></div>
+                                    <div class="title">You're In Control</div>
+                                    <div class="text">Compare personal estimates and experience for mobile mechanics and shops.</div>
+                                </div>
+                                <div class="benefit">
+                                    <div class="icon"><img src="{{settings.static_path}}/img/happiness-guaranteed.png" alt="save money" title="Save Money" /></div>
+                                    <div class="title">Happiness Guaranteed</div>
+                                    <div class="text">Work directly with your mechanic, not a front desk salesman.</div>
+                                </div>
+                            </div>
+                            <div class="spacer"></div>
+                            <div class="more-details"><a href="/customer/info/benefits">Learn More About All of the Customer Benefits</a></div>
+                            <div class="spacer"></div>
+                        </div>
+                    </div>
+                </div>
+
+                {{!--
+                <div class="group gray">
+                    <div class="centered">
+                        <div class="inside">
+                            <div class="spacer"></div>
+                            <div class="seperator-title"><h1><span class="line">Featured Testimonial</span></h1></div>
+                            <div class="spacer"></div>
+                            <div class="testimonial">
+                                <div class="testimonial-picture"><img src="{{settings.static_path}}/img/featured-testimonial-circle.png" /></div>
+                                <div class="testimonial-quote">
+                                    <div class="testimonial-text"><span class="quotation">&ldquo;</span>I really like using MechFinder.com for my mechanical needs, because they are extremely professional and are always on time. I would definitely recommend this website to my friends.<span class="quotation">&rdquo;</span></div>
+                                    <div class="testimonial-person">
+                                        <div class="testimonial-name">Sarah Crummer</div>
+                                        <div class="testimonial-location">Scottsdale, Arizona</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="spacer"></div>
+                        </div>
+                    </div>
+                </div>
+                --}}
+
+                <div class="group gray">
+                    <div class="centered">
+                        <div class="inside">
+                            <div class="spacer"></div>
+                            <div class="seperator-title"><h1><span class="line">How It Works</span></h1></div>
+                            <div class="spacer"></div>
+
+                            <div class="how-it-works">
+                                <div class="steps">
+                                    <div class="step-row">
+                                        <div class="step-col">
+                                            <div class="step-icon post"></div>
+                                            <div class="step-info">
+                                                <div class="step-heading">1. Post</div>
+                                                <div class="step-text">Tell mechanics what needs fixed or diagnosed. <a href="/signup">Sign Up</a></div>
+                                            </div>
+                                        </div>
+                                        <div class="step-col">
+                                            <div class="step-icon select"></div>
+                                            <div class="step-info">
+                                                <div class="step-heading">2. Select</div>
+                                                <div class="step-text">Compare prices, experience reviews and more to find your perfect mechanic.</div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="step-row">
+                                        <div class="step-col">
+                                            <div class="step-icon repair"></div>
+                                            <div class="step-info">
+                                                <div class="step-heading">3. Repair</div>
+                                                <div class="step-text">Let your personal mechanic do what he does best.</div>
+                                            </div>
+                                        </div>
+                                        <div class="step-col">
+                                            <div class="step-icon rate"></div>
+                                            <div class="step-info">
+                                                <div class="step-heading">4. Rate</div>
+                                                <div class="step-text">Rating mechanics helps future customers, and great mechanics grow their business.</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="more-details"><a href="/customer/info/howItWorks/">Learn More Details on How Mechfinder.com Works</a></div>
+                            </div>
+                            <div class="spacer"></div>
+                        </div>
+                    </div>
+                </div>                
+
+                {{!--
+                <div class="group gray">
+                    <div class="centered">
+                        <div class="inside">
+                            <div class="spacer"></div>
+                            <div class="seperator-title">
+                                <h1><span class="line">Mechanics Near You</span></h1></div>
+                            <div class="spacer"></div>
+
+                            <div class="mechanics-near-you">
+                                <div class="near-row">
+                                    <div class="near-col">
+                                        <div class="near-pic"></div>
+                                        <div class="near-info">
+                                            <div class="line">
+                                                <div class="username">Username</div>
+                                                <div class="ratings">
+                                                    <div class="wrench"></div>
+                                                    <div class="wrench"></div>
+                                                    <div class="wrench"></div>
+                                                    <div class="wrench"></div>
+                                                    <div class="wrench"></div>
+                                                </div>
+                                                <div class="type green">(Mechanic Shop)</div>
+                                            </div>
+                                            <div class="line">
+                                                <div class="lbl">Location: </div>
+                                                <div class="txt">Phoenix, AZ 85020 (10 Miles Away)</div>
+                                            </div>
+                                            <div class="line">
+                                                <div class="lbl">Experience: </div>
+                                                <div class="txt">Mercedes-Benz, Volvo, Toyota, Volkswagen, Ford, Nissan, Hyundai</div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="near-col">
+                                        <div class="near-pic"></div>
+                                        <div class="near-info">
+                                            <div class="line">
+                                                <div class="username">Username</div>
+                                                <div class="ratings">
+                                                    <div class="wrench"></div>
+                                                    <div class="wrench"></div>
+                                                    <div class="wrench"></div>
+                                                    <div class="wrench"></div>
+                                                    <div class="wrench"></div>
+                                                </div>
+                                                <div class="type green">(Mechanic Shop)</div>
+                                            </div>
+                                            <div class="line">
+                                                <div class="lbl">Location: </div>
+                                                <div class="txt">Phoenix, AZ 85020 (10 Miles Away)</div>
+                                            </div>
+                                            <div class="line">
+                                                <div class="lbl">Experience: </div>
+                                                <div class="txt">Mercedes-Benz, Volvo, Toyota, Volkswagen, Ford, Nissan, Hyundai</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="near-row">
+                                    <div class="near-col">
+                                        <div class="near-pic"></div>
+                                        <div class="near-info">
+                                            <div class="line">
+                                                <div class="username">Username</div>
+                                                <div class="ratings">
+                                                    <div class="wrench"></div>
+                                                    <div class="wrench"></div>
+                                                    <div class="wrench"></div>
+                                                    <div class="wrench"></div>
+                                                    <div class="wrench"></div>
+                                                </div>
+                                                <div class="type green">(Mechanic Shop)</div>
+                                            </div>
+                                            <div class="line">
+                                                <div class="lbl">Location: </div>
+                                                <div class="txt">Phoenix, AZ 85020 (10 Miles Away)</div>
+                                            </div>
+                                            <div class="line">
+                                                <div class="lbl">Experience: </div>
+                                                <div class="txt">Mercedes-Benz, Volvo, Toyota, Volkswagen, Ford, Nissan, Hyundai</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="spacer"></div>
+                        </div>
+                    </div>
+                </div>
+                --}}
+
+                <div class="group">
+                    <div class="centered">
+                        <div class="inside">
+                            <div class="spacer"></div>
+                            <div class="seperator-title">
+                                <h1><span class="line">You Are Protected</span></h1></div>
+                            <div class="spacer"></div>
+                            <div class="protected">
+                                <div class="col">
+                                    <div class="circle"><img src="{{settings.static_path}}/img/secure-payments.png" alt="Secure Payments" /></div>
+                                    <div class="info">
+                                        <div class="title">
+                                            <h3>Secure Payments</h3></div>
+                                        <div class="text">
+                                            <p>Payments made online. Money is securely held in escrow until you're satisfied. <a href="/customer/info/protection">Read More</a></p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col">
+                                    <div class="circle"><img src="{{settings.static_path}}/img/your-privacy.png" alt="Your Privacy" /></div>
+                                    <div class="info">
+                                        <div class="title">
+                                            <h3>Your Privacy</h3></div>
+                                        <div class="text">
+                                            <p>We sell auto repairs, not personal information. Rest assured, all data is secure.. <a href="/customer/info/protection">Read More</a></p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="spacer"></div>
+                        </div>
+                        <div class="spacer"></div>
+                        <div class="centered">
+                            <a href="/signup" class="standard-button green getstarted" style="margin-bottom: 20px;">Get Started</a></br>
+                        </div>
+                        <div class="spacer"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {{>layouts/footer}} {{>layouts/analytics}}
+    </body>
+
+</html>

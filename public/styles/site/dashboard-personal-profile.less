@@ -1,0 +1,87 @@
+.profile-picture {
+    .standard-div;
+    text-align: center;
+
+    .profile-picture-circle {
+        display: inline-block;
+        width: 75px;
+        height: 75px;
+        border-radius: 100%;
+        background-image: url("../img/customer-profile-pic.png");
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: center;
+        position: relative;
+        box-shadow: 1px 1px 7px rgba(0,0,0,0.35);
+        border: 1px solid @colorGrayLight;
+
+        &.mechanic-pic {
+            background-image: url("../img/mechanic-profile-pic.png");
+        }
+
+        .circle-overlay {
+            .transitions;
+            position: absolute;
+            top: 0px;
+            left: 0px;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(41, 41, 41, .5);
+            opacity: 0;
+            border-radius: 100%;
+            cursor: pointer;
+            background-image: url('../img/pencil-icon.png');
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: 16px 16px;
+        }
+
+        &:hover,
+        &:active,
+        &:focus,
+        &.dragging {
+            .circle-overlay {
+                opacity: 1;
+            }
+        }
+    }
+}
+
+.preferences-list {
+    .standard-div;
+    text-align: center;
+
+    ul {
+        display: inline-block;
+        max-width: 100%;
+        padding: 5px;
+        padding-left: 15px;
+        box-sizing: border-box;
+        text-align: left;
+
+        &.no-bullets {
+            list-style-type: none;
+        }
+
+        li {
+            .standard-font;
+            font-size: 15px;
+            line-height: 125%;
+
+            .preference {
+                .standard-div;
+                padding-top: 20px;
+                font-weight: bold;
+
+                input[type="checkbox"] {
+                    vertical-align: middle;
+                }
+            }
+
+            .description {
+                .standard-div;
+                padding-top: 5px;
+            }
+        }
+    }
+}

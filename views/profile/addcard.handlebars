@@ -1,0 +1,120 @@
+
+<div id="addcard-confirmation">
+    <b>Guarantee Your Repair Using <br> Our Secure Escrow System </b>
+    <hr/>
+ 
+
+
+
+    <form id="form-addcard-confirmation" class="form-inline" method="post" action="/api/profile/addcard">
+         <span class="payment-errors"></span>
+          <div class="form-row">
+            <label>
+              <input type="text" size="20" data-stripe="name"  placeholder="Name On Card"/>
+            </label>
+          </div>
+
+          <div class="form-row">
+            <label>
+              <input type="text" size="20" data-stripe="number"  placeholder="Card Number"/>
+            </label>
+          </div>
+          <div class="form-row">
+            <label>
+              <input type="text" size="20" data-stripe="cvc"  placeholder="Back 3 digits"/>
+            </label>
+          </div>
+            <div class="form-row">
+            <label>
+              <input type="text" size="20" data-stripe="address_zip"  placeholder="Zip Code"/>
+            </label>
+          </div>
+          <div class="form-row">
+            <label>
+              <input type="text" size="2" data-stripe="exp-month"   placeholder="MM"  class="input-small" />
+            </label>
+            <input type="text" size="4" data-stripe="exp-year"    placeholder="YYYY"  class="input-small"/>
+          </div>
+          <center>
+        </center>
+
+          <div style='display:none' id='tokenhirediv'>
+
+          </div>
+
+        <div class="btn-group">
+            <input type="submit" value="Add Card" class="btn btn-success" />
+            <button class="btn" id="button-addcard-cancel">Cancel</button>
+        </div>
+        <div class="alert error" style="display: none;">
+            There was a problem completing this request.
+        </div>
+    </form> 
+</div>
+
+<script type="text/javascript">
+
+jQuery(function($) {
+    $('#button-addcard-cancel').click(function() {
+        // NOTE: would be lovely to target just this popover
+        $('*[rel=popover][data-load]').popover('hide');
+        return false;
+    });
+  $('#form-addcard-confirmation').submit(function(event) {
+    var $form = $(this);
+    $form.find('.alert').hide();
+    $form.find(':submit').button('loading');
+
+
+    // Disable the submit button to prevent repeated clicks
+    //$form.find('button').prop('disabled', true);
+
+    Stripe.card.createToken($form, stripeResponseHandler);
+
+    // Prevent the form from submitting with the default action
+    return false;
+  });
+      console.log('{{p._id}}')
+
+function stripeResponseHandler(status, response) {
+  var $form = $('#form-addcard-confirmation');
+
+  if (response.error) {
+    // Show the errors on the form
+    $form.find('.alert-error').text(response.error.message);
+    $form.find('button').prop('disabled', false);
+    $form.find(':submit').button('reset');
+
+  } else {
+    // response contains id and card, which contains additional card details
+    var token = response.id;
+    // Insert the token into the form so it gets submitted to the server
+    $('#tokenhirediv').html($('<input type="hidden" name="stripeToken" />').val(token));
+    // and submit
+    $form.ajaxSubmit({
+        success: function (data) {
+
+              
+              window.location = '/profile'
+              
+
+        },
+        error: function (xhr, err) {
+            $form.find('.error').show(); 
+            $form.find(':input:not(:submit)').removeAttr('disabled');
+        },
+        complete: function() {
+            $form.find(':input:not(:submit)').removeAttr('disabled');
+            $form.find(':submit').button('reset');
+        }
+    });
+          
+  }
+};
+
+
+});
+
+
+
+</script>

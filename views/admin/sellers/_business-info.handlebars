@@ -1,0 +1,21 @@
+<p><strong>Offers Diagnosis</strong>: {{yesno user.offersDiagnosis}}</p><br />
+
+{{#if user.offersDiagnosis}}
+    <p><strong>Diagnosis Charge</strong>: {{currency user.diagnosisCharge}}</p><br />
+    <p><strong>Waives if Hired</strong>: {{yesno user.waivesDiagnosis}}</p><br />
+{{/if}}
+
+<p><strong>Offers Towing</strong>: {{yesno user.tows}}</p><br />
+
+{{#if user.tows}}
+    <p><strong>Has a Flatbed</strong>: {{yesno user.flatbed}}</p><br />
+{{/if}}
+
+<p><strong>Years of Experience</strong>: {{user.yearsOfExperience}}</p><br />
+
+<p><strong>Warranty on Labor</strong>: {{user.warranty.amount}} {{user.warranty.units}}</p><br />
+
+<p><strong>Insured</strong>: {{yesno user.insurance}}</p><br />
+
+<p><strong>Additional Information</strong>:</p>
+<p style="white-space: pre-wrap;">{{#if user.about}}{{{user.about}}}{{else}}<em>{{user.first}} has not filled this section out</em>{{/if}}</p>

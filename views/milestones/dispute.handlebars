@@ -1,0 +1,82 @@
+<div class="container1">
+      
+      <!--===============================================================
+                    Nav-Tabs Tab
+      ================================================================-->
+      
+
+  <ul class="nav nav-tabs">
+    <li class="active"><a href="#identify" data-toggle="tab" aria-expanded="true">Identify the Issue</a></li>
+    
+  </ul>
+  
+  <div id="myTabContent" class="tab-content">
+      
+    <!--===============================================================
+                  Identify the Issue Tab
+    ================================================================-->
+    
+    <div class="tab-pane fade active in" id="identify">
+      <form id="form-hire-confirmation"  method="post" action="/api/disputes">
+        <div class="tab-pane" id="tabsleft-tab1">
+          <h3>Identify the Issue</h3><br />
+          <ul class="stg-1">
+             <li><p>Most disputes are the result of a simple misunderstanding.</p></li>
+             <li><p>Our dispute resolution system is designed to allow both parties to resolve the issue amongst                themselves.</p></li>
+             <li><p>Most disputes are resolved without arbitration.</p></li>
+             <li><p>If an agreement cannot be reached, either party may elect to pay an arbitration fee for our             dispute team to resolve the matter.</p></li>
+          </ul>
+          <label>Select the Milestone You wish to Dispute</label>
+          <select class="form-control1" id="milestone" name="milestone">
+            {{#each charges }}
+            <option value="{{_id}}"
+            id="opt{{_id}}" data_amount='{{amount}}'
+            >{{charge.description}} {{deccurrency amount}}</option>
+            {{/each}}
+          </select><br />
+                   
+          <label>Describe the Dispute in Details</label><br />
+          <textarea class="form-control col-xs-12" name="incident.description"></textarea><br />
+          <!--<label>You may attach documents to support your case</label><br />
+          <span class="btn btn-warning btn-file">
+                Add Files <input type="file">
+          </span><br /><br />-->
+          <label>Total amount in dispute</label>
+          <div class="input-group">
+              <span class="input-group-addon">$</span>
+              <input type="text" id="amount" class="form-control1" readonly="true" name="incedint.amountdisputed">
+          </div><br>
+          <label>Amount you are ready to accept</label>
+          <div class="input-group">
+              <span class="input-group-addon">$</span>
+              <input type="text" class="form-control1"  name="incedint.amounttoaccept" id="amounttoaccept">
+          </div>
+         <!-- <p><em>Please make sure before offering the amount because you may decrease your offer in future but you may not increase it.</em></p><br/><br/>-->
+          <button type="submit" class=" btn btn-primary pull-right" id='disputebtn'>File New Dispute</button><br/><br/>
+        </div>
+      </form>
+    </div>
+  </div>
+</div><!--Container closed-->
+
+<script>
+jQuery(function($){
+  $("#amounttoaccept").change(function(){
+    var tA = $(this)
+    if(tA.val() > $("#amount").val())
+      $("#disputebtn").attr('disabled', 'disabled');
+    else
+      $("#disputebtn").removeAttr('disabled');
+  })
+  $("#milestone").change(function(){
+     $("#amount").val($('option:selected', this).attr('data_amount')/100);
+  });
+  $("#opt{{b}}").attr('SELECTED', true)
+  
+  $("#milestone").trigger('change');
+})
+</script>
+
+
+
+

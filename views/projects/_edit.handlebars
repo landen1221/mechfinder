@@ -1,0 +1,139 @@
+<form method="post" action="/api/project/{{ p._id }}" id="post-project" class="form-horizontal" style="display: none;">
+    {{ helper 'fields/text'     val=p.vehicle.make                label="Vehicle Make"        id="vehicle-make"             placeholder="Ford"          class="required" size="medium" }}
+    {{ helper 'fields/text'     val=p.vehicle.model               label="Vehicle Model"       id="vehicle-model"            placeholder="Focus"         class="required" size="medium" }}
+    {{ helper 'fields/text'     val=p.vehicle.year                label="Vehicle Year"        id="vehicle-year"             placeholder="2002"          class="required" size="mini"   }}
+            {{ helper 'fields/dropdown' label="Service"     id="buyer-vehicle"        name="repair"       class=""               size="medium" options=repairs}}
+
+    {{ helper 'fields/text'     val=p.phone                       label="Phone Number"        id="phone"                    placeholder="123-555-4567"  class=""         size="medium" }}
+    {{ helper 'fields/textarea' val=p.description                 label="Description"         id="description"              placeholder="My car keeps overheating afer I drive for about 20 minutes..."
+                                                                                                                      class="required" size="large" height="80px" }}
+
+    <div class="control-group">
+        <label class="control-label" for="project-picture-picker">Pictures</label>
+        <div class="controls">
+            {{#with p}}
+            {{>projects/pictures}}
+            {{/with}}
+        </div>
+    </div>
+    {{ helper 'fields/text'     val=p.budget_display              label="What is your max budget?" id="budget"              placeholder=" "             class=""         size="small" }}
+
+    {{ helper 'fields/yesno'    val=p.vehicle.drives              label="Do you have the parts?" id="vehicle-drives"                                  class="required"         }}
+
+    {{ helper 'fields/yesno'    val=p.vehicle.needs_tow           label="Do you need a tow truck?" id="vehicle-needs-tow"                               class="required"         }}
+
+    {{ helper 'fields/submit'   label="Update Project" class="btn-success" }}
+
+    <div class="alert alert-error" style="display: none;">
+        <strong>Error Processing Request.</strong> We're sorry, but there was an error
+        processing your project update request. Please try again shortly, and if problems persist,
+        please contact us directly at info@mechfinder.com.
+    </div>
+</form>
+
+<script type="text/javascript">
+jQuery(function($) {
+
+    var makes = {{json makes}};
+    var models = null;
+    var years = null;
+
+    $('#vehicle-make').change(function() { models = null; years = null; });
+    $('#vehicle-model').change(function() { years = null; });
+
+    $('#vehicle-make').typeahead({
+        source: function(query, next) {
+            if ($('#vehicle-type').val() == 'car' ||
+                $('#vehicle-type').val() == 'truck')
+            {
+                return makes;
+            }
+        }
+    });
+    $('#vehicle-model').typeahead({
+        source: function(query, next) {
+            if ($('#vehicle-type').val() != 'car' &&
+                $('#vehicle-type').val() != 'truck') return;
+            if (models) return models;
+            if ($('#vehicle-make').val())
+            {
+                $.ajax({
+                    type: 'GET',
+                    url: '/api/makes/' + $('#vehicle-make').val()
+                }).done(function(data) {
+                    models = data;
+                    next(data);
+                });
+            }
+        }
+    });
+    $('#vehicle-year').typeahead({
+        source: function(query, next) {
+            if ($('#vehicle-type').val() != 'car' &&
+                $('#vehicle-type').val() != 'truck') return;
+            if (years) return years;
+            if ($('#vehicle-make').val() && $('#vehicle-model').val())
+            {
+                $.ajax({
+                    type: 'GET',
+                    url: '/api/makes/' + $('#vehicle-make').val() + '/' + $('#vehicle-model').val()
+                }).done(function(data) {
+                    years = data;
+                    for (var i=0; i < years.length; i++)
+                    {
+                        years[i] = String(years[i]);
+                    }
+                    next(years);
+                });
+            }
+        }
+    });
+
+    $('#schedule-picker').datepicker();
+    $('#budget').blur(function() { $(this).formatCurrency(); });
+    $('#vehicle-year').blur(function() { $(this).toNumber(); });
+    $('#vehicle-mileage').blur(function() { $(this).formatCurrency({symbol: '', roundToDecimalPlace: 0}); });
+
+    var opts = {
+        errorElement: 'span',
+        errorClass: 'help-inline',
+        rules: {
+        },
+        messages: {
+            'vehicle_make': '*',
+            'vehicle_model': '*',
+            'vehicle_model': '*',
+            'vehicle_year': '*',
+            'vehicle_mileage': '*',
+            'repair': '*',
+            'title': '*',
+            'description': '*',
+            'schedule': '*',
+            'vehicle_starts': '*',
+            'vehicle_drives': '*',
+            'vehicle_needs_tow': '*',
+            'phone': '*'
+        },
+        submitHandler: function(form) {
+            form = $(form);
+            form.ajaxSubmit({
+                success: function (data) {
+                    window.location = '/projects/' + data.number;
+                },
+                error: function (xhr, err) {
+                    form.find('.alert-error').show();
+                },
+                complete: function() {
+                    form.find(':input:not(:submit)').removeAttr('disabled');
+                    form.find(':submit').button('reset');
+                }
+            });
+            form.find('.alert').hide();
+            form.find(':input:not(:submit)').attr('disabled', 'disabled');
+            form.find(':submit').button('loading');
+            return false;
+        }
+    };
+    $('#post-project').validate(opts);
+});
+</script>

@@ -1,0 +1,58 @@
+{
+    "/": {
+        "title": "Find A Mechanic Locally",
+        "description": "Need help fixing your vehicle, find a mechanic instantly anywhere using Mechfinder for free. Rate mechanics and get local mechanics working from home to bid on your vehicle repairs. Save thousands off vehicles repairs by going direct.",
+        "keywords": "car parts for sale, buy parts, buy car, buy cars, mechfinder, find a mechanic, find tools, sell car parts, sell car, buy used car"
+    },
+    "/home/mechanic": {
+        "title": "Connect with Local Customers"
+    },
+    "/signup": {
+        "title": "Signup"
+    },
+    "/projects": {
+        "title": "Search for Projects"
+    },
+    "/terms": {
+        "title": "Terms and Conditions"
+    },
+    "/about": {
+        "title": "About"
+    },
+    "/contact": {
+        "title": "Contact Us"
+    },
+    "/privacy": {
+        "title": "Privacy Policy"
+    },
+    "/machanic/info": {
+        "title": "How it Works for Mechanics"
+    },
+    "/mechanic/info/grow": {
+        "title": "Mechanic Benefits"
+    },
+    "/mechanic/info/howItWorks": {
+        "title": "How it Works for Mechanics"
+    },
+    "/mechanic/info/structure": {
+        "title": "Mechanic Fee Structure"
+    },
+    "/info": {
+        "title": "How it Works for Customers"
+    },
+    "/customer/info": {
+        "title": "How it Works for Customers"
+    },
+    "/customer/info/howItWorks": {
+        "title": "How it Works for Customers"
+    },
+    "/customer/info/benefits": {
+        "title": "Customer Benefits"
+    },
+    "/customer/info/protection": {
+        "title": "Customer Protection: Our Escrow System"
+    },
+    "/faq": {
+        "title": "Frequently Asked Questions"
+    }
+}

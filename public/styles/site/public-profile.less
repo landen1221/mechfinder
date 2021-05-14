@@ -1,0 +1,254 @@
+.public-profile{
+    @screenXS: 320px;
+    @screenSM: 480px;
+    @screenMD: 768px;
+    @screenLG: 920px;
+    @screenXL: 1200px;
+
+    @colorRed: rgba(169, 1, 1, 1);
+    @colorRedLight: rgba(199, 1, 1, 1);
+    @colorGreen: rgba(92, 184, 92, 1);
+    @colorGreenLight: rgba(122, 214, 122, 1);
+    @colorBlue: rgba(7, 146, 224, 1);
+    @colorBlueLight: rgba(37, 196, 255, 1);
+    @colorBlueDark: #34495e;
+    @colorDarkGray: rgba(80, 80, 80, 1);
+
+    @standardFontColor: rgba(41, 41, 41, 1);
+    @standardFontSize: 13px;
+    @standardFontWeight: normal;
+    @colorYellow: #FBC16D;
+    @colorYellowDark: #D9A04B;
+
+    @screenXS: 320px;
+    @screenSM: 480px;
+    @screenMD: 768px;
+    @screenLG: 920px;
+    @screenXL: 1200px;
+    @phonescreens: ~"only screen and (max-width: 479px)";
+    @regularphonescreens: ~"only screen and (min-width:480px) and (max-width: 767px)";
+    @tablets: ~"only screen and (min-width:768px) and (max-width: 959px)";
+
+    @standardLineHeight: 18px;
+
+    * {
+        box-sizing: border-box;
+    }
+    p {
+        color: @standardFontColor;
+        line-height: 3ex;
+    }
+    .row {
+        // border: 1px solid blue;
+        min-height: 19ex;
+        &.small {
+            min-height: 6ex;
+        }
+        &.seller {
+            min-height: 19ex;
+        }
+        &.buyer {
+            min-height: 17ex;
+        }
+    }
+    .row::after {
+        content: "";
+        clear: both;
+        display: block;
+    }
+    [class*="col-"] {
+        float: left;
+        padding: 3px;
+        // border: 1px solid red;
+    }
+    .col-1 {width: 8.33%;}
+    .col-2 {width: 16.66%;}
+    .col-3 {width: 25%;}
+    .col-4 {width: 33.33%;}
+    .col-5 {width: 41.66%;}
+    .col-6 {width: 50%;}
+    .col-7 {width: 58.33%;}
+    .col-8 {width: 66.66%;}
+    .col-9 {width: 75%;}
+    .col-10 {width: 83.33%;}
+    .col-11 {width: 91.66%;}
+    .col-12 {width: 100%;}
+    @media @regularphonescreens, @phonescreens {
+        [class*="col-"] {
+            width: 100%;
+        }
+    }
+    .info-box {
+        background: @colorBlueDark;
+        border-radius: 3px;
+        margin-bottom: 5px;
+        box-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+        &.gray {
+            background: lightgray;
+        }
+    }
+    .content {
+        color: white;
+        font-size: 18px;
+        line-height: 3ex;
+        padding: 10px 0px 10px 10px;
+        &.gray {
+            color: @standardFontColor;
+        }
+    }
+    .content-table {
+        line-height: 2.75ex;;
+    }
+    .profile-picture {
+        text-align: center;
+        padding-top: 6px;
+        .fa {
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+        }
+        img {
+            object-fit: cover;
+            width: 128px;
+            height: 128px;
+            border-radius: 50%;
+            .mf-ui.drop-shadow-deep;
+            background-color: white;
+        }
+    }
+    table {
+        margin-right: auto;
+        margin-left: 0px;
+    }
+    td {
+        padding-right: 5px;
+    }
+    h3 {
+        color: @standardFontColor;
+    }
+    .profile-hours-table {
+        width: 100%;
+        // border: 1px solid green;
+        th, td {
+            padding: 5px;
+            border-bottom: 1px solid #ddd;
+            border-radius: 2px;
+            text-align: center;
+            background: lightgray;
+            &.rating {
+                 white-space: nowrap;
+                 text-align: center;
+                 font-size: 25px;
+                 @media @phonescreens {
+                     font-size: 18px;
+                 }
+            }
+            &.review {
+                width: 50.25%;
+                text-align: left;
+            }
+            &.view {
+                width: 8%;
+            }
+            &.estimates, &.post-date, &.repair {
+                width: 23%;
+            }
+            &.vehicle {
+                width: 23%;
+                @media @phonescreens {
+                    display: none;
+                }
+            }
+            &.hidden {
+                display: none;
+            }
+        }
+        .profile-hours-table-heading {
+            th, td {
+                background: @colorBlueDark;
+                color: white;
+                font-weight: bold;
+            }
+        }
+    }
+    .list-table {
+        width: 100%;
+        td {
+            width: 33%;
+        }
+    }
+
+    .fa-wrench, .fa-star {
+        letter-spacing: 3px;
+        color: @colorYellowDark;
+
+        &.dark {
+            color: @colorYellowDark;
+        }
+        &.light {
+            color: @colorYellow;
+        }
+        &.off {
+            color: gray;
+        }
+    }
+    .standard-button {
+        text-align: center;
+        &.full-width {
+            width: 100%;
+        }
+    }
+    img {
+        &.mechanic-photo {
+            height: 150px;
+            padding: 3px;
+            box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+        }
+    }
+    .fa-star-o, .fa-envelope-o {
+        color: white;
+    }
+    .fa-envelope-o:hover {
+        color: rgba(37, 196, 255, 1);
+    }
+    .favorite-icon {
+        &.fa-star, &.fa-star-o:hover {
+            color: @colorYellow;
+        }
+        &.fa-star:hover {
+            color: darkgrey;
+        }
+    }
+    .toggle-reviews {
+        //margin-right: 3px;
+        font-weight: bold;
+        width: 100%;
+        &.gray {
+            background: lightgray;
+            color: @standardFontColor;
+            font-weight: normal;
+            &:hover {
+                background: @colorBlueLight;
+            }
+        }
+    }
+    .cert-info {
+        color: lightgray;
+        position: relative;
+        display: inline-block;
+    }
+    .cert-list {
+        display: none;
+        position: absolute;
+        background-color: #f9f9f9;
+        min-width: 160px;
+        box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+        padding: 12px 16px;
+        z-index: 1;
+        ul {
+            color: @standardFontColor;
+            padding-left: 15px;
+        }
+    }
+    .cert-info:hover .cert-list {
+        display: block;
+    }
+}

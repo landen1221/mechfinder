@@ -1,0 +1,547 @@
+<style type="text/css">
+.steps-container  {
+    height: 160px;
+    padding-left: 75px;
+}
+.steps-container > div {
+    float: left;
+    margin-right: 20px;
+    width: 200px;
+    padding: 20px;
+    text-align: center;
+}
+.steps-container .step {
+    border: 2px solid #090;
+}
+.steps-container .step-disabled {
+    border: 2px solid #aaa;
+    color: #aaa;
+}
+
+#profile-picture-picker
+{
+    padding: 0;
+    width: 161px;
+    height: 149px;
+    /*background: url('{{settings.static_path}}/img/profile.png') no-repeat center;*/
+    cursor: pointer;
+}
+#profile-picture-picker > i {
+    display: block;
+    width: 161px;
+    line-height: 149px;
+    text-align: center;
+    font-size: 80px;
+}
+#profile-picture-picker > .progress {
+    display: none;
+    margin-left: 20px;
+    margin-top: 70px;
+    width: 121px;
+}
+#profile-picture-picker > input[type='file'] { height: 149px; }
+#profile-picture-picker > .preview {
+     width: 161px;
+     height: 149px;
+     display: none;
+ }
+
+.debit-111 {
+  margin-top: -14%;
+}
+.debit-111 img {
+  width: 40%;
+  margin-left: 46%;
+}
+.escrow-111 {
+  margin-top: -42%;
+  margin-right: 11%;
+}
+
+.globe-111 img {
+  width: 25%;
+  margin-top: -109%;
+}
+.steps-container {
+  padding-left: 158px !important;
+}
+ a.pull-right.paypal-111 {
+  margin-right: 10% !important;
+  margin-top: -3% !important;
+}
+ .payment-h {
+  margin-left: 1% !important;
+  color: #0188C8 !important;
+}
+ form#form-hire-confirmation {
+  margin-left: 10% !important;
+}
+ div#step-2 {
+  text-align: initial !important;
+}
+</style>
+{{#compare user.role to='buyer'}}
+<h2>Welcome To Mechfinder.com! Get Ready For Some Auto Repair Bids!
+</h2>
+<div id="step-1">
+    <h1 style="text-align: center;">Step 1 of 2</h1>
+    <div class="steps-container">
+        <div class="step">
+            <h2>Step <span class="number">1</span></h2>
+            <button class="btn btn-warning">First Project</button>
+        </div>
+        <div class="step-disabled">
+            <h2>Step <span class="number">2</span></h2>
+            <button class="btn" disabled>Escrow Funds</button>
+        </div>
+    </div>
+    <form method="post" action="/api/newproject/{{ p._id }}" id="post-project" class="form-horizontal">
+        <input type="hidden" name="title" value="{{p.title}}" />
+        <input type="hidden" name="repair" value="{{p.repair.[0]}}" />
+        {{ helper 'fields/text'     val=p.vehicle.make                label="Vehicle Make"        id="vehicle-make"             placeholder="Ford"          class="required" size="medium" }}
+        {{ helper 'fields/text'     val=p.vehicle.model               label="Vehicle Model"       id="vehicle-model"            providers="Focus"         class="required" size="medium" }}
+        {{ helper 'fields/text'     val=p.vehicle.year                label="Vehicle Year"        id="vehicle-year"             placeholder="2002"          class="required" size="mini"   }}
+          {{ helper 'fields/textarea' label="Project Description" id="buyer-description"    name="description"   class="required" val=p.description size="medium" }}
+         {{ helper 'fields/text'     label="What is your max budget?" id="budget"              placeholder=" "             class="required"  val=p.budget        size="small" }}
+
+        {{ helper 'fields/yesno'    val=p.vehicle.starts              label="Do you have the parts?"  id="vehicle-starts"                                  class="required"         }}
+         {{ helper 'fields/yesno'    val=p.vehicle.needs_tow           label="Do you need a tow truck?" id="vehicle-needs-tow"                               class="required"         }}
+        {{ helper 'fields/submit'   label="Next" class="btn-success" }}
+        <div class="alert alert-error" style="display: none;">
+            <strong>Error Processing Request.</strong> We're sorry, but there was an error
+            processing your request. Please try again shortly, and if problems persist,
+            please contact us directly at info@mechfinder.com.
+        </div>
+    </form>
+
+</div>
+
+<div id="step-2" style="display: none;" align="center">
+    <h1 style="text-align: center;">Step 2 of 2</h1>
+    <div class="steps-container">
+        <div class="step-disabled">
+            <h2>Step <span class="number">1</span></h2>
+            <button class="btn btn" disabled>{{#compare user.role to='buyer'}}First Project{{else}}Mechanic Info{{/compare}}</button>
+        </div>
+        <div class="step">
+            <h2>Step <span class="number">2</span></h2>
+            <button class="btn btn-warning">Escrow Funds</button>
+        </div>
+    </div>
+
+<h1 class="payment-h">Guarantee Your Repair !</h1>
+<h3 class="payment-h">Free Pre-Escrow !</h3>
+<h4 class="payment-h">*Attract More Estimates</h4>
+<h4 class="payment-h">*Guarantee Your Repair</h4>
+
+        <form id="form-pre-escrow" class="form-inline" method="post" action="/api/project/{{p.id}}/createscrow">
+        <div class="control-group">
+
+         <span class="payment-errors"></span>
+
+<div class="control-group">
+    <div class="controls">
+        <input class="form-control1" type="text" size="20" data-stripe="name"  placeholder="Name On Card"/>
+    </div>
+</div>
+
+<div class="control-group">
+    <div class="controls">
+        <input class="form-control1" type="text" size="20" data-stripe="number"  placeholder="Card Number"/>
+    </div>
+</div>
+
+<div class="control-group">
+    <div class="controls">
+        <input type="text" data-stripe="exp-month"   placeholder="MM"  class="input-mini" /> - <input type="text"  data-stripe="exp-year"    placeholder="YYYY"  class="input-mini"/>
+    </div>
+</div>
+
+<div class="control-group">
+    <div class="controls">
+        <input class="form-control1" type="text" size="20" data-stripe="cvc"  placeholder="Back 3 digits"/>
+    </div>
+</div>
+
+                <input type="hidden" name="amount" id="st_amount" value="{{p.budget}}" />
+                <input type="hidden" name="description" value="mechfinder.com pre escrow project: {{p.number}}" />
+<div class="control-group">
+    <div class="controls">
+         <input class="form-control1" type="text" size="20" data-stripe="address_zip"  placeholder="Zip Code"/>
+    </div>
+</div>
+           <div  > Total : <span id="sh_amount">${{ p.budget}}.00</span></div>
+           <br />
+           <br />
+                <div style='display:none' id='tokendiv'>
+          </div>
+            <button class="btn btn-primary" type="submit" value="Submit" >Submit</button>
+        <a href="/projects/{{p.number}}" class="btn btn-success"> Skip </a>
+        <div class="alert error" style="display: none;">
+            There was a problem completing this request.
+        </div>
+    </form>
+
+<!-- logos   -->
+
+    <a href="#" class="pull-right escrow-111"><img src="{{settings.static_path}}/img/escrow.png" alt="Paypal-Button"/></a>
+    <a href="#" class="pull-right globe-111"><img src="{{settings.static_path}}/img/globe.jpg" alt="Paypal-Button"/></a>
+    <a href="#" class="pull-right debit-111"><img src="{{settings.static_path}}/img/debit.png" alt="Paypal-Button"/></a>
+    <a href="#" class="pull-right paypal-111"><form action="https://www.paypal.com/cgi-bin/webscr"  method="post"><input type="hidden" name="cmd" value="_xclick" />
+                <input type="hidden" name="business" value="info@mechfinder.com" />
+                <input type="hidden" name="item_name" value="Pre Escrow for project {{p.number}}" />
+                <input type="hidden" name="item_number" value="{{p.number}}" />
+                <input type="hidden" name="currency_code" value="USD" />
+                <input type="hidden" name="amount" id="pp_amount" value="{{p.budget}}" />
+                <input type="hidden" name="rm" value="0" />
+                <input type="hidden" name="return" value="http://www.mechfinder.com/projects/{{p.number}}" />
+                <input type="hidden" name="notify_url" value="http://www.mechfinder.com/api/paypal/ipn" />
+                <input type="hidden" name="cancel_return" value="http://www.mechfinder.com/projects/{{p.number}}" />
+                <input type="hidden" name="bn" value="mechfinder.com" /> <br />
+                <input type="image" src="{{settings.static_path}}/img/paypaln.png" border="0" name="submit" alt="Make payments with PayPal  its fast, free and secure!" />
+                <img alt="" border="0" src="https://www.paypal.com/en_US/i/scr/pixel.gif" width="1" height="1" />
+            </form></a>
+
+
+</div>
+{{else}}
+<div id="step-1">
+    <h1 style="text-align: center;">Step 1 of 2</h1>
+    <div class="steps-container">
+        <div class="step">
+            <h2>Step <span class="number">1</span></h2>
+            <button class="btn btn-warning">Mechanic Info</button>
+        </div>
+        <div class="step-disabled">
+            <h2>Step <span class="number">2</span></h2>
+            <button class="btn" disabled>Update Profile</button>
+        </div>
+    </div>
+    <form method="post" action="/api/profile" id="form-mechanic" class="form-horizontal">
+        {{>profile/mechanicsignup}}
+        {{ helper 'fields/submit'   label="Next" class="btn-success" }}
+        <div class="alert alert-error" style="display: none;">
+            <strong>Error Processing Request.</strong> We're sorry, but there was an error
+            processing your request. Please try again shortly, and if problems persist,
+            please contact us directly at info@mechfinder.com.
+        </div>
+    </form>
+</div>
+<div id="step-2" style="display: none;">
+    <h1 style="text-align: center;">Step 2 of 2</h1>
+    <div class="steps-container">
+        <div class="step-disabled">
+            <h2>Step <span class="number">1</span></h2>
+            <button class="btn btn" disabled>{{#compare user.role to='buyer'}}First Project{{else}}Mechanic Info{{/compare}}</button>
+        </div>
+        <div class="step">
+            <h2>Step <span class="number">2</span></h2>
+            <button class="btn btn-warning">Update Profile</button>
+        </div>
+    </div>
+    <p>Please tell us a little bit about yourself.</p>
+    <form method="post" action="/api/profile" id="form-profile" class="form-horizontal">
+        <div class="control-group">
+            <label class="control-label" for="profile-picture-picker">Picture</label>
+            <div class="controls">
+                <input type="hidden" id="profile-picture" name="picture" value="{{user.profile.picture}}" />
+                <ul class="thumbnails">
+                    <li>
+                        <a id="profile-picture-picker" class="thumbnail" href="#UploadPicture">
+                            <i class="icon-user"></i>
+                            <div class="progress">
+                                <div class="bar" style="width: 0%;"></div>
+                            </div>
+                            <div class="preview"></div>
+                        </a>
+                    </li>
+                </ul>
+                <span class="help-block">Click above to upload a new picture.</span>
+            </div>
+        </div>
+
+        {{ helper 'fields/submit'                              label="Done"                                               class="btn-success" }}
+        <div class="alert alert-error" style="display: none;">
+            <strong>Error Processing Request.</strong> We're sorry, but there was an error
+            processing your request. Please try again shortly, and if problems persist,
+            please contact us directly at info@mechfinder.com.
+        </div>
+    </form>
+</div>
+{{/compare}}
+
+
+<script type="text/javascript">
+jQuery(function($) {
+
+    var step2 = function() {
+        $('#step-1').hide();
+        $('#step-2').show();
+    };
+
+    $('#button-skip-1').click(step2);
+    $('#button-skip-2').click(function() { window.location = '/Find-Mechanic'; });
+
+    var makes = {{json makes}};
+    var models = null;
+    var years = null;
+
+    $('#vehicle-make').change(function() { models = null; years = null; });
+    $('#vehicle-model').change(function() { years = null; });
+    $('#vehicle-make').typeahead({
+        source: function(query, next) {
+            if ($('#vehicle-type').val() == 'car' ||
+                $('#vehicle-type').val() == 'truck')
+            {
+                return makes;
+            }
+        }
+    });
+    $('#vehicle-model').typeahead({
+        source: function(query, next) {
+            if ($('#vehicle-type').val() != 'car' &&
+                $('#vehicle-type').val() != 'truck') return;
+            if (models) return models;
+            if ($('#vehicle-make').val())
+            {
+                $.ajax({
+                    type: 'GET',
+                    url: '/api/makes/' + $('#vehicle-make').val()
+                }).done(function(data) {
+                    models = data;
+                    next(data);
+                });
+            }
+        }
+    });
+    $('#vehicle-year').typeahead({
+        source: function(query, next) {
+            if ($('#vehicle-type').val() != 'car' &&
+                $('#vehicle-type').val() != 'truck') return;
+            if (years) return years;
+            if ($('#vehicle-make').val() && $('#vehicle-model').val())
+            {
+                $.ajax({
+                    type: 'GET',
+                    url: '/api/makes/' + $('#vehicle-make').val() + '/' + $('#vehicle-model').val()
+                }).done(function(data) {
+                    years = data;
+                    for (var i=0; i < years.length; i++)
+                    {
+                        years[i] = String(years[i]);
+                    }
+                    next(years);
+                });
+            }
+        }
+    });
+
+    $('#schedule-picker').datepicker();
+    $('#budget').blur(function() { $(this).formatCurrency(); });
+    $("#budget").change(function(){
+        var val = parseFloat($(this).val());
+        $("#st_amount").val(val)
+        $("#pp_amount").val(val)
+        $("#sh_amount").html('$'+parseFloat(val))
+    })
+    $('#vehicle-year').blur(function() { $(this).toNumber(); });
+    $('#vehicle-mileage').blur(function() { $(this).formatCurrency({symbol: '', roundToDecimalPlace: 0}); });
+
+    var $profile_picture_picker = $('#profile-picture-picker')
+    var $profile_picture_progress = $('#profile-picture-picker > .progress')
+    var $profile_picture_preview = $('#profile-picture-picker > .preview')
+    var profile_picture_uploader = new qq.FineUploaderBasic({
+        button: $profile_picture_picker[0],
+        request: { endpoint: '/i' },
+        multiple: false,
+        validation: {
+            acceptFiles:     'image/*',
+            sizeLimit:    10*1024*1024, // 10 Mb
+            minSizeLimit:         1024  //  1 Kb
+        },
+        callbacks: {
+            onUpload: function(id) {
+                $profile_picture_picker.find('i').remove();
+                $profile_picture_progress.show();
+                $profile_picture_progress.find('.bar').css('width', '0%');
+                $profile_picture_preview.hide()
+            },
+            onProgress: function(id, filename, uploaded, total) {
+                var percent = Math.floor(100*uploaded/total);
+                $profile_picture_progress.find('.bar').css('width', percent + '%');
+                if (percent >= 99)
+                {
+                    $profile_picture_progress.addClass('progress-striped active');
+                }
+            },
+            onComplete: function(id, filename, data) {
+                $('#profile-picture').val(data.id);
+                $profile_picture_progress.hide();
+                $profile_picture_preview.show().css('background', 'url("/i/' + data.id + '/161/149") no-repeat center');
+            }
+        }
+    });
+
+    var project_opts = {
+        errorElement: 'span',
+        errorClass: 'help-inline',
+        rules: {
+        },
+        messages: {
+            'vehicle_make': '*',
+            'vehicle_model': '*',
+            'vehicle_model': '*',
+            'vehicle_year': '*',
+            'vehicle_mileage': '*',
+            'repair': '*',
+            'title': '*',
+            'description': '*',
+            'schedule': '*',
+            'vehicle_starts': '*',
+            'vehicle_drives': '*',
+            'vehicle_needs_tow': '*'
+        },
+        submitHandler: function(form) {
+            form = $(form);
+            form.ajaxSubmit({
+                success: function (data) {
+                    {{#compare user.role to='buyer'}}
+                        step2();
+                    {{else}}
+                    step2();
+                    {{/compare}}
+                },
+                error: function (xhr, err) {
+                    form.find('.alert-error').show();
+                    console.log(err)
+                },
+                complete: function() {
+                    form.find(':input:not(:submit)').removeAttr('disabled');
+                    form.find(':submit').button('reset');
+                }
+            });
+            form.find('.alert').hide();
+            form.find(':input:not(:submit)').attr('disabled', 'disabled');
+            form.find(':submit').button('loading');
+            return false;
+        }
+    };
+    $('#post-project').validate(project_opts);
+
+    var profile_opts = {
+        errorElement: 'span',
+        errorClass: 'help-inline',
+        rules: {
+        },
+        messages: {
+            'profile_college':   '*'
+        },
+        submitHandler: function(form) {
+            form = $(form);
+            form.ajaxSubmit({
+                success: function (data) {
+                    {{#compare user.role to='buyer'}}
+                        window.location = '/projects/{{ p.number }}';
+                    {{else}}
+                        window.location = '/profile';
+                    {{/compare}}
+                },
+                error: function (xhr, err) {
+                console.log(err)
+                    form.find('.alert-error').show();
+                },
+                complete: function() {
+                    form.find(':input:not(:submit)').removeAttr('disabled');
+                    form.find(':submit').button('reset');
+                }
+            });
+            form.find('.alert').hide();
+            form.find(':input:not(:submit)').attr('disabled', 'disabled');
+            form.find(':submit').button('loading');
+            return false;
+        }
+    };
+    $('#form-profile').validate(profile_opts);
+
+    var mechanic_opts = {
+        errorElement: 'span',
+        errorClass: 'help-inline',
+        rules: {
+        },
+        messages: {
+        },
+        submitHandler: function(form) {
+            form = $(form);
+            form.ajaxSubmit({
+                success: function (data) {
+                    step2();
+                },
+                error: function (xhr, err) {
+                    form.find('.alert-error').show();
+                },
+                complete: function() {
+                    form.find(':input:not(:submit)').removeAttr('disabled');
+                    form.find(':submit').button('reset');
+                }
+            });
+            form.find('.alert').hide();
+            form.find(':input:not(:submit)').attr('disabled', 'disabled');
+            form.find(':submit').button('loading');
+            return false;
+        }
+    };
+    $('#form-mechanic').validate(mechanic_opts);
+    $('#form-pre-escrow').submit(function(event) {
+        var $form = $(this);
+        $form.find('.alert').hide();
+        $form.find(':submit').button('loading');
+
+
+        // Disable the submit button to prevent repeated clicks
+        //$form.find('button').prop('disabled', true);
+
+        Stripe.card.createToken($form, stripeResponseHandler);
+
+        // Prevent the form from submitting with the default action
+        return false;
+    });
+
+function stripeResponseHandler(status, response) {
+  var $form = $('#form-pre-escrow');
+
+  if (response.error) {
+    // Show the errors on the form
+    $form.find('.alert-error').text(response.error.message);
+    $form.find('button').prop('disabled', false);
+    $form.find(':submit').button('reset');
+
+  } else {
+    // response contains id and card, which contains additional card details
+    var token = response.id;
+    // Insert the token into the form so it gets submitted to the server
+    $('#tokendiv').html($('<input type="hidden" name="stripeToken" />').val(token));
+    // and submit
+    $form.ajaxSubmit({
+        success: function (data) {
+            window.location = '/projects/{{p.number}}';
+        },
+        error: function (xhr, err) {
+            $form.find('.error').show();
+            $form.find(':input:not(:submit)').removeAttr('disabled');
+        },
+        complete: function() {
+            $form.find(':input:not(:submit)').removeAttr('disabled');
+            $form.find(':submit').button('reset');
+        }
+    });
+
+  }
+};
+
+
+
+
+
+
+});
+</script>

@@ -1,0 +1,65 @@
+#chat-container
+{
+    position: fixed;
+    right: 0;
+    bottom: 0;
+    .chat-frame
+    {
+        border: 1px solid #aaa;
+        .border-radius(4px);
+        float: right;
+        margin-right: 15px;
+        padding: 5px;
+        width: 250px;
+        background-color: #fff;
+        h4
+        {
+            overflow: hidden;
+            margin: 0 0 5px 0;
+            padding: 5px 5px 10px 0;
+            border-bottom: 1px solid #ddd;
+            font-size: 15px;
+            line-height: 24px;
+            .picture
+            {
+                float: left;
+                margin-right: 5px;
+                width: 24px;
+                height: 24px;
+                background: url(../img/profile-24.png) no-repeat;
+            }
+        }
+        .close, .minimize {
+            margin-left: 4px;
+            line-height: 20px;
+        }
+        .chat-messages
+        {
+            height: 150px;
+            overflow: scroll;
+            .you
+            { 
+                display: block;
+                text-align: right;
+                border-bottom: 1px solid #ddd;
+                background-color: #eee;
+            }
+            .me
+            {
+                display: block;
+            }
+        }
+        .chat-entry
+        {
+            width: 225px;
+        }
+
+        &.minimize {
+            h4 { border-bottom: 0; }
+            .chat-messages, .chat-entry { display: none; }
+        }
+        &.notice {
+            background-color: #ff0;
+        }
+    }
+}

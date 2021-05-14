@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+    <head>
+		{{>layouts/head}}
+
+        <!--<link rel="stylesheet" href="{{settings.static_path}}/css/login.css">-->
+        <script src="{{ settings.static_path }}/js/signup.js"></script>
+    </head>
+
+    <body>
+  		{{>layouts/navbar}}
+      <div class="mf-ui">
+
+        <div class="card-container">
+          <div id="roleSignupBox" class="mf-card" style="display: none;">
+            <div class="card-header">Mechanic or Customer?</div>
+            <div class="card-content single-column">
+              <div>
+                <div><a class="updateRole mf-button huge full-width green" data-role="buyer" href="javascript:void(0);"><i class="fa fa-user"></i> I need my car fixed</a></div><br/>
+                <div><a class="updateRole mf-button huge full-width blue" data-role="seller" href="javascript:void(0);"><i class="fa fa-wrench"></i> I fix cars</a></div>
+              </div>
+            </div>
+          </div>
+
+          <div id="mainSignupBox" class="mf-card">
+            <div class="card-header">Sign Up for Free</div>
+            <div class="card-content single-column">
+              {{#unless prefill.source}}
+                <div class="row">
+                  <div class="sm">
+                    {{!--<div id="twitter-block" class="block" style="display: none;">
+                        <a id="signupTwitter" href="#"><i class="fa fa-twitter-square"></i> Sign in with Twitter</a>
+                    </div>
+                    --}}
+                    <div id="facebook-block" class="block">
+                        <a id="signupFacebook" href="/auth/facebook{{#if invite}}?facebookInvite=true{{/if}}"><i class="fa fa-facebook-official"></i> Sign in with Facebook</a>
+                    </div>
+                    {{!--<div id="gplus-block" class="block" style="display: none;">
+                      <div class="innard">
+                        <div class="icon gplus"></div>
+                        <div class="with">Sign in with Google+</div>
+                      </div>
+                    </div>--}}
+                  </div>
+                </div>
+                <div class="row"><div class="or"><div class="o">Or</div></div></div>
+              {{/unless}}
+              <div class="row">
+                <div class="form">
+                  <form>
+                  <div class="slot"><input id="signup-firstname" class="default-input-border" name="signup-firstname" type="text" placeholder="First Name" autocomplete="given-name" value="{{prefill.first}}" /></div>
+                  <div class="slot"><input id="signup-lastname" class="default-input-border" name="signup-lastname" type="text" placeholder="Last Name" autocomplete="family-name" value="{{prefill.last}}" /></div>
+                  <div class="slot"><input id="signup-email" class="default-input-border" name="signup-email" type="email" placeholder="Email" autocomplete="email" value="{{prefill.email}}" /></div>
+                  <div class="slot"><input id="signup-password" class="default-input-border" name="signup-password" type="password" placeholder="Password" /></div>
+                  <div class="slot"><input id="signup-rpassword" class="default-input-border" name="signup-rpassword" type="password" placeholder="Verify Password" /></div>
+                  <input id="signup-facebookId" type="hidden" value="{{prefill.facebookId}}" />
+                  <input id="signup-invite" type="hidden" value="{{#if invite}}1{{else}}0{{/if}}" />
+                  </form>
+                  <div class="slot">
+                    <div id="signup-languages-checkboxes" class="checkboxes">
+                      <div class="break"></div>
+                      <div class="labelbox"><label for=""><strong>Languages: </strong></label></div>
+                      <div class="cboxes" style="white-space:nowrap;">
+                        <div>
+                          <input type="checkbox" name="signup-language" id="signup-language-english" value="English" checked="checked" />
+                          <label for="signup-language-english">English</label>
+                        </div>
+                        <div>
+                          <input type="checkbox" name="signup-language" id="signup-language-spanish" value="Spanish" />
+                          <label for="signup-language-spanish">Spanish</label>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="bottomconfirm card-content single-column">
+              <div class="otherstuff">
+              <div id="signup-agreeterms-chck" class="chck"><input name="signup-agreeterms" id="signup-agreeterms" type="checkbox" name="agreeterms" id="agreeterms" /><label for="signup-agreeterms">I agree to the <a href="../terms" target="_blank">terms &amp; conditions</a> of MechFinder.com      </label></div>
+              <div id="signup-emsg" class="emsg red-text">&nbsp;</div>
+              <div style="text-align:right;"><a class="standard-button green" id="signup-complete" href="javascript:void(0);">Complete</a></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+  		{{>layouts/footer}}
+  		{{>layouts/analytics}}
+      </div>
+    </body>
+</html>

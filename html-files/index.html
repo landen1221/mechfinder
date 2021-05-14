@@ -1,0 +1,717 @@
+<!doctype html>
+<html>
+<head>
+<!-- Meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <!-- Responsive -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <meta name="description" content="">
+    <meta name="author" content="mechlance.com">
+    <meta name="keywords" content="">
+    <title>Mechlance</title>
+
+<!-- Favicons -->
+<link rel="shortcut icon" href="images/favicon.png">
+
+<!-- Google Webfonts -->
+<link href='http://fonts.googleapis.com/css?family=Arvo:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+<link href='http://fonts.googleapis.com/css?family=Open+Sans:400,600,700' rel='stylesheet' type='text/css'>
+<link href="css/font-awesome.css" type="text/css" rel="stylesheet" />
+<!--CSS -->
+<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+
+<!-- Add custom CSS here -->
+<link rel="stylesheet" type="text/css" href="css/custom.css">
+
+
+<!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+
+      <script src="js/shiv.v3.7.2.js"></script>
+      <script src="js/respond.v1.4.2.min.js"></script>
+    <![endif]-->
+</head>
+
+<body>
+
+<!--top Section-->
+
+		<div class="top">
+        	<div class="container">
+                <div class="header">
+                	<div class="row">
+					<div class="headerTop">
+						<div class="col-md-6 col-sm-6 col-xs-12">                        
+
+								<a href="#"><img class="logo" src="images/logo.png" alt="logo_img"></a> 				 			
+						</div>
+						<div class="col-md-6 col-sm-6 col-xs-12">
+							<div class="row social-row form-row">
+								<div class="col-xs-12">
+								<button class="btn btn-default sign-in pull-right log-in-button"> Log In</button> 
+								<button id="sign-up-for-free-button" class="btn btn-success sign-up pull-right" style="margin-right: 5px;"><img src="images/signup.png"/> Sign Up for FREE</button>  
+								</div>
+							</div>
+						</div>
+					</div>
+                    	<!--<div class="col-md-7 col-sm-7 col-xs-12">
+                            
+                            <div class="row estimate hidden-xs">
+                            	<h2>Get Instant Auto Repair Estimates!</h2>
+                                <p>Mechlance is the worlds first auto repair network with thousands of Mobile Mechanics that will come to you! save 50% on auto services!</p>
+                            
+                            </div>
+                             <div class="free hidden-sm hidden-xs">
+                            	
+                            </div>
+                            
+                            
+                            <div class="row escrow hidden-xs">
+                            
+                            	<img src="images/escrow.png"/>
+                            
+                            	<h3>Guarantee Your Repair!</h3>
+                                <p>Using Our Secure Escrow System!</p>
+                            
+                            </div>
+                    	</div>-->
+                        
+                        <div class="col-md-5 col-sm-5 col-xs-12 pull-right">
+                        
+							<div class="row estimate">
+								<div class="col-xs-12">
+                            	<h2>Auto Repair<br />
+									<span style="margin-left: 100px;">Your Way</span>
+								<h2>
+                                <p>Local expert mechanics bid on your repairs and do the work at your place or theirs, your choice. Better Prices and on you schedule</p>
+                            </div>
+							
+							<div id="default-login" class="row">
+							<button class="btn btn-primary fb">LOGIN WITH FACEBOOK</button>
+							
+							<div class="col-xs-12">
+								<div class="or-form">
+								<p>or</p>
+								</div>
+							</div>
+							
+							
+								
+									<div class="col-xs-7">
+										<input type="text" class="form-control " id="email" placeholder="Email Address">
+									</div>
+								
+									<div class="col-xs-5">
+										<button class="btn btn-success btn-start">Get Started<span>FREE</span></button>
+									</div>
+								
+								<div class="col-xs-12">
+									<div class="privacy-home"><a href="#">we take your privacy seriously</a></div>
+								</div>
+								</div>
+							</div>
+							
+							
+							
+							
+							<div id="log-in" class="row estimate" style="display: none;">
+							
+							<div class="col-xs-12"><h2>Please Login</h2></div>
+								
+								<button class="btn btn-primary fb">LOGIN WITH FACEBOOK</button>
+							
+								<div class="col-xs-12">
+									<div class="or-form">
+									<p>or</p>
+									</div>
+								</div>
+								
+								<div class="row" style="margin-bottom: 5px;">
+									<div class="col-xs-8">
+										<input type="text" class="form-control" placeholder="email or username" />
+									</div>
+									
+									<div class="col-xs-4 nopadding">
+										<div id="forgot-username-button" class="forgot">I Forgot</div>
+									</div>
+								</div>
+								
+								<div class="row">
+									<div class="col-xs-8">
+										<input type="text" class="form-control" placeholder="password" />
+									</div>
+									
+									<div class="col-xs-4 nopadding">
+										<div id="forgot-password-button" class="forgot">I Forgot</div>
+									</div>
+								</div>
+								
+								<div class="row">
+									<div class="col-xs-8">
+										<div class="keep-login"><input type="checkbox"> Keep me logged in</div>
+									</div>
+									
+									<div class="col-xs-4 nopadding">
+										<button class="btn btn-success loginMT">Login</button>
+									</div>
+								</div>
+								
+								<div class="row mB24">
+									<div class="col-xs-4"><div class="privacy-home"><a href="#">Get Started FREE</a></div></div>
+									<div class="col-xs-4"><div class="privacy-home"><a href="#">Help me login</a></div></div>
+								</div>
+							</div>
+							
+							
+							
+							<div id="forgot-password" class="row estimate" style="display: none;">
+								
+								<div class="col-xs-12 mB24"><h2>Password Reset</h2>
+								<p>We'll email you instructions on how to reset your password.</p>
+								</div>
+						
+								
+								<div class="row" style="margin-bottom: 24px;">
+									<div class="col-xs-12">
+										<input type="text" class="form-control" placeholder="username or email" />
+									</div>
+								</div>
+				
+								<div class="row">
+									<div class="col-xs-7">
+										<div class="backlogin log-in-button">back to login</div>
+									</div>
+									
+									<div class="col-xs-5">
+										<button class="btn btn-success send-reset-password">Send Password Reset</button>
+									</div>
+								</div>
+							</div>
+						
+							<div id="sign-up-for-free" class="row estimate" style="display: none;">
+								
+								<div class="col-xs-12"><h2>Sign up for FREE</h2></div>
+						
+								<button class="btn btn-primary fb">LOGIN WITH FACEBOOK</button>
+								
+								<div class="col-xs-12">
+									<div class="or-form">
+									<p>or</p>
+									</div>
+								</div>
+								<div class="row" style="margin-bottom: 24px;">
+									<div class="col-xs-7 col-sm-9">
+										<input type="text" class="form-control" placeholder="email address" />
+									</div>
+									<div class="col-xs-5 col-sm-3 nopadding">
+										<button class="btn btn-success send-reset-password">Get Started</button>
+									</div>
+								</div>
+	
+							</div>	
+
+							<div id="forgot-username" class="row estimate" style="display: none;">
+								
+								<div class="col-xs-12 mB12"><h2>Username Recovery</h2>
+								<p>We'll email or txt you your username. Choose Below.</p>
+								</div>
+						
+								
+								<div class="row">
+								<form action="">
+									<div class="col-xs-12">
+										<div class="radio-recovery"><input id="active-radio-1" name="metod" type="radio">username or email</div>
+										<input type="text" id="input-text-radio-1" style="display: none;" class="form-control  mB24" placeholder="username or email" />
+									</div>
+									<div class="col-xs-12 mB24">
+										<div class="radio-recovery"><input id="active-radio-2"" type="radio" name="metod" >Phone on your account</div>
+										<input type="text" id="input-text-radio-2" style="display: none;" class="form-control" placeholder="Phone on your account" />
+									</div>
+								</form>	
+								</div>
+				
+								<div class="row">
+									<div class="col-xs-7">
+										<div class="backlogin log-in-button">back to login</div>
+									</div>
+									
+									<div class="col-xs-5">
+										<button class="btn btn-success send-reset-password  pull-right">Send Username</button>
+									</div>
+								</div>
+							</div>							
+						
+							
+								</div>
+                            </div>
+						
+                        <!--=========Main Form=========-->
+                        <!--
+                        <div class="row form-row">
+                        <div class="col-xs-12">
+                        <ul class="nav nav-tabs form-tabs">
+                          <li class="active"><a href="#customers" data-toggle="tab" aria-expanded="true"><span>CUSTOMERS</span></a></li>
+                          <li class=""><a href="#mechanics" data-toggle="tab" aria-expanded="false"><span>MECHANICS</span></a></li>
+                          
+                        </ul>
+                        <div id="myTabContent" class="tab-content">
+                        
+                          <div class="tab-pane fade active in" id="customers">
+                            <form class="form-horizontal">
+                            	<input type="text" class="form-control form-control1 " id="Name" placeholder="First Name">
+                            	<input type="text" class="form-control form-control1" id="inputEmail" placeholder="Email">
+                            	<input type="password" class="form-control form-control1" id="inputPassword" placeholder="Password">
+                            	<input type="password" class="form-control form-control1 retype" id="inputPassword" placeholder="Re-enter Password">
+                                <select class="form-control form-control1" id="select">
+          <option>Service Needed</option>
+          <option>Auto Repair</option>
+          <option>Oil Change</option>
+          <option>Tyre Change</option>
+          <option>Engine Service</option>
+        </select>
+                                <input type="text" class="form-control form-control1" id="inputDefault" placeholder="ZIP Code">
+                                <input type="text" class="form-control form-control1" id="inputDefault" placeholder="Phone Number">
+                            </form>
+							<img class="itsfree hidden-xs" src="images/free.png" alt="It's free_img"/>
+                            <button type="button" class="btn btn-success estimate-btn2 pull-left">Get Estimate</button>
+                          </div>
+                          
+                          
+                          <div class="tab-pane fade" id="mechanics">
+                            <form class="form-horizontal">
+                            	<input type="text" class="form-control form-control1" id="Name" placeholder="First Name">
+                            	<input type="text" class="form-control form-control1" id="inputEmail" placeholder="Email">
+                            	<input type="password" class="form-control form-control1" id="inputPassword" placeholder="Password">
+                            	<input type="password" class="form-control form-control1 retype" id="inputPassword" placeholder="Re-enter Password">
+                                <select class="form-control form-control1" id="select">
+          <option>Service I Can Provide</option>
+          <option>Auto Repair</option>
+          <option>Oil Change</option>
+          <option>Tyre Change</option>
+          <option>Engine Service</option>
+        </select>
+                                <input type="text" class="form-control form-control1" id="inputDefault" placeholder="ZIP Code">
+                                <input type="text" class="form-control form-control1" id="inputDefault" placeholder="Phone Number">
+                            </form>
+                            <button type="button" class="btn btn-success estimate-btn2 pull-left">Sign-Up</button>
+                            
+                          </div>
+                        </div>
+                        </div>
+                        </div>--><!--form-End-->
+                        	                            
+                    	</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+ <!--End of top-->
+ 
+ <div class="container">
+ 
+ <!-- testimonial Section -->
+        <div class="testimonials">
+				<h3>Testimonials</h3>
+				<div class="testimonial">
+					  <ul id="flexiselDemo3">
+						<li>
+							<div class="testimonial1">				
+								<img src="images/man.jpg" class="img-responsive" alt="" />
+								<h4>Armando Jones</h4>
+                                <p>Auto Repair</br>
+                                   Apple Valley, MN</br>
+                                   5/14/15
+                                </p>
+                                <button type="button" class="btn btn-success testimonial-btn">Saved &#36;1,100</button>	
+							</div>
+						</li>
+						<li>
+							<div class="testimonial1">
+								<img src="images/man1.jpg" class="img-responsive" alt="" />
+								<h4>Luis Patterson</h4>
+                                <p>Restauration Job</br>
+                                   Resemeount, MN</br>
+                                   4/24/15
+                                </p>
+                                <button type="button" class="btn btn-success testimonial-btn">Saved &#36;1,100</button>	
+							</div>
+						</li>
+						<li>
+							<div class="testimonial1">		
+								<img src="images/man2.jpg" class="img-responsive" alt="" />
+								<h4>Megan Barnett</h4>
+                                <p>New Tires</br>
+                                   Minneapolis, MN</br>
+                                   3/11/15
+                                </p>                              
+                                 <button type="button" class="btn btn-success testimonial-btn">Saved &#36;1,100</button>                               
+							</div>
+						</li>
+						
+					 </ul>
+				</div>	
+	</div>
+        </div>        <!--main-container-->
+<!-- testimonial end -->
+
+
+<!-- work section -->
+
+<div class="work">
+<div class="container">
+      <h3>How it Works</h3>
+      <div class="row work-2">
+        <article class=" col-md-3 col-sm-6 col-xs-12">
+          <img class="icon" src="images/step1.png" alt="Icon">
+          <div class="eclipse">1</div>
+          <h4>Sign Up and Get Estimates Instantly Free! </h4>
+        </article>
+
+        <article class=" col-md-3 col-sm-6 col-xs-12">
+          <img class="icon" src="images/step2.png" alt="Icon">
+          <div class="eclipse">2</div>
+          <h4>Hire Mechanic and Secure Funds Through Escrow</h4>       
+        </article>
+
+        <article class=" col-md-3 col-sm-6 col-xs-12">
+          <img class="icon" src="images/step3.png" alt="Icon">
+          <div class="eclipse">3</div>
+          <h4>Mechanic Comes to You and Fixes your Vehicle</h4>   
+        </article>
+
+        <article class=" col-md-3 col-sm-6 col-xs-12">
+          <img class="icon" src="images/step4.png" alt="Icon">
+          <div class="eclipse">4</div>
+          <h4>Release Funds and Rate the Mechanic!</h4>
+        </article>
+        <div class="clearfix"></div>
+
+       	<button type="button" class="btn btn-success estimate-btn">Get Estimate</button>
+
+      </div><!-- row -->  
+      </div> 
+  </div><!-- work end -->
+
+
+<div class="container">
+
+<!-- fatures Section -->
+
+  <div class="fatures">
+        	<div class="row feature">
+             <article class="feature1 col-md-6">
+             <div class="embed-responsive embed-responsive-16by9">
+  					<iframe class="embed-responsive-item" src="http://www.youtube.com/embed/CP_EfZtooZE" allowfullscreen></iframe>
+			</div>
+                </article>
+                <article class="feature1 col-md-6"> 
+                  
+                              <ul class="list-unstyled col-sm-6">
+                              	<li><h3>Customer Benefits</h3> </li>
+                                <li>Mechanics Will come to you</li>
+                                <li>Get Instant Auto Repair Extimates!</li>
+                                <li>Pay Securely Through Escrow</li>
+                                <li>Save 50% on Auto Services</li>
+                                <li>Fast and Convenient</li>
+                                <li>It's Free!</li>                               
+                              </ul>
+                              
+                              <ul class="list-unstyled col-sm-6">
+                              <li><h3>Mechanic Benefits</h3></li>
+                                <li>Work When You Want!</li>
+                                <li>Increase Your Auto Repair Buiness!</li>
+                                <li>Hire More Mechanics Faster!</li>                               
+                              </ul>
+                          
+                </article>
+            </div><!--row feature end -->
+            
+            <div class="row feature">
+            </div><!--row feature end -->
+  </div><!-- fatures end -->
+  
+<!--app-section-->
+        
+        	<div class="row app">
+            	<div class="col-md-6">
+                	
+                    
+                	<div class="row app-store-row">
+                		<div class="col-md-7">
+                        	<h3>The Auto Industory Revolution Is Here !</h3>
+                    <p>Now You Can Easily Take a Picture of Your Current Estimate and We Will Beat It.</p>
+                    	<a href="#">
+                                <div class="android">	<!--android-button-->
+                                	<img src="images/google-store.png"/>
+                                </div> </a>                   
+                        </div>
+                        
+                        <div class="col-md-5">
+                        	<a href="#">
+                        		<div class="app-store">	<!--App-Store-button-->
+                                	<img src="images/app-store.png"/>
+                   				</div></a>
+                                
+                        </div>
+                    </div>
+        		</div>
+                
+                
+                <div class="col-md-6 col-sm-6 phone-img hidden-xs">
+                	<img src="images/phoneimg.png" alt="phone-image"/>
+        			
+        
+        		</div>
+        	</div>
+            
+<!--app-section End-->            
+        
+        </div>        <!--main-container-->
+  
+  
+        
+        <!--Online-Mechanic-section-->
+       
+        
+        <div class="work">
+        <div class="container">
+      <h3>Online Mechanics</h3>
+      <div class="row mechanics">
+        <article class=" col-md-4 col-sm-6 col-xs-12">
+        	<div class="row stars">
+              <form action="">
+                <input class="star star-5" id="star-5" type="radio" name="star"/>
+                <label class="star star-5" for="star-5"></label>
+                <input class="star star-4" id="star-4" type="radio" name="star"/>
+                <label class="star star-4" for="star-4"></label>
+                <input class="star star-3" id="star-3" type="radio" name="star"/>
+                <label class="star star-3" for="star-3"></label>
+                <input class="star star-2" id="star-2" type="radio" name="star"/>
+                <label class="star star-2" for="star-2"></label>
+                <input class="star star-1" id="star-1" type="radio" name="star"/>
+                <label class="star star-1" for="star-1"></label>
+              </form>
+            </div> 
+            <div class="row imgWrap">
+            <a class="msg" href="#"><img src="images/message.png" /></a>
+            <a class="user" href="#"><img src="images/add_friend.png"/></a>
+          <img class="icon" src="images/no-img.png" alt="Icon">
+          	<button class="face-book"><i class="fa fa-facebook-square"></i> share</button>
+            <button class="chat">CHAT NOW</button>
+          <h2>John Carter</h2>
+          <span>ASE Certified<br>Apple Valley, NY</span>
+          	<p class="imgDescription"><a href="#">View Profile</a></p>
+          	</div>
+        </article>
+
+        <article class=" col-md-4 col-sm-6 col-xs-12">
+        	<div class="row stars">
+              <form action="">
+                <input class="star star-5" id="star-51" type="radio" name="star"/>
+                <label class="star star-5" for="star-51"></label>
+                <input class="star star-4" id="star-41" type="radio" name="star"/>
+                <label class="star star-4" for="star-41"></label>
+                <input class="star star-3" id="star-31" type="radio" name="star"/>
+                <label class="star star-3" for="star-31"></label>
+                <input class="star star-2" id="star-21" type="radio" name="star"/>
+                <label class="star star-2" for="star-21"></label>
+                <input class="star star-1" id="star-11" type="radio" name="star"/>
+                <label class="star star-1" for="star-11"></label>
+              </form>
+            </div> 
+            <div class="row imgWrap">
+            <a class="msg" href="#"><img src="images/message.png" /></a>
+            <a class="user1" href="#"><img src="images/friends.png"/></a>
+          <img class="icon" src="images/user.png" alt="Icon">
+          	<button class="face-book"><i class="fa fa-facebook-square"></i> share</button>
+            <button class="chat">CHAT NOW</button>
+          <h2>John Carter</h2>
+          <span>ASE Certified<br>Apple Valley, NY</span>
+          <p class="imgDescription"><a href="#">View Profile</a></p>
+          	</div>
+        </article>
+        
+        <article class=" col-md-4 col-sm-6 col-xs-12">
+        	<div class="row stars">
+              <form action="">
+                <input class="star star-5" id="star-52" type="radio" name="star"/>
+                <label class="star star-5" for="star-52"></label>
+                <input class="star star-4" id="star-42" type="radio" name="star"/>
+                <label class="star star-4" for="star-42"></label>
+                <input class="star star-3" id="star-32" type="radio" name="star"/>
+                <label class="star star-3" for="star-32"></label>
+                <input class="star star-2" id="star-22" type="radio" name="star"/>
+                <label class="star star-2" for="star-22"></label>
+                <input class="star star-1" id="star-12" type="radio" name="star"/>
+                <label class="star star-1" for="star-12"></label>
+              </form>
+            </div> 
+            <div class="row imgWrap">
+            <a class="msg" href="#"><img src="images/message.png"/></a>
+            <a class="user2" href="#"><img src="images/unfriend.png" /></a>
+          <img class="icon" src="images/user.png" alt="Icon">
+          	<button class="face-book"><i class="fa fa-facebook-square"></i> share</button>
+            <button class="chat">CHAT NOW</button>
+          <h2>John Carter</h2>
+          <span>ASE Certified<br>Apple Valley, NY</span>
+          <p class="imgDescription"><a href="#">View Profile</a></p>
+          	</div>
+        </article>
+
+      </div><!-- row -->   
+      </div>
+  </div>
+     
+     
+<!--Online-Mechanic-section-End -->
+        
+        
+        
+<!--Project-Counter -->
+
+  <div class="counter">
+  	<div class="container">
+    	<div class="row">
+        	<div class="col-md-4 col-sm-6">
+            <h1>Total Users</h1>
+            	<span>127,453</span>
+    		</div>
+            
+            <div class="col-md-4 col-sm-6">
+            <h1>Total Projects</h1>
+            <span>70,123</span>
+    		</div>
+            
+            <div class="col-md-4 col-sm-6">
+            <h1>Total Mechanics</h1>
+            <span>143,009</span>
+    		</div>
+  		</div>
+  	</div>
+  </div>      
+        
+<!--Project-Counter-End-->
+        
+      
+        
+<!--Footer 1-Section -->
+
+	<div class="footer">
+    	<div class="container">
+        	<div class="row">
+        		<div class="col-md-4 col-sm-6 navigation">
+                	<h1>Navigation</h1>
+                    <ul>
+                    	<li><a href="#">Home</a></li>
+                        <li><a href="#">Find a Mechanic</a></li>
+                        <li><a href="#">Forum</a></li>
+                        <li><a href="#">Advertising</a></li>
+                        <li><a href="#">Careers</a></li>
+                        <li><a href="#">Articles</a></li>
+                        <li><a href="#">Contact Mechlance</a></li>
+                    
+                    </ul>
+        
+        
+        		</div>
+                <div class="col-md-4 col-sm-6">
+                <h1>For Users</h1>
+                    <ul>
+                    	<li><a href="#">Get Estimate</a></li>
+                        <li><a href="#">Testimonials</a></li>
+                        <li><a href="#">Sign In</a></li>
+                        <li><a href="#">Sign Up</a></li>
+                    </ul>
+                    <h1>Legal</h1>
+                    <ul>
+                    	<li><a href="#">Terms and Conditions</a></li>
+                        <li><a href="#">Privacy Policy</a></li>
+                        <li><a href="#">Our Garantee</a></li>
+                        <li><a href="#">Repair Warranty</a></li>
+                    </ul>
+        
+        
+        		</div>
+                <div class="col-md-4 col-sm-6">
+                <h1>Projects Near You</h1>
+                  <div class="row client-row">
+                  	<div class="col-md-2">
+                    	<a href="#"><img class="img-circle" src="http://lorempixel.com/50/50"></a>
+                    </div>
+                  <div class="col-md-9 help">
+                  		<a href="#"><span><strong>Chris - I Need Help</strong></span></a><br> <span>Auto Repair, Apple Valley, MN</span>
+                        
+                  </div>
+                  </div>  
+                  
+                  <div class="row client-row">
+                  	<div class="col-md-2">
+                    	<a href="#"><img class="img-circle" src="http://lorempixel.com/50/50"></a>
+                    </div>
+                  <div class="col-md-9 help">
+                  		<a href="#"><span><strong>Chris - I Need Help</strong></span></a><br> <span>Auto Repair, Apple Valley, MN</span>
+                        
+                  </div>
+                  </div>  
+                  
+                  <div class="row client-row">
+                  	<div class="col-md-2">
+                    	<a href="#"><img class="img-circle" src="http://lorempixel.com/50/50"></a>
+                    </div>
+                  <div class="col-md-9 help">
+                  		<a href="#"><span><strong>Chris - I Need Help</strong></span></a><br> <span>Auto Repair, Apple Valley, MN</span>
+                        
+                  </div>
+                  </div> 
+                          
+        		</div>
+    		</div>
+    	</div>
+    </div>
+
+<!--Footer 1-Section End -->
+
+<!--Footer-2 -->
+        
+  <div class="footer-2">
+    <div class="container">
+    	<div class="row">
+    	<div class="col-md-4">    
+      <div class="copy">
+      	<span>&copy; 2015 <a href="#">Mechalance.com</a> All Rights Reserved.</span>
+      </div>  
+        </div>
+        <div class="col-md-5"></div>
+        
+        <div class="col-md-4 pull-right">
+        <span class="follow hidden-xs hidden-sm">Follow Us:</span>
+        <div class="social">
+            <ul class="pull-right social1">
+            	<li><a href="#" class="facebook"><img src="images/facebook.png"/></a></li>
+                <li><a href="#" class="facebook"><img src="images/twitter.png"/></a></li>
+                <li><a href="#" class="facebook"><img src="images/tumblr.png"/></a></li>
+                <li><a href="#" class="facebook"><img src="images/gplus.png"/></a></li>
+            </ul>
+     	</div>
+  		</div>
+	</div>
+    </div>
+</div>
+<!--Footer-2 End -->
+
+
+
+        
+<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+<!-- Include all compiled plugins (below), or include individual files as needed -->
+<script src="js/bootstrap.min.js"></script>
+<script src="js/jquery.flexisel.js" type="text/javascript"></script>
+<script src="js/customscript.js"></script>
+
+
+</body>
+</html>

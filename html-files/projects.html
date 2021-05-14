@@ -1,0 +1,581 @@
+<!doctype html>
+<html>
+
+<head>
+    <!-- Meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <!-- Responsive -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <meta name="description" content="">
+    <meta name="author" content="MechFinder.com">
+    <meta name="keywords" content="">
+    <title>MechFinder</title>
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+    <!--CSS -->
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="css/bootstrap-datetimepicker.min.css">
+    <link rel="stylesheet" type="text/css" href="css/bootstrap-datepicker.css">
+    <link href="css/bootstrap-switch.css" rel="stylesheet">
+    <!-- Add custom CSS here -->
+    <link rel="stylesheet" type="text/css" href="css/custom.css">
+    <!-- Gallery -->
+    <link rel="stylesheet" type="text/css" href="plugins/gallery-slider/touchTouch.css">
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
+</head>
+
+<body>
+    <div class="top">
+        <div class="container">
+            <div class="header">
+                <div class="row">
+                    <div class="col-xs-12 col-sm-4">
+                        <a href="/"><img class="logo" src="images/logo.png" alt="logo_img"></a>
+                    </div>
+                    <div class="col-xs-12 col-sm-5">
+                    </div>
+                    <div class="col-xs-12 col-sm-3 customer">
+                        <div class="row">
+                            <div class="col-xs-12">
+                                <div class="image-panel">
+                                    <a href="#"><img class="img-circle" src="http://lorempixel.com/50/50" alt="" /></a>
+                                </div>
+                                <div class="stars stars-customer">
+                                    <form action="test">
+                                        <input class="star star-5" id="star-5" type="radio" name="star">
+                                        <label class="star star-5" for="star-5"></label>
+                                        <input class="star star-4" id="star-4" type="radio" name="star">
+                                        <label class="star star-4" for="star-4"></label>
+                                        <input class="star star-3" id="star-3" type="radio" name="star">
+                                        <label class="star star-3" for="star-3"></label>
+                                        <input class="star star-2" id="star-2" type="radio" name="star">
+                                        <label class="star star-2" for="star-2"></label>
+                                        <input class="star star-1" id="star-1" type="radio" name="star">
+                                        <label class="star star-1" for="star-1"></label>
+                                    </form>
+                                </div>
+                                <div class="customer-name-panel">
+                                    <p class="name-customer">Alex Siminitzki</p>
+                                    <div class="btn-group">
+                                        <button type="button" class="customer-menu dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><span class="caret"></span></button>
+                                        <ul class="dropdown-menu dropdown-menu-right" role="menu">
+                                            <li><a href="#"><span class="glyphicon glyphicon-cog"
+																		  aria-hidden="true"></span>My Account</a></li>
+                                            <li class="divider"></li>
+                                            <li><a href="#"><span class="glyphicon glyphicon-usd"
+																		  aria-hidden="true"></span>Accounting</a></li>
+                                            <li class="divider"></li>
+                                            <li><a href="#"><span class="glyphicon glyphicon-user"
+																		  aria-hidden="true"></span>Favorites</a></li>
+                                            <li class="divider"></li>
+                                            <li><a href="#"><span class="glyphicon glyphicon-log-out"
+																		  aria-hidden="true"></span>Log Out</a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <nav class="navbar navbar-default">
+        <div class="container">
+            <ul class="message-menu-max-left">
+                <li>
+                    <a href="#"><span class="glyphicon glyphicon-newmessages" aria-hidden="true"></span>New Messages</a>
+                    <button type="button" class="btn btn-default nav-circle-status">4</button>
+                </li>
+            </ul>
+            <div class="col-xs-12 col-super-0 col-sm-3"></div>
+            <div class="col-xs-12 col-super-9 col-sm-6">
+                <ul class="nav navbar-nav">
+                    <li class="displaydesktop">
+                        <a href="#"><span class="glyphicon glyphicon-newmessages" aria-hidden="true"></span>New Messages</a>
+                        <div class="btn btn-default nav-circle-status">4</div>
+                    </li>
+                    <li class="active"><a href="#">Find projects</a></li>
+                    <li><a href="#">Find Mechanic</a></li>
+                    <li><a href="#">Post project</a></li>
+                    <li>
+                        <a href="#">My projects
+								<div class="btn btn-default nav-circle-status">4</div>
+							</a>
+                    </li>
+                </ul>
+            </div>
+            <div class="col-xs-12 col-sm-3">
+                <form class="navbar-form navbar-left search" role="search">
+                    <div class="form-group">
+                        <button type="submit" class="glyphicon glyphicon-search"></button>
+                        <input type="text" class="form-control" placeholder="Project search...">
+                    </div>
+                </form>
+            </div>
+        </div>
+    </nav>
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12 col-sm-8 col-md-9">
+                <div class="row">
+                    <div class="col-xs-12">
+                        <div class="info-page-content">
+                            <h1>Project Details</h1></div>
+                    </div>
+                    <div class="col-xs-12 mT5">
+                        <h2>Need some body works on Mercedes c280
+				
+				<ul class="project-stats list-inline">
+					<li>
+						<p>Project# <span>34565</span></p>
+					</li>
+					<li>
+						<p>Published <span>4/24/15</span></p>
+					</li>
+					<li>
+						<p>Views <span>12,351</span></p>
+					</li>
+				</ul>
+				</h2>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xs-12 col-md-6 mB24 dispute-profile">
+                        <h2>Customer</h2>
+                        <div class="customer-profile-new">
+                            <div class="row">
+                                <div class="col-xs-5">
+                                    <a href="#" class="link-profile">
+                                        <img class="img-profile" src="http://lorempixel.com/150/150/sports" alt="" />
+                                        <span>View Profile</span>
+                                    </a>
+                                </div>
+                                <div class="col-xs-7">
+                                    <div class="user-profile-stars">
+                                        <form action="#">
+                                            <label class="star-counter"> 24</label>
+                                            <input class="star star-5" id="star-25122" type="radio" name="star">
+                                            <label class="star star-5" for="star-25122"></label>
+                                            <input class="star star-4" id="star-24122" type="radio" name="star">
+                                            <label class="star star-4" for="star-24122"></label>
+                                            <input class="star star-3" id="star-23122" type="radio" name="star">
+                                            <label class="star star-3" for="star-23122"></label>
+                                            <input class="star star-2" id="star-22122" type="radio" name="star">
+                                            <label class="star star-2" for="star-22122"></label>
+                                            <input class="star star-1" id="star-21122" type="radio" name="star">
+                                            <label class="star star-1" for="star-21122"></label>
+                                        </form>
+                                    </div>
+                                    <h3>John Carter</h3>
+                                    <p id="customer-location">Apple Valley, NY</p>
+                                    <div class="contact-profile">
+                                        <button class="chat">CHAT</button>
+                                        <a class="msg" href="#"><img src="images/message.png" alt="" /></a>
+                                        <a class="user1" href="#"><img src="images/friends.png" alt="" /></a>
+                                    </div>
+                                    <div class="phone-dispute"><i class="fa fa-phone"></i> <a href="tel:234132725">234-132-7254</a></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xs-12 col-md-6 mB24 dispute-profile">
+                        <h2>Hired Mechanic</h2>
+                        <div class="customer-profile-new">
+                            <div class="row">
+                                <div class="col-xs-5">
+                                    <a href="#" class="link-profile">
+                                        <img class="img-profile" src="http://lorempixel.com/150/150/animals" alt="" />
+                                        <span>View Profile</span>
+                                    </a>
+                                </div>
+                                <div class="col-xs-7">
+                                    <div class="user-profile-stars">
+                                        <form action="#">
+                                            <label class="star-counter"> 24</label>
+                                            <input class="star star-5" id="star-251" type="radio" name="star">
+                                            <label class="star star-5" for="star-251"></label>
+                                            <input class="star star-4" id="star-241" type="radio" name="star">
+                                            <label class="star star-4" for="star-241"></label>
+                                            <input class="star star-3" id="star-231" type="radio" name="star">
+                                            <label class="star star-3" for="star-231"></label>
+                                            <input class="star star-2" id="star-221" type="radio" name="star">
+                                            <label class="star star-2" for="star-221"></label>
+                                            <input class="star star-1" id="star-211" type="radio" name="star">
+                                            <label class="star star-1" for="star-211"></label>
+                                        </form>
+                                    </div>
+                                    <h3>Mobile Service</h3>
+                                    <p id="customer-location-2">Mineapolis, MN 55401</p>
+                                    <div class="contact-profile">
+                                        <button class="chat">CHAT</button>
+                                        <a class="msg" href="#"><img src="images/message.png" alt="" /></a>
+                                        <a class="user1" href="#"><img src="images/friends.png" alt="" /></a>
+                                    </div>
+                                    <div class="phone-dispute"><i class="fa fa-phone"></i> <a href="tel:6666667254">666-666-7254</a></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xs-12">
+                        <h2>Vahicle Information</h2>
+                        <div class="row user-details">
+                            <div class="col-xs-12 col-sm-6 col-lg-4">
+                                <p><strong>Vehicle: </strong>1997 mercedes c280</p>
+                            </div>
+                            <div class="col-xs-12 col-sm-6 col-lg-4">
+                                <p><strong>Do you have parts?:</strong> Yes</p>
+                            </div>
+                            <div class="col-xs-12 col-sm-6 col-lg-4">
+                                <p><strong>Service:</strong> Body work</p>
+                            </div>
+                            <div class="col-xs-12 col-sm-6 col-lg-4">
+                                <p><strong>VIN Number:</strong> XYZWQ2233210321</p>
+                            </div>
+                            <div class="col-xs-12 col-sm-6 col-lg-4">
+                                <p><strong>Tow Need?:</strong> Yes</p>
+                            </div>
+                            <div class="col-xs-12">
+                                <p><strong>Parts Customer Will Akccept <span class="question-mark"><a href="#" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="Lorem ipsum dolor sit amet, consectetur adipiscing elit. In sed orci fringilla, consectetur eros ut, pharetra urna. Mauris non pharetra eros. Aenean malesuada ultricies massa, ac pulvinar nulla tempor iaculis. Fusce et quam orci. In malesuada posuere nulla eu ornare. Phasellus ac porttitor magna. Nullam efficitur ligula eget arcu sagittis, sit amet congue nisi aliquam." class="blue-tooltip">?</a></span>:</strong>
+                                    <input type="checkbox" name="" value="" checked> OEM / New, &nbsp;&nbsp;&nbsp;&nbsp;
+                                    <input type="checkbox" name="" value="" checked> Used,&nbsp;&nbsp;
+                                    <input type="checkbox" name="" value="" checked> Aftermarket, &nbsp;&nbsp;
+                                    <input type="checkbox" name="" value=""> Remanufactured
+                            </div>
+                            <div class="col-xs-12">
+                                <div class="row">
+                                    <div class="col-xs-12">
+                                        <h2>Service Information</h2>
+                                    </div>
+                                    <div class="col-xs-12 col-sm-7">
+                                        <p><strong>Symptoms Experienced</strong>
+                                            <br /> body work needed done new headlight , grill , needs new hood , radiator is leaking please check the hood. 2000 parts and labor max I want to spend.
+                                        </p>
+                                        <p><strong>Needed Service</strong>
+                                            <br /> body work needed done new headlight , grill , needs new hood , radiator is leaking please check the hood. 2000 parts and labor max I want to spend. Basically all you need to do is install the parts and fix the leak. I dont want the bumber touched up. Getting after market parts are ok.
+                                        </p>
+                                    </div>
+                                    <div class="col-xs-12 col-sm-5">
+                                        <p style="text-align: center;"><strong>Need Completed By:</strong>Sat. Feb. 13, 2015</p>
+                                        <p style="margin-bottom: 0; text-align: center;"><strong>Hours Vahicle Available for Service:</strong></p>
+                                        <div class="operation-hours table-responsive">
+                                            <table class="table table-striped">
+                                                <tbody>
+                                                    <tr>
+                                                        <th>Monday</th>
+                                                        <td>7:00am-8:00pm</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <th>Wednesday</th>
+                                                        <td>7:00am-8:00pm</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <th>Thursday</th>
+                                                        <td>7:00am-8:00pm</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <th>Friday</th>
+                                                        <td>7:00am-8:00pm</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <th>Saturday</th>
+                                                        <td>7:00am-8:00pm</td>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-xs-12">
+                                <h2>Photos</h2>
+                                <div class="gallery">
+                                    <a data-gal href="images/car1.jpg"><img src="images/car1.jpg" alt="" /></a>
+                                    <a data-gal href="images/car2.jpg"><img src="images/car2.jpg" alt="" /></a>
+                                    <a data-gal href="images/car1.jpg"><img src="images/car1.jpg" alt="" /></a>
+                                    <a data-gal href="images/car2.jpg"><img src="images/car2.jpg" alt="" /></a>
+                                    <a data-gal href="images/car1.jpg"><img src="images/car1.jpg" alt="" /></a>
+                                    <a data-gal href="images/car2.jpg"><img src="images/car2.jpg" alt="" /></a>
+                                    <a data-gal href="images/car1.jpg"><img src="images/car1.jpg" alt="" /></a>
+                                    <a data-gal href="images/car2.jpg"><img src="images/car2.jpg" alt="" /></a>
+                                </div>
+                            </div>
+                            <div class="col-xs-12">
+                                <h2>Estimates</h2>
+                                <div class="table-responsive">
+                                    <table class="table project-search-table table-estimate">
+                                        <thead>
+                                            <tr>
+                                                <th>Submitted</th>
+                                                <th>Mechanic</th>
+                                                <th>Estimate</th>
+                                                <th>Included</th>
+                                                <th>Phone</th>
+                                                <th>Message</th>
+                                                <th></th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr class="showing-first">
+                                                <td>07/10/2015</td>
+                                                <td>
+                                                    <div class="h4-in-table">Richard Hartzell</div>
+                                                    <div class="user-estimate-stars">
+                                                        <form action="#">
+                                                            <label class="star-counter"> 24</label>
+                                                            <input class="star star-5" id="star-25156789" type="radio" name="star">
+                                                            <label class="star star-5" for="star-25156789"></label>
+                                                            <input class="star star-4" id="star-2415678922" type="radio" name="star">
+                                                            <label class="star star-4" for="star-2415678922"></label>
+                                                            <input class="star star-3" id="star-2315678933" type="radio" name="star">
+                                                            <label class="star star-3" for="star-2315678933"></label>
+                                                            <input class="star star-2" id="star-2215678945" type="radio" name="star">
+                                                            <label class="star star-2" for="star-2215678945"></label>
+                                                            <input class="star star-1" id="star-2115678900" type="radio" name="star">
+                                                            <label class="star star-1" for="star-2115678900"></label>
+                                                        </form>
+                                                    </div>
+                                                </td>
+                                                <td>$350</td>
+                                                <td>Parts & Labor</td>
+                                                <td class="add-fav-projekt">
+                                                    <a class="msg" href="#"><img src="images/message.png" alt="" /></a>
+                                                </td>
+                                                <td class="add-fav-projekt">
+                                                    <a class="msg" href="#"><img src="images/message.png" alt="" /></a>
+                                                </td>
+                                                <td class="add-hide"><a href="#" class="hire-project projekt-hover-1">Hire</a></td>
+                                            </tr>
+                                            <tr class="showing-mouseover">
+                                                <td colspan="8" class="projekt-show-1"><strong>Message About a Project:</strong> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur ut tincidunt metus. Nulla elementum placerat commodo. Donec pharetra arcu sed risus interdum varius. Morbi dolor tortor, porttitor sed tincidunt vitae, semper ut urna. Phasellus velit neque, semper non dapibus sit amet, pulvinar sed purus. Cras venenatis tristique enim eu volutpat. Fusce molestie sodales ligula nec rutrum. Nulla arcu ante, sodales id vehicula sit amet, dictum non arcu. Suspendisse libero ante, pharetra finibus facilisis ac, condimentum ac nulla. Vestibulum et dignissim erat. Sed ac dui leo.</td>
+                                            </tr>
+                                            <tr class="showing-first">
+                                                <td>07/10/2015</td>
+                                                <td>
+                                                    <div class="h4-in-table">Arnold Schwarzenegger</div>
+                                                    <div class="user-estimate-stars">
+                                                        <form action="#">
+                                                            <label class="star-counter"> 24</label>
+                                                            <input class="star star-5" id="star-2515678911" type="radio" name="star">
+                                                            <label class="star star-5" for="star-2515678911"></label>
+                                                            <input class="star star-4" id="star-241567892222" type="radio" name="star">
+                                                            <label class="star star-4" for="star-241567892222"></label>
+                                                            <input class="star star-3" id="star-231567893333" type="radio" name="star">
+                                                            <label class="star star-3" for="star-231567893333"></label>
+                                                            <input class="star star-2" id="star-221567894544" type="radio" name="star">
+                                                            <label class="star star-2" for="star-221567894544"></label>
+                                                            <input class="star star-1" id="star-211567890055" type="radio" name="star">
+                                                            <label class="star star-1" for="star-211567890055"></label>
+                                                        </form>
+                                                    </div>
+                                                </td>
+                                                <td>$350</td>
+                                                <td>Parts & Labor</td>
+                                                <td class="add-fav-projekt">
+                                                    <a class="msg" href="#"><img src="images/message.png" alt="" /></a>
+                                                </td>
+                                                <td class="add-fav-projekt">
+                                                    <a class="msg" href="#"><img src="images/message.png" alt="" /></a>
+                                                </td>
+                                                <td class="add-hide"><a href="#" class="hire-project projekt-hover-2">Hire</a></td>
+                                            </tr>
+                                            <tr class="showing-mouseover">
+                                                <td colspan="8" class="projekt-show-2"><strong>Message About a Project:</strong> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur ut tincidunt metus. Nulla elementum placerat commodo. Donec pharetra arcu sed risus interdum varius. Morbi dolor tortor, porttitor sed tincidunt vitae, semper ut urna. Phasellus velit neque, semper non dapibus sit amet, pulvinar sed purus. Cras venenatis tristique enim eu volutpat. Fusce molestie sodales ligula nec rutrum. Nulla arcu ante, sodales id vehicula sit amet, dictum non arcu. Suspendisse libero ante, pharetra finibus facilisis ac, condimentum ac nulla. Vestibulum et dignissim erat. Sed ac dui leo.</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <h2>Estimates</h2>
+                                <div class="table-responsive">
+                                    <table class="table project-search-table2 table-estimate">
+                                        <thead>
+                                            <tr>
+                                                <th colspan="100%" style="border-bottom: none;">
+                                                    <button onClick="" class="escrow button-post" style="float: right;">Place Estimate</button>
+                                                </th>
+                                            </tr>
+                                            <tr>
+                                                <th style="border-top: none;">Estimate #</th>
+                                                <th style="border-top: none;">Date</th>
+                                                <th style="border-top: none;">Included</th>
+                                                <th style="border-top: none;">Mechanic Info</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td>1</td>
+                                                <td>07/10/2015</td>
+                                                <td>Labor Only</td>
+                                                <td class="wrench-estimate"><strong>Username:</strong> <i class="fa fa-wrench"></i> (Rating 4.7) 42 Completed Projects</td>
+                                            </tr>
+                                            <tr>
+                                                <td>2</td>
+                                                <td>07/10/2015</td>
+                                                <td>Parts & Labor</td>
+                                                <td class="wrench-estimate"><strong>Username:</strong> <i class="fa fa-wrench"></i> (Rating 4.7) 42 Completed Projects</td>
+                                            </tr>
+                                            <tr>
+                                                <td>3</td>
+                                                <td>07/10/2015</td>
+                                                <td>Labor Only</td>
+                                                <td class="wrench-estimate"><strong>Username:</strong> <i class="fa fa-wrench"></i> (Rating 4.7) 42 Completed Projects</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xs-12 col-sm-4 col-md-3">
+                <div style="background: #ccc; color: red; line-height: 500px; height: 500px; font-size: 20px; text-align: center;">
+                    Placeholder for Ads
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--Project-Counter -->
+    <div class="counter">
+        <div class="container">
+            <div class="row">
+                <div class="col-xs-12 col-sm-4 total-users">
+                    <h1>Total Users</h1>
+                    <span>127,453</span>
+                </div>
+                <div class="col-xs-12 col-sm-4  total-projects">
+                    <h1>Total Projects</h1>
+                    <span>70,123</span>
+                </div>
+                <div class="col-xs-12 col-sm-4 total-mechanics">
+                    <h1>Total Mechanics</h1>
+                    <span>143,009</span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--Project-Counter-End-->
+    <div class="footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-xs-12 col-sm-3 navigation">
+                    <h1>Navigation</h1>
+                    <ul>
+                        <li><a href="#">Home</a></li>
+                        <li><a href="#">Find a Mechanic</a></li>
+                        <li><a href="#">Forum</a></li>
+                        <li><a href="#">Advertising</a></li>
+                        <li><a href="#">Careers</a></li>
+                        <li><a href="#">Articles</a></li>
+                        <li><a href="#">Contact MechFinder</a></li>
+                    </ul>
+                </div>
+                <div class="col-xs-12 col-sm-4 col-sm-offset-2">
+                    <h1>For Users</h1>
+                    <ul>
+                        <li><a href="#">Get Estimate</a></li>
+                        <li><a href="#">Testimonials</a></li>
+                        <li><a href="#">Sign In</a></li>
+                        <li><a href="#">Sign Up</a></li>
+                    </ul>
+                    <h1>Legal</h1>
+                    <ul>
+                        <li><a href="#">Terms and Conditions</a></li>
+                        <li><a href="#">Privacy Policy</a></li>
+                        <li><a href="#">Our Garantee</a></li>
+                        <li><a href="#">Repair Warranty</a></li>
+                    </ul>
+                </div>
+                <div class="col-xs-12 col-sm-3">
+                    <h1>Projects Near You</h1>
+                    <div class="row client-row">
+                        <div class="col-xs-2 col-sm-3 col-lg-2">
+                            <a href="#"><img class="img-circle" src="http://lorempixel.com/50/50" alt="" /></a>
+                            <label class="status-circle"></label>
+                        </div>
+                        <div class="col-xs-9 col-sm-8 col-lg-9 help">
+                            <a href="#"><span><strong>Chris - I Need Help</strong></span></a>
+                            <br> <span>Auto Repair, Apple Valley, MN</span>
+                        </div>
+                    </div>
+                    <div class="row client-row">
+                        <div class="col-xs-2 col-sm-3 col-lg-2">
+                            <a href="#"><img class="img-circle" src="http://lorempixel.com/50/50" alt="" /></a>
+                            <label class="status-circle status-circle-orange"></label>
+                        </div>
+                        <div class="col-xs-9 col-sm-8 col-lg-9 help">
+                            <a href="#"><span><strong>Chris - I Need Help</strong></span></a>
+                            <br> <span>Auto Repair, Apple Valley, MN</span>
+                        </div>
+                    </div>
+                    <div class="row client-row">
+                        <div class="col-xs-2 col-sm-3 col-lg-2">
+                            <a href="#"><img class="img-circle" src="http://lorempixel.com/50/50" alt="" /></a>
+                            <label class="status-circle status-circle-green "></label>
+                        </div>
+                        <div class="col-xs-9 col-sm-8 col-lg-9 help">
+                            <a href="#"><span><strong>Chris - I Need Help</strong></span></a>
+                            <br> <span>Auto Repair, Apple Valley, MN</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="footer-bottom">
+        <div class="container">
+            <div class="row">
+                <div class="col-xs-12 col-sm-6">
+                    <div class="copy">
+                        <span>&copy; 2015 <a href="#">Mechalance.com</a> All Rights Reserved.</span>
+                    </div>
+                </div>
+                <div class="col-xs-12 col-sm-6">
+                    <div class="social">
+                        <ul>
+                            <li>
+                                <a href="#" class="facebook"><img src="images/facebook.png" alt="" /></a>
+                            </li>
+                            <li>
+                                <a href="#" class="facebook"><img src="images/twitter.png" alt="" /></a>
+                            </li>
+                            <li>
+                                <a href="#" class="facebook"><img src="images/tumblr.png" alt="" /></a>
+                            </li>
+                            <li>
+                                <a href="#" class="facebook"><img src="images/gplus.png" alt="" /></a>
+                            </li>
+                        </ul>
+                    </div>
+                    <span class="follow hidden-xs">Follow Us:</span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+
+    <script src="js/shiv.v3.7.2.js"></script>
+    <script src="js/respond.v1.4.2.min.js"></script>
+    <![endif]-->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+    <script>
+    $.widget.bridge('uibutton', $.ui.button);
+    $.widget.bridge('uitooltip', $.ui.tooltip);
+    </script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/moment.js"></script>
+    <script src="js/customscript.js"></script>
+    <script src="js/Chart.js"></script>
+    <script src="js/bootstrap-datetimepicker.min.js"></script>
+    <script src="js/bootstrap-datepicker.js"></script>
+    <script src="plugins/gallery-slider/touchTouch.jquery.js"></script>
+    <script src="js/jquery.countdown.js"></script>
+    <script src="js/bootstrap-switch.js"></script>
+    <script src="js/custom.js"></script>
+</body>
+
+</html>

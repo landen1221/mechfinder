@@ -1,0 +1,14 @@
+<div class="row">
+    <div class="col-xs-12 col-md-5">
+        <label class="control-label" for="{{id}}">{{label}}</label>
+    </div>
+    <div class="col-xs-12 col-md-5 col-lg-4">
+        <input type="text"
+               id="{{id}}"
+               name="{{#if name}}{{name}}{{else}}{{to_input_name id}}{{/if}}"
+               placeholder="{{#if placeholder}}{{placeholder}}{{else}}{{label}}{{/if}}"
+               class="{{class}}{{#if size}} input-{{size}}{{/if}}"
+               value="{{#if val}}{{val}}{{else}}{{get id}}{{/if}}" />
+       {{#if help}}<span class="help-block">{{help}}</span>{{/if}}
+    </div>
+</div>

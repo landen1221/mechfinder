@@ -1,0 +1,105 @@
+
+
+
+.container1 {width:600px; margin:auto;}
+.stg-1 {background-color:#FFF8BD; border-radius:10px; padding-top:15px; padding-bottom:15px; padding-right:15px;}
+.btn-file {
+    position: relative;
+    overflow: hidden;
+}
+.btn-file input[type=file] {
+    position: absolute;
+    top: 0;
+    right: 0;
+    min-width: 100%;
+    min-height: 100%;
+    font-size: 100px;
+    text-align: right;
+    filter: alpha(opacity=0);
+    opacity: 0;
+    outline: none;
+    background: white;
+    cursor: inherit;
+    display: block;
+}
+.tab-pane {background-color:#f5f5f5; padding:15px;}
+#bar {margin-top:20px;}
+.pager li>a, .pager li>span {border-radius:5px !important; margin-left:10px;}
+.first a{margin-left:0px;}
+.nav-tabs>li.active>a, .nav-tabs>li.active>a:hover, .nav-tabs>li.active>a:focus {background-color:#f5f5f5 !important;}
+
+.chat
+{
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+.chat li
+{
+    margin-bottom: 10px;
+    padding-bottom: 5px;
+    border-bottom: 1px dotted #B3A9A9;
+}
+.chat li.left .chat-body
+{
+    margin-left: 60px;
+}
+.chat li.right .chat-body
+{
+    margin-right: 60px;
+}
+.chat li .chat-body p
+{
+    margin: 0;
+    color: #777777;
+}
+.panel .slidedown .glyphicon, .chat .glyphicon
+{
+    margin-right: 5px;
+}
+.panel-body
+{
+    overflow-y: scroll;
+    height: 250px;
+}
+::-webkit-scrollbar-track
+{
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+    background-color: #F5F5F5;
+}
+::-webkit-scrollbar
+{
+    width: 12px;
+    background-color: #F5F5F5;
+}
+::-webkit-scrollbar-thumb
+{
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,.3);
+    background-color: #555;
+}
+.dispute-status{width:100%; background-color:#fff; padding:20px; text-align:center;}
+.page-header{margin: 10px 0 20px !important;}
+.dsp1 {color:#FA6F57 !important;}
+.dsp2 {color:#55C1E7 !important;}
+.payment-body {text-align:center;}
+.payment2 {background-color:#FFF8BD !important; padding:30px 10px; border-radius:10px;}
+.payments3 {padding:30px 10px;}
+.payments3 label { margin-bottom: 60px;}
+.payment-h {color:#317EAC;}
+.payment-img {width:90%; height:90%;}
+.payment5 {padding-top:50px;}
+.payment-img1 {width: 315px;
+  height: 49px;
+  margin-top: 100px;}
+.withdraw { width:400px; border:2px solid #ccc; border-radius:10px; padding:30px 40px; margin:auto;}
+.withdraw-img {margin-left:58px;}
+.withdraw-img img {width:200px; height:36px;}
+.paypal1 {width:90px !important; margin-left:14px;}
+.paypal2 {width:125px; margin-left:20px;}
+.paypal3 {margin-top:40px;}
+.paypal-tbl {margin-top:30px; margin-bottom:20px;}
+.payment-h1 {color:#317EAC; margin-bottom:50px;}
+.form-control2 {
+  width: 52px !important;
+}
+body.user #body-container > #tab-container li a {padding:8px 12px !important;}

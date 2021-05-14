@@ -1,0 +1,60 @@
+.tooltip-container
+{       
+    .tooltip-icons {
+        /*color: rgba(176, 1, 1, 1);*/
+        color: @colorGreen;
+        padding-left: 5px;
+    }
+
+    .tooltip-icons:hover{
+        color: rgba(200, 1, 1, 1);
+        text-decoration: underline;
+    }
+    
+    .tooltip_info {
+        /*border-bottom: 1px dotted;*/
+        position: relative;
+    }
+
+    .tooltip_info .tooltip-title {
+        position: absolute;
+        top: 18px;
+        background: #fefefe;
+        padding: 0.6em;
+        left: -1em;
+        max-width: 50vw;
+        width: 24em;
+        /*box-shadow: 3px 3px 6px #888;*/
+        .mf-ui.drop-shadow;
+        border: 1.5px solid #aaa;
+        border-radius: 0.3em;
+        text-align: left;
+        animation-name: fadeIn;
+        animation-duration: 0.3s;
+        font-family: "Droid Sans", Arial, Helvetica, sans-serif !important;
+        font-size: 10pt !important;
+        line-height: 12pt !important;
+        font-weight: normal;
+        color: #6c6c6c;
+        overflow: auto;
+    }
+
+    .left {
+        .tooltip-title {
+            left: auto;
+            right: 0;
+            overflow: auto;
+        }
+    }
+    
+    a {
+        color: rgb(176,1,1);
+    }
+    
+    @keyframes fadeIn {
+        from {
+            opacity: 0.3;
+            box-shadow: none;
+        }
+    }
+}

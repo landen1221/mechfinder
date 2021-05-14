@@ -1,0 +1,1348 @@
+/* signup.css */
+
+/* reset all browser-default padding and margins */
+* {
+	margin: 0px auto;
+	padding: 0px;
+}
+
+.container {
+	width: 100%;
+	display: block;
+	float: left;
+}
+
+.container .group {
+	width: 94%;
+	padding-left: 3%;
+	padding-right: 3%;
+	display: block;
+	float: left;
+	text-align: center;
+	background-color: rgba(255, 255, 255, 1);
+	border-bottom: 0px;
+}
+
+.container .group.gray {
+	background-color: rgba(242, 242, 242, 1);
+}
+
+.container .group.lightgray {
+	background-color: rgba(247, 247, 247, 1);
+}
+
+.container .group.graybottomborder {
+	border-bottom: 1px solid rgba(225, 225, 225, 1);
+}
+
+.container .group .centered {
+	width: 100%;
+	max-width: 1280px;
+	display: inline-block;
+}
+
+.container .group .centered .inside {
+	width: 100%;
+	display: block;
+	float: left;
+}
+
+.container .group .centered .inside .spacer {
+	width: 100%;
+	display: block;
+	float: left;
+	height: 55px;
+}
+
+.container .group .centered .inside .mainheading {
+	width: 100%;
+	display: block;
+	float: left;
+}
+
+.container .group .centered .inside .mainheading h1 {
+	color: rgba(55, 55, 55, 1);
+	font-family: Myriad Pro, Arial, Helvetica, sans-serif;
+	font-size: 35px;
+}
+
+.container .group .centered .inside .formbox {
+	width: 90%;
+	display: block;
+	float: left;
+	margin-left: 5%;
+	margin-right: 5%;
+}
+
+.container .group .centered .inside .formbox .boxheading {
+	width: 100%;
+	display: block;
+	float: left;
+}
+
+.container .group .centered .inside .formbox .boxheading h3 {
+	font-family: Myriad Pro, Arial, Helvetica, sans-serif;
+	font-size:  20px;
+	text-align:  left;
+	padding-bottom: 5px;
+}
+
+.container .group .centered .inside .formbox .boxcontent {
+	display: block;
+	float: left;
+	width: 100%;
+	background-color: rgba(238, 238, 238, 1);
+}
+
+.container .group .centered .inside .formbox .boxcontent .wehelp {
+	width: 100%;
+	display: block;
+	float: left;
+}
+
+.container .group .centered .inside .formbox .boxcontent .wehelp .line {
+	width: 94%;
+	margin-left: 3%;
+	margin-right: 3%;
+	display: block;
+	float: left;
+}
+
+.container .group .centered .inside .formbox .boxcontent .wehelp .line .column {
+	width: 100%;
+	display: block;
+	float: left;
+	margin-top: 25px;
+}
+
+.container .group .centered .inside .formbox .boxcontent .wehelp .line .lbl {
+	width: 100%;
+	display: block;
+	float: left;
+	margin: 0px;
+	margin-top: 11px;
+	margin-bottom: 5px;
+}
+
+.container .group .centered .inside .formbox .boxcontent .wehelp .line .lbl label {
+	color: rgba(108, 108, 108, 1);
+	font-family: Myriad Pro, Arial, Helvetica, sans-serif;
+	font-size: 17px;
+	text-align: left;
+	display: block;
+	float: left;
+	margin: 0px;
+}
+
+.container .group .centered .inside .formbox .boxcontent .wehelp .line .txt {
+	width: 100%;
+	display: block;
+	float: left;
+	margin: 0px;
+	text-align:  left;
+}
+
+.container .group .centered .inside .formbox .boxcontent .wehelp .line .txt input[type=text] {
+	width: 94%;
+	max-width: 200px;
+	padding-left: 3%;
+	padding-right: 3%;
+	padding-top: 13px;
+	padding-bottom: 8px;
+
+	font-family: Myriad Pro, Arial, Helvetica, sans-serif;
+	font-size: 15px;
+	text-align: left;
+	border: 0px;
+	border-bottom: 1px solid rgba(122, 122, 122, 1);
+	outline: none;
+	text-decoration:  none;;
+
+	color: rgba(138, 138, 138, 1);
+}
+
+.container .group .centered .inside .formbox .boxcontent .wehelp .line .rads {
+	width: 100%;
+	display: block;
+	float: left;
+	margin: 0px;
+	margin-top: 13px;
+}
+
+.container .group .centered .inside .formbox .boxcontent .wehelp .line .rads .rad {
+	width: auto;
+	display: inline-block;
+	float: left;
+	margin-right: 15px;
+}
+
+.container .group .centered .inside .formbox .boxcontent .wehelp .line .rads .rad label {
+	display: inline-block;
+	float: left;
+	margin-left: 3px;
+	color: rgba(108, 108, 108, 1);
+	font-family: Myriad Pro, Arial, Helvetica, sans-serif;
+	font-size: 17px;
+}
+
+.container .group .centered .inside .formbox .boxcontent .wehelp .line .rads .rad input[type=radio] {
+	margin-top: 2px;
+	float: left;
+}
+
+.container .group .centered .inside .formbox .boxcontent .wehelp .line .sel {
+	width: 100%;
+	display: block;
+	float: left;
+	margin: 0px;
+	margin-top: 0px;
+	text-align:  left;
+}
+
+.container .group .centered .inside .formbox .boxcontent .wehelp .line .sel select {
+	padding-left: 3%;
+	padding-right: 3%;
+	padding-top: 13px;
+	padding-bottom: 8px;
+
+	font-family: Myriad Pro, Arial, Helvetica, sans-serif;
+	font-size: 15px;
+	text-align: left;
+	border: 0px;
+	border-bottom: 1px solid rgba(122, 122, 122, 1);
+	outline: none;
+	text-decoration:  none;
+
+	color: rgba(138, 138, 138, 1);
+	width: 94%;
+	max-width: 200px;
+	float: left;
+}
+
+.container .group .centered .inside .formbox .boxcontent .wehelp .line .photo {
+	width: 100%;
+	display: block;
+	float: left;
+
+	color: rgba(108, 108, 108, 1);
+	font-family: Myriad Pro, Arial, Helvetica, sans-serif;
+	font-size: 17px;
+	text-align: left;
+}
+.container .group .centered .inside .formbox .boxcontent .wehelp .line .photo a:link,
+.container .group .centered .inside .formbox .boxcontent .wehelp .line .photo a:visited {
+	color: rgba(234, 15, 107, 1);
+	font-family: Myriad Pro, Arial, Helvetica, sans-serif;
+	font-size: 17px;
+	text-align: left;
+	text-decoration: none;
+	outline: none;
+	font-weight: bold;
+
+	-webkit-tap-highlight-color: transparent;
+}
+
+.container .group .centered .inside .formbox .boxcontent .wehelp .line .photo a:hover,
+.container .group .centered .inside .formbox .boxcontent .wehelp .line .photo a:active,
+.container .group .centered .inside .formbox .boxcontent .wehelp .line .photo a:focus {
+	text-decoration: underline;
+}
+
+.container .group .centered .inside .formbox .boxcontent .textboxes {
+	display: block;
+	float: left;
+	width: 100%;
+	text-align: left;
+}
+
+.container .group .centered .inside .formbox .boxcontent .textboxes .formitem {
+	width: 100%;
+	float: left;
+	display: block;
+}
+
+.container .group .centered .inside .formbox .boxcontent .textboxes .formitem .within {
+	width: 90%;
+	display: block;
+	float: left;
+	margin-left: 5%;
+	margin-right: 5%;
+	margin-top: 20px;
+	margin-bottom: 20px;
+}
+
+.container .group .centered .inside .formbox .boxcontent .textboxes .formitem .within .lbl {
+	width: 100%;
+	display: block;
+	float: left;
+	margin: 0px;
+}
+
+.container .group .centered .inside .formbox .boxcontent .textboxes .within .lbl label {
+	color: rgba(108, 108, 108, 1);
+	font-family: Myriad Pro, Arial, Helvetica, sans-serif;
+	font-size: 17px;
+	text-align: left;
+	display: block;
+	float: left;
+	margin: 0px;
+	margin-bottom: 5px;
+}
+
+.container .group .centered .inside .formbox .boxcontent .textboxes .within .txt {
+	width: 100%;
+	display: block;
+	float: left;
+	margin: 0px;
+}
+
+.container .group .centered .inside .formbox .boxcontent .textboxes .within .txt input[type=text] {
+	width: 96%;
+	padding-left: 2%;
+	padding-right: 2%;
+	padding-top: 13px;
+	padding-bottom: 8px;
+
+	font-family: Myriad Pro, Arial, Helvetica, sans-serif;
+	font-size: 15px;
+	text-align: left;
+	border: 0px;
+	border-bottom: 1px solid rgba(122, 122, 122, 1);
+	outline: none;
+	text-decoration:  none;;
+
+	color: rgba(138, 138, 138, 1);
+}
+
+.container .group .centered .inside .formbox .boxcontent .splitter {
+	width: 94%;
+	display: block;
+	float: left;
+	height: 1px;
+	background-color: rgba(214, 214, 214, 1);
+	margin-top: 15px;
+	margin-bottom: 15px;
+	margin-left: 3%;
+	margin-right: 3%;
+}
+
+.container .group .centered .inside .formbox .boxcontent .splitter.clear {
+	background-color: transparent;
+}
+
+.container .group .centered .inside .formbox .boxcontent .buttons {
+	width: 94%;
+	display: block;
+	float: left;
+	margin-left: 3%;
+	margin-right: 3%;
+}
+
+.container .group .centered .inside .formbox .boxcontent .buttons .btn {
+	display: inline-block;
+	float: right;
+	height: 36px;
+}
+
+.container .group .centered .inside .formbox .boxcontent .buttons .btn a:link,
+.container .group .centered .inside .formbox .boxcontent .buttons .btn a:visited {
+	display: block;
+	float: left;
+	background-color: rgba(43, 43, 43, 1);
+	margin: 5px;
+
+	text-decoration:  none;;
+	outline: none;
+	padding: 0px;
+	height: 36px;
+
+	-moz-transition: all 300ms ease;
+	-ms-transition: all 300ms ease;
+	-o-transition: all 300ms ease;
+	transition: all 300ms ease;
+}
+
+.container .group .centered .inside .formbox .boxcontent .buttons .btn a:hover,
+.container .group .centered .inside .formbox .boxcontent .buttons .btn a:active,
+.container .group .centered .inside .formbox .boxcontent .buttons .btn a:focus {
+	background-color: rgba(77, 77, 77, 1);
+}
+
+.container .group .centered .inside .formbox .boxcontent .buttons .btn a .txt {
+	display: inline-block;
+	float: left;
+	color: rgba(255, 255, 255, 1);
+	font-family: Myriad Pro, Arial, Helvetica, sans-serif;
+	font-size: 15px;
+	padding-left: 10px;
+	padding-right: 10px;
+	padding-top: 11px;
+	padding-bottom: 7px;
+}
+
+.container .group .centered .inside .formbox .boxcontent .buttons .btn a .img {
+	display: inline-block;
+	float: left;
+	width: 43px;
+	height: 36px;
+}
+
+.container .group .centered .inside .formbox .boxcontent .buttons .btn a .img {
+	/* hide the image for extremely small screens to avoid button squishing */
+	display: none;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.wecanhelp {
+	width: 94%;
+	margin-left: 3%;
+	margin-right: 3%;
+	display: block;
+	float: left;
+}
+
+.wecanhelp .projname {
+	width: 100%;
+	display: block;
+	float: left;
+	margin-top: 20px;
+	margin-bottom: 20px;
+}
+
+.wecanhelp .projname .lbl {
+	display: inline-block;
+	float: left;
+	padding-right: 10px;
+}
+
+.wecanhelp .projname .lbl label {
+	color: rgba(108, 108, 108, 1);
+	font-family: Myriad Pro, Arial, Helvetica, sans-serif;
+	font-size: 17px;
+	line-height: 17px;
+	text-align: left;
+	display: block;
+	float: left;
+	margin: 0px;
+	margin-bottom: 12px;
+	margin-top: 11px;
+}
+
+.wecanhelp .projname .txt {
+	display: inline-block;
+	float: left;
+	background: green;
+}
+
+.wecanhelp .projname .txt input[type=text] {
+	padding-left: 10px;
+	padding-right: 10px;
+	padding-top: 13px;
+	padding-bottom: 8px;
+
+	font-family: Myriad Pro, Arial, Helvetica, sans-serif;
+	font-size: 15px;
+	line-height: 15px;
+	text-align: left;
+	border: 0px;
+	border-bottom: 1px solid rgba(122, 122, 122, 1);
+	outline: none;
+	text-decoration:  none;;
+
+	color: rgba(138, 138, 138, 1);
+}
+
+.wecanhelp .row {
+	width: 100%;
+	display: block;
+	float: left;
+	margin-bottom: 20px;
+}
+
+.wecanhelp .row .column {
+	display: inline-block;
+	float: left;
+	margin-right: 40px;
+	margin-top: 20px;
+}
+
+.wecanhelp .row .column:last-child {
+	margin-right: 0px;
+}
+
+.wecanhelp .row .column .needatow {
+	display: block;
+	float: left;
+}
+
+.wecanhelp .row .column .needatow .lbl {
+	display: inline-block;
+	float: left;
+	padding-right: 10px;
+}
+
+.wecanhelp .row .column .needatow .lbl label {
+	color: rgba(108, 108, 108, 1);
+	font-family: Myriad Pro, Arial, Helvetica, sans-serif;
+	font-size: 17px;
+	line-height: 17px;
+	text-align: left;
+	display: block;
+	float: left;
+	margin: 0px;
+	margin-bottom: 12px;
+	margin-top: 11px;
+}
+
+.wecanhelp .row .column .needatow .rads {
+	display: inline-block;
+	float: left;
+}
+
+.wecanhelp .row .column .needatow .rads .rad {
+	display: inline-block;
+	float: left;
+	margin-right: 10px;
+}
+
+.wecanhelp .row .column .needatow .rads .rad:last-child {
+	margin-right: 0px;
+}
+
+.wecanhelp .row .column .needatow .rads .rad .l {
+	display: inline-block;
+	float: left;
+}
+
+.wecanhelp .row .column .needatow .rads .rad .l label {
+	color: rgba(108, 108, 108, 1);
+	font-family: Myriad Pro, Arial, Helvetica, sans-serif;
+	font-size: 14px;
+	line-height: 14px;
+	text-align: left;
+	display: block;
+	float: left;
+	margin: 0px;
+	margin-bottom: 12px;
+	margin-top: 13px;
+}
+
+.wecanhelp .row .column .needatow .rads .rad .r {
+	display: inline-block;
+	float: left;
+	margin-top: 11px;
+	margin-right: 3px;
+}
+
+.wecanhelp .row .column .idprefera {
+	display: block;
+	float: left;
+}
+
+.wecanhelp .row .column .idprefera .lbl {
+	display: inline-block;
+	float: left;
+	padding-right: 10px;
+}
+
+.wecanhelp .row .column .idprefera .lbl label {
+	color: rgba(108, 108, 108, 1);
+	font-family: Myriad Pro, Arial, Helvetica, sans-serif;
+	font-size: 17px;
+	line-height: 17px;
+	text-align: left;
+	display: block;
+	float: left;
+	margin: 0px;
+	margin-bottom: 12px;
+	margin-top: 11px;
+}
+
+.wecanhelp .row .column .idprefera .sel {
+	display: inline-block;
+	float: left;
+}
+
+.wecanhelp .row .column .idprefera .sel select {
+	padding-left: 3%;
+	padding-right: 3%;
+	padding-top: 10px;
+	padding-bottom: 9px;
+
+	font-family: Myriad Pro, Arial, Helvetica, sans-serif;
+	font-size: 15px;
+	text-align: left;
+	border: 0px;
+	border-bottom: 1px solid rgba(122, 122, 122, 1);
+	outline: none;
+	text-decoration:  none;
+
+	color: rgba(138, 138, 138, 1);
+	width: 94%;
+	max-width: 200px;
+	float: left;
+}
+
+.wecanhelp .row .column .mustbecompletedby {
+	display: block;
+	float: left;
+}
+
+.wecanhelp .row .column .mustbecompletedby .lbl {
+	display: inline-block;
+	float: left;
+	padding-right: 10px;
+}
+
+.wecanhelp .row .column .mustbecompletedby .lbl label {
+	color: rgba(108, 108, 108, 1);
+	font-family: Myriad Pro, Arial, Helvetica, sans-serif;
+	font-size: 17px;
+	line-height: 17px;
+	text-align: left;
+	display: block;
+	float: left;
+	margin: 0px;
+	margin-bottom: 12px;
+	margin-top: 11px;
+}
+
+.wecanhelp .row .column .mustbecompletedby .txt {
+	display: inline-block;
+	float: left;
+}
+
+.wecanhelp .row .column .mustbecompletedby .txt input[type=text] {
+	color: rgba(108, 108, 108, 1);
+	font-family: Myriad Pro, Arial, Helvetica, sans-serif;
+	font-size: 17px;
+	line-height: 17px;
+	text-align: left;
+	display: block;
+	float: left;
+	margin: 0px;
+
+	padding-top: 11px;
+	padding-bottom: 10px;
+	padding-left: 10px;
+	padding-right: 10px;
+
+	font-family: Myriad Pro, Arial, Helvetica, sans-serif;
+	font-size: 15px;
+	text-align: left;
+	border: 0px;
+	border-bottom: 1px solid rgba(122, 122, 122, 1);
+	outline: none;
+	text-decoration:  none;;
+
+	color: rgba(138, 138, 138, 1);
+}
+
+.wecanhelp .line {
+	width: 100%;
+	display: block;
+	float: left;
+	background-color: rgba(214, 214, 214, 1);
+	height: 1px;
+}
+
+.wecanhelp .selectbestoption {
+	display: block;
+	float: left;
+	width: 100%;
+	margin-bottom: 20px;
+	margin-top: 20px;
+}
+
+.wecanhelp .selectbestoption .column {
+	display: inline-block;
+	float: left;
+}
+
+
+
+.wecanhelp .selectbestoption .column .lbl {
+	display: inline-block;
+	float: left;
+	padding-right: 10px;
+}
+
+.wecanhelp .selectbestoption .column .lbl label {
+	color: rgba(108, 108, 108, 1);
+	font-family: Myriad Pro, Arial, Helvetica, sans-serif;
+	font-size: 17px;
+	line-height: 17px;
+	text-align: left;
+	display: block;
+	float: left;
+	margin: 0px;
+	margin-bottom: 12px;
+	margin-top: 11px;
+}
+
+.wecanhelp .selectbestoption .column .toggle {
+	display: block;
+	float: left;
+}
+
+.wecanhelp .selectbestoption .column .toggle .opt {
+	display: inline-block;
+	float: left;
+}
+
+.wecanhelp .selectbestoption .column .toggle .opt a {
+	display: inline-block;
+	float: left;
+	line-height: 17px;
+	padding-top: 12px;
+	padding-bottom: 11px;
+	padding-left: 10px;
+	padding-left: 10px;
+
+    color: rgba(176, 1, 1, 1);
+	font-weight:  bold;
+	font-family: Myriad Pro, Arial, Helvetica, sans-serif;
+	font-size: 17px;
+	line-height: 17px;
+	text-align: left;
+
+	text-decoration: none;
+	outline: none;
+	-webkit-tap-highlight-color: transparent;
+}
+
+.wecanhelp .selectbestoption .column .toggle .opt a[data-selected="1"] {
+	text-decoration: underline;
+}
+
+.wecanhelp .selectbestoption .bestoption {
+    width: 100%;
+    display: block;
+    float: left;
+    margin-top: 20px;
+}
+
+.wecanhelp .selectbestoption .bestoption .frame {
+    width: 90%;
+    display: block;
+    float: left;
+    margin-left: 5%;
+    margin-right: 5%;
+}
+
+.wecanhelp .selectbestoption .bestoption .frame .blockbox {
+    width: 100%;
+    display: block;
+    float: left;
+    margin-bottom: 20px;
+}
+
+.wecanhelp .selectbestoption .bestoption .frame .link {
+    display: inline-block;
+    float: left;
+    margin-top: 5px;
+}
+
+.wecanhelp .selectbestoption .bestoption .frame .link a:link,
+.wecanhelp .selectbestoption .bestoption .frame .link a:visited {
+    display: block;
+    float: left;
+    padding-top: 11px;
+    padding-bottom: 10px;
+    padding-left: 5px;
+    padding-right: 5px;
+
+    color: rgba(172, 1, 1, 1);
+    font-weight:  bold;
+	font-family: Myriad Pro, Arial, Helvetica, sans-serif;
+	font-size: 17px;
+	line-height: 17px;
+	text-align: left;
+
+	text-decoration: none;
+	outline: none;
+	-webkit-tap-highlight-color: transparent;
+}
+
+.wecanhelp .selectbestoption .bestoption .frame .link a:hover,
+.wecanhelp .selectbestoption .bestoption .frame .link a:active,
+.wecanhelp .selectbestoption .bestoption .frame .link a:focus {
+    text-decoration: underline;
+}
+
+.wecanhelp .selectbestoption .bestoption .frame .lbl {
+	display: inline-block;
+	float: left;
+	padding-right: 10px;
+    margin-top: 5px;
+}
+
+.wecanhelp .selectbestoption .bestoption .frame .lbl label {
+	color: rgba(108, 108, 108, 1);
+	font-family: Myriad Pro, Arial, Helvetica, sans-serif;
+	font-size: 17px;
+	line-height: 17px;
+	text-align: left;
+	display: block;
+	float: left;
+	margin: 0px;
+	margin-bottom: 12px;
+	margin-top: 11px;
+}
+
+.wecanhelp .selectbestoption .bestoption .frame .tryinline {
+    display: inline-block;
+    float: left;
+}
+
+.wecanhelp .selectbestoption .bestoption .frame .sel {
+	display: inline-block;
+	float: left;
+    margin-right: 5px;
+    margin-top: 5px;
+}
+
+.wecanhelp .selectbestoption .bestoption .frame .sel select {
+	padding-left: 10px;
+	padding-right: 10px;
+	padding-top: 10px;
+	padding-bottom: 9px;
+
+	font-family: Myriad Pro, Arial, Helvetica, sans-serif;
+	font-size: 15px;
+	text-align: left;
+	border: 0px;
+	border-bottom: 1px solid rgba(122, 122, 122, 1);
+	outline: none;
+	text-decoration:  none;
+
+	color: rgba(138, 138, 138, 1);
+	width: 100%;
+    box-sizing: border-box;
+	/*max-width: 200px;*/
+    max-width: 100%;
+	float: left;
+}
+
+.wecanhelp .selectbestoption .bestoption .frame .txtarea {
+    width: 100%;
+	display: block;
+	float: left;
+}
+
+.wecanhelp .selectbestoption .bestoption .frame .txtarea textarea {
+    width: 100%;
+    max-width: 100%;
+    min-width: 100%;
+    float: left;
+    box-sizing:  border-box;
+    min-height: 100px;
+
+	padding-top: 11px;
+	padding-bottom: 10px;
+	padding-left: 10px;
+	padding-right: 10px;
+
+	color: rgba(138, 138, 138, 1);
+	font-family: Myriad Pro, Arial, Helvetica, sans-serif;
+	font-size: 15px;
+	text-align: left;
+
+	border: 0px;
+	border-bottom: 1px solid rgba(122, 122, 122, 1);
+
+	outline: none;
+	text-decoration: none;
+}
+
+.wecanhelp .selectbestoption .bestoption .frame .checks {
+	display: inline-block;
+	float: left;
+}
+
+.wecanhelp .selectbestoption .bestoption .frame .checks .check {
+	display: inline-block;
+	float: left;
+	margin-right: 10px;
+    margin-top: 5px;
+}
+
+.wecanhelp .selectbestoption .bestoption .frame .checks .check:last-child {
+	margin-right: 0px;
+}
+
+.wecanhelp .selectbestoption .bestoption .frame .checks .check .l {
+	display: inline-block;
+	float: left;
+}
+
+.wecanhelp .selectbestoption .bestoption .frame .checks .check .l label {
+	color: rgba(108, 108, 108, 1);
+	font-family: Myriad Pro, Arial, Helvetica, sans-serif;
+	font-size: 14px;
+	line-height: 14px;
+	text-align: left;
+	display: block;
+	float: left;
+	margin: 0px;
+	margin-bottom: 12px;
+	margin-top: 13px;
+}
+
+.wecanhelp .selectbestoption .bestoption .frame .checks .check .c {
+	display: inline-block;
+	float: left;
+	margin-top: 11px;
+	margin-right: 3px;
+}
+
+.wecanhelp .selectbestoption .bestoption .frame .rads {
+	display: inline-block;
+	float: left;
+}
+
+.wecanhelp .selectbestoption .bestoption .frame .rads .rad {
+	display: inline-block;
+	float: left;
+	margin-right: 10px;
+    margin-top: 5px;
+}
+
+.wecanhelp .selectbestoption .bestoption .frame .rads .rad:last-child {
+	margin-right: 0px;
+}
+
+.wecanhelp .selectbestoption .bestoption .frame .rads .rad .l {
+	display: inline-block;
+	float: left;
+}
+
+.wecanhelp .selectbestoption .bestoption .frame .rads .rad .l label {
+	color: rgba(108, 108, 108, 1);
+	font-family: Myriad Pro, Arial, Helvetica, sans-serif;
+	font-size: 14px;
+	line-height: 14px;
+	text-align: left;
+	display: block;
+	float: left;
+	margin: 0px;
+	margin-bottom: 12px;
+	margin-top: 13px;
+}
+
+.wecanhelp .selectbestoption .bestoption .frame .rads .rad .r {
+	display: inline-block;
+	float: left;
+	margin-top: 11px;
+	margin-right: 3px;
+}
+
+.wecanhelp .selectbestoption .bestoption .frame .hourstable {
+    width: 100%;
+    display: block;
+    float: left;
+    margin-top: 10px;
+    text-align: center;
+}
+
+.wecanhelp .selectbestoption .bestoption .frame .hourstable table {
+    max-width: 100%;
+    border: 0px;
+    cursor: default;
+    border: 1px solid rgba(222, 222, 222, 1);
+}
+
+.wecanhelp .selectbestoption .bestoption .frame .hourstable table tr td {
+    font-family: "Myriad Pro", Arial, Helvetica, sans-serif;
+    font-size: 13px;
+    color: rgba(42, 53, 51, 1);
+    text-align: center;
+
+    border: 0px;
+    border-top: 1px solid rgba(222, 222, 222, 1);
+
+    padding-left: 5px;
+    padding-right: 5px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+
+    background-color: rgba(255, 255, 255, 1);
+}
+
+.wecanhelp .selectbestoption .bestoption .frame .hourstable table tr:first-child td {
+    border-top: 0px;
+}
+
+.wecanhelp .selectbestoption .bestoption .frame .hourstable table tr:last-child td {
+    border-bottom: 1px solid rgba(222, 222, 222, 1);
+}
+
+.wecanhelp .selectbestoption .bestoption .frame .hourstable table tr.colnames td {
+    padding: 15px;
+    font-weight: bold;
+}
+
+.wecanhelp .selectbestoption .bestoption .frame .hourstable table tr td.green {
+    color: rgba(38, 182, 90, 1);
+}
+
+.wecanhelp .selectbestoption .bestoption .frame .hourstable table tr td.red {
+    color: rgba(236, 22, 39, 1);
+}
+
+.wecanhelp .selectbestoption .bestoption .frame .hourstable table tr td.blue {
+    color: rgba(54, 72, 214, 1);
+}
+
+.wecanhelp .selectbestoption .bestoption .frame .hourstable table tr:nth-child(even) td {
+    /*background-color: rgba(251, 251, 251, 1);*/
+}
+
+.wecanhelp .selectbestoption .bestoption .frame .hourstable table tr td a.btn:link,
+.wecanhelp .selectbestoption .bestoption .frame .hourstable table tr td a.btn:visited {
+    display: inline-block;
+    padding: 5px;
+    border-radius: 3px;
+
+    font-family: "Myriad Pro", Arial, Helvetica, sans-serif;
+    font-size: 13px;
+    color: rgba(234, 234, 234, 1);
+    text-align: center;
+
+    background-color: rgba(7, 166, 244, 1);
+
+    text-decoration: none;
+    outline: none;
+
+    -moz-transition: all 300ms ease;
+    -ms-transition: all 300ms ease;
+    -o-transition: all 300ms ease;
+    transition: all 300ms ease;
+}
+
+.wecanhelp .selectbestoption .bestoption .frame .hourstable table tr td a.btn:hover,
+.wecanhelp .selectbestoption .bestoption .frame .hourstable table tr td a.btn:active,
+.wecanhelp .selectbestoption .bestoption .frame .hourstable table tr td a.btn:focus {
+    background-color: rgba(27, 186, 255, 1);
+    color: rgba(255, 255, 255, 1);
+}
+
+
+
+
+
+
+
+
+.wecanhelp .addpic {
+	width: 100%;
+	display: block;
+	float: left;
+	padding-top: 20px;
+	padding-bottom: 20px;
+
+	color: rgba(108, 108, 108, 1);
+	font-family: Myriad Pro, Arial, Helvetica, sans-serif;
+	font-size: 17px;
+	line-height: 17px;
+	text-align: left;
+	display: block;
+	float: left;
+	margin: 0px;
+	margin-bottom: 12px;
+	margin-top: 11px;
+}
+
+.wecanhelp .addpic a:link,
+.wecanhelp .addpic a:visited {
+	font-weight:  bold;
+	font-family: Myriad Pro, Arial, Helvetica, sans-serif;
+	font-size: 17px;
+	line-height: 17px;
+	text-align: left;
+
+	text-decoration: none;
+	outline: none;
+	-webkit-tap-highlight-color: transparent;
+}
+
+.wecanhelp .addpic a:hover,
+.wecanhelp .addpic a:focus,
+.wecanhelp .addpic a:active {
+	text-decoration: underline;
+}
+
+.wecanhelp .piclist {
+    width: 90%;
+    display: block;
+    float: left;
+    margin-left: 5%;
+    margin-right: 5%;
+    /*min-height: 100px;*/
+}
+
+.wecanhelp .piclist .picboxes .dragndrop {
+    width: 100%;
+    display: block;
+    float: left;
+    text-align: center;
+    pointer-events: none;
+
+    color: rgba(177, 177, 177, 1);
+    font-family: "Myriad Pro", Arial, Helvetica, sans-serif;
+    font-size: 15px;
+    line-height: 22px;
+    font-weight: normal;
+
+    cursor: default;
+}
+
+.wecanhelp .piclist .picboxes .dragndrop a:link,
+.wecanhelp .piclist .picboxes .dragndrop a:visited {
+    pointer-events: all;
+    font-weight:  bold;
+	font-family: "Myriad Pro", Arial, Helvetica, sans-serif;
+	font-size: 15px;
+	line-height: 22px;
+	text-align: left;
+
+    color: rgba(171, 1, 1, 1);
+
+	text-decoration: none;
+	outline: none;
+	-webkit-tap-highlight-color: transparent;
+}
+
+.wecanhelp .piclist .picboxes .dragndrop a:hover,
+.wecanhelp .piclist .picboxes .dragndrop a:active,
+.wecanhelp .piclist .picboxes .dragndrop a:focus {
+	text-decoration: underline;
+}
+
+.wecanhelp .piclist .picboxes {
+    width: 100%;
+    display: block;
+    float: left;
+    background-color: transparent;
+    padding: 15px;
+    box-sizing: border-box;
+    border: 2px solid transparent;
+    border: 2px dashed rgba(177, 177, 177, 1);
+
+	-moz-transition: all 300ms ease;
+	-ms-transition: all 300ms ease;
+	-o-transition: all 300ms ease;
+	transition: all 300ms ease;
+}
+
+.wecanhelp .piclist .picboxes.dragging {
+    background-color: rgba(214, 214, 214, 1);
+}
+
+.wecanhelp .piclist .picbox {
+    max-width: 23%;
+    margin-left: 1%;
+    margin-right: 1%;
+    max-width: 98%;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    display: inline-block;
+    position: relative;
+    pointer-events: none;
+    /*float: left;*/
+}
+
+.wecanhelp .piclist .picbox .remove {
+    min-width: 30px;
+    display: block;
+    float: right;
+    position: absolute;
+    top: 2px;
+    right: 2px;
+    z-index: 100;
+    padding: 5px;
+    pointer-events: all;
+
+    background-color: rgba(234, 234, 234, 1);
+    color: rgba(41, 41, 41, 1);
+    border-bottom-left-radius: 1px;
+    font-family: "Myriad Pro", Arial, Helvetica, sans-serif;
+    font-size: 13px;
+    cursor: pointer;
+
+	-moz-transition: all 300ms ease;
+	-ms-transition: all 300ms ease;
+	-o-transition: all 300ms ease;
+	transition: all 300ms ease;
+}
+
+.wecanhelp .piclist .picbox .remove:hover,
+.wecanhelp .piclist .picbox .remove:focus,
+.wecanhelp .piclist .picbox .remove:active {
+    background-color: rgba(166, 1, 1, 1);
+    color: rgba(255, 255, 255, 1);
+}
+
+.wecanhelp .piclist .picbox img {
+    max-width: 100%;
+    max-height: 150px;
+
+    box-sizing: border-box;
+    border: 2px solid rgba(255, 255, 255, 1);
+    box-shadow: 0px 0px 3px 0px rgba(1, 1, 1, 1);
+}
+
+.wecanhelp .piclist .picbox .add-btn {
+    width: 100%;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    padding: 15px;
+    display: block;
+    box-sizing:  border-box;
+
+    color: rgba(177, 177, 177, 1);
+    font-family: "Myriad Pro", Arial, Helvetica, sans-serif;
+    font-size: 15px;
+    font-weight: normal;
+
+    background-color: rgba(255, 255, 255, 1);
+    border: 2px dashed rgba(177, 177, 177, 1);
+}
+
+.wecanhelp .piclist .picbox img.loaded {
+    opacity: 1;
+}
+
+
+
+
+
+/* ---------------------------------------------------------------------------------- 	MEDIA QUERIES BEGIN HERE ------------------------------------------------------------------------- */
+
+/* Custom, iPhone Retina */
+@media only screen and (min-width : 320px) {
+	/* reshow the btn img that we hid before for super small screens */
+	.container .group .centered .inside .formbox .boxcontent .buttons .btn a .img {
+		display: inline-block;
+	}
+}
+
+/* Extra Small Devices, Phones */
+@media only screen and (min-width : 480px) {
+
+}
+
+/* Small Devices, Tablets */
+@media only screen and (min-width : 768px) {
+	.container .group .centered .inside .formbox .boxcontent .wehelp .line .column {
+		width: 31%;
+		margin-left: 1%;
+		margin-right: 1%;
+		display: inline-block;
+		float: left;
+		margin-top: 25px;
+	}
+
+    .wecanhelp .piclist .picbox {
+        max-width: 48%;
+    }
+}
+
+/* Medium Devices, Desktops */
+@media only screen and (min-width : 992px) {
+
+	.container .group .centered .inside .formbox .boxcontent .wehelp .line .lbl {
+		width: auto;
+		display: inline-block;
+		float: left;
+		margin-top: 11px;
+		margin-bottom: 5px;
+		margin-right: 15px;
+	}
+
+	.container .group .centered .inside .formbox .boxcontent .wehelp .line .txt {
+		width: auto;
+		display: inline-block;
+		float: left;
+	}
+
+	.container .group .centered .inside .formbox .boxcontent .wehelp .line .txt input[type=text] {
+		width: 200px;
+		padding-left: 12px;
+		padding-right: 12px;
+	}
+
+	.container .group .centered .inside .formbox .boxcontent .textboxes {
+		text-align: center;
+	}
+
+	.container .group .centered .inside .formbox .boxcontent .textboxes .formitem {
+		display: inline-block;
+		width: auto;
+		float: none;
+	}
+
+	.container .group .centered .inside .formbox .boxcontent .textboxes .formitem .within {
+		width: auto;
+		display: inline-block;
+	}
+
+	.container .group .centered .inside .formbox .boxcontent .textboxes .formitem .within .lbl {
+		width: auto;
+		display: inline-block;
+		float: left;
+	}
+
+	.container .group .centered .inside .formbox .boxcontent .textboxes .within .lbl label {
+		margin-top: 12px;
+		margin-bottom: 0px;
+	}
+
+	.container .group .centered .inside .formbox .boxcontent .textboxes .within .txt {
+		width: auto;
+		display: inline-block;
+		float: left;
+	}
+
+	.container .group .centered .inside .formbox .boxcontent .textboxes .within .txt input[type=text] {
+		width: 200px;
+		padding-left: 10px;
+		padding-right: 10px;
+	}
+
+    .wecanhelp .piclist .picbox {
+        max-width: 23%;
+    }
+}
+
+/* Large Devices, Wide Screens */
+@media only screen and (min-width : 1200px) {
+
+}

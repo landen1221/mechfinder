@@ -1,0 +1,164 @@
+<script src="{{ settings.static_path }}/js/navbar.js"></script>
+
+<div class="mobilenav">
+    <div class="inside">
+        <div class="logo"><a href="/"></a></div>
+        <div id="mobilemenubutton" class="menu" onclick="">
+            <div id="mobilemenudropdown" class="dropdown">
+                <ul>
+                    {{#if mechanicPage}}
+                        {{#unless signupPage}}
+                            <li><a href="/mechanic/info/howItWorks">How It Works</a></li>
+                            <li><a href="/customer/info/benefits">Customer Benefits</a></li>
+                        {{/unless}}
+
+                        {{#if user}}
+                            <li><a href="/profile/{{user._id}}">{{user.username}}</a></li>
+                        {{else}}
+                            <li><a href="/">For Customers</a></li>
+                            <li><a id="loginPopupButtonMobile" href="javascript:void(0);">Login</a></li>
+                            {{#unless signupPage}}
+                                <li><a href="/signup">Sign Up</a></li>
+                            {{/unless}}
+                        {{/if}}
+                    {{else}}
+                        {{#unless signupPage}}
+                            <li><a href="/customer/info/benefits">Customer Benefits</a></li>
+                            <li><a href="/customer/info/howItWorks">How It Works</a></li>
+                        {{/unless}}
+                        {{#if user}}
+                            <li><a href="/profile/{{user._id}}">{{user.username}}</a></li>
+                        {{else}}
+                            <li><a href="/home/mechanic">For Mechanics</a></li>
+                            <li><a id="loginPopupButtonMobile" href="javascript:void(0);">Login</a></li>
+                            {{#unless signupPage}}
+                                <li><a href="/signup">Sign Up</a></li>
+                            {{/unless}}
+                        {{/if}}
+                    {{/if}}
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="desktopnav">
+    <div class="desktop">
+        <div class="logo"><a href="/"></a></div>
+        <div class="links">
+            {{#if mechanicPage}}
+                {{#unless signupPage}}
+                    <div class="link"><div class="standard"><a href="/mechanic/info/howItWorks">Mechanics: How It Works</a></div></div>
+                    <div class="link"><div class="standard"><a href="/customer/info/benefits">Customer Benefits</a></div></div>
+                {{/unless}}
+                {{#if user}}
+                    <div class="link"><div class="login title-color"><a href="/profile/{{user._id}}">{{user.username}}</a></div></div>
+                {{else}}
+                    <div class="link"><div class="standard"><a href="/">For Customers</a></div></div>
+                    <div class="link"><div class="login title-color"><a id="loginPopupButton" href="javascript:void(0);">Login</a></div></div>
+                    {{#unless signupPage}}
+                        <div class="link"><div class="signup"><a href="/signup">Sign Up</a></div></div>
+                    {{/unless}}
+                {{/if}}
+            {{else}}
+                {{#unless signupPage}}
+                    <div class="link"><div class="standard"><a href="/customer/info/howItWorks">Customers: How It Works</a></div></div>
+                    <div class="link"><div class="standard"><a href="/customer/info/benefits">Customer Benefits</a></div></div>
+                {{/unless}}
+                {{#if user}}
+                    <div class="link"><div class="login title-color"><a href="/profile/{{user._id}}">{{user.username}}</a></div></div>
+                {{else}}
+                    <div class="link"><div class="standard"><a href="/home/mechanic">For Mechanics</a></div></div>
+                    <div class="link"><div class="login title-color"><a id="loginPopupButton" href="javascript:void(0);">Login</a></div></div>
+                    {{#unless signupPage}}
+                        <div class="link"><div class="signup"><a href="/signup">Sign Up</a></div></div>
+                    {{/unless}}
+                {{/if}}
+            {{/if}}
+        </div>
+    </div>
+</div>
+
+<div class="mobilenavspacer"></div>
+<div class="desktopnavspacer"></div>
+
+<div id="loginOverlay" class="login-overlay" style="display: none;">
+    <div id="loginBox" class="login-box">
+        <div id="forgotFields" class="login-fields" style="display: none;">
+            <div class="login-row login-exit"><a id="forgotExitButton" class="exit-button" href="javascript:void(0);">X</a></div>
+
+            <div class="login-row"><h1>Forgot Login</h1></div>
+            <div class="login-line"></div>
+
+            <div class="login-row textbox-row forgot-row">
+                <div class="textbox-box forgot"><input id="forgotEmailText" type="text" placeholder="Email" autocomplete="email" /></div>
+            </div>
+            <div class="login-spacer"></div>
+
+            <div class="login-row login-button-row forgot">
+                <label id="forgotStatus">&nbsp;</label>
+                <a id="forgotButton" class="login-button" href="javascript:void(0);">Reset Password</a>
+            </div>
+            <div class="login-line"></div>
+            <div class="login-spacer login-half"></div>
+
+            <div class="login-row login-more-row">
+                    <a id="forgotRemembered" href="javascript:void(0);">I remember my login</a> |
+                    <a href="/contact">I still need help</a>
+            </div>
+        </div>
+
+        <div id="loginFields" class="login-fields">
+            <div class="login-row login-exit"><a id="loginExitButton" class="exit-button" href="javascript:void(0);">X</a></div>
+
+            <div class="login-row"><h1>Login</h1></div>
+            <div class="login-line"></div>
+
+            <div class="login-row facebook-row">
+                <a href="/auth/facebook">
+                    <div class="login-facebook-icon"></div>
+                    <div class="login-facebook-text">Login with Facebook</div>
+                </a>
+            </div>
+
+            <div class="login-row or-row">
+                <div class="or-row-text">Or</div>
+            </div>
+
+            <div class="login-spacer"></div>
+
+            <form>
+            <div class="login-row textbox-row">
+                <div class="textbox-box"><input id="loginEmail" type="email" placeholder="Email" autocomplete="email" /></div>
+                <div class="forgot-box"></div>
+            </div>
+
+            <div class="login-spacer login-half"></div>
+
+            <div class="login-row textbox-row">
+                <div class="textbox-box"><input id="loginPassword" type="password" placeholder="Password" autocomplete="current-password" /></div>
+                <div class="forgot-box"><a id="forgotPassword" href="javascript:void(0);">I forgot</a></div>
+            </div>
+            </form>
+
+            <div class="login-spacer"></div>
+
+            <div id="loginStatus" class="login-row status-row">&nbsp;</div>
+            <div class="login-spacer login-half"></div>
+
+            <div class="login-row login-button-row">
+                <input type="checkbox" id="keepMeLoggedIn" checked="checked" />
+                <label for="keepMeLoggedIn">Keep me logged in</label>
+                <a id="loginButton" class="login-button" href="javascript:void(0);">Login</a>
+            </div>
+
+            <div class="login-line"></div>
+            <div class="login-spacer login-half"></div>
+
+            <div class="login-row login-more-row">
+                    <a href="/signup">Get Started FREE</a> |
+                    <a href="/contact">Help me login</a>
+            </div>
+        </div>
+    </div>
+</div>

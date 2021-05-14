@@ -1,0 +1,35 @@
+<a href="{{hrefs.home}}"><img src="{{hrefs.image}}" alt="MechFinder Logo" title="MechFinder Logo" /></a>
+
+<p>{{seller.first}},</p>
+
+<br /><br />
+
+<p>You have been hired on {{user.username}}'s project: <a href="{{hrefs.project}}">{{{project.title}}}</a>.</p>
+
+<br /><br />
+
+<p><strong>Next Steps:</strong></p>
+<p>Get in touch with the customer and set up a time to complete your repair. Here's what to do next:</p>
+
+<ul>
+    <li>Contact the customer: <a href="{{hrefs.message}}">{{hrefs.message}}</a></li>
+    {{#if seller.phone.verified}}{{#if seller.phone.number}}
+        <li>Phone: {{seller.phone.number}}</li>
+    {{/if}}{{/if}}
+    <li>Schedule a time to complete the repair</li>
+	<li>Once complete, click the menu icon on your estimate and select "Request Payment"</li>
+</ul>
+
+<p>If you have any more questions on what to do next, <a href="{{hrefs.how}}">see our How it Works section</a>.</p>
+
+<br /><br />
+
+<p>Sincerely,<br />
+<p>MechFinder Support Team<br />
+<p>Phoenix, AZ</p>
+
+<br /><br />
+<p style="text-align: center;"><a href="https://facebook.com/mechfinder">Facebook</a> <a href="https://twitter.com/mechfinder">Twitter</a></p>
+<p>Email MechFinder: support@mechfinder.com</p>
+<p>Copyright &copy; 2016 Mech Finder LLC, All rights reserved</p>
+

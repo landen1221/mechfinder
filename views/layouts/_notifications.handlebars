@@ -1,0 +1,24 @@
+<script type="text/javascript">
+    var USER = {{{json user}}};
+</script>
+<script src="/static/js/notifications.js"></script>
+
+<div id="notify" class="notify-popup" style="display: none;">
+    <div id="notifyContainer" class="notify-container">
+        <div class="exit-row"><div class="exit-button"><a id="notifyExit" href="javascript:void(0);">X</a></div></div>
+        <div class="clear-row">
+            <div class="clear-button">
+                <a id="notifyClear" href="javascript:void(0);" title="Clear all of your Notifications">
+                    <i class="fa fa-bomb fa-fw" aria-hidden="true"></i> <span class="text">Clear Notifications</span>
+                </a>
+            </div>
+        </div>
+
+        <div id="notifyInboxWrapper" class="inbox-wrapper">
+            <div id="notifyInbox" class="inbox loading"></div>
+            <div class="toast" id="notifyToast">
+                <div class="toast-message" id="notifyToastMessage"></div>
+            </div>
+        </div>
+    </div>
+</div>

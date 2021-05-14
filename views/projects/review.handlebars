@@ -1,0 +1,354 @@
+<script type="text/javascript">
+    var PROJECT = {{#if project}}{{json project}}{{else}}null{{/if}};
+    var USER = {{#if user}}{{json user}}{{else}}null{{/if}};
+</script>
+{{#compare user.role to="buyer"}}
+    <script type="text/javascript" src="{{settings.static_path}}/js/review-project.js"></script>
+    <script type="text/javascript" src="{{settings.static_path}}/js/project-estimates-hire.js"></script>
+{{else}}
+    <script type="text/javascript" src="{{settings.static_path}}/js/review-project-seller.js"></script>
+    <script type="text/javascript" src="{{settings.static_path}}/js/project-estimates-seller.js"></script>
+{{/compare}}
+<script type="text/javascript" src="{{settings.static_path}}/js/project-estimates-dispute.js"></script>
+
+<div class="view-project mf-ui">
+    <div class="card-container">
+        <div class="mf-card full-width">
+            <div class="card-header">Review Diagnosis</div>
+            <div class="card-content">
+                <div class="mf-card full-width description">
+                    {{#sameID user._id project.poster._id}}
+                        <p>This is the draft review page for {{project.owner.username}}'s job. Here, you can edit the info on the draft, place the first estimate on the draft, and, when you're satisfied with the way things look, submit your draft to the customer for payment on your diagnosis.</p>
+                    {{else}}
+                        <p>{{project.poster.username}} has come out to take a look at the issue. Review their diagnosis and determine what you want to do with your {{project.vehicle.make}} next</p>
+                    {{/sameID}}
+                </div>
+                <div class="mf-card third-width invisible">
+                    {{#sameID user._id project.poster._id}}
+                        <div class="card-header">Customer</div>
+                        <div class="card-content small-screen-flex">
+                            <div class="info-picture"><img {{#if project.owner.picture}}src="/api/public/image/{{project.owner.picture}}"{{else}} src="/static/img/customer-profile-pic.png">{{/if}}</img>
+                                {{#if user}}{{#diffID project.owner._id user._id}}
+                                <a class="favorite-action fav-button" data-ids="{{project.owner._id}}" data-role="users" href="javascript:void(0);" title="Add to Favorites"><i class="fa fa-star{{#within project.owner._id user.favorites.users}}{{else}}-o{{/within}} fa-fw"></i></a>
+                                <a class="contact-action msg-button" data-ids="{{project.owner._id}}" href="javascript:void(0);" title="Send a Message"><i class="fa fa-envelope-o fa-fw"></i></a>
+                                {{/diffID}}{{/if}}
+                            </div>
+                            <div class="info-text">
+                                <div><a href="/profile/{{project.owner._id}}/public">{{project.owner.username}}</a></div>
+                                <div>
+                                    <div>
+                                        <a class="profile-link" title="Get directions" href="https://www.google.com/maps?q=directions+to+{{project.geo.loc.coordinates.[1]}},{{project.geo.loc.coordinates.[0]}}" target="_blank"><i class="fa fa-map-o"></i> 
+                                            {{#if project.geo.city}}{{project.geo.city}}, {{/if}}{{project.geo.state}}, {{project.geo.postal}}
+                                        </a>
+                                    </div>
+                                </div>
+                                <div class="profile-rating" title="Average Rating: {{project.owner.average_rating}} Stars">
+                                    {{ratingIcons project.owner.average_rating project.owner.role}}
+                                </div>
+                            </div>
+                        </div>
+                    {{else}}
+                        <div class="card-header">Mechanic</div>
+                        <div class="card-content small-screen-flex">
+                            <div class="info-picture"><img {{#if project.poster.picture}}src="/api/public/image/{{project.poster.picture}}"{{else}} src="/static/img/mechanic-profile-pic.png">{{/if}}</img>
+                                {{#if user}}{{#diffID project.assigned._id user._id}}
+                                <a class="favorite-action fav-button" data-ids="{{project.poster._id}}" data-role="users" href="javascript:void(0);" title="Add to Favorites"><i class="fa fa-star{{#within project.poster._id user.favorites.users}}{{else}}-o{{/within}} fa-fw"></i></a>
+                                <a class="contact-action msg-button" data-ids="{{project.poster._id}}" href="javascript:void(0);" title="Send a Message"><i class="fa fa-envelope-o fa-fw"></i></a>
+                                {{/diffID}}{{/if}}
+                            </div>
+                            <div class="info-text">
+                                <div><a href="/profile/{{project.poster._id}}/public">{{project.poster.username}}</a></div>
+                                <div>
+                                    <div>
+                                        <a class="profile-link" title="Get directions" href="https://www.google.com/maps?q=directions+to+{{project.geo.loc.coordinates.[1]}},{{project.geo.loc.coordinates.[0]}}" target="_blank"><i class="fa fa-map-o"></i> 
+                                            {{#if project.geo.city}}{{project.geo.city}}, {{/if}}{{project.geo.state}}, {{project.geo.postal}}
+                                        </a>
+                                    </div>
+                                </div>
+                                <div class="profile-rating" title="Average Rating: {{project.poster.average_rating}} Stars">
+                                    {{ratingIcons project.poster.average_rating project.poster.role}}
+                                </div>
+                            </div>
+                        </div>
+                    {{/sameID}}
+                </div>
+
+                <div class="mf-card two-third-width">
+                    <div class="card-header">What's Next?</div>
+                    <div class="card-content">
+                        {{#sameID user._id project.poster._id}}
+                            <!-- the mechanic is looking at the review -->
+                            {{#compare project.state to="reviewing"}}
+                                Your diagnosis has been sent to the customer. You can still edit your diagnosis and your estimate and {{project.owner.username}} will be notified of any changes
+                            {{else}}
+                                {{#if project.bids.length}}
+                                    If satisfied with diagnosis and estimate:
+                                    <div class="button-spacer"></div>
+                                    <div class="card-buttons force-bottom">
+                                        <a class="submitDraft mf-button min-small green" href="javascript:void(0);">Complete &amp; Submit</a>
+                                    </div>
+                                {{else}}
+                                    <div id="placeAnEstimate" class="card-content">
+                                        Do you want to place an estimate on this diagnosis?<br/>
+                                        <div class="mf-card half-width button-func red invisible">
+                                            <div class="card-header" id="noFirstEstimate">No</div>
+                                        </div>
+                                        <div class="mf-card half-width button-func green invisible placeEstimate">
+                                            <div class="card-header">Yes</div>
+                                        </div>
+                                    </div><br/>
+
+
+                                    <div id="satisfiedAfterNoEstimate" class="card-content" style="display: none;">
+                                        Are you satisfied with your diagnosis?<br/>
+                                        <div class="mf-card half-width button-func blue invisible">
+                                            <div class="card-header placeEstimate">Place an Estimate First</div>
+                                        </div>
+                                        <div class="mf-card half-width button-func green invisible submitDraft">
+                                            <div class="card-header">Yes, Complete &amp; Submit</div>
+                                        </div>
+                                    </div>
+                                {{/if}}
+                            {{/compare}}
+                        {{else}}
+                            <!-- the customer is looking at the review -->
+                            {{#if project.bids.length}}
+                                <div id="choiceButtons" class="card-content left-align">
+                                    {{#each project.bids}}
+                                    {{#compare this.state to="submitted"}}
+                                    Would you like {{../../project.poster.username}} to fix your {{../../project.vehicle.make}} now for {{currency this.buyerTotal}}?
+                                    <div class="mf-card half-width button-func green acceptProject invisible">
+                                        <div class="card-header">Yes</div>
+                                        <div class="card-content">I want to hire {{../../project.poster.username}} to fix my {{../../project.vehicle.make}}</div>
+                                    </div>
+                                    <div id="customerOptions" class="seeOptions mf-card half-width button-func blue invisible">
+                                        <div class="card-header">No</div>
+                                        <div class="card-content">I want to see what my options are</div>
+                                    </div>
+                                    {{/compare}}
+                                    {{/each}}
+                                </div>
+                                <div id="otherOptions" class="card-content full-width" style="display: none; width:100%; text-align:left;">
+                                    <div class="project-actions" style="width:100%;">
+                                        <ul>
+                                            <li>
+                                                <a class="publishProject" href="javascript:void(0);"><i class="fa fa-send fa-fw circled" aria-hidden="true"></i> Open this diagnosis to estimates</a>
+                                                <sup class="tooltip-container"><span class="tooltip-icons tooltip_info" href="#" title="Want to see how much other mechanics can fix your car for? Let other mechanics submit estimates on parts &amp; labor"><i class="fa fa-info-circle"></i></span></sup>
+                                            </li>
+                                            <li>
+                                                <a class="contact-action" data-ids="{{project.poster._id}}" href="javascript:void(0);"><i class="fa fa-envelope fa-fw circled"></i> Request more info</a>
+                                                <sup class="tooltip-container"><span class="tooltip-icons tooltip_info" href="#" title="Want more information on this diagnosis? Message your mechanic to request that he fill out a more complete diagnosis"><i class="fa fa-info-circle"></i></span></sup>
+                                            </li>
+                                            <li>
+                                                <a class="acceptProject" href="javascript:void(0);"><i class="fa fa-dollar fa-fw circled"></i> Hire {{project.poster.username}} to fix your {{project.vehicle.make}}</a>
+                                                <sup class="tooltip-container"><span class="tooltip-icons tooltip_info" href="#" title="Are you satisfied with the estimate below? Hire your mechanic now to get your car fixed"><i class="fa fa-info-circle"></i></span></sup>
+                                            </li>
+                                            <li>
+                                                <a class="saveDraft" href="javascript:void(0);"><i class="fa fa-floppy-o fa-fw circled"></i> Save for Later</a>
+                                                <sup class="tooltip-container"><span class="tooltip-icons tooltip_info" href="#" title="Like the diagnosis but not ready to get it fixed? Save your job as a draft for later"><i class="fa fa-info-circle"></i></span></sup>
+                                            </li>
+                                            <li>
+                                                <a class="startDispute" href="javascript:void(0);"><i class="fa fa-question fa-fw circled"></i> Get Help</a>
+                                                <sup class="tooltip-container"><span class="tooltip-icons tooltip_info" href="#" title="Was there a problem with your mechanic or with the site? We'd be happy to help you out with any issues that are occuring"><i class="fa fa-info-circle"></i></span></sup>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            {{else}}
+                                <div id="choiceButtons" class="card-content left-align">
+                                    <p>{{project.poster.username}} has submitted a diagnosis on your {{project.vehicle.make}}. They did <strong>not</strong> offer an estimate on parts &amp; labor to fix your car.</p><br />
+                                    <div class="mf-card half-width button-func green publishProject">
+                                        <div class="card-header">Open for Estimates</div>
+                                        <div class="card-content">Now that you know what's wrong with your {{project.vehicle.make}} (see service description below), let all local mechanics place estimates for the repairs</div>
+                                    </div>
+                                    <div id="customerOptions" class="seeOptions mf-card half-width button-func blue">
+                                        <div class="card-header">View Other Options</div>
+                                        <div class="card-content">Don't want to open this project to estimates from other mechanics yet? View all of your other options.</div>
+                                    </div>
+                                </div>
+                                <div id="otherOptions" class="card-content" style="display: none;">
+                                    <div class="project-actions">
+                                        <ul>
+                                            <li>
+                                                <a class="publishProject" href="javascript:void(0);">Open this diagnosis to estimates</a><br />
+                                                Want to see how much other mechanics can fix your car for? Let other mechanics submit estimates on parts &amp; labor
+                                            </li>
+                                            <li>
+                                                <a class="contact-action" data-ids="{{project.poster._id}}" href="javascript:void(0);"><i class="fa fa-envelope-o fa-fw"></i> Request more info</a><br />
+                                                Want more information on this diagnosis? Message your mechanic to request that he fill out a more complete diagnosis
+                                            </li>
+                                            <li>
+                                                <a class="saveDraft" href="javascript:void(0);">Save for Later</a><br />
+                                                Like the diagnosis but not ready to get it fixed? Save your job as a draft for later
+                                            </li>
+                                            <li>
+                                                <a class="startDispute" href="javascript:void(0);">Get Help</a><br />
+                                                Was there a problem with your mechanic or the site? We'd be happy to help you out with any issues that are occuring
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            {{/if}}
+                        {{/sameID}}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="card-container">
+        <div class="mf-card full-width">
+            <div class="card-content">
+                <div class="mf-card half-width">
+                    <div class="card-header">{{project.poster.username}}'s Diagnosis</div>
+                    <div class="card-content">
+                        {{#if project.bids.length}}
+                            {{#each project.bids}}
+                                {{#compare this.state to="submitted"}}
+                                    {{#if this.comment}}
+                                        <div class="card-header small left">Message {{#compare ../user.role to="seller"}}to Customer{{else}}from Mechanic{{/compare}}</div>
+                                        <div class="standard-div">
+                                            <textarea disabled="disabled" class="mf-textarea" style="width: 100%; height: 70px; box-sizing: border-box; padding: 5px;">{{{this.comment}}}</textarea>
+                                        </div>
+                                    {{/if}}
+                                    {{estimateWorkorderMarkup ../this ../../user._id}}
+                                {{/compare}}
+                            {{/each}}
+                            <div class="extra-space"></div>
+                            
+                            {{#sameID project.poster._id user._id}}
+                                <div class="card-buttons">
+                                    <a class="updateEstimate standard-button blue" href="javascript:void(0);"><i class="fa fa-pencil fa-fw" aria-hidden="true"></i> Update Estimate</a>
+                                </div>
+                            {{else}}
+                                <div class="card-buttons">
+                                    <a class="acceptProject standard-button green" href="javascript:void(0);"><i class="" aria-hidden="true"></i> Hire {{project.poster.username}}</a>
+                                </div>
+                            {{/sameID}}
+                        {{else}}
+                            {{#sameID project.poster._id user._id}}
+                                You haven't placed an estimate on parts &amp; labor to fix {{project.owner.username}}'s {{project.vehicle.make}} yet
+                                <div class="extra-space"></div>
+                                <div class="card-buttons">
+                                    <a class="placeEstimate standard-button green">Place an Estimate</a>
+                                </div>
+                            {{else}}
+                                {{project.poster.username}} has diagnosed your vehicle, but hasn't placed an estimate on parts &amp; labor to fix it
+                                <div class="extra-space"></div>
+                                <div class="card-buttons">
+                                    <a class="publishProject standard-button green">Open Job to Estimates from Other Mechanics</a> 
+                                    <a class="contact-action standard-button blue" data-ids="{{project.poster._id}}"><i class="fa fa-envelope-o fa-fw" aria-hidden="true"></i> Request an Estimate from {{project.poster.username}}</a>
+                                </div>
+                            {{/sameID}}
+                        {{/if}}
+                    </div>
+                </div>
+                <div class="mf-card half-width">
+                    <div class="card-header">Details</div>
+                    <div class="card-content">
+                        <div class="mf-card full-width invisible">
+                            <div class="card-header">Service Description</div>
+                            <div class="card-content">
+                                {{{project.description}}}
+
+                                {{#sameID project.poster._id user._id}}
+                                    <div class="card-buttons">
+                                        <a class="editDescription" href="javascript:void(0);"><i class="fa fa-pencil fa-fw" aria-hidden="true"></i> Edit</a>
+                                    </div>
+                                {{/sameID}}
+                            </div>
+                        </div>
+
+                        <div class="mf-card full-width invisible">
+                            <div class="card-header">Vehicle Info</div>
+                            <div class="card-content">
+                                <table class="two-col">
+                                    <tr>
+                                        <td><strong>Vehicle</strong></td>
+                                        <td>{{project.vehicle.make}} {{project.vehicle.model}} {{project.vehicle.year}}</td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>Cylinders</strong></td>
+                                        <td>{{project.vehicle.engine}}</td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>Mileage</strong></td>
+                                        <td>{{project.vehicle.mileage}}</td>
+                                    </tr>   
+                                </table>
+
+                                {{#sameID project.poster._id user._id}}
+                                    <div class="card-buttons">
+                                        <a class="editVehicle" href="javascript:void(0);"><i class="fa fa-pencil fa-fw" aria-hidden="true"></i> Edit</a>
+                                    </div>
+                                {{/sameID}}
+                            </div>
+                        </div>
+
+                        {{!--<div class="mf-card full-width">
+                            <div class="card-header">Service Basics</div>
+                            <div class="card-content">
+                                <table class="two-col">
+                                    <tr>
+                                        <td><strong>Service Type:</strong></td>
+                                        <td>{{project.repair}}</td>
+                                        {{#sameID project.poster._id user._id}}
+                                            <td><a class="editServiceType" href="javascript:void(0);"><i class="fa fa-pencil fa-fw" aria-hidden="true"></i> Edit</a></td>
+                                        {{/sameID}}
+                                    </tr>
+                                    <tr>
+                                        <td><strong>Needs Tow:</strong></td>
+                                        <td>{{yesno project.tow}}</td>
+                                        {{#sameID project.poster._id user._id}}
+                                            <td><a class="editNeedsTow" href="javascript:void(0);"><i class="fa fa-pencil fa-fw" aria-hidden="true"></i> Edit</a></td>
+                                        {{/sameID}}
+                                    </tr>
+                                </table>
+                            </div>
+                        </div>--}}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="card-container">
+        <div class="mf-card full-width">
+            <div class="card-header">Photos</div>
+            <div class="card-content">
+                {{#sameID project.poster._id user._id}}
+                <div class="addpic">{{{tooltip tooltips "575dba10d00b43b8ff89c270"}}}Photos: (if possible, we recommend: the car, repair, or previous estimates) <a class="editPhotos" href="javascript:void(0);">Add Photos</a></div><!-- .addpic -->
+                <input type="file" id="add-photos-fileinput" style="display: none;" multiple="multiple" accept="image/*" />
+                <div id="addError" class="add-error" style="display: none;">&nbsp;</div>
+                {{else}}
+                    {{#if project.photos.length}}
+                    <div>{{project.poster.username}} has added these photos to your project.</div>
+                    {{else}}
+                    <div>No photos have been added</div>
+                    {{/if}}
+                {{/sameID}}                
+                
+                <div id="piclist" class="piclist mf-card full-width invisible"{{#diffID project.poster._id user._id}}{{#if project.photos.length}}{{else}} style="display:none;"{{/if}}{{/diffID}}>
+                    <div id="picboxes" class="picboxes">
+                        {{#if project}}
+                            {{#if project.photos.length}}
+                            <div class="photo-lines mf-gallery">
+                                {{#each project.photos}}
+                                    <div id="picbox-savedPhoto{{this}}" class="picbox">
+                                        <img id="upload-savedPhoto{{this}}" src="/api/public/image/{{this}}" />  
+                                        {{#sameID ../../project.poster._id ../../user._id}}                                      
+                                        <div id="remove-savedPhoto{{this}}" class="remove removePhoto" data-id="{{this}}">X</div>
+                                        {{/sameID}}
+                                    </div>
+                                {{/each}}
+                            </div>
+                            {{/if}}
+                        {{/if}}
+                    {{#sameID project.poster._id user._id}}
+                    <div id="dragndrop" class="mf-dragndrop" {{#if project}}{{#if project.photos.length}}style="display: none;"{{/if}}{{/if}}><div class="description"><a class="editPhotos" href="javascript:void(0);">Click here to add photos to the project</a></div></div>
+                    {{/sameID}}
+                </div>
+            </div>
+            </div>
+        </div>
+    </div>
+</div>

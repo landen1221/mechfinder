@@ -1,0 +1,49 @@
+<div id="hire-confirmation">
+    <hr/>
+    You will be releasing an amount of:<br />
+     <h4>{{deccurrency amount}}</h4>
+     this action can't be canceled
+    <hr/>
+    <form id="form-hire-confirmation" class="form-inline" method="post" action="/api/milestones/{{ _id }}/release">
+        <div class="btn-group">
+            <input type="submit" value="Release Escrow" class="btn btn-success" />
+            <button class="btn" id="button-hire-cancel">Cancel</button>
+        </div>
+        <div class="alert error" style="display: none;">
+            There was a problem completing this request.
+        </div>
+    </form> 
+</div>
+<script type="text/javascript">
+jQuery(function($) {
+    $('#button-hire-cancel').click(function() {
+        // NOTE: would be lovely to target just this popover
+        $('*[rel=popover][data-load]').popover('hide');
+        return false;
+    });
+    $('#form-hire-confirmation').validate({
+        submitHandler: function(form) {
+            form = $(form);
+            form.ajaxSubmit({
+                success: function (data) {
+                    $('*[rel=popover][data-load]').popover('hide');
+                    $('.releasnbtngrb{{ _id }}').parent().html('Released')
+                    $("#button-rate-project").trigger('click')
+                },
+                error: function (xhr, err) {
+                    form.find('.alert-error').show(); 
+                },
+                complete: function() {
+                    form.find(':input:not(:submit)').removeAttr('disabled');
+                    form.find(':submit').button('reset');
+                }
+            });
+            form.find('.alert').hide();
+            form.find(':input:not(:submit)').attr('disabled', 'disabled');
+            form.find(':submit').button('loading');
+            return false;
+        }
+    });
+
+});
+</script>

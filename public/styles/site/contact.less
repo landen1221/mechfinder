@@ -1,0 +1,309 @@
+/* signup.less */
+
+/* reset all browser-default padding and margins */
+* {
+    margin: 0px auto;
+    padding: 0px;
+}
+
+.contact {
+    @screenXS: 320px;
+    @screenSM: 480px;
+    @screenMD: 768px;
+    @screenLG: 992px;
+    @screenXL: 1200px;
+
+    @defaultColor: rgba(108, 108, 108, 1);
+    @defaultFontSize: 15px;
+    @defaultFontWeight: normal;
+    @defaultLineHeight: @defaultFontSize + 3;
+
+    @headingColor: rgba(41, 41, 41, 1);
+
+    @inputColor: rgba(138, 138, 138, 1);
+
+    @labelColor: rgba(108, 108, 108, 1);
+
+    @linkColor: rgba(169, 1, 1, 1);
+    @linkColorHover: rgba(199, 1, 1, 1);
+
+    @labelGray: rgba(108, 108, 108, 1);
+    @darkGray: rgba(41, 41, 41, 1);
+    @darkRed: rgba(171, 1, 1, 1);
+    @mainFont: @baseFonts;
+
+    #contactStatus {
+        color: @colorRed;
+        font-size: 20px;
+    }
+
+    .standard-div {
+        display: block;
+        float: left;
+        width: 100%;
+        text-align: left;
+        cursor: auto;
+    }
+
+    .inline-div {
+        display: inline-block;
+    }
+
+    .remove-defaults {
+        outline: none;
+        text-decoration: none;
+        -webkit-tap-highligh-color: transparent;
+    }
+
+    .transitions {
+        -moz-transition: all 300ms ease;
+        -ms-transition: all 300ms ease;
+        -o-transition: all 300ms ease;
+        transition: all 300ms ease;
+    }
+
+    .standard-background {
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: contain;
+    }
+
+    .standard-font {
+        color: @defaultColor;
+        font-family: @baseFonts;
+        font-size: @defaultFontSize;
+        font-weight: @defaultFontWeight;
+    }
+
+    .label-font {
+        .standard-font;
+        color: @labelColor;
+        font-weight: bold;
+    }
+
+    .input-font {
+        .standard-font;
+        color: @inputColor;
+    }
+
+    .input-box {
+
+    }
+
+    .link-font {
+        .standard-font;
+
+        color: @linkColor;
+        font-weight: bold;
+    }
+
+    a.red-button {
+        .inline-div;
+        margin-left: 5px;
+        padding: 10px;
+        padding-top: 12px;
+        padding-bottom: 8px;
+        border-radius: 2px;
+        text-align: center;
+        box-sizing: border-box;
+
+        &:link,
+        &:visited {
+            .label-font;
+            .remove-defaults;
+            .transitions;
+
+            background-color: @darkRed;
+            color: rgba(245, 245, 245, 1);
+            font-weight: normal;
+        }
+
+        &:hover,
+        &:active,
+        &:focus {
+            color: rgba(255, 255, 255, 1);
+            background-color: rgba(199, 1, 1, 1);
+        }
+    }
+
+    input[type="checkbox"] {
+        vertical-align: middle;
+    }
+
+    .grouping {
+        .standard-div;
+
+        .page-heading {
+            .standard-div;
+            margin-top: 55px;
+            margin-bottom: 55px;
+
+            h1 {
+                .standard-font;
+                color: @headingColor;
+                font-size: 35px;
+                line-height: 40px;
+                text-align: center;
+                font-weight: 500;
+            }
+        }
+
+        .section-spacer {
+            .standard-div;
+            height: 55px;
+        }
+
+        .section {
+            .standard-div;
+            width: 90%;
+            margin-left: 5%;
+            margin-right: 5%;
+
+            .section-heading {
+                .standard-div;
+                margin-top: 5px;
+                margin-bottom: 5px;
+
+                h3 {
+                    .standard-font;
+
+                    color: @headingColor;
+                    font-size: 20px;
+                    line-height: 25px;
+                }
+            }
+
+            .section-formbox {
+                .standard-div;
+                padding: 20px;
+                box-sizing: border-box;
+                background-color: rgba(238, 238, 238, 1);
+
+                &.contact-formbox {
+                    .contact-us {
+                        .standard-div;
+                        text-align: center;
+
+                        .contact-box {
+                            .inline-div;
+                            width: 100%;
+                            max-width: 100%;
+                            padding: 15px;
+                            box-sizing: border-box;
+
+                            @media only screen and (min-width: @screenMD) {
+                                width: 215px;
+                            }
+
+                            @media only screen and (min-width: @screenLG) {
+                                width: 300px;
+                            }
+
+                            label {
+                                .standard-div;
+                                .label-font;
+                                .transitions;
+
+                                margin-bottom: 5px;
+                            }
+
+                            input[type="email"],
+                            input[type="text"],
+                            select {
+                                .input-box;
+                                .transitions;
+                                width: 100%;
+                            }
+
+                            textarea {
+                                .input-box;
+                                .transitions;
+                                width: 100%;
+                                max-width: 100%;
+                                min-width: 100%;
+                                height: 150px;
+                            }
+
+                            input[type="text"],
+                            select,
+                            textarea {
+                                &.error {
+                                    // background-color: rgba(171, 1, 1, .1);
+                                }
+                            }
+
+                            &.whole-row {
+                                width: 100%;
+                            }
+                        }
+                    }
+                }
+
+                .formbox-buttons {
+                    .standard-div;
+                    text-align: right;
+
+                    label {
+                        .standard-div;
+                        .standard-font;
+                        text-align: right;
+                        margin-bottom: 10px;
+
+                        &.error {
+                            color: @darkRed;
+                        }
+                    }
+
+                    a.formbox-button {
+                        .inline-div;
+                        .transitions;
+                        .standard-font;
+                        .remove-defaults;
+                        padding: 10px;
+                        padding-top: 11px;
+                        padding-bottom: 9px;
+                        margin-left: 5px;
+                        margin-right: 5px;
+
+                        &:link,
+                        &:visited {
+                            color: rgba(234, 234, 234, 1);
+                            background-color: rgba(41, 41, 41, 1);
+                        }
+
+                        &:hover,
+                        &:active,
+                        &:focus {
+                            cursor: pointer;
+                            color: rgba(255, 255, 255, 1);
+                            background-color: rgba(71, 71, 71, 1);
+                        }
+                    }
+                }
+
+
+
+                .formbox-spacer {
+                    .standard-div;
+                    height: 1px;
+                    margin-top: 15px;
+                    margin-bottom: 15px;
+                    background-color: rgba(214, 214, 214, 1);
+
+                    &.no-line {
+                        background-color: transparent;
+                    }
+
+                    &.large-spacer {
+                        margin-top: 25px;
+                        margin-bottom: 25px;
+                    }
+                }
+            }
+        }
+
+        &.gray-grouping {
+            background-color: rgba(247, 247, 247, 1);
+        }
+    }
+} // .signup

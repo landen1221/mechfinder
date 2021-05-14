@@ -1,0 +1,150 @@
+
+* {
+    margin: 0px auto;
+    padding: 0px;
+}
+
+body {
+    background-color: @colorWhite;
+}
+
+.admin-body {
+    .standard-div;
+    padding: 20px;
+    padding-left: 16%;
+    box-sizing: border-box;
+}
+
+div.spacer {
+    .standard-div;
+    height: 25px;
+
+    &.xs {
+        height: 5px;
+    }
+
+    &.sm {
+        height: 10px;
+    }
+
+    &.md {
+        height: 15px;
+    }
+
+    &.lg {
+        height: 25px;
+    }
+
+    &.xl {
+        height: 35px;
+    }
+}
+
+h1 {
+    .standard-font;
+    font-size: 40px;
+    line-height: 115%;
+}
+
+p {
+    .standard-font;
+    font-size: 15px;
+    line-height: 115%;
+
+    a {
+        .standard-link;
+    }
+}
+
+ul {
+    max-width: 100%;
+    box-sizing: border-box;
+    padding-left: 20px;
+
+    &.nopoints {
+        list-style-type: none;
+    }
+}
+
+.admin-search {
+    .standard-div;
+    text-align: right;
+}
+
+table.admin-table {
+    width: 100%;
+    border-spacing: 0px;
+    border-collapse: separate;
+
+    tr {
+        th {
+            .standard-font;
+            font-size: 13px;
+            font-weight: bold;
+
+            &:hover {
+                cursor: pointer;
+            }
+
+            &[data-sorted="1"],
+            &[data-sorted="0"],
+            &[data-sorted="-1"] {
+                position: relative;
+            }
+
+            &:before {
+                .standard-font;
+                font-family: FontAwesome;
+                position: absolute;
+                top: 25%;
+                right: 2px;
+            }
+
+            &[data-sorted="1"]:before {
+                content: "\f063";
+            }
+
+            &[data-sorted="-1"]:before {
+                content: "\f062";
+            }
+        }
+
+        td {
+            .standard-font;
+            font-size: 13px;
+
+            a {
+                .standard-link;
+            }
+        }
+
+        th, td {
+            text-align: left;
+            padding: 7px;
+
+            border-color: @colorGray;
+            border-style: solid;
+            border-width: 1px;
+            border-right-width: 0px;
+            border-bottom-width: 0px;
+
+            &:last-child {
+                border-right-width: 1px;
+            }
+
+            &.center {
+                text-align: center;
+            }
+
+            &.right {
+                text-align: right;
+            }
+        }
+
+        &:last-child {
+            th, td {
+                border-bottom-width: 1px;
+            }
+        }
+    }
+}

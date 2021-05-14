@@ -1,0 +1,25 @@
+<div class="row">
+    <div class="col-xs-12 col-md-5">
+        <label class="control-label" for="{{id}}-yes">{{label}}</label>
+    </div>
+    <div class="col-xs-12 col-md-5 col-lg-4">
+        <label class="radio">
+            <input type="radio"
+                   id="{{id}}-yes"
+                   name="{{#if name}}{{name}}{{else}}{{to_input_name id}}{{/if}}"
+                   value="1"
+                   class="{{class}}"
+                   {{#if val}}checked{{/if}}/>
+            Yes
+        </label>
+        <label class="radio">
+            <input type="radio"
+                   id="{{id}}-no"
+                   name="{{#if name}}{{name}}{{else}}{{to_input_name id}}{{/if}}"
+                   value="0"
+                   class="{{class}}"
+                   {{#if val}} {{else}}checked{{/if}}/>
+            No
+        </label>
+    </div>
+</div>

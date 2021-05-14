@@ -1,0 +1,50 @@
+<script type="text/javascript">
+    var USER = {{#if user}}{{{json user}}}{{else}}null{{/if}};
+</script>
+
+<script type="text/javascript" src="{{settings.static_path}}/js/accounting.js"></script>
+
+<div class="dashboard-page">
+    <div class="within">
+        <div id="accounting-group" class="group">
+            <div class="accounting-information">
+                <div class="heading"><h1>My Transactions</h1></div>
+                <div class="spacer lined"></div>
+
+                <table id="accountingTable" class="mf-mobile-table mf-mobile-table-styled" width="100%" border="0" cellpadding="0" cellspacing="0">
+                    <tr>
+                        <th class="mf-table-sm">ID</th>
+                        <th class="mf-table-xs">Date</th>
+                        <th class="mf-table-xs">Car</th>
+                        <th class="mf-table-sm">Job Name &amp; {{#compare user.role to="buyer"}}Mechanic{{else}}Customer{{/compare}}</th>
+                        <th class="mf-table-all">Amount</th>
+                        <th class="mf-table-all">Escrow Status</th>
+                    </tr>
+                    {{#compare transactions.length gt="0"}}
+                        {{#each transactions}}
+                            <tr data-href="/projects/{{this.project._id}}">
+                                <td class="mf-table-sm">{{this.orderNumber}}</td>
+                                <td class="mf-table-xs">{{date this.braintree.createdAt true}}</td>
+                                <td class="mf-table-xs">{{this.project.vehicle.year}} {{this.project.vehicle.make}} {{this.project.vehicle.model}}</td>
+                                <td class="mf-table-sm">
+                                    {{this.project.title}}<br />
+                                    {{#compare ../user.role to="buyer"}}
+                                        <a href="/profile/{{this.to._id}}">{{this.to.username}}</a>
+                                    {{else}}
+                                        <a href="/profile/{{this.from._id}}">{{this.from.username}}</a>
+                                    {{/compare}}
+                                </td>
+                                <td class="mf-table-all">{{transactionAmount this ../../user._id true false}}</td>
+                                <td class="mf-table-all">{{escrowStatus this.braintree.escrowStatus}}</td>
+                            </tr>
+                        {{/each}}
+                    {{else}}
+                        <tr>
+                            <td colspan="7">You do not have any transactions recorded at this time</td>
+                        </tr>
+                    {{/compare}}
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

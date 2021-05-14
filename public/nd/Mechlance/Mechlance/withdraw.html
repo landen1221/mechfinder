@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Mechfinder</title>
+    <!-- Bootstrap -->
+    <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
+	<link href="css/prettify.css" rel="stylesheet">
+  </head>
+
+</head>
+
+<body>
+
+	<div class="container">
+
+      <!--===============================================================
+      							Nav-Tabs
+      ================================================================-->
+    <ul class="nav nav-tabs">
+      <li class="active"><a href="#bank" data-toggle="tab" aria-expanded="true">Withdraw By Bank</a></li>
+      <li class=""><a href="#paypal" data-toggle="tab" aria-expanded="false">Withdraw By Paypal</a></li>
+    </ul>
+      <!--===============================================================
+      							Tabs Content
+      ================================================================-->
+    <div id="myTabContent" class="tab-content">
+       <!--===============================================================
+      							Bank withdraw Tab
+      ================================================================-->
+
+      <div class="tab-pane fade active in" id="bank">
+        <div class="tab-pane" id="tabsleft-tab2">
+
+
+    	<div class="withdraw">
+        	<h4 class="payment-h"><center>Link your Bank Account</center></h4>
+            <h4 class="payment-h"><center>To Get Paid Automatically</center></h4>
+            <p class="payment-h"><strong><center>( Direct Deposit )</center></strong></p>
+            <br><br>
+
+            <div class="form-group">
+              <label class="control-label" for="inputSmall">Name of Account</label>
+              <input class="form-control" type="text" id="inputSmall">
+            </div>
+            <div class="form-group">
+              <label class="control-label" for="inputSmall">Account No.</label>
+              <input class="form-control" type="text" id="inputSmall">
+            </div>
+            <div class="form-group">
+              <label class="control-label" for="inputSmall">Routing No.</label>
+              <input class="form-control" type="text" id="inputSmall">
+            </div>
+            <button class="btn btn-primary pull-right" type="submit">Link My Account</button>
+
+            <br><br>
+            <p><strong><center>*Next Business Day Deposits !</center></strong></p>
+            <div class="withdraw-img">
+            	<img src="img/withdraw.png" alt="Mechfinder-Logo"/>
+            </div>
+            	</div>
+            </div>
+        </div>
+       <!--===============================================================
+      							Paypal withdraw Tab
+      ================================================================-->
+
+      <div class="tab-pane fade active in" id="paypal">
+        <div class="tab-pane" id="tabsleft-tab2">
+
+        	<h1 class="payment-h1"><center>Paypal Withdrawl</center></h1>
+            <div class="row">
+            	<div class="col-lg-8">
+            <div class="form-group">
+     		 <label>Paypal Email Account</label>
+                  <div class="col-lg-8">
+                    <input type="text" class="form-control" id="inputEmail" placeholder="Email">
+                  </div><br>
+
+              <label class="paypal3">Amount To Withdraw</label>
+              <br>
+              <select class="form-control paypal1 pull-left" id="select">
+                  <option>USD</option>
+                  <option>EUR</option>
+                  <option>INR</option>
+                  <option>PKR</option>
+                  <option>CAD</option>
+               </select>
+                  <div class="input-group paypal2 pull-left">
+                     <span class="input-group-addon">$</span>
+                     <input type="text" class="form-control">
+                  </div><br><br><em>Note: Min amount $30 USD. Max amount $74.88 USD.</em>
+            	</div>
+                </div>
+
+                <div class="col-lg-4">
+                	<p><strong>You Will Receive:</strong></p>
+                    <h3>$74.88 USD</h3>
+                    <em>Note: There are no withdrawal charges</em>
+                </div>
+            </div>
+       <!--===============================================================
+      							Status Table
+      ================================================================-->
+           <table class="table table-striped table-hover paypal-tbl">
+              <thead>
+                <tr>
+                  <th>Currency</th>
+                  <th>Balance</th>
+                  <th>Exchange Rate</th>
+                  <th>US Dollar Equivalent</th>
+                  <th>Withdrawal Breakdown</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr class="warning">
+                  <td>USD</td>
+                  <td>$74.88</td>
+                  <td>1.00</td>
+                  <td>$74.88</td>
+                  <td>
+                  	<div class="input-group paypal2">
+                     <span class="input-group-addon">$</span>
+                     <input type="text" class="form-control">
+                  </div>
+                  </td>
+                </tr>
+                </tbody>
+                </table>
+            <button class="btn btn-primary pull-left">Withdraw Funds</button>
+        </div>
+      </div>
+
+
+
+
+
+	</div><!--Container Closed-->
+
+<script src="http://code.jquery.com/jquery-latest.js"></script>
+<script src="bootstrap/js/bootstrap.min.js"></script>
+
+</body>
+</html>

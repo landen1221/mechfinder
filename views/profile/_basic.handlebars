@@ -1,0 +1,138 @@
+
+<div class="control-group">
+    <label class="control-label" for="image-picker">Picture</label>
+    <div class="controls">
+        <ul class="thumbnails">
+            <li>
+                <a id="profile-picture-picker" class="image-picker thumbnail" href="#profile-picture-picker">
+                    <input type="hidden" id="profile-picture" name="picture" value="{{user.profile.picture}}" />
+                    {{#unless user.profile.picture}}<i class="icon-user"></i>{{/unless}}
+                    <div class="progress">
+                        <div class="bar" style="width: 0%;"></div>
+                    </div>
+                    <div class="preview" {{#if user.profile.picture}}style="display: block; background: url(/i/{{user.profile.picture}}/161/149/o) no-repeat center"{{/if}}></div>
+                </a>
+            </li>
+        </ul>
+        <span class="help-block">
+            Upload a picture of yourself in PNG or JPG/JPEG format for all your friends to see! It should be roughly square and at least about 200 pixels wide for best quality.
+        </span>
+    </div>
+</div>
+{{ helper 'fields/text'     label="First Name"          id="profile-first"   name="first"  val=user.first name="first"   class="required" size="medium" }}
+{{ helper 'fields/text'     label="Middle Name"         id="profile-middle"  name="middle" val=user.middle name="middle" class=""         size="medium" }}
+{{ helper 'fields/text'     label="Last Name"           id="profile-last"    name="last"   val=user.last name="last"     class="required" size="medium" }}
+<div class="control-group">
+    <label class="control-label" for="profile-email">Email</label>
+    <div class="controls">
+        <input id="profile-email" type="text" name='email' value="{{user.email}}" />
+    </div>
+</div>
+
+{{#compare user.role to="buyer"}}
+
+<legend>Shipping Address</legend>
+{{ helper 'fields/dropdown' label="Country"             id="profile-country" val=user.address.0.country name="country"         class="required" size="medium" options=countries }}
+<div class="control-group">
+    <label class="control-label" for="profile-street-1">Street</label>
+    <div class="controls">
+        <input type="text" id="profile-street-1" value="{{user.address.0.street1}}" name="street1" /><br/>
+        <input type="text" id="profile-street-2" value="{{user.address.0.street2}}" name="street2" /><br/>
+    </div>
+</div>
+{{ helper 'fields/text'     label="City/Region"         id="profile-city"    val=user.address.0.city    name="city"    class="" size="medium" }}
+{{ helper 'fields/text'     label="State/Province"      id="profile-state"   val=user.address.0.state   name="state"   class="" size="medium" }}
+{{ helper 'fields/text'     label="Zip Code"            id="profile-postal"  val=user.address.0.postal  name="postal"  class="" size="medium" }}
+
+<legend>Phone Number</legend>
+<div class="control-group">
+    <label class="control-label" for="profile-company">Phone Numbers</label>
+    <div class="controls">
+        <input type="hidden" name="phones" value="1" />
+        {{#each user.phone}}
+        <div class="row-fluid">
+            <input type="text" name="phone_kind" value="{{kind}}" placeholder="Shop, Mobile, etc" class="input-medium" />
+            <input type="text" name="phone_number" value="{{this.number}}" placeholder="Number" class="input-large" />
+            <button class="btn btn-danger btn-remove-phone"><i class="icon-trash"></i> Delete</button>
+            
+            <div class="control-group">
+                <label class="control-label" >Text Message Notifications</label>
+                <div class="controls">
+                        <div class="btn-group btn-toggle togler"> 
+                            <button class="btn sbtn   {{#if sms_notifications}} active btn-warning {{else}} btn-default{{/if}}" mobile='true'>ON</button>
+                            <button class="btn sbtn {{#if sms_notifications }} btn-default  {{else}}btn-warning {{/if}}" mobile='false'>OFF</button>
+                                <input type="hidden" class='mobilenotifications' name="mobilenotifications" value="{{sms_notifications}}" />
+                        </div>
+                </div>
+            </div>
+
+            <div class='provider-b' {{#if sms_notifications}} {{else}} style='display:none;'{{/if}}>
+
+                        {{ helper 'fields/dropdown' val=mobile_provider label="Mobile Provider"     id="seller-provider"        name="mobile_provider"       class=""               size="medium" options=../PROVIDERS }}
+            </div>
+        </div>
+        {{/each}}
+        <button class="btn btn-success" id="button-phone-add">
+            <i class="icon-phone"></i> Add Phone Number 
+        </button>
+    </div>
+</div>
+<hr/>
+    <input type="submit" class="clear-fix btn btn-success" value="Save Profile" />
+
+<script type="text/javascript">
+
+jQuery(function($) {
+    $('.togler').click(function() {
+        playme($(this))
+        return false;
+    });
+});
+function playme(t){
+    t.find('.sbtn').toggleClass('active');  
+    t.find(".mobilenotifications").val(t.find('.active').attr('mobile'));
+    if (t.find('.btn-warning').size()>0) {
+        t.find('.sbtn').toggleClass('btn-warning');
+    }
+    t.find('.sbtn').toggleClass('btn-default');
+    t.parent().parent().next('.provider-b').toggle();
+    return false;
+}
+
+jQuery(function($) {
+ 
+    $('#button-phone-add').click(function() {
+        $(this).before('<div class="row-fluid">\
+            <input type="text" name="phone_kind" value="" placeholder="Shop, Mobile, etc" class="input-medium" />\
+            <input type="text" name="phone_number" value="" placeholder="Number" class="input-large" />\
+            <button class="btn btn-danger btn-remove-phone"><i class="icon-trash"></i> Delete</button>\
+        <div class="control-group">\
+    <label class="control-label" >Text Message Notifications</label>\
+    <div class="controls">\
+            <div class="btn-group btn-toggle togler"  onclick="playme(jQuery(this));return false;"> \
+                <button class="btn sbtn   active btn-warning " mobile="true">ON</button>\
+                <button class="btn sbtn btn-default" mobile="false">OFF</button>\
+                                <input type="hidden" class="mobilenotifications" name="mobilenotifications" value="true" /></div>\
+    </div>\
+</div>\
+<div class="provider-b" >\
+ <div class="control-group">\
+    <label class="control-label" for="seller-provider">Mobile Provider</label>\
+    <div class="controls">\
+<select id="seller-provider" name="mobile_provider" placeholder="Mobile Provider" class=" input-medium"><option value="">SELECT ONE</option>            <option value="@txt.att.net">AT&amp;T</option>            <option value="@mymetropcs.com">Metro PCS</option>        <option value="@vtext.com">Verizon</option>                    <option value="@tmomail.net">T Mobile</option>            <option value="@messaging.sprintpcs.com">Sprint</option><option value="@vmobl.com">Virgin</option>            <option value="@myboostmobile.com">Boost Mobile</option>        </select>  </div>\
+</div>\
+</div>      </div>');
+        return false;
+    });
+
+    $(document).on('click', '.btn-remove-phone', function() {
+        $(this).closest('.row-fluid').remove();
+        return false;
+    });
+
+});
+</script>
+{{/compare}}
+
+<hr/>
+    <input type="submit" class="clear-fix btn btn-success" value="Save Profile" />

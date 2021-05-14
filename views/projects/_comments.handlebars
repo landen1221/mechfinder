@@ -1,0 +1,49 @@
+
+<h4>
+    <div class="pull-left">Post a Comment</div>
+    <div class="pull-right btn-group">
+        {{#if can_comment}}
+        <button id="button-comment-2"
+                class="btn"
+                rel="popover"
+                data-title="Comment on Project"
+                data-placement="bottom"
+                data-container="body"
+                data-load="/projects/{{p._id}}/comment"
+        ><a href="/projects/{{p._id}}/comment">Comment</a></button>
+        {{/if}}
+    </div>
+</h4>
+<table class="table table-hover">
+    <thead>
+        <tr>
+            <th class="span4">User</th>
+            <th class="span2">Date</th>
+            <th class="span4">Message</th>
+            <th class="span2"></th>
+        </tr>
+    </thead>
+    <tbody>
+        {{#each comments}}
+        <tr>
+            <td>{{#with user}}{{>helpers/nanoperson}}{{/with}}</td>
+            <td>{{since date_submitted}}</td>
+            <td>{{comments}}</td>
+            <td>
+                <div class="pull-right btn-group">
+                {{#if ../can_comment}}
+                <button id="button-reply"
+                        class="btn"
+                        rel="popover"
+                        data-title="Reply with Comment"
+                        data-placement="bottom"
+                        data-container="body"
+                        data-load="/projects/{{../../p._id}}/comment?reply={{_id}}"
+                ><a href="/projects/{{../../p._id}}/comment?reply={{_id}}">Reply</a></button>
+                {{/if}}
+                </div>
+            </td>
+        </tr>
+        {{/each}}
+    </tbody>
+</table>

@@ -1,0 +1,316 @@
+// This file should only contain basic things like mixins and buttons
+// More complex components should be broken out into their own file
+
+.mf-ui {
+    font-size: 18px;
+    line-height: 145%;
+    color: @standardFontColor;
+    .drop-shadow {
+        box-shadow: 1px 1px 5px rgba(0,0,0,0.27);
+    }
+    .drop-shadow-deep {
+        box-shadow: 1px 1px 7px rgba(0,0,0,0.35);
+    }
+    .drop-shadow-text {
+        text-shadow: 1px 1px 5px rgba(0,0,0,0.27);
+    }
+    .drop-shadow-text-deep {
+        text-shadow: 1px 1px 7px rgba(0,0,0,0.35);
+    }
+    .base-input {
+        .drop-shadow;
+        .transitions;
+        max-width: 100%;
+        font-size: 18px;
+        margin-top: 3px;
+        margin-bottom: 3px;
+        padding: 11px;
+        border: 1px solid transparent;
+        border-radius: 2px;
+        background-color: @colorWhiteLight;
+        color: @standardFontColorLight;
+        box-sizing: border-box;
+        &:focus {
+            border: 1px solid @colorBlueLight;
+        }
+        &.error {
+            border: 2px solid @colorRed;
+            background-color: rgba(171, 1, 1, 0.05);
+        }
+        &[disabled="disabled"], &:disabled {
+            color: @colorGray;
+            background: @colorGrayLight;
+        }
+    }
+    .mf-select {
+        .base-input;
+    }
+    .mf-input {
+        .base-input;
+        min-height: 39px;
+    }
+    .mf-textarea {
+        .base-input;
+        line-height: 145%;
+        width: 100%;
+        min-height: 149px;
+        font-family: @baseFonts;
+        font-size: 20px;
+        &[disabled] {
+            background: @colorWhiteDark;
+            color: @standardFontColorLight;
+        }
+    }
+    .mf-page-header {
+        margin-bottom: 15px;
+        h1 {
+            font-size: 35px;
+            font-family: @baseFonts;
+            color: @standardFontColor;
+            font-weight: normal;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            text-align: center;
+            width: 96%;
+            border-bottom: 1px solid @colorGray;
+            padding-bottom: 9px;
+        }
+        h3 {
+            font-size: 20px;
+            color: @standardFontColor;
+            text-align: center;
+            margin: 9px;
+        }
+        &.top-spaced {
+            margin-top: 30px;
+        }
+    }
+    .mf-dropdown {
+        position: relative;
+        display: inline-block;
+    }
+    .mf-dropdown-content {
+        .drop-shadow;
+        background: @colorWhite;
+        max-height: 300px;
+        overflow: auto;
+        width: 100%;
+        display: none;
+        position: absolute;
+        padding: 3px;
+        text-align: left;
+        z-index: 300;
+        li.selected {
+            background: @colorBlue;
+            color: white;
+        }
+        li:hover {
+            background: @colorBlueLight;
+            color: white;
+        }
+    }
+    .mf-dropdown:hover .mf-dropdown-content {
+        // display: block;
+    }
+    .photo-boxes, .picboxes {
+        border: 1px dashed @colorGray;
+        padding: 9px;
+        min-height: 100px;
+        margin: 18px;
+        display: flex;
+        flex-wrap: wrap;
+        box-shadow: 1px 1px 5px rgba(0,0,0,0.27) inset;
+        background: @colorWhiteDark;
+        
+        &.dragging {
+            background-color: @colorBlueLightHighlight;
+        }
+        img {
+            .transitions;
+            .drop-shadow;
+            max-height: 200px;
+            border: 1px solid transparent;
+            &:hover {
+                .drop-shadow-deep;
+                .transitions;
+                border: 1px solid @colorBlueLight;
+                cursor: pointer;
+            }
+        }
+        .picbox {
+            position: relative;
+             .remove {
+                .standard-button;
+                position: absolute;
+                z-index: 100;
+                top: 2px;
+                right: 2px;
+                background: @colorRed;
+                color: white;
+                font-weight: bold;
+                cursor: pointer;
+                &:hover {
+                    background: @colorRedLight;
+                }
+            }
+        }       
+    }
+    .mf-button {
+        .drop-shadow;
+        .transitions;
+        text-align: center;
+        color: @colorBlue;
+        border: 1px solid @colorBlue;
+        border-radius: 3px;
+        background: @colorWhite;
+        display: inline-block;
+        padding: 9px 18px 9px 18px;
+        font-weight: bold;
+        text-transform: capitalize;
+        letter-spacing: 0.09em;
+        font-size: 16px;
+        text-decoration: none;
+        box-sizing: border-box;
+        &:hover, &:focus {
+            .drop-shadow-deep;
+            .transitions;
+            cursor: pointer;
+            color: @colorBlueLight;
+            border: 1px solid @colorBlueLight;
+            background: @colorWhiteLight;
+        }
+        .button-color(@color:@colorBlue, @colorLight:@colorBlueLight, @textColor:@colorWhite) {
+            border: 1px solid @color;
+            background: @color;
+            color: @textColor;
+            &:hover {
+                border: 1px solid @colorLight;
+                background: @colorLight;
+                color: @textColor;
+            }
+        }
+        &.green {
+            .button-color(@colorGreen, @colorGreenLight);
+        }
+        &.blue {
+            .button-color(@colorBlue, @colorBlueLight);
+        }
+        &.red {
+            .button-color(@colorRed, @colorRedLight);
+        }
+        &.gold {
+            .button-color(@colorGold, @colorGoldLight);
+        }
+        &.flat {
+            background: transparent;
+            border: transparent;
+            box-shadow: none;
+            &.green {
+                color: @colorGreen;
+                &:hover {
+                    color: @colorGreenLight;
+                    background: transparent;
+                    border: none;
+                }
+            }
+        }
+        &.primary {
+            .blue;
+        }
+        &.action {
+            .green;
+        }
+        &.danger {
+            .red;
+        }
+        &.warn {
+            .gold;
+        }
+        &.huge {
+            font-size: 30px;
+            padding: 20px;
+            margin: 20px;
+            line-height: 40px;
+        }
+        &.full-width {
+            display: block;
+        }
+        &.min-small {
+            min-width: 75px;
+        }
+        &.small {
+            padding: 3px 9px 3px 9px;
+            font-size: 14px;
+        }
+    }
+    .mf-button-dropdown {
+        white-space: nowrap;
+
+        .main-button {
+            margin-right: 0;
+            border-top-right-radius: 0px;
+            border-bottom-right-radius: 0px;
+            border-right: transparent;
+        }
+        .dropdown-button {
+            margin-left: 0;
+            padding-left: 6px;
+            padding-right: 6px;
+            border-top-left-radius: 0px;
+            border-bottom-left-radius: 0px;
+        }
+    }
+
+    select {
+        .mf-select;
+    }
+    input[type="text"], input[type="email"], input[type="password"] {
+        .mf-input;
+    }
+    textarea {
+        .mf-textarea;
+    }
+    a {
+        color: @colorBlue;
+        &:hover, &:active {
+            color: @colorBlueLight;
+        }
+        &:visited {
+            color: @colorBlue;
+        }
+    }
+    #signupFacebook {
+        padding: 10px;
+        background: #3b5998;
+        color: white;
+        text-decoration: none;
+        border-radius: 3px;
+        margin-top: 3px;
+        margin-bottom: 9px;
+        display: block;
+        .fa {
+            font-size: 20px;
+            border-right: 1px solid white;
+            padding-right: 9px;
+        }
+    }
+    #signupTwitter {
+        padding: 10px;
+        background: #00aced;
+        color: white;
+        text-decoration: none;
+        border-radius: 3px;
+        margin-top: 3px;
+        margin-bottom:27px;
+        .fa {
+            font-size: 20px;
+            border-right: 1px solid white;
+            padding-right: 9px;
+        }
+    }
+    .mf-dragndrop {
+        .description {
+            margin: 38px 18px 50px 38px;
+        }
+    }
+}

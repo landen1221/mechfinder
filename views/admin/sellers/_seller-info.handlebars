@@ -1,0 +1,28 @@
+<p><strong>Mechanic Type</strong>: <span class="titlecase">{{user.mechanicType}}</span></p><br />
+
+<p><strong>Specialties</strong>: {{#unless user.specialties.length}}None{{/unless}}</p>
+<ul>
+    {{#if user.specialties.length}}
+        {{#each user.specialties}}
+            <li>{{this}}</li>
+        {{/each}}
+    {{/if}}
+</ul><br />
+
+<p><strong>Certifications</strong>: {{#unless user.certifications.length}}None{{/unless}}</p>
+<ul>
+    {{#if user.certifications.length}}
+        {{#each user.certifications}}
+            <li>{{this}}</li>
+        {{/each}}
+    {{/if}}
+</ul><br />
+
+<p><strong>Experience</strong>: {{#unless user.experience.length}}None{{/unless}}</p>
+<ul>
+    {{#if user.experience.length}}
+        {{#each user.experience}}
+            <li>{{this}}</li>
+        {{/each}}
+    {{/if}}
+</ul>

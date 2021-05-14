@@ -1,0 +1,37 @@
+<a href="{{hrefs.home}}"><img src="{{hrefs.image}}" alt="MechFinder Logo" title="MechFinder Logo" /></a>
+
+<p>{{project.owner.first}},</p>
+
+<br /><br />
+
+<p>You have received a new estimate for your {{project.vehicle.make}}</p>
+
+<p><strong>Project Name</strong>: {{{project.title}}}<br />
+<p><strong>Vehicle</strong>: {{project.vehicle.year}} {{project.vehicle.make}} {{project.vehicle.model}}</p>
+
+<p><strong>Mechanic: </strong>{{seller.username}}</p>
+<ul>
+{{#compare seller.yearsOfExperience gt="0"}}<li>{{seller.yearsOfExperience}} Years of Experience</li>{{/compare}}
+{{#if seller.certifications.length}}<li>{{seller.certifications.length}} Certifications</li>{{/if}}
+{{#compare seller.warranty.amount gt="0"}}<li>{{seller.warranty.amount}} {{seller.warranty.units}} warranty</li>{{/compare}}
+</ul>
+
+<p><strong>Amount</strong>: {{currency bid.estimate}}</p> 
+
+<p><a href="{{hrefs.project}}">View Details & Hire</a></p>
+
+<p>Tip: Click on a mechanic's profile to view their ratings, experience, certifications and more. You can also message mechanics directly on MechFinder.</p> 
+
+<p>For a more detailed description of how this process works, <a href="{{hrefs.how}}">click here</a>.</p>
+
+<br /><br />
+
+<p>Sincerely,<br />
+<p>MechFinder Support Team<br />
+<p>Phoenix, AZ</p>
+
+<br /><br />
+<p style="text-align: center;"><a href="https://facebook.com/mechfinder">Facebook</a> <a href="https://twitter.com/mechfinder">Twitter</a></p>
+<p>Email MechFinder: support@mechfinder.com</p>
+<p>Copyright &copy; 2016 Mech Finder LLC, All rights reserved</p>
+

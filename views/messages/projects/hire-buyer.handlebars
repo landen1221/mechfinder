@@ -1,0 +1,35 @@
+<a href="{{hrefs.home}}"><img src="{{hrefs.image}}" alt="MechFinder Logo" title="MechFinder Logo" /></a>
+
+<p>{{user.first}},</p>
+
+<br /><br />
+
+<p>You have chosen {{seller.username}} for <a href="{{hrefs.project}}">your job</a>.</p>
+
+<p><strong>Project Name</strong>: {{{project.title}}}<br />
+<p><strong>Vehicle</strong>: {{project.vehicle.year}} {{project.vehicle.make}} {{project.vehicle.model}}</p>
+<p><strong>Amount in Escrow</strong>: {{currency bid.buyerTotal}}</p> 
+
+<br /><br />
+
+<p><strong>What to do next:</strong></p>
+<p>Get in touch with your mechanic and set up a time to complete your repair. {{seller.username}}'s contact information is:</p>
+
+<ul>
+    <li>Message through MechFinder: <a href="{{hrefs.message}}">{{hrefs.message}}</a></li>
+    {{#if seller.phone.verified}}{{#if seller.phone.number}}
+        <li>Phone: {{seller.phone.number}}</li>
+    {{/if}}{{/if}}
+</ul>
+
+<br /><br />
+
+<p>Sincerely,<br />
+<p>MechFinder Support Team<br />
+<p>Phoenix, AZ</p>
+
+<br /><br />
+<p style="text-align: center;"><a href="https://facebook.com/mechfinder">Facebook</a> <a href="https://twitter.com/mechfinder">Twitter</a></p>
+<p>Email MechFinder: support@mechfinder.com</p>
+<p>Copyright &copy; 2016 Mech Finder LLC, All rights reserved</p>
+

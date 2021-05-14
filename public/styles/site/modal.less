@@ -1,0 +1,837 @@
+.modal {
+    .standard-div;
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    width: 100%;
+    height: 100%;
+    height: 100vh;
+    background-color: rgba(41, 41, 41, .5);
+    z-index: 800;
+    text-align: center;
+
+    .modal-container {
+        .standard-div;
+        display: inline-block;
+        box-shadow: 0px 0px 10px 0px rgba(41, 41, 41, 1);
+        width: 96%;
+        float: none;
+        max-width: 600px;
+        margin-top: 20px;
+        margin-top: 5vh;
+        max-height: 400px;
+        max-height: 90vh;
+        background-color: @colorWhite;
+        position: relative;
+
+        .exit-row {
+            .standard-div;
+            text-align: right;
+            position: absolute;
+            top: 0px;
+            left: 0px;
+            z-index: 803;
+
+            a {
+                .standard-font;
+                .transitions;
+                display: inline-block;
+                float: right;
+                text-align: center;
+                padding: 5px;
+                padding-left: 20px;
+                padding-right: 20px;
+                text-decoration: none;
+
+                &:link,
+                &:visited {
+                    color: @colorWhite;
+                    background-color: rgba(169, 1, 1, 1);
+                }
+
+                &:hover,
+                &:active,
+                &:focus {
+                    color: @colorWhite;
+                    background-color: rgba(199, 1, 1, 1);
+                }
+            }
+        }
+
+        .modal-content {
+            .standard-div;
+            box-sizing: border-box;
+            overflow-y: auto;
+            padding: 20px;
+            padding-top: 30px;
+            max-height: 90vh;
+
+            .spacer {
+                .standard-div;
+                height: 15px;
+            }
+
+            .modal-heading {
+                .standard-div;
+                .standard-font;
+                width: 100%;
+                padding-top: 5px;
+                padding-bottom: 15px;
+                font-size: 25px;
+                line-height: 30px;
+            }
+
+            .modal-message {
+                .standard-div;
+                .standard-font;
+
+                a {
+                    .standard-font;
+                    .remove-effects;
+                    .transitions;
+
+                    &:link,
+                    &:visited {
+                        color: @colorBlue;
+                    }
+
+                    &:hover,
+                    &:active,
+                    &:focus {
+                        color: @colorBlueLight;
+                    }
+                }
+
+                ul, ol {
+                    .standard-div;
+                    box-sizing: border-box;
+                    padding: 5px;
+                    padding-left: 15px;
+
+                    li {
+                        .standard-font;
+                    }
+                }
+            }
+
+            .modal-checkbox {
+                .standard-div;
+                .standard-font;
+                padding: 5px;
+
+                border: 2px solid transparent;
+
+                &.error {
+                    border: 2px solid @colorRedLight;
+                }
+            }
+
+            .modal-spinner {
+                .standard-div;
+                .standard-font;
+                margin-top: 15px;
+                text-align: center;
+                font-size: 25px;
+            }
+
+            .modal-loading {
+                .standard-div;
+                height: 20px;
+                margin-top: 15px;
+                box-sizing: border-box;
+                border-radius: 1px;
+                border: 1px solid @colorGreen;
+
+                .progress {
+                    .standard-div;
+                    .transitions;
+                    box-sizing: border-box;
+                    width: 50%;
+                    height: 18px;
+                    background-color: @colorGreenLight;
+                }
+
+                &.blue {
+                    border-color: @colorBlue;
+
+                    .progress {
+                        background-color: @colorBlueLight;
+                    }
+                }
+
+                &.red {
+                    border-color: @colorRed;
+
+                    .progress {
+                        background-color: @colorRedLight;
+                    }
+                }
+
+                &.gray {
+                    border-color: @colorGray;
+
+                    .progress {
+                        background-color: @colorGrayLight;
+                    }
+                }
+            }
+
+            .modal-buttons {
+                .standard-div;
+                padding-top: 15px;
+                text-align: right;
+
+                label {
+                    .standard-font;
+                    width: 100%;
+                    display: inline-block;
+                    padding-bottom: 5px;
+
+                    &.error {
+                        color: @colorRed;
+                    }
+
+                    @media only screen and (min-width: @screenMD) {
+                        width: auto;
+                    }
+                }
+
+                a {
+                    .standard-link;
+                }
+
+                a.modal-button {
+                    .standard-button;
+                    width: 40%;
+                    max-width: 50px;
+                    text-align: center;
+
+                    &.unfixed {
+                        width: auto;
+                        max-width: none;
+                    }
+                }
+            }
+
+            input[type="text"],
+            input[type="password"],
+            textarea,
+            select {
+                .standard-font;
+                box-sizing: border-box;
+                padding: 5px;
+                text-decoration: none;
+                outline: none;
+                text-align: left;
+
+                &.error {
+                    border: 2px solid @colorRed;
+                }
+
+                &.centered {
+                    text-align: center;
+                }
+            }
+
+            input[type="radio"] {
+                font-size: 13px;
+            }
+            label {
+                font-size: @standardFontSize;
+            }
+
+            textarea {
+                width: 100%;
+                max-width: 100%;
+                min-width: 100%;
+
+                &.tall {
+                    min-height: 75px;
+                }
+
+                &.extra-tall {
+                    min-height: 150px;
+                }
+            }
+
+            .modal-confirmation,
+            .modal-textbox,
+            .modal-select,
+            .modal-diagnosis-estimate,
+            .modal-estimate,
+            .modal-seller-info,
+            .modal-photos {
+                .standard-div;
+            }
+
+            .modal-photos {
+                .standard-div;
+
+                .add-photo {
+                    .standard-div;
+                    .standard-font;
+                    .transitions;
+                    text-align: center;
+                    box-sizing: border-box;
+                    border: 2px dashed rgba(177, 177, 177, 1);
+                    padding: 20px;
+
+                    a {
+                        .standard-link;
+                    }
+
+                    &.dragging {
+                        background-color: rgba(214, 214, 214, 1);
+                    }
+                }
+
+                .photos {
+                    .standard-div;
+                    text-align: center;
+
+                    .photo {
+                        display: inline-block;
+                        width: auto;
+                        clear: both;
+                        margin-top: 10px;
+                        box-sizing: border-box;
+                        border: 1px solid rgba(255, 255, 255, 1);
+                        box-shadow: 0px 0px 3px 0px rgba(1, 1, 1, 1);
+                        position: relative;
+
+                        .remove {
+                            position: absolute;
+                            top: 0px;
+                            right: 0px;
+
+                            a {
+                                .remove-effects;
+                                .transitions;
+                                .standard-font;
+                                display: block;
+                                padding: 5px;
+                                padding-left: 20px;
+                                padding-right: 20px;
+                                font-size: 13px;
+
+                                &:link,
+                                &:visited {
+                                    // color: rgba(250, 250, 250, 1);
+                                    // background-color: @colorRed;
+                                    background-color: rgba(234, 234, 234, 1);
+                                }
+
+
+                                &:hover,
+                                &:active,
+                                &:focus {
+                                    color: rgba(253, 253, 253, 1);
+                                    background-color: @colorRedLight;
+                                }
+                            }
+                        }
+
+                        img {
+                            max-width: 100%;
+                            max-height: 250px;
+                        }
+                    }
+                }
+            }
+
+            .modal-rating {
+                .standard-div;
+
+                .stars,
+                .wrenches,
+                .faces {
+                    .standard-div;
+                    text-align: center;
+                    padding-top: 30px;
+                    padding-bottom: 25px;
+
+                    .star,
+                    .wrench,
+                    .face {
+                        .standard-font;
+                        font-size: 25px;
+                        display: inline-block;
+
+                        a {
+                            .transitions;
+
+                            &:link,
+                            &:visited {
+                                color: rgba(199, 199, 199, 1);
+                            }
+
+                            &:hover,
+                            &:active,
+                            &:focus,
+                            &.hovered {
+                                color: @colorBlueLight;
+                                color: @colorGoldLight;
+                            }
+
+                            &.selected {
+                                color: @colorBlue;
+                                color: @colorGold;
+
+                                &.override {
+                                    color: rgba(199, 199, 199, 1);
+                                }
+                            }
+                        }
+
+                        &.large {
+                            font-size: 50px;
+                        }
+                    }
+                }
+            }
+
+            .modal-social {
+                .standard-div;
+                text-align: center;
+                padding-top: 30px;
+                padding-bottom: 25px;
+
+                .tile {
+                    .standard-font;
+                    font-size: 50px;
+                    display: inline-block;
+
+                    a {
+                        .transitions;
+
+                        &:link,
+                        &:visited {
+                            color: rgba(199, 199, 199, 1);
+                        }
+
+                        &:hover,
+                        &:active,
+                        &:focus,
+                        &.hovered {
+                            color: @colorBlueLight;
+                        }
+                    }
+                }
+            }
+
+            .textbox-input {
+                .standard-div;
+                padding-top: 15px;
+
+                input[type="text"],
+                input[type="password"] {
+                    width: 100%;
+
+                    &.centered {
+                        text-align: center;
+                    }
+                }
+            }
+
+            .select-input {
+                .standard-div;
+                padding-top: 15px;
+
+                select {
+                    width: 100%;
+                    max-width: 100%;
+                    box-sizing: border-box;
+
+                    &.unfixed {
+                        width: auto;
+                    }
+                }
+            }
+
+            .modal-seller-info {
+                .info-row {
+                    .standard-div;
+
+                    &.topspaced {
+                        padding-top: 10px;
+                    }
+
+                    &.right-align {
+                        text-align: right;
+                    }
+
+                    a {
+                        .standard-link;
+                    }
+                }
+
+                label {
+                    .standard-font;
+                    color: rgba(131, 131, 131, 1);
+                }
+
+                input[type="text"],
+                input[type="password"] {
+                    width: 100%;
+
+                    &.dob {
+                        width: 30%;
+                        margin-left: 1%;
+                        margin-right: 1%;
+                    }
+                }
+
+                input[type="checkbox"] {
+                    vertical-align: middle;
+                }
+            }
+
+            .modal-estimate {
+                input[type="text"] {
+                    &.hide-nature {
+                        border: 0px;
+                        background-color: transparent;
+
+                        -webkit-appearance: none;
+                        appearance: none;
+
+                        &&::-ms-expand {
+                            display: none;
+                        }
+                    }
+
+                    &.strike {
+                        text-decoration: line-through;
+                    }
+                }
+            }
+
+            .modal-diagnosis-estimate {
+                .fee-box,
+                .waive-box,
+                .crunch-box {
+                    .standard-div;
+                    .standard-font;
+                    padding-top: 15px;
+
+                    input[type="text"],
+                    select {
+                        margin-left: 10px;
+                        width: 75px;
+
+                        &.centered {
+                            text-align: center;
+                        }
+
+                        &.hide-nature {
+                            border: 0px;
+                            background-color: transparent;
+
+                            -webkit-appearance: none;
+                            appearance: none;
+
+                            &&::-ms-expand {
+                                display: none;
+                            }
+                        }
+                    }
+                }
+
+                .crunch-box {
+                    table {
+                        width: 100%;
+                        text-align: left;
+                        float: left;
+                        border: 0px;
+
+                        tr {
+                            td {
+                                padding-top: 5px;
+                                padding-right: 5px;
+                                white-space: nowrap;
+
+                                &:last-child {
+                                    width: 100%;
+                                }
+                            }
+                        }
+                    }
+                }
+
+                .customer-message {
+                    .standard-div;
+                    padding-top: 10px;
+
+                    .message-header {
+                        .standard-div;
+                        .standard-font;
+                        font-size: 18px;
+                        padding-bottom: 2px;
+                    }
+
+                    textarea {
+                        width: 100%;
+                        height: 50px;
+                        box-sizing: border-box;
+                        // border: 1px solid @colorGray;
+                    }
+                }
+            }
+
+            .modal-estimate {
+                .workorder-section {
+                    .standard-div;
+                    padding-top: 15px;
+
+                    .workorder-section-heading {
+                        .standard-font;
+                        font-size: 17px;
+                        line-height: 100%;
+                        padding-bottom: 3px;
+                    }
+
+                    .workorder-tabs {
+                        .standard-div;
+
+                        .workorder-tab {
+                            .standard-font;
+                            font-size: 13px;
+                            color: @colorBlue;
+                            display: inline-block;
+                            float: left;
+                            padding: 3px;
+                            padding-left: 10px;
+                            padding-right: 10px;
+                            border: 1px solid transparent;
+                            border-bottom-width: 0px;
+
+                            &.selected {
+                                background-color: rgba(253, 253, 253, 1);
+                                border-color: rgba(211, 211, 211, 1);
+                            }
+
+                            &:hover {
+                                cursor: pointer;
+                                color: @colorBlueLight;
+                            }
+                        }
+                    }
+
+                    .workorder-breakdown {
+                        .standard-div;
+                        overflow-x: auto;
+
+                        table {
+                            // min-width: 100%;
+                            // max-width: 100%;
+                            width: 100%;
+                            box-sizing: border-box;
+                            // overflow-x: auto;
+                            background-color: rgba(253, 253, 253, 1);
+                            border-left: 1px solid rgba(211, 211, 211, 1);
+                            border-right: 1px solid rgba(211, 211, 211, 1);
+
+                            tr {
+                                td, th {
+                                    .standard-font;
+                                    padding: 4px;
+                                    padding-top: 6px;
+                                    padding-bottom: 6px;
+                                    white-space: nowrap;
+                                    text-align: center;
+                                    border-bottom: 1px solid rgba(211, 211, 211, 1);
+                                    border-spacing: 0px;
+                                    border-collapse: collapse;
+
+                                    input[type="text"] {
+                                        max-width: 100%;
+                                        width: 100%;
+                                        box-sizing: border-box;
+                                    }
+
+                                    input[type="checkbox"] {
+                                        vertical-align: text-bottom;
+                                    }
+
+                                    label {
+                                        .standard-font;
+
+                                        &.strong {
+                                            font-weight: bold;
+                                        }
+                                    }
+
+                                    a.trash {
+                                        .transitions;
+                                        text-decoration: none;
+                                        outline: none;
+
+                                        &:link,
+                                        &:visited {
+                                            color: @colorRed;
+                                        }
+
+                                        &:hover,
+                                        &:active,
+                                        &:focus {
+                                            color: @colorRedLight;
+                                        }
+                                    }
+
+                                    &.wrap {
+                                        white-space: normal;
+                                    }
+
+                                    &.fillspace {
+                                        width: 100%;
+                                    }
+
+                                    &.left {
+                                        text-align: left;
+                                    }
+
+                                    &.right {
+                                        text-align: right;
+                                    }
+
+                                    &.strong {
+                                        font-weight: bold;
+                                    }
+
+                                    &.strike {
+                                        text-decoration: line-through;
+                                    }
+
+                                    &.actions {
+                                        font-size: 20px;
+                                    }
+                                }
+
+                                th {
+                                    background-color: @colorBlueDark;
+                                    color: @colorWhite;
+                                    font-weight: bold;
+                                    padding-top: 10px;
+                                    padding-bottom: 10px;
+                                }
+
+                                &:first-child {
+                                    td, th {
+                                        border-top: 1px solid rgba(211, 211, 211, 1);
+                                    }
+                                }
+
+                                &.topline {
+                                    td, th {
+                                        border-top: 1px solid rgba(211, 211, 211, 1);
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+
+                .comment-section {
+                    .standard-div;
+                    padding-top: 7px;
+
+                    .comment-header {
+                        .standard-div;
+                        padding-bottom: 4px;
+                    }
+
+                    textarea {
+                        width: 100%;
+                        box-sizing: border-box;
+                        // border: 1px solid @colorGrayLight;
+                        background-color: white;
+                        height: 70px;
+
+                        &.hide-nature {
+                            border: 0px;
+                            background-color: transparent;
+
+                            -webkit-appearance: none;
+                            appearance: none;
+                            // border: 1px solid @colorGrayLight;
+
+                            &&::-ms-expand {
+                                display: none;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    &.nooverlay {
+        background-color: transparent;
+    }
+
+    &.noexit {
+        .modal-container .exit-row {
+            display: none;
+        }
+    }
+
+    &.nopadding {
+        .modal-container .modal-content {
+            padding: 0px;
+        }
+    }
+
+    &.condensed {
+        .modal-container {
+            max-width: 350px;
+
+            .modal-buttons {
+                label {
+                    width: 100%;
+                }
+            }
+        }
+    }
+
+    #modalCancelJobInput {
+        padding: 20px;
+        padding-top: 50px;
+    }
+}
+// .modal {
+//     display: none; /* Hidden by default */
+//     position: fixed; /* Stay in place */
+//     z-index: 999; /* Sit on top */
+//     left: 0;
+//     top: 0;
+//     width: 100%; /* Full width */
+//     height: 100%; /* Full height */
+//     overflow: auto; /* Enable scroll if needed */
+//     background-color: rgb(0,0,0); /* Fallback color */
+//     background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+// }
+//
+// /* Modal Content/Box */
+// .modal-content {
+//     background-color: #fefefe;
+//     margin: 15% auto; /* 15% from the top and centered */
+//     padding: 20px;
+//     border: 1px solid #888;
+//     width: 80%; /* Could be more or less, depending on screen size */
+//     height: 80vh;
+// }
+//
+// /* The Close Button */
+// .close {
+//     color: #aaa;
+//     float: right;
+//     font-size: 28px;
+//     font-weight: bold;
+// }
+//
+// .close:hover,
+// .close:focus {
+//     color: black;
+//     text-decoration: none;
+//     cursor: pointer;
+// }

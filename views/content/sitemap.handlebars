@@ -1,0 +1,11 @@
+<div class="more-info">
+    <div class="group">
+        <div class="page-title"><h1>Sitemap</h1></div>
+        <div class="spacer"></div>
+        <ul>
+            {{#each nodes}}
+                <li><a href="{{this.path}}">{{this.meta.title}} - {{this.path}}</a></li>
+            {{/each}}
+        </ul>
+    </div>  
+</div>

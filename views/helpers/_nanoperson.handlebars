@@ -1,0 +1,17 @@
+<div class="person nano{{#if is_friend}} friend{{/if}}" data-user-id="{{_id}}">
+    <div class="photo">
+        {{#if profile.picture}}
+        <img src="/i/{{profile.picture}}/161/149/o" />
+        {{else}}
+        <div class="no-photo"></div>
+        {{/if}}
+    </div>
+    {{#if online}}{{helper 'chat' id=_id name=name picture=profile.picture icononly=true}}{{/if}}
+    <div class="profile">
+        <a  href="/profile/{{_id}}">{{name}}</a><br/>
+        {{#if address.0.city}}
+        {{address.0.city}}, {{address.0.state}}<br/>
+        {{/if}}
+        {{helper 'stars' stars=average_rating total=ratings.length user=_id}}
+    </div>
+</div>

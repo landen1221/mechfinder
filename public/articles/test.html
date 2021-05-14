@@ -1,0 +1,514 @@
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>Find A Mechanic Locally - Mechfinder.com</title>
+        <meta name="viewport"    content="width=device-width, initial-scale=1.0">
+        <meta name="description" content="Need help fixing your vehicle, find a mechanic instantly anywhere using Mechfinder for free. Rate mechanics and get local mechanics working from home to bid on your vehicle repairs. Save thousands off vehicles repairs by going direct.">
+        <meta name="keywords"    content="car parts for sale, buy parts, buy car, buy cars, mechfinder, find a mechanic, find tools, sell car parts, sell car, buy used car">
+        <meta name="author"      content="Mechfinder">
+        <script src="http://52.5.59.38/static/js/master.js"></script>
+        <link href="http://52.5.59.38/static/styles/site.css" rel="stylesheet">
+
+        <!--[if lt IE 9]>
+        <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+        <![endif]-->
+
+        <link rel="shortcut icon" href="http://52.5.59.38/static/img/favicon.ico">
+        <!--
+        <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/static/ico/apple-touch-icon-144-precomposed.png">
+        <link rel="apple-touch-icon-precomposed" sizes="114x114" href="/static/ico/apple-touch-icon-114-precomposed.png">
+        <link rel="apple-touch-icon-precomposed" sizes="72x72" href="/static/ico/apple-touch-icon-72-precomposed.png">
+        <link rel="apple-touch-icon-precomposed" href="/static/ico/apple-touch-icon-57-precomposed.png">
+        -->
+
+    </head>
+    <body class="user" data-user-id="5558986a67a067c82d00000b">
+        <div id="body-container">
+            <div class="row-fluid" style='width:800px;'>
+                <div class="span12" >
+                    <style type="text/css">
+.steps-container  {
+    height: 160px;
+    padding-left: 75px;
+}
+.steps-container > div {
+    float: left;
+    margin-right: 20px;
+    width: 200px;
+    padding: 20px;
+    text-align: center;
+}
+.steps-container .step {
+    border: 2px solid #090;
+}
+.steps-container .step-disabled {
+    border: 2px solid #aaa;
+    color: #aaa;
+}
+
+#profile-picture-picker
+{
+    padding: 0;
+    width: 161px;
+    height: 149px;
+    /*background: url('/static/img/profile.png') no-repeat center;*/
+    cursor: pointer;
+}
+#profile-picture-picker > i {
+    display: block;
+    width: 161px;
+    line-height: 149px;
+    text-align: center;
+    font-size: 80px;
+}
+#profile-picture-picker > .progress {
+    display: none;
+    margin-left: 20px;
+    margin-top: 70px;
+    width: 121px;
+}
+#profile-picture-picker > input[type='file'] { height: 149px; }
+#profile-picture-picker > .preview {
+     width: 161px;
+     height: 149px;
+     display: none;
+ }
+</style>
+
+<h3><a href='javascript:void()'>Welcome To Mechfinder.com! Get Ready For Some Auto Repair Bids!</a>
+</h3>
+<div id="step-1">
+    <h1 style="text-align: center;">Step 1 of 2</h1>
+    <div class="steps-container">
+        <div class="step">
+            <h2>Step <span class="number">1</span></h2>
+            <button class="btn btn-warning">First Project</button>
+        </div>
+        <div class="step-disabled">
+            <h2>Step <span class="number">2</span></h2>
+            <button class="btn" disabled>Escrow Funds</button>
+        </div>
+    </div>
+    <form method="post" action="http://52.5.59.38/api/newproject/5558986a67a067c82d00000e" id="post-project" class="form-horizontal">
+        <input type="hidden" name="title" value="" />
+        <input type="hidden" name="repair" value="Oil Change" />
+        <div class="control-group">
+    <label class="control-label" for="vehicle-make">Vehicle Make</label>
+    <div class="controls">
+        <input type="text"
+               id="vehicle-make"
+               name="vehicle_make"
+               placeholder="Ford"
+               class="required input-medium"
+               value="" />
+
+    </div>
+</div>
+        <div class="control-group">
+    <label class="control-label" for="vehicle-model">Vehicle Model</label>
+    <div class="controls">
+        <input type="text"
+               id="vehicle-model"
+               name="vehicle_model"
+               placeholder="Vehicle Model"
+               class="required input-medium"
+               value="" />
+
+    </div>
+</div>
+        <div class="control-group">
+    <label class="control-label" for="vehicle-year">Vehicle Year</label>
+    <div class="controls">
+        <input type="text"
+               id="vehicle-year"
+               name="vehicle_year"
+               placeholder="2002"
+               class="required input-mini"
+               value="" />
+
+    </div>
+</div>
+          <div class="control-group">
+    <label class="control-label" for="buyer-description">Project Description</label>
+    <div class="controls">
+        <textarea id="buyer-description"
+            name="description"
+            placeholder="Project Description"
+            class="required input-medium"
+
+        ></textarea>
+
+    </div>
+</div>
+         <div class="control-group">
+    <label class="control-label" for="budget">What is your max budget?</label>
+    <div class="controls">
+        <input type="text"
+               id="budget"
+               name="budget"
+               placeholder=" "
+               class="required input-small"
+               value="" />
+
+    </div>
+</div>
+
+        <div class="control-group">
+    <label class="control-label" for="vehicle-starts-yes">Do you have the parts?</label>
+    <div class="controls">
+        <label class="radio">
+            <input type="radio"
+                   id="vehicle-starts-yes"
+                   name="vehicle_starts"
+                   value="1"
+                   class="required"
+                   />
+            Yes
+        </label>
+        <label class="radio">
+            <input type="radio"
+                   id="vehicle-starts-no"
+                   name="vehicle_starts"
+                   value="0"
+                   class="required"
+                   checked/>
+            No
+        </label>
+    </div>
+</div>
+         <div class="control-group">
+    <label class="control-label" for="vehicle-needs-tow-yes">Do you need a tow truck?</label>
+    <div class="controls">
+        <label class="radio">
+            <input type="radio"
+                   id="vehicle-needs-tow-yes"
+                   name="vehicle_needs_tow"
+                   value="1"
+                   class="required"
+                   />
+            Yes
+        </label>
+        <label class="radio">
+            <input type="radio"
+                   id="vehicle-needs-tow-no"
+                   name="vehicle_needs_tow"
+                   value="0"
+                   class="required"
+                   checked/>
+            No
+        </label>
+    </div>
+</div>
+        <div class="control-group">
+    <div class="controls">
+        <input type="submit" value="Next" data-text-loading="Loading..." class="btn btn-success" />
+    </div>
+</div>
+        <div class="alert alert-error" style="display: none;">
+            <strong>Error Processing Request.</strong> We're sorry, but there was an error
+            processing your request. Please try again shortly, and if problems persist,
+            please contact us directly at info@mechfinder.com.
+        </div>
+    </form>
+
+</div>
+
+<div id="step-2" style="display: none;" align="center">
+    <h1 style="text-align: center;">Step 2 of 2</h1>
+    <div class="steps-container">
+        <div class="step-disabled">
+            <h2>Step <span class="number">1</span></h2>
+            <button class="btn btn" disabled>First Project</button>
+        </div>
+        <div class="step">
+            <h2>Step <span class="number">2</span></h2>
+            <button class="btn btn-warning">Escrow Funds</button>
+        </div>
+    </div>
+
+<h1 class="payment-h">Guarantee Your Repair !</h1>
+<h3 class="payment-h">Free Pre-Escrow !</h3>
+<h4 class="payment-h">*Attract More Estimates</h4>
+<h4 class="payment-h">*Guarantee Your Repair</h4>
+        <form id="form-hire-confirmation" class="form-inline" method="post" action="http://52.5.59.38/api/chanrges">
+        <div class="control-group">
+
+         <span class="payment-errors"></span>
+
+<div class="control-group">
+    <div class="controls">
+        <input class="form-control1" type="text" size="20" data-stripe="name"  placeholder="Name On Card"/>
+    </div>
+</div>
+
+<div class="control-group">
+    <div class="controls">
+        <input class="form-control1" type="text" size="20" data-stripe="number"  placeholder="Card Number"/>
+    </div>
+</div>
+
+<div class="control-group">
+    <div class="controls">
+        <input type="text" data-stripe="exp-month"   placeholder="MM"  class="input-mini" /> - <input type="text"  data-stripe="exp-year"    placeholder="YYYY"  class="input-mini"/>
+    </div>
+</div>
+
+<div class="control-group">
+    <div class="controls">
+        <input class="form-control1" type="text" size="20" data-stripe="cvc"  placeholder="Back 3 digits"/>
+    </div>
+</div>
+
+
+<div class="control-group">
+    <div class="controls">
+         <input class="form-control1" type="text" size="20" data-stripe="address_zip"  placeholder="Zip Code"/>
+    </div>
+</div>
+           <div > $</div>
+                <div style='display:none' id='tokendiv'>
+
+          </div>
+
+
+            <button class="btn btn-primary" type="submit" value="Submit" >Submit</button>
+        <div class="alert error" style="display: none;">
+            There was a problem completing this request.
+        </div>
+    </form>
+</div>
+
+
+
+<script type="text/javascript">
+jQuery(function($) {
+
+    var step2 = function() {
+        $('#step-1').hide();
+        $('#step-2').show();
+    };
+  step2();
+    $('#button-skip-1').click(step2);
+    $('#button-skip-2').click(function() { window.location = '/Find-Mechanic'; });
+
+    var makes = ["Acura","Alfa Romeo","Aptera","Aston Martin","Audi","Austin","BMW","Bentley","Bugatti","Buick","Cadillac","Chevrolet","Chrysler","Citroën","Corbin","Daewoo","Daihatsu","Defender","Dodge","Eagle","FIAT","Fairthorpe","Ferrari","Fiat","Fillmore","Foose","Ford","Ford Motor Company","GMC","Geo","HUMMER","Hillman","Holden","Honda","Hummer","Hyundai","Infiniti","Isuzu","Jaguar","Jeep","Jensen","Kia","Lamborghini","Land Rover","Lexus","Lincoln","Lotus","MG","MINI","Maserati","Maybach","Mazda","McLaren","Mercedes-Benz","Mercury","Merkur","Mitsubishi","Morgan","Nissan","Oldsmobile","Panoz","Peugeot","Plymouth","Pontiac","Porsche","Ram","Rambler","Renault","Rolls-Royce","Saab","Saturn","Scion","Shelby","Smart","Spyker","Studebaker","Subaru","Suzuki","Tesla","Toyota","Volkswagen","Volvo"];
+    var models = null;
+    var years = null;
+
+    $('#vehicle-make').change(function() { models = null; years = null; });
+    $('#vehicle-model').change(function() { years = null; });
+    $('#vehicle-make').typeahead({
+        source: function(query, next) {
+            if ($('#vehicle-type').val() == 'car' ||
+                $('#vehicle-type').val() == 'truck')
+            {
+                return makes;
+            }
+        }
+    });
+    $('#vehicle-model').typeahead({
+        source: function(query, next) {
+            if ($('#vehicle-type').val() != 'car' &&
+                $('#vehicle-type').val() != 'truck') return;
+            if (models) return models;
+            if ($('#vehicle-make').val())
+            {
+                $.ajax({
+                    type: 'GET',
+                    url: 'http://52.5.59.38/api/makes/' + $('#vehicle-make').val()
+                }).done(function(data) {
+                    models = data;
+                    next(data);
+                });
+            }
+        }
+    });
+    $('#vehicle-year').typeahead({
+        source: function(query, next) {
+            if ($('#vehicle-type').val() != 'car' &&
+                $('#vehicle-type').val() != 'truck') return;
+            if (years) return years;
+            if ($('#vehicle-make').val() && $('#vehicle-model').val())
+            {
+                $.ajax({
+                    type: 'GET',
+                    url: 'http://52.5.59.38/api/makes/' + $('#vehicle-make').val() + '/' + $('#vehicle-model').val()
+                }).done(function(data) {
+                    years = data;
+                    for (var i=0; i < years.length; i++)
+                    {
+                        years[i] = String(years[i]);
+                    }
+                    next(years);
+                });
+            }
+        }
+    });
+
+    $('#schedule-picker').datepicker();
+    $('#budget').blur(function() { $(this).formatCurrency(); });
+    $('#vehicle-year').blur(function() { $(this).toNumber(); });
+    $('#vehicle-mileage').blur(function() { $(this).formatCurrency({symbol: '', roundToDecimalPlace: 0}); });
+
+    var $profile_picture_picker = $('#profile-picture-picker')
+    var $profile_picture_progress = $('#profile-picture-picker > .progress')
+    var $profile_picture_preview = $('#profile-picture-picker > .preview')
+    var profile_picture_uploader = new qq.FineUploaderBasic({
+        button: $profile_picture_picker[0],
+        request: { endpoint: '/i' },
+        multiple: false,
+        validation: {
+            acceptFiles:     'image/*',
+            sizeLimit:    10*1024*1024, // 10 Mb
+            minSizeLimit:         1024  //  1 Kb
+        },
+        callbacks: {
+            onUpload: function(id) {
+                $profile_picture_picker.find('i').remove();
+                $profile_picture_progress.show();
+                $profile_picture_progress.find('.bar').css('width', '0%');
+                $profile_picture_preview.hide()
+            },
+            onProgress: function(id, filename, uploaded, total) {
+                var percent = Math.floor(100*uploaded/total);
+                $profile_picture_progress.find('.bar').css('width', percent + '%');
+                if (percent >= 99)
+                {
+                    $profile_picture_progress.addClass('progress-striped active');
+                }
+            },
+            onComplete: function(id, filename, data) {
+                $('#profile-picture').val(data.id);
+                $profile_picture_progress.hide();
+                $profile_picture_preview.show().css('background', 'url("http://52.5.59.38/i/' + data.id + '/161/149") no-repeat center');
+            }
+        }
+    });
+
+    var project_opts = {
+        errorElement: 'span',
+        errorClass: 'help-inline',
+        rules: {
+        },
+        messages: {
+            'vehicle_make': '*',
+            'vehicle_model': '*',
+            'vehicle_model': '*',
+            'vehicle_year': '*',
+            'vehicle_mileage': '*',
+            'repair': '*',
+            'title': '*',
+            'description': '*',
+            'schedule': '*',
+            'vehicle_starts': '*',
+            'vehicle_drives': '*',
+            'vehicle_needs_tow': '*'
+        },
+        submitHandler: function(form) {
+            form = $(form);
+            form.ajaxSubmit({
+                success: function (data) {
+
+                        step2();
+
+                },
+                error: function (xhr, err) {
+                    form.find('.alert-error').show();
+                    console.log(err)
+                },
+                complete: function() {
+                    form.find(':input:not(:submit)').removeAttr('disabled');
+                    form.find(':submit').button('reset');
+                }
+            });
+            form.find('.alert').hide();
+            form.find(':input:not(:submit)').attr('disabled', 'disabled');
+            form.find(':submit').button('loading');
+            return false;
+        }
+    };
+    $('#post-project').validate(project_opts);
+
+    var profile_opts = {
+        errorElement: 'span',
+        errorClass: 'help-inline',
+        rules: {
+        },
+        messages: {
+            'profile_college':   '*'
+        },
+        submitHandler: function(form) {
+            form = $(form);
+            form.ajaxSubmit({
+                success: function (data) {
+
+                        window.location = 'http://52.5.59.38/projects/55976';
+
+                },
+                error: function (xhr, err) {
+                console.log(err)
+                    form.find('.alert-error').show();
+                },
+                complete: function() {
+                    form.find(':input:not(:submit)').removeAttr('disabled');
+                    form.find(':submit').button('reset');
+                }
+            });
+            form.find('.alert').hide();
+            form.find(':input:not(:submit)').attr('disabled', 'disabled');
+            form.find(':submit').button('loading');
+            return false;
+        }
+    };
+    $('#form-profile').validate(profile_opts);
+
+    var mechanic_opts = {
+        errorElement: 'span',
+        errorClass: 'help-inline',
+        rules: {
+        },
+        messages: {
+        },
+        submitHandler: function(form) {
+            form = $(form);
+            form.ajaxSubmit({
+                success: function (data) {
+                    step2();
+                },
+                error: function (xhr, err) {
+                    form.find('.alert-error').show();
+                },
+                complete: function() {
+                    form.find(':input:not(:submit)').removeAttr('disabled');
+                    form.find(':submit').button('reset');
+                }
+            });
+            form.find('.alert').hide();
+            form.find(':input:not(:submit)').attr('disabled', 'disabled');
+            form.find(':submit').button('loading');
+            return false;
+        }
+    };
+    $('#form-mechanic').validate(mechanic_opts);
+});
+</script>
+                </div>
+            </div>
+
+<p align=center>
+            Copyright &copy; 2012 Mechfinder.com, All Right Reserved</p>
+        </div>
+        <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-36644308-1']);
+    _gaq.push(['_trackPageview']);
+    (function() {
+        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+</script>
+    </body>
+</html>

@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Mechfinder</title>
+    <!-- Bootstrap -->
+    <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
+	<link href="css/prettify.css" rel="stylesheet">
+  </head>
+
+</head>
+
+<body>
+<div class="container">
+
+<div class="payment-body">
+<h1 class="payment-h">Guarantee Your Repair !</h1>
+<h3 class="payment-h">Free Pre-Escrow !</h3>
+<h4 class="payment-h">*Attract More Estimates</h4>
+<h4 class="payment-h">*Guarantee Your Repair</h4>
+	<div class="row">
+      <!--===============================================================
+      							Payment Form
+      ================================================================-->
+    	<div class="col-lg-6 payment2">
+        <label>Pay by your Debit / Credit Card</label><br><br>
+    	<form id="form-hire-confirmation" class="form-inline" method="post" action="/api/project/{{ p._id }}/hire">
+
+             <span class="payment-errors"></span>
+
+
+
+              <div class="form-row">
+                <label>
+                  <input class="form-control" type="text" size="20" data-stripe="name"  placeholder="Name On Card"/>
+                </label>
+              </div>
+
+              <div class="form-row">
+                <label>
+                  <input class="form-control" type="text" size="20" data-stripe="number"  placeholder="Card Number"/>
+                </label>
+              </div>
+
+
+              <div class="form-row">
+                <label>
+                  <input class="form-control" type="text" size="20" data-stripe="cvc"  placeholder="Back 3 digits"/>
+                </label>
+              </div>
+                <div class="form-row">
+                <label>
+                  <input class="form-control" type="text" size="20" data-stripe="address_zip"  placeholder="Zip Code"/>
+                </label>
+              </div>
+              <div class="form-row">
+                <label>
+                  <input class="form-control" type="text" size="2" data-stripe="exp-month"   placeholder="MM"  class="input-small" />
+                </label>
+                <input class="form-control" type="text" size="4" data-stripe="exp-year"    placeholder="YYYY"  class="input-small"/>
+              </div>
+              <div style='display:none' id='tokendiv'>
+
+              </div>
+
+            <input type="hidden" name="bid" value="{{bid._id}}" /><br>
+
+                <button class="btn btn-primary" type="submit" value="Submit" >Submit</button>
+                <button class="btn btn-default" id="button-hire-cancel">Later</button>
+            <div class="alert error" style="display: none;">
+                There was a problem completing this request.
+            </div>
+        </form>
+                <br><br>
+      <!--===============================================================
+      							Paypal Button
+      ================================================================-->
+            <label>You Can Pay via Paypal</label><br>
+
+            <form action="https://www.paypal.com/cgi-bin/webscr"  method="post">
+                <input type="hidden" name="cmd" value="_xclick" />
+                <input type="hidden" name="business" value="SimplexSolver@simplexsolver.com" />
+                <input type="hidden" name="item_name" value="Simplex Solver 1.0" />
+                <input type="hidden" name="item_number" value="3" />
+                <input type="hidden" name="currency_code" value="USD" />
+                <input type="hidden" name="amount" value="0.02" />
+                <input type="hidden" name="rm" value="2" />
+                <input type="hidden" name="return" value="http://www.simplexsolver.com/paypal-button-maker/pdt.php?button=Simplex-Solver-1-0" />
+                <input type="hidden" name="notify_url" value="http://www.simplexsolver.com/paypal-button-maker/paypal.php?button=Simplex-Solver-1-0" />
+                <input type="hidden" name="cancel_return" value="http://www.simplexsolver.com/paypal-button-maker/paypal-buy-now-button-generator.php" />
+                <input type="hidden" name="bn" value="SimplexSolver_SP" /> <br />
+                <input type="image" src="https://www.paypal.com/en_US/i/btn/btn_buynow_LG.gif" border="0" name="submit" alt="Make payments with PayPal  its fast, free and secure!" />
+                <img alt="" border="0" src="https://www.paypal.com/en_US/i/scr/pixel.gif" width="1" height="1" />
+			</form>
+
+
+
+		</div>
+
+      <!--===============================================================
+      							Escrow Images
+      ================================================================-->
+        <div class="col-lg-6 payments3">
+        	<div class="row">
+                <div class="col-lg-6 payment4">
+                    <img class="payment-img" src="img/escrow.jpg" alt="escrow-img"/>
+                </div>
+                <div class="col-lg-6 payment5">
+                    <img class="payment-img" src="img/money-back.png" alt="money-back-guarantee"/>
+                </div>
+            </div>
+            <div class="row">
+            	<div class="col-lg-12">
+                	<img class="payment-img1" src="img/debit.png" alt="debit-cards"/>
+                </div>
+            </div>
+        </div>
+	</div>
+    </div>
+
+</div><!--Container Closed-->
+
+
+<script src="http://code.jquery.com/jquery-latest.js"></script>
+<script src="bootstrap/js/bootstrap.min.js"></script>
+
+</body>
+</html>

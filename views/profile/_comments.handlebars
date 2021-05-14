@@ -1,0 +1,22 @@
+{{#each comments}}
+<div class="comment person row-fluid {{#if user.is_friend}} friend{{/if}}" data-user-id="{{_id}}">
+    <div class="span2">
+        <div class="photo">
+            {{#if user.profile.picture}}
+            <img src="/i/{{user.profile.picture}}/161/149/o" />
+            {{else}}
+            <div class="no-photo"></div>
+            {{/if}}
+        </div>
+    </div>
+    <div class="span3">
+        <a  href="/profile/{{user._id}}">{{user.name}}</a>
+        {{helper 'stars' stars=user.average_rating total=user.ratings.length user=user._id}}
+        <div>{{since date_submitted}}</div>
+    </div>
+    <div class="span7">
+        {{this.comments}}
+    </div>
+</div>
+<hr/>
+{{/each}}

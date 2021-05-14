@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>{{ meta.title }} - Mechfinder.com</title>
+        <meta name="viewport"    content="width=device-width, initial-scale=1.0">
+        <meta name="description" content="{{ meta.description }}">
+        <meta name="keywords"    content="{{ meta.keywords }}">
+        <meta name="author"      content="Mechfinder">
+        <script src="{{ settings.static_path }}/js/master.js"></script>
+        <link href="{{ settings.static_path }}/styles/site.css" rel="stylesheet">
+        {{> layouts/analytics }}
+
+        <!--[if lt IE 9]>
+        <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+        <![endif]-->
+
+        <link rel="shortcut icon" href="{{settings.static_path}}/img/favicon.ico">
+        <!--
+        <link rel="apple-touch-icon-precomposed" sizes="144x144" href="{{ settings.static_path }}/ico/apple-touch-icon-144-precomposed.png">
+        <link rel="apple-touch-icon-precomposed" sizes="114x114" href="{{ settings.static_path }}/ico/apple-touch-icon-114-precomposed.png">
+        <link rel="apple-touch-icon-precomposed" sizes="72x72" href="{{ settings.static_path }}/ico/apple-touch-icon-72-precomposed.png">
+        <link rel="apple-touch-icon-precomposed" href="{{ settings.static_path }}/ico/apple-touch-icon-57-precomposed.png">
+        -->
+        <script type="text/javascript" src="https://js.stripe.com/v2/"></script>
+        <script>Stripe.setPublishableKey('{{stripepublic}}');</script>
+    </head>
+    <body class="user"{{#if user}} data-user-id="{{user._id}}"{{/if}}>
+        <div id="body-container">
+            <div class="row-fluid" style='width:800px;'>
+                <div class="span12" >
+                    {{{ body }}}
+                </div>
+            </div>
+
+<p align=center>
+            Copyright &copy; 2012 Mechfinder.com, All Right Reserved</p>
+        </div>
+    </body>
+</html>

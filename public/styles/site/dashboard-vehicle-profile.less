@@ -1,0 +1,456 @@
+.dashboard-page {
+    @screenXS: 320px;
+    @screenSM: 480px;
+    @screenMD: 768px;
+    @screenLG: 920px;
+    @screenXL: 1200px;
+
+    @colorRed: rgba(169, 1, 1, 1);
+    @colorRedLight: rgba(199, 1, 1, 1);
+    @colorGreen: rgba(92, 184, 92, 1);
+    @colorGreenLight: rgba(122, 214, 122, 1);
+    @colorBlue: rgba(7, 166, 244, 1);
+    @colorBlueLight: rgba(37, 196, 255, 1);
+
+    @standardFontColor: rgba(41, 41, 41, 1);
+    @standardFontSize: 13px;
+    @standardFontWeight: normal;
+
+    @standardLineHeight: 18px;
+
+    .standard-div {
+        display: block;
+        float: left;
+        width: 100%;
+        text-align: left;
+    }
+
+    .flex-div {
+        display: -webkit-flex;
+        display: flex;
+    }
+
+    .inline-div {
+        display: inline-block;
+    }
+
+    .spacer {
+        .standard-div;
+        height: 1px;
+        margin-top: 15px;
+        margin-bottom: 15px;
+
+        &.large {
+            margin-top: 30px;
+            margin-bottom: 30px;
+        }
+
+        &.small {
+            margin-top: 7px;
+            margin-bottom: 7px;
+        }
+
+        &.lined {
+            background-color: rgba(199, 199, 199, 1);
+        }
+
+        &.remove-top-margin {
+            margin-top: 0px;
+        }
+
+        &.remove-bottom-margin {
+            margin-bottom: 0px;
+        }
+    }
+
+    .remove-effects {
+        outline: none;
+        text-decoration: none;
+        -webkit-tap-highlight-color: transparent;
+    }
+
+    .transitions {
+        -moz-transition: all 300ms ease;
+        -ms-transition: all 300ms ease;
+        -o-transition: all 300ms ease;
+        transition: all 300ms ease;
+    }
+
+    .standard-background {
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: contain;
+    }
+
+    .standard-font {
+        color: @standardFontColor;
+        font-family: @baseFonts;
+        font-size: @standardFontSize;
+        font-weight: @standardFontWeight;
+        line-height: @standardLineHeight;
+    }
+
+    .standard-link {
+        .standard-font;
+        .transitions;
+        .remove-effects;
+
+        &:link,
+        &:visited {
+            color: @colorBlue;
+            border-bottom: 1px solid transparent;
+        }
+
+        &:hover,
+        &:active,
+        &:focus {
+            color: @colorBlueLight;
+            border-bottom-color: @colorBlueLight;
+        }
+    }
+
+    .standard-button {
+        .inline-div;
+        .standard-font;
+        .transitions;
+        .remove-effects;
+        padding: 10px;
+        border-radius: 2px;
+
+        &:link,
+        &:visited {
+            color: rgba(245, 245, 245, 1);
+            background-color: @colorBlue;
+
+            &.red {
+                background-color: @colorRed;
+            }
+
+            &.green {
+                background-color: @colorGreen;
+            }
+
+            &.blue {
+                background-color: @colorBlue;
+            }
+        }
+
+        &:hover,
+        &:active,
+        &:focus {
+            color: rgba(255, 255, 255, 1);
+            background-color: @colorBlueLight;
+
+            &.red {
+                background-color: @colorRedLight;
+            }
+
+            &.green {
+                background-color: @colorGreenLight;
+            }
+
+            &.blue {
+                background-color: @colorBlueLight
+            }
+        }
+    }
+
+    .standard-input {
+        .inline-div;
+        .standard-font;
+        .remove-effects;
+        .transitions;
+        max-width: 100%;
+        padding: 10px;
+        box-sizing: border-box;
+        color: rgba(123, 123, 123, 1);
+        border: 1px solid rgba(221, 221, 221, 1);
+        background-color: rgba(255, 255, 255, 1);
+        border-radius: 2px;
+        box-shadow: 0px 2px 3px 0px rgba(221, 221, 221, 1) inset;
+        text-align: left;
+
+        &[disabled="disabled"] {
+            color: rgba(153, 153, 153, 1);
+            background-color: rgba(245, 245, 245, 1);
+        }
+    }
+
+    .standard-select {
+        .standard-input;
+        box-shadow: none;
+    }
+
+    .input-error {
+        border: 1px solid @colorRed;
+    }
+
+    .within {
+        .group {
+
+            .vehicle-profile {
+                .standard-div;
+                text-align: center;
+
+                .select-profile {
+                    .standard-div;
+                }
+
+                .add-formbox {
+                    .standard-div;
+                }
+
+                .add-profile,
+                .edit-profile {
+                    .standard-div;
+
+                    .add-box {
+                        .inline-div;
+                        width: 100%;
+                        max-width: 100%;
+                        padding: 15px;
+                        box-sizing: border-box;
+
+                        @media only screen and (min-width: @screenMD) {
+                            width: 215px;
+                        }
+
+                        @media only screen and (min-width: @screenLG) {
+                            width: 300px;
+                        }
+
+                        label {
+                            .standard-div;
+
+                            margin-bottom: 5px;
+                        }
+
+                        input[type="text"],
+                        select {
+                            width: 100%;
+
+                            &.error {
+                                border: 2px solid @colorRed;
+                            }
+                        }
+                    }
+                }
+
+                .save-row {
+                    .standard-div;
+                    text-align: right;
+
+                    label {
+                        font-size: 13px;
+                        line-height: 18px;
+                        margin-right: 5px;
+
+                        &.error {
+                            color: @colorRed;
+                        }
+                    }
+                }
+
+                .vehicle-left {
+                    .inline-div;
+                    max-width: 400px;
+                    box-sizing: border-box;
+                    text-align: center;
+                    border: 1px solid rgba(222, 222, 222, 1);
+                    border-radius: 5px;
+
+                    @media only screen and (min-width: @screenMD) {
+                        .inline-div;
+                        float: left;
+                        width: 50%;
+                    }
+
+                    .image {
+                        .standard-div;
+                        .standard-background;
+                        height: 200px;
+                        margin-bottom: 25px;
+                        background-image: url('../img/vehicle-default-bgpic.png');
+                        background-size: cover;
+                        border-top-left-radius: 5px;
+                        border-top-right-radius: 5px;
+                    }
+
+                    .bottom {
+                        .standard-div;
+                        width: 94%;
+                        margin-left: 3%;
+                        margin-right: 3%;
+                        margin-bottom: 25px;
+                        text-align: center;
+
+                        @media only screen and (min-width: @screenXS) {
+                            .flex-div;
+                            text-align: left;
+                        }
+                    }
+
+                    .bottom .square {
+                        .inline-div;
+                        flex: 0;
+                        width: 80px;
+                        height: 80px;
+                        border: 1px solid rgba(214, 209, 204, 1);
+                    }
+
+                    .bottom .square .inner {
+                        .standard-div;
+                        width: 70px;
+                        height: 70px;
+                        margin: 5px;
+
+                        background-image: url('../img/placeholder-square.png');
+                        background-size: cover;
+                        background-position: center;
+                        background-repeat:  no-repeat;
+                    }
+
+                    .bottom .description {
+                        .standard-div;
+                        flex: 0;
+                        margin-top: 10px;
+
+                        @media only screen and (min-width: @screenXS) {
+                            .inline-div;
+                            flex: 1;
+                            width: auto;
+                            margin-left: 10px;
+                        }
+                    }
+
+                    .bottom .description .vehicle-title {
+                        .standard-div;
+                        .standard-font;
+                        color: rgba(92, 81, 70, 1);
+                        font-size: 19px;
+                        line-height: 22px;
+                        text-align: center;
+
+                        @media only screen and (min-width: @screenXS) {
+                            text-align: left;
+                        }
+                    }
+
+                    .bottom .description .vehicle-description {
+                        .standard-div;
+                        .standard-font;
+                        max-width: 100%;
+                        margin-top: 7px;
+                        line-height: 13px;
+                        color: rgba(92, 81, 70, 1);
+                        text-align: left;
+
+                        @media only screen and (min-width: @screenXS) {
+                            display: inline-block;
+                            float: none;
+                            width: auto;
+                        }
+                    }
+                }
+
+                .vehicle-right {
+                    .standard-div;
+                    margin-top: 10px;
+                    padding: 15px;
+                    box-sizing: border-box;
+
+                    @media only screen and (min-width: @screenMD) {
+                        .inline-div;
+                        width: 47%;
+                        margin-left: 3%;
+                    }
+
+                    .customsel {
+                        width: 100%;
+                        display: block;
+                        float: left;
+                        text-align: center;
+
+                        // this box does not need to be implemented yet, but will be later (ask Marcus/Matt)
+                        display: none;
+
+                        .centerizer {
+                            display: inline-block;
+                        }
+
+                        .lbl {
+                            display: inline-block;
+                            float: left;
+                            max-width: 100%;
+                            margin-right: 10px;
+
+                            color: rgba(41, 41, 41, 1);
+                            font-family: @baseFonts;
+                            font-size: 16px;
+                            font-weight:  normal;
+                            line-height: 16px;
+                            text-align: left;
+
+                            margin-top: 20px;
+                            margin-bottom: 16px;
+                        }
+                    }
+
+                    .message {
+                        .standard-div;
+                        .standard-font;
+                        margin-top: 50px;
+                        margin-bottom: 50px;
+                        font-size: 19px;
+                        line-height: 22px;
+                        text-align: center;
+                    }
+
+                    .schedules {
+                        .standard-div;
+                        .standard-font;
+                        .standard-background;
+                        width: 80%;
+                        padding-left: 40px;
+                        margin-left: 10%;
+                        margin-right: 10%;
+                        box-sizing: border-box;
+                        font-size: 12px;
+                        line-height: 12px;
+                        text-align: center;
+
+                        background-image: url('../img/notes-gear-icon.png');
+                        background-position: left center;
+                        background-size: auto;
+                    }
+
+                    .schedules strong {
+                        font-size: 15px;
+                        line-height: 15px;
+                    }
+
+                    .comingsoon {
+                        .standard-div;
+                        margin-top: 50px;
+                    }
+
+                    .comingsoon h3 {
+                        .standard-font;
+                        margin-bottom: 15px;
+                        font-size: 17px;
+                        line-height: 17px;
+                        text-align: center;
+                    }
+
+                    .comingsoon p {
+                        .standard-font;
+                        font-size: 14px;
+                        line-height: 14px;
+                        color: red;
+                        text-align: center;
+                    }
+                }
+            }
+        }
+    }
+}

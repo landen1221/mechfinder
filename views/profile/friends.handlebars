@@ -1,0 +1,17 @@
+<style type="text/css">
+
+ul.friends li {
+    float: left;
+    list-style: none;
+}
+
+</style>
+<h2>Your Friends</h2>
+<ul class="friends">
+{{#each users}}
+    <li>{{>helpers/person}}</li>
+{{/each}}
+</ul>
+{{#unless users}}
+<h4>You have no friends yet! Try friending some local mechanics!</h3>
+{{/unless}}
